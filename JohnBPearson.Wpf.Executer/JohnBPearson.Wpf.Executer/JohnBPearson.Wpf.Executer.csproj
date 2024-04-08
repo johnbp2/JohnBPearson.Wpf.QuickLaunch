@@ -14,7 +14,7 @@
 
   <ItemGroup>
     <Reference Include="JohnBPearson.Butlers.QuickLaunchCore">
-      <HintPath>..\..\JohnBPearson.Butlers.ApplicationExecuter\JohnBPearson.Butlers.QuickLaunchCore\bin\Debug\net8.0\JohnBPearson.Butlers.QuickLaunchCore.dll</HintPath>
+      <HintPath>..\..\JohnBPearson.Butlers.ApplicationExecuter\JohnBPearson.Butlers.QuickLaunchCore\bin\Release\net8.0\JohnBPearson.Butlers.QuickLaunchCore.dll</HintPath>
     </Reference>
   </ItemGroup>
 

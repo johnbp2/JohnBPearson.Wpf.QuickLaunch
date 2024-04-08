@@ -56,13 +56,14 @@ namespace JohnBPearson.Wpf.Executer
                 // BitmapSource bitmapSource2 = imageService.ImageSourceFromIcon(shortcut.Icon);//decoder2.Frames[0];
                 var bmi = imageService.IconToBitmapImage(shortcut.Icon);
                 // bitmapSource2.Freeze();
+                image2.BeginInit();
                 image2.Source = bmi;
-
+                image2.EndInit();
                 image2.Name = $"image{i}";
 
-               image.BeginInit();
-                image.Source = bmi;
-                image.EndInit();
+               //image.BeginInit();
+               // image.Source = bmi;
+               // image.EndInit();
 
                 this.stack1.Children.Add(image2);
                 //  }

@@ -13,20 +13,20 @@ namespace JohnBPearson.Butlers.QuickLaunch
         private List<IExecutable> _executables;
         public List<IExecutable> Executables
         {
-        get
+            get
             {
                 if(_executables == null)
                 {
-                _executables = new List<IExecutable>();
+                    _executables = new List<IExecutable>();
                     if(!string.IsNullOrWhiteSpace(_directoryPath))
                     {
                         FindFiles(_directoryPath);
                     }
 
 
-                }           
+                }
                 return _executables;
-            } 
+            }
         }
 
         private string _directoryPath;
@@ -41,15 +41,23 @@ namespace JohnBPearson.Butlers.QuickLaunch
         {
             var dir = new System.IO.DirectoryInfo(directoryPath);
             var files = dir.EnumerateFiles();
-            foreach (var file in files)
-            {var exec = new Executable(file.FullName);
-            
+            foreach(var file in files)
+            {
 
-               this._executables.Add(exec);
+                if(file.Name.Contains(".ini") || file.Name.Contains("desktop"))
+                {
+                    continue;
+                }
 
-                    
-                    }
-           // dir.GetFiles()
+
+                var exec = new Executable(file.FullName);
+
+
+                this._executables.Add(exec);
+
+
+            }
+            // dir.GetFiles()
         }
     }
 }
