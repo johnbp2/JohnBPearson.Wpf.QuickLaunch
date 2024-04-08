@@ -1,0 +1,30 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34701.34
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnitTests", "UnitTests\UnitTests.csproj", "{0C825312-F8AE-40F2-B955-E83CF9B2A4DF}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JohnBPearson.Butlers.QuickLaunchCore", "JohnBPearson.Butlers.QuickLaunchCore\JohnBPearson.Butlers.QuickLaunchCore.csproj", "{408024DC-0140-453D-8A56-636F7EC5AE85}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0C825312-F8AE-40F2-B955-E83CF9B2A4DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0C825312-F8AE-40F2-B955-E83CF9B2A4DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0C825312-F8AE-40F2-B955-E83CF9B2A4DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0C825312-F8AE-40F2-B955-E83CF9B2A4DF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{408024DC-0140-453D-8A56-636F7EC5AE85}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{408024DC-0140-453D-8A56-636F7EC5AE85}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{408024DC-0140-453D-8A56-636F7EC5AE85}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{408024DC-0140-453D-8A56-636F7EC5AE85}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {9359ECB3-0171-4981-88BC-D5DC5139C588}
+	EndGlobalSection
+EndGlobal
