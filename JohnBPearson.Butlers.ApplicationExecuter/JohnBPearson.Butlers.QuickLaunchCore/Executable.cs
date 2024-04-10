@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace JohnBPearson.Butlers.QuickLaunch
+namespace JohnBPearson.Butlers.QuickLaunchCore
 {
     public class Executable : FileSystemObjectBase, IExecutable
     {

@@ -1,4 +1,5 @@
-﻿using System.Drawing.Printing;
+﻿using System.Diagnostics;
+using System.Drawing.Printing;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -8,7 +9,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
-using System.Windows.Shapes;    
+using System.Windows.Shapes;
+using JohnBPearson.Butlers.QuickLaunch;
 
 namespace JohnBPearson.Wpf.Executer
 {
@@ -17,6 +19,8 @@ namespace JohnBPearson.Wpf.Executer
     /// </summary>
     public partial class MainWindow : Window
     {
+
+        private List<Tuple<Image, IExecutable>> cache = new List<Tuple<Image, IExecutable>>();
 
         
         private ImageService imageService = new ImageService();
@@ -60,7 +64,8 @@ namespace JohnBPearson.Wpf.Executer
                 image2.Source = bmi;
                 image2.EndInit();
                 image2.Name = $"image{i}";
-
+                image2.MouseDown += new MouseButtonEventHandler(Mouse_Down);
+                cache.Add(new Tuple<Image, IExecutable>(image2, shortcut));
                //image.BeginInit();
                // image.Source = bmi;
                // image.EndInit();
@@ -70,6 +75,25 @@ namespace JohnBPearson.Wpf.Executer
                 i++;
                 margin = margin + 300;
             }
+
+            
+        }
+
+
+        private void Mouse_Down(object sender, MouseEventArgs e)
+        {
+            foreach(var item in this.cache)
+            {
+                if(item.Item1.Name == ((Image)sender).Name)
+                {
+             var test =System.IO.File.ReadAllText(item.Item2.FullPath);
+                    Debug.WriteLine(test);
+                //Process.Start(item.Item2.FullPath);
+                }
+            }
         }
     }
+
+
+
 }

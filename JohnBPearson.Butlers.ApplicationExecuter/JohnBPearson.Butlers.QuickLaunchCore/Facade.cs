@@ -5,14 +5,16 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace JohnBPearson.Butlers.QuickLaunch
+namespace JohnBPearson.Butlers.QuickLaunchCore
 {
     public class Facade
     {
 
+
         private List<IExecutable> _executables;
-        public List<IExecutable> Executables
-        {
+
+    
+        public List<IExecutable> Executables        {
         get
             {
                 if(_executables == null)

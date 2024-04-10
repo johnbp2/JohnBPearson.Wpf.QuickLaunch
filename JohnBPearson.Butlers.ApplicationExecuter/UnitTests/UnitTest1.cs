@@ -1,6 +1,6 @@
 ﻿using System;
 
-using JohnBPearson.Butlers.QuickLaunch;
+using JohnBPearson.Butlers.QuickLaunchCore;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace UnitTests
@@ -8,12 +8,11 @@ namespace UnitTests
     [TestClass]
     public class UnitTest1
     {
-        const string testDir = "c:\\temp";
-        [TestMethod]
+        const string testDir = "c:\\Users\\johnj\\AppData\\Roaming\\Microsoft\\Internet Explorer\\Quick Launch\\";
         public void TestMethod1()
         {
 
-            var exec = new JohnBPearson.Butlers.QuickLaunch.Executable(testDir);
+            var exec = new JohnBPearson.Butlers.QuickLaunchCore.Executable(testDir);
             Assert.IsNotNull(exec);
             Assert.IsTrue(exec.Name.Length > 0);
             Assert.IsTrue(exec.Type == FileSystemObjectType.Directory);
@@ -30,7 +29,7 @@ namespace UnitTests
             {
                 Assert.IsTrue(exec.Icon != null);
 
-            }
+            } 
 
         }
     }

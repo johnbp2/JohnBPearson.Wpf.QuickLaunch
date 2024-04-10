@@ -1,6 +1,6 @@
 ﻿using System.Drawing;
 
-namespace JohnBPearson.Butlers.QuickLaunch
+namespace JohnBPearson.Butlers.QuickLaunchCore
 {
     public interface IFileSystemObjectBase
     {
