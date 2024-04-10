@@ -1,6 +1,6 @@
-﻿namespace JohnBPearson.Butlers.QuickLaunch
+﻿namespace JohnBPearson.Butlers.QuickLaunchCore
 {
-    public interface IExecutable:IFileSystemObjectBase 
+    public interface IExecutable: IFileSystemObjectBase 
     {
         void Run();
     }
