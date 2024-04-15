@@ -10,7 +10,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using JohnBPearson.Butlers.QuickLaunch;
+using JohnBPearson.Butlers.QuickLaunchCore;
+using JohnBPearson.Butlers.QuickLaunchCore.FileMetaDataModel;
+
 
 namespace JohnBPearson.Wpf.Executer
 {
@@ -20,7 +22,7 @@ namespace JohnBPearson.Wpf.Executer
     public partial class MainWindow : Window
     {
 
-        private List<Tuple<Image, IExecutable>> cache = new List<Tuple<Image, IExecutable>>();
+        private List<Tuple<Image, IFileSystemObjectBase>> cache = new List<Tuple<Image, IFileSystemObjectBase>>();
 
         
         private ImageService imageService = new ImageService();
@@ -41,41 +43,38 @@ namespace JohnBPearson.Wpf.Executer
 
         private void Main_Initialized(object sender, EventArgs e)
         {
-            JohnBPearson.Butlers.QuickLaunch.Facade facade = new Butlers.QuickLaunch.Facade("./Quick Launch");
+            Facade facade = new Butlers.QuickLaunchCore.Facade("./Quick Launch");
             var i = 100;
             var margin = 0;
-            foreach(var shortcut in facade.Executables)
+            foreach(var fileSystemOnject in facade.FileSystemObjects)
             {
 
-
-                var image2 = new Image();
+                if(fileSystemOnject.Type != Extention.ini)
+                {
+                    var image2 = new Image();
 
 
                 image2.Width = 200;
-                //  image2.Margin = new Thickness(margin, 0, 0, 0);
-                //Uri myUri = new Uri("butler.ico", UriKind.RelativeOrAbsolute);
-                //var decoder2 = new IconBitmapDecoder(myUri, BitmapCreateOptions.PreservePixelFormat, BitmapCacheOption.Default);
-                //using(shortcut.Icon) {
+              
 
-                // BitmapSource bitmapSource2 = imageService.ImageSourceFromIcon(shortcut.Icon);//decoder2.Frames[0];
-                var bmi = imageService.IconToBitmapImage(shortcut.Icon);
-                // bitmapSource2.Freeze();
-                image2.BeginInit();
-                image2.Source = bmi;
-                image2.EndInit();
-                image2.Name = $"image{i}";
-                image2.MouseDown += new MouseButtonEventHandler(Mouse_Down);
-                cache.Add(new Tuple<Image, IExecutable>(image2, shortcut));
-               //image.BeginInit();
-               // image.Source = bmi;
-               // image.EndInit();
+                    var bmi = imageService.IconToBitmapImage(fileSystemOnject.Icon);
+                    // bitmapSource2.Freeze();
+                    image2.BeginInit();
+                    image2.Source = bmi;
+                    image2.EndInit();
+                    image2.Name = $"image{i}";
+                    image2.MouseDown += new MouseButtonEventHandler(Mouse_Down);
+                    cache.Add(new Tuple<Image, IFileSystemObjectBase>(image2, fileSystemOnject));
+                    //image.BeginInit();
+                    // image.Source = bmi;
+                    // image.EndInit();
 
-                this.stack1.Children.Add(image2);
-                //  }
-                i++;
-                margin = margin + 300;
+                    this.stack1.Children.Add(image2);
+                    //  }
+                    i++;
+                    margin = margin + 300;
+                }
             }
-
             
         }
 
@@ -86,9 +85,10 @@ namespace JohnBPearson.Wpf.Executer
             {
                 if(item.Item1.Name == ((Image)sender).Name)
                 {
-             var test =System.IO.File.ReadAllText(item.Item2.FullPath);
-                    Debug.WriteLine(test);
-                //Process.Start(item.Item2.FullPath);
+                    //var test =System.IO.file.ReadAllText(item.Item2.FullPath);
+                    //      Debug.WriteLine(test);
+                    //Process.Start(item.Item2.FullPath);
+                    item.Item2.Run();
                 }
             }
         }

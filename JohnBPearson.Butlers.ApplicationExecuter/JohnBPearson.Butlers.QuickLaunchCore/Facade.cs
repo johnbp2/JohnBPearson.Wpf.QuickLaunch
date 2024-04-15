@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using JohnBPearson.Butlers.QuickLaunchCore.FileMetaDataModel;
 
 namespace JohnBPearson.Butlers.QuickLaunchCore
 {
@@ -11,24 +13,25 @@ namespace JohnBPearson.Butlers.QuickLaunchCore
     {
 
 
-        private List<IExecutable> _executables;
+        private List<IFileSystemObjectBase> _executables;
 
-    
-        public List<IExecutable> Executables        {
-        get
+
+        public List<IFileSystemObjectBase> FileSystemObjects
+        {
+            get
             {
                 if(_executables == null)
                 {
-                _executables = new List<IExecutable>();
+                    _executables = new List<IFileSystemObjectBase>();
                     if(!string.IsNullOrWhiteSpace(_directoryPath))
                     {
-                        FindFiles(_directoryPath);
+                        InstantiateFileSystemObjects(_directoryPath);
                     }
 
 
-                }           
+                }
                 return _executables;
-            } 
+            }
         }
 
         private string _directoryPath;
@@ -39,19 +42,55 @@ namespace JohnBPearson.Butlers.QuickLaunchCore
 
 
 
-        private void FindFiles(string directoryPath)
+        private void InstantiateFileSystemObjects(string directoryPath)
         {
             var dir = new System.IO.DirectoryInfo(directoryPath);
-            var files = dir.EnumerateFiles();
-            foreach (var file in files)
-            {var exec = new Executable(file.FullName);
-            
+            if(dir.Exists)
+            {
+                var fact = new FileSystemObjectFactory();
+                var files = dir.EnumerateFiles();
+                foreach(var file in files)
+                {
 
-               this._executables.Add(exec);
+                    this.FileSystemObjects.Add(FileSystemObjectFactory.Build(file.FullName, file));
 
-                    
-                    }
-           // dir.GetFiles()
+                    //var exec = new Executable(file.FullName);
+                    //FileSystemObjectBase.Build(file.FullName)
+
+                    //  _executables.Add(exec);
+
+
+                }
+
+                // dir.GetFiles()
+            }
+        }
+    }
+
+
+}
+
+namespace CustomExtensions
+{
+
+    //Extension methods must be defined in a static class
+    public static class StringExtension
+    {
+        // This is the extension method.
+        // The first parameter takes the "this" modifier
+        // and specifies the type for which the method is defined.
+        public static string CleanseFileExtension(this string str)
+        {
+            if(str.Contains('.') && str.Length == 4 && str.StartsWith("."))
+            {
+                return str.Substring(1, 3);
+            }
+            return str;
+        }
+
+        public static string ConvertWhitespacesToSingleSpaces(this string value)
+        {
+            return Regex.Replace(value, @"\s+", " ");
         }
     }
 }

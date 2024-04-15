@@ -6,56 +6,53 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using JohnBPearson.Butlers.QuickLaunchCore;
 
-namespace JohnBPearson.Butlers.QuickLaunchCore
+namespace JohnBPearson.Butlers.QuickLaunchCore.FileMetaDataModel
 {
-    public sealed class BinaryLinkFormat : FileSystemObjectBase {
-        internal BinaryLinkFormat(string fullPath) : base(fullPath)
+    public sealed class BinaryLinkFormat : FileSystemObjectBase
+    {
+        internal BinaryLinkFormat(string fullPath, FileInfo info) : base(fullPath, info)
         {
         }
 
-        FileSystemObjectType Type
-        {
-            get;
-        }
 
         private string _targetPath = string.Empty;
         public string TargetPath
         {
             get
             {
-                if(_targetPath == null)
+                if (string.IsNullOrWhiteSpace(_targetPath))
                 {
-                    this._targetPath = BinaryLinkFormat.GetShortcutTarget(this.FullPath);
+                    _targetPath = GetShortcutTarget(FullPath);
                 }
                 return _targetPath;
             }
-            private set {
-            this._targetPath = value;
+            private set
+            {
+                _targetPath = value;
             }
         }
 
         public override void Run()
         {
-        System.Diagnostics.Process.Start(this.TargetPath);
+            System.Diagnostics.Process.Start(TargetPath);
         }
 
         private static string GetShortcutTarget(string file)
         {
             try
             {
-                if(System.IO.Path.GetExtension(file).ToLower() != ".lnk")
+                if (Path.GetExtension(file).ToLower() != ".lnk")
                 {
                     throw new Exception("Supplied file must be a .LNK file");
                 }
 
                 FileStream fileStream = File.Open(file, FileMode.Open, FileAccess.Read);
-                using(System.IO.BinaryReader fileReader = new BinaryReader(fileStream))
+                using (BinaryReader fileReader = new BinaryReader(fileStream))
                 {
                     fileStream.Seek(0x14, SeekOrigin.Begin);     // Seek to flags
                     uint flags = fileReader.ReadUInt32();        // Read flags
-                    if((flags & 1) == 1)
+                    if ((flags & 1) == 1)
                     {                      // Bit 1 set means we have to
                                            // skip the shell item ID list
                         fileStream.Seek(0x4c, SeekOrigin.Begin); // Seek to the end of the header
@@ -69,15 +66,15 @@ namespace JohnBPearson.Butlers.QuickLaunchCore
                     fileStream.Seek(0xc, SeekOrigin.Current); // seek to offset to base pathname
                     uint fileOffset = fileReader.ReadUInt32(); // read offset to base pathname
                                                                // the offset is from the beginning of the file info struct (fileInfoStartsAt)
-                    fileStream.Seek((fileInfoStartsAt + fileOffset), SeekOrigin.Begin); // Seek to beginning of
-                                                                                        // base pathname (target)
-                    long pathLength = (totalStructLength + fileInfoStartsAt) - fileStream.Position - 2; // read
-                                                                                                        // the base pathname. I don't need the 2 terminating nulls.
+                    fileStream.Seek(fileInfoStartsAt + fileOffset, SeekOrigin.Begin); // Seek to beginning of
+                                                                                      // base pathname (target)
+                    long pathLength = totalStructLength + fileInfoStartsAt - fileStream.Position - 2; // read
+                                                                                                      // the base pathname. I don't need the 2 terminating nulls.
                     char[] linkTarget = fileReader.ReadChars((int)pathLength); // should be unicode safe
                     var link = new string(linkTarget);
 
                     int begin = link.IndexOf("\0\0");
-                    if(begin > -1)
+                    if (begin > -1)
                     {
                         int end = link.IndexOf("\\\\", begin + 2) + 2;
                         end = link.IndexOf('\0', end) + 1;
