@@ -13,9 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Reference Include="JohnBPearson.Butlers.QuickLaunchCore">
-      <HintPath>..\..\JohnBPearson.Butlers.ApplicationExecuter\JohnBPearson.Butlers.QuickLaunchCore\bin\Release\net8.0\JohnBPearson.Butlers.QuickLaunchCore.dll</HintPath>
-    </Reference>
+    <ProjectReference Include="..\..\JohnBPearson.Butlers.ApplicationExecuter\JohnBPearson.Butlers.QuickLaunchCore\JohnBPearson.Butlers.QuickLaunchCore.csproj" />
   </ItemGroup>
 
   <ItemGroup>

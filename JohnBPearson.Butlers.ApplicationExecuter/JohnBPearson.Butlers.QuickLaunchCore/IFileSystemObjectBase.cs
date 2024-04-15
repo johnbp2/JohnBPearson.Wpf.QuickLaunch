@@ -1,6 +1,7 @@
 ﻿using System.Drawing;
+using JohnBPearson.Butlers.QuickLaunchCore.FileMetaDataModel;
 
-namespace JohnBPearson.Butlers.QuickLaunchCore
+namespace JohnBPearson.Butlers.QuickLaunchCore.FileMetaDataModel
 {
     public interface IFileSystemObjectBase
     {
@@ -20,7 +21,7 @@ namespace JohnBPearson.Butlers.QuickLaunchCore
         {
             get;
         }
-        FileSystemObjectType Type
+        Extention Type
         {
             get;
         }
