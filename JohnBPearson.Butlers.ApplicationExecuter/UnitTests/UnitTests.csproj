@@ -16,4 +16,9 @@
   <ItemGroup>
     <ProjectReference Include="..\JohnBPearson.Butlers.QuickLaunchCore\JohnBPearson.Butlers.QuickLaunchCore.csproj" />
   </ItemGroup>
+  <ItemGroup>
+    <None Update="butler.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
 </Project>
