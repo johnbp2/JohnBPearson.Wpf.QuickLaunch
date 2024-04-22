@@ -43,6 +43,7 @@ namespace JohnBPearson.Wpf.Executer
 
         private void Main_Initialized(object sender, EventArgs e)
         {
+           
             Facade facade = new Butlers.QuickLaunchCore.Facade("./Quick Launch");
             var i = 100;
             var margin = 0;
