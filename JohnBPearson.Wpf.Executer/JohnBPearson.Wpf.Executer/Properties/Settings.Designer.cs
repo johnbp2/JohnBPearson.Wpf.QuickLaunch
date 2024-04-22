@@ -25,9 +25,10 @@ namespace JohnBPearson.Wpf.Executer.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        public global::System.Collections.Specialized.StringCollection DIRSTART {
+        [global::System.Configuration.DefaultSettingValueAttribute(".\\Quick Launch")]
+        public string DIRSTART {
             get {
-                return ((global::System.Collections.Specialized.StringCollection)(this["DIRSTART"]));
+                return ((string)(this["DIRSTART"]));
             }
             set {
                 this["DIRSTART"] = value;

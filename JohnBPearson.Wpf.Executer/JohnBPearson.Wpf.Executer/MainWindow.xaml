@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:JohnBPearson.Wpf.Executer"
         mc:Ignorable="d"
-        Title="MainWindow" Height="200" Loaded="Main_Loaded" Initialized="Main_Initialized">
+        Title="MainWindow" Height="143" Width="500" Loaded="Main_Loaded" Initialized="Main_Initialized">
     <!--<Grid x:Name="gridMain">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="61*"/>
@@ -15,7 +15,7 @@
 
 
 
-    <StackPanel x:Name="stack1" OpacityMask="Black" Grid.ColumnSpan="2" Background="Gray" Orientation="Horizontal">
+    <StackPanel x:Name="stack1" OpacityMask="Black" Background="Gray" Orientation="Horizontal" Height="133" VerticalAlignment="Center">
         <!--<Image x:Name="image" Height="100" Width="300"/>-->
     </StackPanel>
     <!--</Grid>-->

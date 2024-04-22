@@ -44,9 +44,11 @@ namespace JohnBPearson.Wpf.Executer
         private void Main_Initialized(object sender, EventArgs e)
         {
            
-            Facade facade = new Butlers.QuickLaunchCore.Facade("./Quick Launch");
+            Facade facade = new Butlers.QuickLaunchCore.Facade(Properties.Settings.Default.DIRSTART);
             var i = 100;
             var margin = 0;
+            var width = 0;
+            
             foreach(var fileSystemOnject in facade.FileSystemObjects)
             {
 
@@ -55,8 +57,8 @@ namespace JohnBPearson.Wpf.Executer
                     var image2 = new Image();
 
 
-                image2.Width = 200;
-              
+                image2.Width = 64;
+                    width = width + 64 +10;
 
                     var bmi = imageService.IconToBitmapImage(fileSystemOnject.Icon);
                     // bitmapSource2.Freeze();
@@ -65,7 +67,8 @@ namespace JohnBPearson.Wpf.Executer
                     image2.EndInit();
                     image2.Name = $"image{i}";
                     image2.MouseDown += new MouseButtonEventHandler(Mouse_Down);
-                    cache.Add(new Tuple<Image, IFileSystemObjectBase>(image2, fileSystemOnject));
+                    image2.Margin =new Thickness(0,0, 10,0);
+                        cache.Add(new Tuple<Image, IFileSystemObjectBase>(image2, fileSystemOnject));
                     //image.BeginInit();
                     // image.Source = bmi;
                     // image.EndInit();
@@ -75,6 +78,8 @@ namespace JohnBPearson.Wpf.Executer
                     i++;
                     margin = margin + 300;
                 }
+                stack1.MaxWidth = width;
+               this.Width = width;
             }
             
         }

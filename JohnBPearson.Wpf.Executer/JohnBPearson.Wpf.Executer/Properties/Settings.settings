@@ -2,8 +2,8 @@
 <SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="JohnBPearson.Wpf.Executer.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
-    <Setting Name="DIRSTART" Type="System.Collections.Specialized.StringCollection" Scope="User">
-      <Value Profile="(Default)" />
+    <Setting Name="DIRSTART" Type="System.String" Scope="User">
+      <Value Profile="(Default)">.\Quick Launch</Value>
     </Setting>
   </Settings>
 </SettingsFile>
