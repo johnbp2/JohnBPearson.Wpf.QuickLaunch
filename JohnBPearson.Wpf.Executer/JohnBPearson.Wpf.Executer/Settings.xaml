@@ -1,0 +1,24 @@
+﻿<Window x:Class="JohnBPearson.Wpf.Executer.Settings"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:JohnBPearson.Wpf.Executer"
+        mc:Ignorable="d"
+        Title="Settings" Height="200" Width="500">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+        <Button x:Name="browse" Content="browse" HorizontalAlignment="Left" Grid.Column="1" VerticalAlignment="Center" Width="106" Click="button_Click" Grid.ColumnSpan="2" Margin="19,0,0,0"/>
+        <TextBox x:Name="folder" HorizontalAlignment="Center" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Center" Width="350"/>
+        <Label x:Name="label" Content="Label" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top"/>
+
+    </Grid>
+</Window>

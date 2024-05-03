@@ -1,5 +1,7 @@
-﻿using System.Diagnostics;
+﻿using System.Configuration;
+using System.Diagnostics;
 using System.Drawing.Printing;
+using System.Reflection.Metadata;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -40,11 +42,11 @@ namespace JohnBPearson.Wpf.Executer
 
       
         }
-
+        private const int iamageWidth = 32;
         private void Main_Initialized(object sender, EventArgs e)
         {
            
-            Facade facade = new Butlers.QuickLaunchCore.Facade(Properties.Settings.Default.DIRSTART);
+            Facade facade = new Butlers.QuickLaunchCore.Facade(Properties.Settings.Default.folder);
             var i = 100;
             var margin = 0;
             var width = 0;
@@ -57,8 +59,8 @@ namespace JohnBPearson.Wpf.Executer
                     var image2 = new Image();
 
 
-                image2.Width = 64;
-                    width = width + 64 +10;
+                image2.Width = iamageWidth;
+                    width = width + iamageWidth + 10;
 
                     var bmi = imageService.IconToBitmapImage(fileSystemOnject.Icon);
                     // bitmapSource2.Freeze();
@@ -79,7 +81,8 @@ namespace JohnBPearson.Wpf.Executer
                     margin = margin + 300;
                 }
                 stack1.MaxWidth = width;
-               this.Width = width;
+               
+                this.Width = width;
             }
             
         }
@@ -97,6 +100,14 @@ namespace JohnBPearson.Wpf.Executer
                     item.Item2.Run();
                 }
             }
+        }
+
+        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            var settings = new Settings();
+            settings.Owner = this;
+            settings.ShowDialog();
+
         }
     }
 
