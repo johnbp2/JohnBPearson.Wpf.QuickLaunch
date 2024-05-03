@@ -26,12 +26,12 @@ namespace JohnBPearson.Wpf.Executer.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute(".\\Quick Launch")]
-        public string DIRSTART {
+        public string folder {
             get {
-                return ((string)(this["DIRSTART"]));
+                return ((string)(this["folder"]));
             }
             set {
-                this["DIRSTART"] = value;
+                this["folder"] = value;
             }
         }
     }
