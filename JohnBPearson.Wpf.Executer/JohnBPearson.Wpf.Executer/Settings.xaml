@@ -1,11 +1,11 @@
-﻿<Window x:Class="JohnBPearson.Wpf.Executer.Settings"
+﻿<Window x:Name="SettingsWindow" x:Class="JohnBPearson.Wpf.Executer.Settings"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:JohnBPearson.Wpf.Executer"
         mc:Ignorable="d"
-        Title="Settings" Height="200" Width="500">
+        Title="Settings"  Width="500" Initialized="Window_Initialized">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition/>
@@ -13,12 +13,18 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="280.591"/>
             <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
-        <Button x:Name="browse" Content="browse" HorizontalAlignment="Left" Grid.Column="1" VerticalAlignment="Center" Width="106" Click="button_Click" Grid.ColumnSpan="2" Margin="19,0,0,0"/>
-        <TextBox x:Name="folder" HorizontalAlignment="Center" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Center" Width="350"/>
-        <Label x:Name="label" Content="Label" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="browse" Content="Browse" HorizontalAlignment="Left" Grid.Column="2" VerticalAlignment="Center" Width="106" Click="button_Click" Margin="19,0,0,0"/>
+        <TextBox x:Name="folder" HorizontalAlignment="Left"  TextWrapping="WrapWithOverflow" Text="" VerticalAlignment="Top" Width="200" Margin="0,43,0,0"/>
+        <Label x:Name="label" Content="Choose a folder" Grid.Column="0" Grid.Row="0"  HorizontalAlignment="Left" Margin="10,5,0,0" FontSize="8" VerticalAlignment="Top" Height="19" Width="75">
+
+        </Label>
+        <Button x:Name="ok" Grid.Column="2" Content="Ok" HorizontalAlignment="Right" Grid.Row="2" Width="35" VerticalAlignment="Bottom" Click="ok_Click"/>
+        <GroupBox x:Name="groupBox" Header="Always on top" Grid.Row="1"/>
+        <RadioButton x:Name="onTopYes" GroupName="OnTop" Content="yes" HorizontalAlignment="Left" Margin="31,45,0,0" Grid.Row="1" VerticalAlignment="Top"/>
+        <RadioButton x:Name="onTopNo" GroupName="OnTop" Content="no" HorizontalAlignment="Left" Margin="152,45,0,0" Grid.Row="1" VerticalAlignment="Top"/>
 
     </Grid>
 </Window>

@@ -19,6 +19,8 @@ namespace JohnBPearson.Wpf.Executer
     /// </summary>
     public partial class Settings : Window
     {
+
+        private string _folder = string.Empty;
         public Settings()
         {
             InitializeComponent();
@@ -31,7 +33,7 @@ namespace JohnBPearson.Wpf.Executer
             dialog.Multiselect = false;
             dialog.Title = "Select a folder";
 
-            // Show open folder dialog box
+            // Show open foa    q   q   lder dialog box
             bool? result = dialog.ShowDialog();
 
             // Process open folder dialog box results
@@ -39,11 +41,39 @@ namespace JohnBPearson.Wpf.Executer
             {
                 // Get the selected folder
                 folder.Text = dialog.FolderName;
-                Properties.Settings.Default.folder = folder.Text;
-                Properties.Settings.Default.Save(); 
-                string folderNameOnly = dialog.SafeFolderName;
+                //Properties.Settings.Default.folder = folder.Text;
+                //Properties.Settings.Default.Save(); 
+                this._folder = dialog.SafeFolderName;
             }
            
         }
+
+        private void Window_Initialized(object sender, EventArgs e)
+        {
+          
+            folder.Text = Properties.Settings.Default.folder;
+            if(Properties.Settings.Default.alwaysOnTop)
+            {
+                this.onTopYes.IsChecked = true;
+            }
+            else
+            {
+            this.onTopNo.IsChecked = true;
+            }
+        }
+
+        private void ok_Click(object sender, RoutedEventArgs e)
+        {
+            bool ontop = false;
+            if(this.onTopYes.IsChecked != null)
+            {
+                ontop = this.onTopYes.IsChecked.Value;
+            }
+            Properties.Settings.Default.alwaysOnTop = ontop;
+            Properties.Settings.Default.folder = folder.Text;
+            Properties.Settings.Default.Save();
+            this.Close();
+                
+                }
     }
 }
