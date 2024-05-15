@@ -8,6 +8,7 @@
     <UseWPF>true</UseWPF>
     <ApplicationIcon>icons8-butler-48.ico</ApplicationIcon>
     <Copyright>John B Pearson 2024</Copyright>
+    <StartupObject>JohnBPearson.Wpf.Executer.App</StartupObject>
   </PropertyGroup>
 
   <ItemGroup>
