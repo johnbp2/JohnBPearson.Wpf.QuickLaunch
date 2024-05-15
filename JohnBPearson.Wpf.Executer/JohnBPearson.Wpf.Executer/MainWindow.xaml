@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:JohnBPearson.Wpf.Executer"
         mc:Ignorable="d"
-        Title="MainWindow" Height="143" Opacity=".5" Loaded="Main_Loaded" Initialized="Main_Initialized" Background="#FF2B0A88">
+        Title="LaunchPadMcQuack" Height="143" Opacity=".5" Loaded="Main_Loaded" Initialized="Main_Initialized" Background="#FF2B0A88">
     <!--<Grid x:Name="gridMain">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="61*"/>
@@ -13,13 +13,14 @@
         </Grid.ColumnDefinitions>-->
 
     <Grid>
-        <Menu x:Name="menu" Width="200" Height="22" Background="White" Margin="0,0,22,0" VerticalAlignment="Top">
-            <MenuItem x:Name="Settings" Header="Settings" Click="MenuItem_Click"></MenuItem>
+        <Menu x:Name="menu"  Height="22" Background="White" Margin="0,0,0,0" VerticalAlignment="Top">
+
+            <MenuItem x:Name="Settings"  BorderThickness="2" BorderBrush="Black" Height="22" Header="Settings"  Click="MenuItem_Click"></MenuItem>
+
         </Menu>
-        <StackPanel x:Name="stack1" Orientation="Horizontal" Height="133" VerticalAlignment="Center" Opacity="0.5" OpacityMask="#FF1D25A9">
+        <StackPanel x:Name="stack1" Orientation="Horizontal" Height="133" VerticalAlignment="Top" >
 
-
-            <!--<Image x:Name="image" Height="100" Width="300"/>-->
-        </StackPanel> 
+        </StackPanel>
     </Grid>
+    
 </Window>

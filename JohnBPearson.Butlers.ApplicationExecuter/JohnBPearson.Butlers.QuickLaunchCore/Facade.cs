@@ -51,9 +51,11 @@ namespace JohnBPearson.Butlers.QuickLaunchCore
                 var files = dir.EnumerateFiles();
                 foreach(var file in files)
                 {
-
-                    this.FileSystemObjects.Add(FileSystemObjectFactory.Build(file.FullName, file));
-
+                    var fileObject = FileSystemObjectFactory.Build(file.FullName, file);
+                    if(fileObject != null)
+                    {
+                        this.FileSystemObjects.Add(fileObject);
+                    }
                     //var exec = new Executable(file.FullName);
                     //FileSystemObjectBase.Build(file.FullName)
 
