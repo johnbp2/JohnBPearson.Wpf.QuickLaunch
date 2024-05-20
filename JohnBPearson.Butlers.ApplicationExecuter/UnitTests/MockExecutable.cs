@@ -66,9 +66,9 @@ namespace UnitTests
             }
         }
 
-        private Extention _type;
+        private Extension _type;
 
-        public Extention Type
+        public Extension Type
         {
             get
             {

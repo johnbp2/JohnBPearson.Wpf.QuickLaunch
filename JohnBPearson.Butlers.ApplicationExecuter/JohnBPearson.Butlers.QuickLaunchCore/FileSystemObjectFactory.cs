@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
@@ -35,6 +36,14 @@ namespace JohnBPearson.Butlers.QuickLaunchCore
             throw new FileNotFoundException(path);
             }
             var extension = unknkownFileSystemObject.Extension;
+            //foreach(var item in Constants.getEnumerator())
+            //{
+            //    if(extension == item)1
+            //    {
+            //    Activator.CreateInstance(TypeOf)
+            //    }
+            //}
+        
             // the strange way to check what this is.
             // if directory: Extentsion= String.Empty evaluates true
             // for a file Extension==String.Empty evaluates false
@@ -53,7 +62,9 @@ namespace JohnBPearson.Butlers.QuickLaunchCore
                 case Constants.exe:
                     return new JohnBPearson.Butlers.QuickLaunchCore.FileMetaDataModel.BinaryLinkFormat(path, unknkownFileSystemObject);
                 case Constants.ini:
-                    return new JohnBPearson.Butlers.QuickLaunchCore.FileMetaDataModel.InitialIzation(path, unknkownFileSystemObject);
+                    return new JohnBPearson.    Butlers.QuickLaunchCore.FileMetaDataModel.InitialIzation(path, unknkownFileSystemObject);
+                case Constants.url:
+                    return new JohnBPearson.Butlers.QuickLaunchCore.FileMetaDataModel.Url(path, unknkownFileSystemObject);
                 default:
                     return null;
                    

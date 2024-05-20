@@ -21,7 +21,7 @@ namespace JohnBPearson.Butlers.QuickLaunchCore.FileMetaDataModel
         {
             get;
         }
-        Extention Type
+        Extension Type
         {
             get;
         }
