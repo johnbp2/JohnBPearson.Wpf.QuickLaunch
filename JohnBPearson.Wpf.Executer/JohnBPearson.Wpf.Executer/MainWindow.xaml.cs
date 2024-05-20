@@ -31,10 +31,15 @@ namespace JohnBPearson.Wpf.Executer
         const UInt32 TOPMOST_FLAGS = SWP_NOMOVE | SWP_NOSIZE;
         const UInt32 NOTOPMOST_FLAGS = SWP_SHOWWINDOW;
 
+
         [DllImport("user32.dll")]
         [return: MarshalAs(UnmanagedType.Bool)]
         public static extern bool SetWindowPos(IntPtr hWnd, IntPtr hWndInsertAfter, int X, int Y, int cx, int cy, uint uFlags);
+        [DllImport("user32.dll", EntryPoint = "GetWindowLong", CharSet = CharSet.Auto)]
+        public static extern IntPtr GetWindowLong32(HandleRef hWnd, int nIndex);
 
+        [DllImport("user32.dll", EntryPoint = "GetWindowLongPtr", CharSet = CharSet.Auto)]
+        public static extern IntPtr GetWindowLongPtr64(HandleRef hWnd, int nIndex);
         private List<Tuple<Image, IFileSystemObjectBase>> cache = new List<Tuple<Image, IFileSystemObjectBase>>();
 
         
@@ -73,8 +78,11 @@ namespace JohnBPearson.Wpf.Executer
             }
             else
             {
+                // GetWindowLong32(hWnd, WS_OVERLAPPEDWINDOW)
+                //if(GetWindowLong32(hWnd, GWL_EXSTYLE) & WS_EX_TOPMOST)
+                //    hWnd. = HWND_NOTOPMOST;
 
-                SetWindowPos(hWnd, HWND_NOTOPMOST, 0, 0, 0, 0, NOTOPMOST_FLAGS);
+                SetWindowPos(hWnd, (IntPtr)(-2), 0, 0, 0, 0, SWP_NOSIZE);
             }
         }
         private void displayLinks()
@@ -87,7 +95,7 @@ namespace JohnBPearson.Wpf.Executer
             foreach(var fileSystemOnject in facade.FileSystemObjects)
             {
 
-                if(fileSystemOnject.Type != Extention.ini)
+                if(fileSystemOnject.Type != Extension.ini)
                 {
                     var image2 = new Image();
 

@@ -74,9 +74,9 @@ namespace JohnBPearson.Butlers.QuickLaunchCore.FileMetaDataModel
             }
         }
 
-        private Extention _type;
+        private Extension _type;
 
-        public Extention Type
+        public Extension Type
         {
             get
             {
@@ -101,15 +101,15 @@ namespace JohnBPearson.Butlers.QuickLaunchCore.FileMetaDataModel
                     //MyEnum myEnum = (MyEnum)myInt;
 
                     //MyEnum myEnum = (MyEnum)Enum.Parse(typeof(MyEnum), myString);
-                    settheType((Extention)Enum.Parse(typeof(Extention), Extension.CleanseFileExtension()));    
+                    settheType((Extension)Enum.Parse(typeof(Extension), Extension.CleanseFileExtension()));    
                 }
             }
             
-            void settheType(Extention type)
+            void settheType(Extension type)
             {
                 _type = type;
             }
-            if(this.Type != Extention.dir)
+            if(this.Type != FileMetaDataModel.Extension.dir)
             {
                 this._icon = System.Drawing.Icon.ExtractAssociatedIcon(fullPath);
             }

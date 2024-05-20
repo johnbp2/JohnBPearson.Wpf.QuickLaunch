@@ -26,14 +26,14 @@ namespace JohnBPearson.Butlers.QuickLaunchCore.FileMetaDataModel
         {
             _extensions = new List<Tuple<string, int>>();
             int i = 0;
-            foreach (var item in Enum.GetValues(typeof(Extention)))
+            foreach (var item in Enum.GetValues(typeof(Extension)))
             {
 
                 _extensions.Add(new Tuple<string, int>($".{item.ToString()}",i));
                 i++;
             }
         
-            //foreach (var item in Enum.GetNames(typeof(Extention)))
+            //foreach (var item in Enum.GetNames(typeof(Extension)))
             //{
             //    _extensions.Add(string.Concat(".",item.ToString()));
             //}
