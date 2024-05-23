@@ -62,7 +62,7 @@ namespace JohnBPearson.Butlers.QuickLaunchCore
                 case Constants.exe:
                     return new JohnBPearson.Butlers.QuickLaunchCore.FileMetaDataModel.BinaryLinkFormat(path, unknkownFileSystemObject);
                 case Constants.ini:
-                    return new JohnBPearson.    Butlers.QuickLaunchCore.FileMetaDataModel.InitialIzation(path, unknkownFileSystemObject);
+                    return new JohnBPearson.Butlers.QuickLaunchCore.FileMetaDataModel.InitialIzation(path, unknkownFileSystemObject);
                 case Constants.url:
                     return new JohnBPearson.Butlers.QuickLaunchCore.FileMetaDataModel.Url(path, unknkownFileSystemObject);
                 default:
