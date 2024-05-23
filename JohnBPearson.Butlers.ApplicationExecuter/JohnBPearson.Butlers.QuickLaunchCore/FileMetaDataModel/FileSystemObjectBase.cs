@@ -93,7 +93,7 @@ namespace JohnBPearson.Butlers.QuickLaunchCore.FileMetaDataModel
             // var unknkownFileSystemObject = new System.IO.FileInfo(fullPath);
             FullPath = fullPath;
             Extension = info.Extension;
-            
+            _name = info.Name;
             foreach(var ext in FileExtension.Extensions)
             {
                 if(ext.Item1 == Extension)
@@ -114,7 +114,7 @@ namespace JohnBPearson.Butlers.QuickLaunchCore.FileMetaDataModel
                 this._icon = System.Drawing.Icon.ExtractAssociatedIcon(fullPath);
             }
 
-
+      
         }
 
 

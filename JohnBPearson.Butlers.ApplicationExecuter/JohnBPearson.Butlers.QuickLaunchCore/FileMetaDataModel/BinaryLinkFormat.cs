@@ -28,14 +28,29 @@ namespace JohnBPearson.Butlers.QuickLaunchCore.FileMetaDataModel
                 return _targetPath;
             }
             private set
-            {
-                _targetPath = value;
+            {if(value != null)
+                {
+                    _targetPath = value;
+                }
+                else
+                {
+                    _targetPath = "";
+                }
             }
         }
 
         public override void Run()
         {
-            System.Diagnostics.Process.Start(TargetPath);
+            if(File.Exists(TargetPath))
+            {
+
+                System.Diagnostics.Process.Start(TargetPath);
+            }
+            else
+            {
+                throw new FileNotFoundException($"{TargetPath} not found.");
+
+            }
         }
 
         private static string GetShortcutTarget(string file)

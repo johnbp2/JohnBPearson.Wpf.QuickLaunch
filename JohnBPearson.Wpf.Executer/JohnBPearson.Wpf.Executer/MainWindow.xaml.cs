@@ -92,10 +92,10 @@ namespace JohnBPearson.Wpf.Executer
             var margin = 0;
             var width = 0;
 
-            foreach(var fileSystemOnject in facade.FileSystemObjects)
+            foreach(var fileSystemObject in facade.FileSystemObjects)
             {
 
-                if(fileSystemOnject.Type != Extension.ini)
+                if(fileSystemObject.Type != Extension.ini)
                 {
                     var image2 = new Image();
 
@@ -103,7 +103,7 @@ namespace JohnBPearson.Wpf.Executer
                     image2.Width = iamageWidth;
                     width = width + iamageWidth + 10;
 
-                    var bmi = imageService.IconToBitmapImage(fileSystemOnject.Icon);
+                    var bmi = imageService.IconToBitmapImage(fileSystemObject.Icon);
                     // bitmapSource2.Freeze();
                     image2.BeginInit();
                     image2.Source = bmi;
@@ -111,11 +111,11 @@ namespace JohnBPearson.Wpf.Executer
                     image2.Name = $"image{i}";
                     image2.MouseDown += new MouseButtonEventHandler(Mouse_Down);
                     image2.Margin = new Thickness(0, 0, 10, 0);
-                    cache.Add(new Tuple<Image, IFileSystemObjectBase>(image2, fileSystemOnject));
+                    cache.Add(new Tuple<Image, IFileSystemObjectBase>(image2, fileSystemObject));
                     //image.BeginInit();
                     // image.Source = bmi;
                     // image.EndInit();
-
+                    image2.ToolTip = fileSystemObject.Name;
                     this.stack1.Children.Add(image2);
                     //  }
                     i++;

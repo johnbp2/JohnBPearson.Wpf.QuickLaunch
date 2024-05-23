@@ -11,6 +11,10 @@
     <StartupObject>JohnBPearson.Wpf.Executer.App</StartupObject>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DebugType>none</DebugType>
+  </PropertyGroup>
+
   <ItemGroup>
     <Content Include="icons8-butler-48.ico" />
   </ItemGroup>
