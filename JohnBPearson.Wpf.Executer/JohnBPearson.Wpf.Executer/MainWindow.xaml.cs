@@ -119,12 +119,14 @@ namespace JohnBPearson.Wpf.Executer
                     this.stack1.Children.Add(image2);
                     //  }
                     i++;
-                    margin = margin + 300;
+                 //   margin = margin + 300;
                 }
-                stack1.MaxWidth = width;
+               // stack1.MaxWidth = width;
+            //   Main.Width = width;
 
-                this.Width = width;
+              //  this.Width = width;
             }
+           
         }
 
         private void Mouse_Down(object sender, MouseEventArgs e)

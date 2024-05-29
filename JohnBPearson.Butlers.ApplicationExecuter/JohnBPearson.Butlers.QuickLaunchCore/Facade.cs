@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing.Text;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -37,11 +38,17 @@ namespace JohnBPearson.Butlers.QuickLaunchCore
         private string _directoryPath;
         public Facade(string dirPath)
         {
-            _directoryPath = dirPath;
+
+            if(this.isStringValidDir(dirPath))
+            {
+
+                _directoryPath = dirPath;
+            }
         }
-
-
-
+        public void RefreshFileSystemObjects()
+        {
+            this.InstantiateFileSystemObjects(_directoryPath);
+        }
         private void InstantiateFileSystemObjects(string directoryPath)
         {
             var dir = new System.IO.DirectoryInfo(directoryPath);
@@ -65,6 +72,26 @@ namespace JohnBPearson.Butlers.QuickLaunchCore
                 }
 
                 // dir.GetFiles()
+            }
+
+
+        }
+        private bool isStringValidDir(string dirPath)
+        {
+            if(string.IsNullOrWhiteSpace(dirPath))
+            {
+
+                return false;
+            }
+            var test = new System.IO.DirectoryInfo(dirPath);
+            if(test.Exists)
+            {
+
+                return true;
+            }
+            else
+            {
+                return false;
             }
         }
     }

@@ -1,8 +1,9 @@
 ﻿
     using System;
     using System.Collections.Generic;
-    using System.IO;
-    using System.Linq;
+using System.Diagnostics;
+using System.IO;
+using System.Linq;
     using System.Text;
     using System.Threading.Tasks;
     using global::JohnBPearson.Butlers.QuickLaunchCore.FileMetaDataModel;
@@ -45,8 +46,11 @@
 
             public override void Run()
             {
-                System.Diagnostics.Process.Start(Target.OriginalString);
-            }
+            // System.Diagnostics.Process.Start(Target.OriginalString);
+
+           var url = Target.OriginalString.Replace("&", "^&");
+            Process.Start(new ProcessStartInfo("cmd", $"/c start {url}") { CreateNoWindow = true });
+        }
         }
     }
 
