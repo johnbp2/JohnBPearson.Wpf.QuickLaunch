@@ -28,6 +28,7 @@ namespace JohnBPearson.Wpf.Executer
 
         private void button_Click(object sender, RoutedEventArgs e)
         {
+           
             Microsoft.Win32.OpenFolderDialog dialog = new();
 
             dialog.Multiselect = false;
@@ -75,5 +76,15 @@ namespace JohnBPearson.Wpf.Executer
             this.Close();
                 
                 }
+
+        private void cancel_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void onTopNo_Checked(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

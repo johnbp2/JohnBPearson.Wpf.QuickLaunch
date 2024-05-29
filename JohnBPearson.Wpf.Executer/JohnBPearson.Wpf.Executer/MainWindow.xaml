@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:JohnBPearson.Wpf.Executer"
         mc:Ignorable="d"
-        Title="LaunchPadMcQuack" Height="143" Opacity=".5" Loaded="Main_Loaded" Initialized="Main_Initialized" Background="#FF2B0A88">
+        Title="LaunchPadMcQuack"    Width="Auto" Height="Auto" SizeToContent="WidthAndHeight" Opacity=".5" Loaded="Main_Loaded" Initialized="Main_Initialized" Background="#00000000">
     <!--<Grid x:Name="gridMain">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="61*"/>
@@ -13,14 +13,21 @@
         </Grid.ColumnDefinitions>-->
 
     <Grid>
-        <Menu x:Name="menu"  Height="22" Background="White" Margin="0,0,0,0" VerticalAlignment="Top">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" MinHeight="22"></RowDefinition>
+            <RowDefinition MinHeight="60px"/>
+        </Grid.RowDefinitions>
+        <Menu x:Name="menu"  Height="22" Width="Auto" Grid.Column="0" Grid.Row="0" Background="White" Margin="0,0,0,0" VerticalAlignment="Top">
 
-            <MenuItem x:Name="Settings"  BorderThickness="2" BorderBrush="Black" Height="22" Header="Settings"  Click="MenuItem_Click"></MenuItem>
+            <MenuItem x:Name="Settings" Width="Auto"  BorderThickness="2" BorderBrush="Black" Height="22" Header="Settings"  Click="MenuItem_Click"></MenuItem>
 
         </Menu>
-        <StackPanel x:Name="stack1" Orientation="Horizontal" Height="133" VerticalAlignment="Top" >
+        <StackPanel x:Name="stack1" Orientation="Horizontal" Grid.Row="1" Grid.Column="0"  Width="Auto" Height="Auto" VerticalAlignment="Top" Margin="25,0,0,0" >
 
         </StackPanel>
     </Grid>
-    
+
 </Window>
