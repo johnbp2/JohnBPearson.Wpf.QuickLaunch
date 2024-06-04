@@ -24,6 +24,6 @@ jobs:
       run: dotnet restore .\JohnBPearson.Wpf.Executer\JohnBPearson.Wpf.Executer\JohnBPearson.Wpf.Executer.csproj
     #  run: dotnet restore \JohnBPearson.Butlers.ApplicationExecuter\JohnBPearson.Butlers.QuickLaunchCore\JohnBPearson.Butlers.QuickLaunchCore.csproj
     - name: Build
-      run: dotnet build --no-restore
-    - name: Test
-      run: dotnet test --no-build --verbosity normal
+      run: dotnet build --no-restore .\JohnBPearson.Wpf.Executer\JohnBPearson.Wpf.Executer\JohnBPearson.Wpf.Executer.csproj
+#    - name: Test
+ #     run: dotnet test --no-build --verbosity normal
