@@ -21,7 +21,7 @@ jobs:
       with:
         dotnet-version: 8.0.x
     - name: Restore dependencies
-      run: dotnet restore ./JohnBPearson.Wpf.Executer/JohnBPearson.Wpf.Executer/JohnBPearson.Wpf.Executer.csproj
+      run: dotnet restore .\JohnBPearson.Wpf.Executer\JohnBPearson.Wpf.Executer\JohnBPearson.Wpf.Executer.csproj
     #  run: dotnet restore \JohnBPearson.Butlers.ApplicationExecuter\JohnBPearson.Butlers.QuickLaunchCore\JohnBPearson.Butlers.QuickLaunchCore.csproj
     - name: Build
       run: dotnet build --no-restore
