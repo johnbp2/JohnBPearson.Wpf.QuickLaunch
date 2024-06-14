@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:JohnBPearson.Wpf.Executer"
         mc:Ignorable="d"
-        Title="LaunchPadMcQuack"    Width="Auto" Height="Auto" SizeToContent="WidthAndHeight" Opacity=".5" Loaded="Main_Loaded" Initialized="Main_Initialized" Background="#00000000">
+        Title="LaunchStuff"    Width="Auto" Height="Auto" SizeToContent="WidthAndHeight" Opacity=".5" Loaded="Main_Loaded" Initialized="Main_Initialized" Background="#00000000">
     <!--<Grid x:Name="gridMain">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="61*"/>

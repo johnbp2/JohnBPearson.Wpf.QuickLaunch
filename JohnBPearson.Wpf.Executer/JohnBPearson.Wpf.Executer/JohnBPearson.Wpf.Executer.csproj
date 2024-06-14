@@ -15,6 +15,8 @@
     <DebugType>none</DebugType>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'" />
+
   <ItemGroup>
     <Content Include="icons8-butler-48.ico" />
   </ItemGroup>
