@@ -21,10 +21,7 @@ namespace JohnBPearson.Wpf.Executer
     {
 
         private string _folder = string.Empty;
-        public Settings()
-        {
-            InitializeComponent();
-        }
+      
 
         private void button_Click(object sender, RoutedEventArgs e)
         {
