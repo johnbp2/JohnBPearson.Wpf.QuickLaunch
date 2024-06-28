@@ -27,7 +27,7 @@
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
         <Button x:Name="browse" Content="Browse" HorizontalAlignment="Center" Grid.Column="1" VerticalAlignment="Top" Width="56" Click="button_Click" Height="20" Margin="0,8,0,0"/>
-        <TextBox x:Name="folder" HorizontalAlignment="Center"  TextWrapping="WrapWithOverflow" Grid.Row="0" Grid.Column="0" Text="" VerticalAlignment="Bottom" Height="145" Width="120" HorizontalScrollBarVisibility="Auto" UseLayoutRounding="True" />
+        <TextBox x:Name="folder" HorizontalAlignment="Center" Grid.ColumnSpan="2" TextWrapping="WrapWithOverflow" Grid.Row="0" Grid.Column="0" Text="" VerticalAlignment="Bottom" Height="145" Width="235" HorizontalScrollBarVisibility="Auto" UseLayoutRounding="True" />
         <Label x:Name="label" Content="Selected Dir." Grid.Column="0" Grid.Row="0"  HorizontalAlignment="Left" Margin="0,0,0,0" FontSize="10" VerticalAlignment="Top" Height="20" Width="53" Padding="0,2,0,0" HorizontalContentAlignment="Center" VerticalContentAlignment="Stretch"/>
         <Button x:Name="ok" Grid.Column="1" Content="Ok" HorizontalAlignment="Left" Grid.Row="2" Width="34" VerticalAlignment="Bottom" Click="ok_Click" Height="20" Margin="10,0,0,0"/>
         <GroupBox x:Name="groupBox" Header="Always on top" Grid.Row="1"  ></GroupBox>
