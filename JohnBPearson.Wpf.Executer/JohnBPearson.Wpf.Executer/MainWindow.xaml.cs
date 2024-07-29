@@ -62,7 +62,7 @@ namespace JohnBPearson.Wpf.Executer
 #endif
 
 #if !DEBUG
-            displayLinks();
+             this.implementAnimatedImages();
 #endif
             //   buildAnimatedImagesExample();
         }
