@@ -210,18 +210,30 @@ namespace JohnBPearson.Wpf.Executer
             }
 
         }
-
+        private const int dynamicMarginAdditive = 30;
         private void Image2_MouseLeave(object sender, MouseEventArgs e)
         {
             var image = (Image)sender;
-            var temp = image.RenderTransform as ScaleTransform;
-            if (temp != null)
+            if (image != null)
             {
-                temp.ScaleX = 1;
-                temp.ScaleY = 1;
+               
+               
+            
+                
+                var temp = image.RenderTransform as ScaleTransform;
+                if (temp != null)
+                {
+                    temp.ScaleX = 1;
+                    temp.ScaleY = 1;
+                }
+                image.Margin = new Thickness(0,0,10,0);
+                    
+                    
+                    
+                 //   Debug.WriteLine(string.Concat([this.ToString()," ", image.Margin.Right.ToString(), curr.Right.ToString()," - - - ", (currentMargine - dynamicMarginAdditive).ToString()]));
             }
-
         }
+        private double currentMargine = 0;
 
         void Image2_MouseEnter(object sender, MouseEventArgs e)
         {
@@ -229,6 +241,13 @@ namespace JohnBPearson.Wpf.Executer
             var image = (Image)sender;
             if (image != null)
             {
+                var cur = image.Margin;
+              
+                    cur.Right = cur.Right + dynamicMarginAdditive;
+                
+                this.currentMargine = cur.Right;
+                image.Margin = cur;
+               
                 if ((image.RenderTransform is ScaleTransform))
                 {
 
