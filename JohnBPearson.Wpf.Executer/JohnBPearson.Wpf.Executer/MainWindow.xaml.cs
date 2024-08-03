@@ -42,20 +42,20 @@ namespace JohnBPearson.Wpf.Executer
 
         [DllImport("user32.dll", EntryPoint = "GetWindowLongPtr", CharSet = CharSet.Auto)]
         public static extern IntPtr GetWindowLongPtr64(HandleRef hWnd, int nIndex);
-        private List<ViewModels.AnimatedFileSystemObject> cache = new List<ViewModels.AnimatedFileSystemObject>();
+      private  List<ViewModels.AnimatedFileSystemObject> cache = new List<ViewModels.AnimatedFileSystemObject>();
 
 
-        private ImageService imageService = new ImageService();
-
-
-        private void Main_Loaded(object sender, RoutedEventArgs e)
+        ImageService imageService = new ImageService();
+       private const int dynamicMarginAdditive = 30;
+        double currentMargine = 0;
+        void Main_Loaded(object sender, RoutedEventArgs e)
         {
             setOnTop();
 
 
         }
-        private const int iamageWidth = 32;
-        private void Main_Initialized(object sender, EventArgs e)
+        const int iamageWidth = 32;
+        void Main_Initialized(object sender, EventArgs e)
         {
 #if DEBUG
             this.implementAnimatedImages();
@@ -66,7 +66,7 @@ namespace JohnBPearson.Wpf.Executer
 #endif
             //   buildAnimatedImagesExample();
         }
-        private void setOnTop()
+        void setOnTop()
         {
             var wih = new System.Windows.Interop.WindowInteropHelper(this);
             var hWnd = wih.Handle;
@@ -83,78 +83,84 @@ namespace JohnBPearson.Wpf.Executer
 
                 SetWindowPos(hWnd, (IntPtr)(-2), 0, 0, 0, 0, SWP_NOSIZE);
             }
-        }
-        private void displayLinks()
-        {
-            Facade facade = new Butlers.QuickLaunchCore.Facade(Properties.Settings.Default.folder);
-            var i = 1;
-            var margin = 0;
-            var width = 0;
 
-            foreach (var fileSystemObject in facade.FileSystemObjects)
+            [Obsolete]
+            void displayLinks()
             {
 
-                if (fileSystemObject.Type != Extension.ini)
-                {
-                    var image2 = new Image();
+                //stack1.Children.Clear();
+                //Facade facade = new Butlers.QuickLaunchCore.Facade(Properties.Settings.Default.folder);
+                //var i = 1;
+                //var margin = 0;
+                //var width = 0;
+
+                //foreach (var fileSystemObject in facade.FileSystemObjects)
+                //{
+
+                //    if (fileSystemObject.Type != Extension.ini)
+                //    {
+                //        var image2 = new Image();
 
 
-                    image2.Width = iamageWidth;
-                    width = width + iamageWidth + 10;
+                //        image2.Width = iamageWidth;
+                //        width = width + iamageWidth + 10;
 
-                    var bmi = imageService.IconToBitmapImage(fileSystemObject.Icon);
-                    // bitmapSource2.Freeze();
-                    image2.BeginInit();
-                    image2.Source = bmi;
-                    image2.EndInit();
-                    image2.Name = $"image{i}";
-                    image2.MouseDown += new MouseButtonEventHandler(Mouse_Down);
-                    image2.Margin = new Thickness(0, 0, 10, 0);
-                    cache.Add(new ViewModels.AnimatedFileSystemObject(fileSystemObject, new ScaleTransform(), image2));
-                    //image.BeginInit();
-                    // image.Source = bmi;
-                    // image.EndInit();
-                    image2.ToolTip = fileSystemObject.Name;
-                    this.stack1.Children.Add(image2);
-                    //  }
-                    i++;
-                    //   margin = margin + 300;
-                }
-                // stack1.MaxWidth = width;
-                //   Main.Width = width;
+                //        var bmi = imageService.IconToBitmapImage(fileSystemObject.Icon);
+                //        // bitmapSource2.Freeze();
+                //        image2.BeginInit();
+                //        image2.Source = bmi;
+                //        image2.EndInit();
+                //        image2.Name = $"image{i}";
+                //        image2.MouseDown += new MouseButtonEventHandler(Mouse_Down);
+                //        image2.Margin = new Thickness(0, 0, 10, 0);
+                //        cache.Add(new ViewModels.AnimatedFileSystemObject(fileSystemObject, new ScaleTransform(), image2));
+                //        //image.BeginInit();
+                //        // image.Source = bmi;
+                //        // image.EndInit();
+                //        image2.ToolTip = fileSystemObject.Name;
+                //        this.stack1.Children.Add(image2);
+                //        //  }
+                //        i++;
+                //        //   margin = margin + 300;
+                //    }
+                //    // stack1.MaxWidth = width;
+                //    //   Main.Width = width;
 
-                //  this.Width = width;
+                //    //  this.Width = width;
+                //}
+
             }
-
         }
-
-        private void Mouse_Down(object sender, MouseEventArgs e)
-        {
-            foreach (var item in this.cache)
+            void Mouse_Down(object sender, MouseEventArgs e)
             {
-                if (item.FileSystemObjectBase.Name == ((Image)sender).Name)
+                foreach (var item in this.cache)
                 {
-                    //var test =System.IO.file.ReadAllText(item.Item2.FullPath);
-                    //      Debug.WriteLine(test);
-                    //Process.Start(item.Item2.FullPath);
-                    item.FileSystemObjectBase.Run();
+                    if (item.Image.Name == ((Image)sender).Name)
+                    {
+                        //var test =System.IO.file.ReadAllText(item.Item2.FullPath);
+                        //      Debug.WriteLine(test);
+                        //Process.Start(item.Item2.FullPath);
+                        item.FileSystemObjectBase.Run();
+                    }
                 }
             }
-        }
 
-        private void MenuItem_Click(object sender, RoutedEventArgs e)
-        {
-            var settings = new Settings();
-            settings.Owner = this;
+            void MenuItem_Click(object sender, RoutedEventArgs e)
+            {
+                var settings = new Settings();
+                settings.Owner = this;
+                settings.ShowInTaskbar = true;
             settings.ShowDialog();
-            this.displayLinks();
-            setOnTop();
+                this.implementAnimatedImages();
+                setOnTop();
 
-        }
-        private Storyboard? _mystoryboard = null;
-      //  private ScaleTransform scaleTransform = null;// new ScaleTransform(1, 1);
-        private void implementAnimatedImages()
+            }
+        
+       private Storyboard? _mystoryboard = null;
+      //  ScaleTransform scaleTransform = null;// new ScaleTransform(1, 1);
+        void implementAnimatedImages()
         {
+            stack1.Children.Clear();
             NameScope.SetNameScope(this, new NameScope());
 
             //this.WindowTitle = "Animate Properties using Storyboards";
@@ -209,9 +215,9 @@ namespace JohnBPearson.Wpf.Executer
 
             }
 
-        }
-        private const int dynamicMarginAdditive = 30;
-        private void Image2_MouseLeave(object sender, MouseEventArgs e)
+            }
+      
+         void Image2_MouseLeave(object sender, MouseEventArgs e)
         {
             var image = (Image)sender;
             if (image != null)
@@ -233,7 +239,7 @@ namespace JohnBPearson.Wpf.Executer
                  //   Debug.WriteLine(string.Concat([this.ToString()," ", image.Margin.Right.ToString(), curr.Right.ToString()," - - - ", (currentMargine - dynamicMarginAdditive).ToString()]));
             }
         }
-        private double currentMargine = 0;
+    
 
         void Image2_MouseEnter(object sender, MouseEventArgs e)
         {

@@ -5,32 +5,22 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:JohnBPearson.Wpf.Executer"
         mc:Ignorable="d"
-        Title="Settings"  Height="290" Width="250px" Initialized="Window_Initialized">
-    <Grid >
-        <VisualStateManager.VisualStateGroups>
-            <VisualStateGroup x:Name="VisualStateGroup">
-                <VisualStateGroup.Transitions>
-                    <VisualTransition GeneratedDuration="00:00:01">
-                        <VisualTransition.GeneratedEasingFunction>
-                            <BackEase EasingMode="EaseInOut"/>
-                        </VisualTransition.GeneratedEasingFunction>
-                    </VisualTransition>
-                </VisualStateGroup.Transitions>
-            </VisualStateGroup>
-        </VisualStateManager.VisualStateGroups>
+        Title="Settings"  Width="Auto" Height="Auto" SizeToContent="WidthAndHeight" Opacity=".5"  Background="#00000000" Loaded="SettingsWindow_Loaded">
+    <Grid x:Name="SettingsGrid">
+
         <Grid.RowDefinitions>
-            <RowDefinition Height="179"/>
-            <RowDefinition Height="45"/>
+            <RowDefinition MinHeight="80"/>
+            <RowDefinition MinHeight="80"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition />
-            <ColumnDefinition />
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
-        <Button x:Name="browse" Content="Browse" HorizontalAlignment="Center" Grid.Column="1" VerticalAlignment="Top" Width="56" Click="button_Click" Height="20" Margin="0,8,0,0"/>
-        <TextBox x:Name="folder" HorizontalAlignment="Center" Grid.ColumnSpan="2" TextWrapping="WrapWithOverflow" Grid.Row="0" Grid.Column="0" Text="" VerticalAlignment="Bottom" Height="145" Width="235" HorizontalScrollBarVisibility="Auto" UseLayoutRounding="True" />
-        <Label x:Name="label" Content="Selected Dir." Grid.Column="0" Grid.Row="0"  HorizontalAlignment="Left" Margin="0,0,0,0" FontSize="10" VerticalAlignment="Top" Height="20" Width="53" Padding="0,2,0,0" HorizontalContentAlignment="Center" VerticalContentAlignment="Stretch"/>
+        <Button x:Name="browse" Content="Browse" HorizontalAlignment="Center" Grid.Column="1" VerticalAlignment="Top" Width="288" Click="button_Click" Height="20" Margin="0,8,0,0" Panel.ZIndex="88" Background="Red"/>
+        <TextBox x:Name="folder" HorizontalAlignment="Center" Grid.ColumnSpan="2" TextWrapping="WrapWithOverflow" Grid.Row="0" Grid.Column="0" Text="" VerticalAlignment="Bottom" Height="145" Width="235" />
+        <Label x:Name="label" Content="Selected Dir." Grid.Column="0" Grid.Row="0" Margin="0,0,0,0" FontSize="10" VerticalAlignment="Top" Height="50" Width="53" Padding="0,2,0,0" HorizontalContentAlignment="Right" HorizontalAlignment="Right"/>
         <Button x:Name="ok" Grid.Column="1" Content="Ok" HorizontalAlignment="Left" Grid.Row="2" Width="34" VerticalAlignment="Bottom" Click="ok_Click" Height="20" Margin="10,0,0,0"/>
-        <GroupBox x:Name="groupBox" Header="Always on top" Grid.Row="1"  ></GroupBox>
+        <GroupBox x:Name="groupBox" Header="Always on top" Grid.Row="1" BorderBrush="Red"  ></GroupBox>
         <RadioButton x:Name="onTopYes" GroupName="OnTop" Content="yes" HorizontalAlignment="Left" Margin="31,29,0,0" Grid.Row="2" VerticalAlignment="Top" Height="14" Width="36"/>
         <RadioButton x:Name="onTopNo" GroupName="OnTop" Content="no" HorizontalAlignment="Left" Margin="75,29,0,0" Grid.Row="2" VerticalAlignment="Top" Height="14" Width="39" Checked="onTopNo_Checked"/>
         <Button x:Name="cancel" Grid.Column="1" Width="50px" Grid.Row="1" Content="Cancel"  Height="20" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,5,0"/>
