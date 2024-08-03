@@ -49,15 +49,7 @@ namespace JohnBPearson.Wpf.Executer
         private void Window_Initialized(object sender, EventArgs e)
         {
           
-            folder.Text = Properties.Settings.Default.folder;
-            if(Properties.Settings.Default.alwaysOnTop)
-            {
-                this.onTopYes.IsChecked = true;
-            }
-            else
-            {
-            this.onTopNo.IsChecked = true;
-            }
+           
         }
 
         private void ok_Click(object sender, RoutedEventArgs e)
@@ -82,6 +74,19 @@ namespace JohnBPearson.Wpf.Executer
         private void onTopNo_Checked(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void SettingsWindow_Loaded(object sender, RoutedEventArgs e)
+        {
+            folder.Text = Properties.Settings.Default.folder;
+            if (Properties.Settings.Default.alwaysOnTop)
+            {
+                this.onTopYes.IsChecked = true;
+            }
+            else
+            {
+                this.onTopNo.IsChecked = true;
+            }
         }
     }
 }
