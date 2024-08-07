@@ -75,6 +75,9 @@ namespace JohnBPearson.Wpf.Executer
         {
 
         }
+        public Settings() {
+            InitializeComponent();
+        }
 
         private void SettingsWindow_Loaded(object sender, RoutedEventArgs e)
         {
