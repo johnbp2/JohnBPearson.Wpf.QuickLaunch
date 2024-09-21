@@ -10,7 +10,7 @@
     <FileVersion>1.0.0.0</FileVersion>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Remove="FileMetaDataModel\Executable.cs" />
+    <Compile Remove="FileSubTypes\Executable.cs" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />

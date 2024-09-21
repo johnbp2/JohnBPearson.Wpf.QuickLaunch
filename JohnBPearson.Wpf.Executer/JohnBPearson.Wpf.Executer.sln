@@ -7,8 +7,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JohnBPearson.Wpf.Executer",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JohnBPearson.Butlers.QuickLaunchCore", "..\JohnBPearson.Butlers.ApplicationExecuter\JohnBPearson.Butlers.QuickLaunchCore\JohnBPearson.Butlers.QuickLaunchCore.csproj", "{7FC3CA87-DC6A-4B35-BF90-951EAE9F10BB}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnitTests", "..\JohnBPearson.Butlers.ApplicationExecuter\UnitTests\UnitTests.csproj", "{D67990E8-4BCF-4770-8592-E2995299BA9B}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,10 +21,6 @@ Global
 		{7FC3CA87-DC6A-4B35-BF90-951EAE9F10BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7FC3CA87-DC6A-4B35-BF90-951EAE9F10BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7FC3CA87-DC6A-4B35-BF90-951EAE9F10BB}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D67990E8-4BCF-4770-8592-E2995299BA9B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D67990E8-4BCF-4770-8592-E2995299BA9B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D67990E8-4BCF-4770-8592-E2995299BA9B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D67990E8-4BCF-4770-8592-E2995299BA9B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -20,22 +20,26 @@
             <ColumnDefinition Width="175"/>
             <ColumnDefinition Width="100"/>
         </Grid.ColumnDefinitions>
-        <TextBox x:Name="folder" TextWrapping="WrapWithOverflow" Grid.Row="0" Grid.Column="0" Text="" BorderBrush="#FF737780" Margin="0,20,0,0" />
-        <Label x:Name="label" Content="Selected Dir." Grid.Column="0" Grid.Row="0" Margin="0,0,0,0" FontSize="10" VerticalAlignment="Top" Height="18" Width="53" Padding="0,2,0,0" HorizontalContentAlignment="Right" HorizontalAlignment="Left"/>
-        <Button x:Name="ok" Grid.Column="1" Content="Ok" HorizontalAlignment="Left" Grid.Row="1" Width="34" VerticalAlignment="Bottom" Click="ok_Click" Height="20" Margin="10,0,0,0"/>
-        <GroupBox x:Name="OnTop" Header="Always on top" Grid.Row="1" BorderBrush="Red" Foreground="Black" HorizontalAlignment="Left"  >
+        <GroupBox x:Name="textBoxDirectoryBrowser" Header="Select a directory of links" Foreground="Black" BorderBrush="Black">
+            <TextBox x:Name="folder" TextWrapping="WrapWithOverflow" Grid.Row="0" Grid.Column="0" Text="" BorderBrush="#FF737780" Margin="0,20,0,0" />
+           
+        </GroupBox>
+        <GroupBox x:Name="OnTop" Header="Always on top" Grid.Row="1" BorderBrush="Black" Foreground="Black" HorizontalAlignment="Left"  >
             <StackPanel Orientation="Horizontal">
                 <RadioButton x:Name="onTopYes" GroupName="OnTop" Content="yes" HorizontalAlignment="Left" Margin="0,20,0,1" Grid.Row="1" VerticalAlignment="Top" Height="14" Width="36"/>
                 <RadioButton x:Name="onTopNo" GroupName="OnTop" Content="no" HorizontalAlignment="Left" Margin="5,20,0,0" Grid.Row="1" VerticalAlignment="Top" Height="14" Width="39" Checked="onTopNo_Checked"/>
 
             </StackPanel></GroupBox>
-      
-        <Button x:Name="cancel" Grid.Column="1" Width="50px" Grid.Row="1" Content="Cancel"  Height="20" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,5,0"/>
+            <Button x:Name="ok" Grid.Column="1" Content="Ok" HorizontalAlignment="Left" Grid.Row="2" Width="34" VerticalAlignment="Bottom" Click="ok_Click" Height="20" Margin="10,0,0,0" IsDefault="True" Background="#FFA6ACC5"/>
+
+        <Button x:Name="cancel" Grid.Column="1" Width="50px" Grid.Row="3" Content="Cancel"  Height="20" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,5,0" IsCancel="True" Background="#FFA6ACC5"/>
         <Button x:Name="browse" Content="Browse" HorizontalAlignment="Center" Grid.Column="1" VerticalAlignment="Top" Width="50" Click="button_Click" Height="20" Margin="0,8,0,0">
             <Button.Background>
                 <SolidColorBrush Color="#FFF0F0F0"/>
             </Button.Background>
         </Button>
-        <GroupBox x:Name="orientation" Header="Orientation" Grid.Row="2" Foreground="Black"/>
+        
+            <local:SetBoolProperty x:Name="horizontalLayout" Grid.Row="2" Grid.Column="0" Caption="Horizontal Layout"></local:SetBoolProperty>
+      
     </Grid>
 </Window>
