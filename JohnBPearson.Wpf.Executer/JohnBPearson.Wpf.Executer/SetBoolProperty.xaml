@@ -5,12 +5,12 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:JohnBPearson.Wpf.Executer"
              mc:Ignorable="d" 
-             d:DesignHeight="80" d:DesignWidth="90" Initialized="SetBoolProp_Initialized">
+             d:DesignHeight="80" d:DesignWidth="90" >
 
-    <GroupBox x:Name="propertyGroupBox" Header="GroupBox">
+    <GroupBox x:Name="propertyGroupBox" Header="GroupBox" Background="White" BorderBrush="Black" Foreground="Black">
         <StackPanel Orientation="Horizontal">
-            <RadioButton x:Name="radioYes" GroupName="MainGroup" Content="yes" HorizontalAlignment="Left" Margin="0,20,0,1"  VerticalAlignment="Top" Height="14" Width="36" Checked="radioYes_Checked"/>
-            <RadioButton x:Name="radioNo" GroupName="MainGroup" Content="no" HorizontalAlignment="Left" Margin="5,20,0,0" VerticalAlignment="Top" Height="14" Width="39" Checked="radioNo_Checked"/>
+            <RadioButton x:Name="radioYes" GroupName="MainGroup" Content="yes" HorizontalAlignment="Left" Margin="0,20,0,1"  VerticalAlignment="Top" Height="14" Width="36" />
+            <RadioButton x:Name="radioNo" GroupName="MainGroup" Content="no" HorizontalAlignment="Left" Margin="5,20,0,0" VerticalAlignment="Top" Height="14" Width="39" />
         </StackPanel></GroupBox>
 
 </UserControl>

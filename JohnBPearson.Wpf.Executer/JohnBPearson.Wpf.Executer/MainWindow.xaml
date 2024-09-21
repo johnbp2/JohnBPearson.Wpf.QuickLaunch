@@ -25,7 +25,7 @@
             <MenuItem x:Name="Settings" Width="Auto"  BorderThickness="2" BorderBrush="Black" Height="22" Header="Settings"  Click="MenuItem_Click"></MenuItem>
 
         </Menu>
-        <StackPanel x:Name="stack1" Orientation="Horizontal" Grid.Row="1" Grid.Column="0"  Width="Auto" Height="Auto" VerticalAlignment="Top" Margin="25,0,0,0" >
+        <StackPanel x:Name="stack1" Orientation="Horizontal" Grid.Row="1" Grid.Column="0"  Width="Auto" Height="Auto" VerticalAlignment="Top" Margin="25,0,0,0" Background="White" >
 
         </StackPanel>
     </Grid>
