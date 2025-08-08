@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -23,7 +22,6 @@ namespace JohnBPearson.Wpf.Executer
     /// </summary>
     public partial class SetBoolProperty : UserControl
     {
-        private PropertyInfo _property;
 
         private bool _propertyValue;
 
@@ -33,21 +31,12 @@ namespace JohnBPearson.Wpf.Executer
             set { _propertyValue = value; }
         }
 
-        private string _propertyName = "";
+        private string propertyName = "";
 
         public string PropertyName
         {
-            get { return _propertyName; }
-            set { _propertyName = value; }
-        }
-
-
-        private object _objectContainingMember;
-
-        public object ObjectContainingMemeber
-        {
-            get { return _objectContainingMember; }
-            set { _objectContainingMember = value; }
+            get { return propertyName; }
+            set { propertyName = value; }
         }
 
 
@@ -60,45 +49,19 @@ namespace JohnBPearson.Wpf.Executer
         //}
 
 
-        private string _caption = "";
+        private string header = "";
 
-        public string Caption
+        public string Header
         {
-            get { return _caption; }
-            set { _caption = value; }
+            get { return header; }
+            set { header = value; }
         }
 
-        public void Init(object Object, string PropertyName, string Caption)
-        {
-            if (Object != null)
-            {
-                this._objectContainingMember = Object;
-                var test = this._objectContainingMember.GetType();
-                if (test.GetProperty(PropertyName) != null)
-                {
-                    this._propertyName = PropertyName;
-                    this._property = test.GetProperty(PropertyName);
-                }
-                else
-                {
 
-                    throw new ArgumentException($"{PropertyName} does not exist on object.");
-                }
-            }
-            else
-            {
-                throw new ArgumentNullException("Object cannot be null.");
-            }
-            if (!string.IsNullOrEmpty(Caption))
-            {
-                this._caption = Caption;
-            }
-        }
         public SetBoolProperty()
         {
             InitializeComponent();
-            
-           
+
             //if(propertyHost == null) {
             //    throw new NullReferenceException();
 
@@ -107,20 +70,15 @@ namespace JohnBPearson.Wpf.Executer
 
         private void SetBoolProp_Initialized(object sender, EventArgs e)
         {
-            this.propertyGroupBox.Header = this.Caption;
+            if (!string.IsNullOrWhiteSpace(this.Header))
+            {
+              // this.prop
+            }
         }
 
         private void radioNo_Checked(object sender, RoutedEventArgs e)
         {
 
-        }
-
-        private void radioYes_Checked(object sender, RoutedEventArgs e)
-        {
-          if(this._property.CanWrite)
-            {
-                this._property.SetValue(this.ObjectContainingMemeber, this.radioYes.IsChecked);
-            }
         }
     }
 }
