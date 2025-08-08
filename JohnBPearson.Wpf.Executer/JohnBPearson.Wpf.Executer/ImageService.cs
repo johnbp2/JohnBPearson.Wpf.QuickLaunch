@@ -18,41 +18,31 @@ namespace JohnBPearson.Wpf.Executer
 
         internal System.Windows.Media.Imaging.BitmapSource ImageSourceFromIcon(System.Drawing.Icon icon)
         {
-
-            return Imaging.CreateBitmapSourceFromHIcon(icon.Handle, Int32Rect.Empty, BitmapSizeOptions.FromEmptyOptions());
-        }
-
+            
+              return Imaging.CreateBitmapSourceFromHIcon(icon.Handle, Int32Rect.Empty, BitmapSizeOptions.FromEmptyOptions());
+            }
+       
 
         internal BitmapImage IconToBitmapImage(System.Drawing.Icon icon)
         {
 
 
-            MemoryStream ms = new MemoryStream();
-            if (icon != null)
-            {
 
 
+             MemoryStream ms = new MemoryStream();
+           // using(MemoryStream ms = new MemoryStream())
+              //   {
                 System.Drawing.Bitmap dImg = icon.ToBitmap();
-                dImg.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
-                ms.Position = 0;
-                var bImg = new System.Windows.Media.Imaging.BitmapImage();
-                bImg.BeginInit();
-                bImg.StreamSource = ms;
-                bImg.EndInit();
-                return bImg;
+                    dImg.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
+                    ms.Position = 0;
+                    var bImg = new System.Windows.Media.Imaging.BitmapImage();
+                    bImg.BeginInit();
+                    bImg.StreamSource = ms;
+                    bImg.EndInit();
+                    return bImg;
+            //    }
             }
-            else
-            {
-                var resc = new Bitmap(Properties.Resources.link);
-                resc.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
-                ms.Position = 0;
-                var bImg = new System.Windows.Media.Imaging.BitmapImage();
-                bImg.BeginInit();
-                bImg.StreamSource = ms;
-                bImg.EndInit();
-                return bImg;
-            }
-        }
+
     }
 }
 

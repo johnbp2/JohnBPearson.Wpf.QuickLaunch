@@ -1,4 +1,4 @@
-﻿2using Microsoft.SqlServer.Server;
+﻿using Microsoft.SqlServer.Server;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -101,11 +101,7 @@ namespace JohnBPearson.Butlers.QuickLaunchCore.FileMetaDataModel
                     //MyEnum myEnum = (MyEnum)myInt;
 
                     //MyEnum myEnum = (MyEnum)Enum.Parse(typeof(MyEnum), myString);
-                    object objOut;
-                    if(Enum.TryParse(typeof(Extension), Extension.CleanseFileExtension(),out objOut)){
-                        var extension = (Extension)objOut;
-                    }
-                   
+                    settheType((Extension)Enum.Parse(typeof(Extension), Extension.CleanseFileExtension()));    
                 }
             }
             

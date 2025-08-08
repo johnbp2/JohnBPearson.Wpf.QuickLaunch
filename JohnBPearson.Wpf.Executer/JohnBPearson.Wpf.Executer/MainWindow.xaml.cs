@@ -57,25 +57,15 @@ namespace JohnBPearson.Wpf.Executer
         const int iamageWidth = 32;
         void Main_Initialized(object sender, EventArgs e)
         {
-            setOrientation();
+#if DEBUG
             this.implementAnimatedImages();
+#endif
 
+#if !DEBUG
+             this.implementAnimatedImages();
+#endif
             //   buildAnimatedImagesExample();
         }
-
-        private void setOrientation()
-        {
-            if (!Properties.Settings.Default.horizontalOrientation)
-            {
-                this.stack1.Orientation = Orientation.Vertical;
-
-            }
-            else
-            {
-                this.stack1.Orientation = Orientation.Horizontal;
-            }
-        }
-
         void setOnTop()
         {
             var wih = new System.Windows.Interop.WindowInteropHelper(this);
@@ -93,7 +83,7 @@ namespace JohnBPearson.Wpf.Executer
 
                 SetWindowPos(hWnd, (IntPtr)(-2), 0, 0, 0, 0, SWP_NOSIZE);
             }
-   }
+
             [Obsolete]
             void displayLinks()
             {
@@ -140,7 +130,7 @@ namespace JohnBPearson.Wpf.Executer
                 //}
 
             }
-     
+        }
             void Mouse_Down(object sender, MouseEventArgs e)
             {
                 foreach (var item in this.cache)
@@ -163,7 +153,6 @@ namespace JohnBPearson.Wpf.Executer
             settings.ShowDialog();
                 this.implementAnimatedImages();
                 setOnTop();
-            this.setOrientation();
 
             }
         
@@ -199,8 +188,8 @@ namespace JohnBPearson.Wpf.Executer
                 if (fileSystemObject.Type != Extension.ini)
                 {
                     Image image2 = transpileIcon(i, ref width, fileSystemObject);
-                                                                                 
-                   image2.MouseDown += new MouseButtonEventHandler(Mouse_Down);
+
+                    image2.MouseDown += new MouseButtonEventHandler(Mouse_Down);
                     image2.Margin = new Thickness(0, 0, 10, 0);
                     cache.Add(new ViewModels.AnimatedFileSystemObject(fileSystemObject, new ScaleTransform(), image2));
 
@@ -215,11 +204,8 @@ namespace JohnBPearson.Wpf.Executer
 
                     image2.MouseLeave += new MouseEventHandler(Image2_MouseLeave);
 
-                    image2.ToolTip = new ToolTip { Content = fileSystemObject.Name };
 
-                    //ToolTip tooltip = new ToolTip { Content = "My Tooltip" };
-                    //NameTextBox.ToolTip = tooltip;
-                    //tooltip.IsOpen = true;
+
 
                     this.stack1.Children.Add(image2);
 
@@ -236,10 +222,10 @@ namespace JohnBPearson.Wpf.Executer
             var image = (Image)sender;
             if (image != null)
             {
-
-                ((ToolTip)image.ToolTip).IsOpen = false;
-
-
+               
+               
+            
+                
                 var temp = image.RenderTransform as ScaleTransform;
                 if (temp != null)
                 {
@@ -261,7 +247,6 @@ namespace JohnBPearson.Wpf.Executer
             var image = (Image)sender;
             if (image != null)
             {
-               ((ToolTip)image.ToolTip).IsOpen = true;
                 var cur = image.Margin;
               
                     cur.Right = cur.Right + dynamicMarginAdditive;
