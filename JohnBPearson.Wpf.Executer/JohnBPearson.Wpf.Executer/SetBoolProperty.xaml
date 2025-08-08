@@ -1,4 +1,4 @@
-﻿<UserControl  x:Class="JohnBPearson.Wpf.Executer.SetBoolProperty"
+﻿<UserControl x:Name="SetBoolProp" x:Class="JohnBPearson.Wpf.Executer.SetBoolProperty"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -9,7 +9,7 @@
 
     <GroupBox x:Name="propertyGroupBox" Header="GroupBox">
         <StackPanel Orientation="Horizontal">
-            <RadioButton x:Name="radioYes" GroupName="MainGroup" Content="yes" HorizontalAlignment="Left" Margin="0,20,0,1"  VerticalAlignment="Top" Height="14" Width="36" Checked="radioYes_Checked"/>
+            <RadioButton x:Name="radioYes" GroupName="MainGroup" Content="yes" HorizontalAlignment="Left" Margin="0,20,0,1"  VerticalAlignment="Top" Height="14" Width="36"/>
             <RadioButton x:Name="radioNo" GroupName="MainGroup" Content="no" HorizontalAlignment="Left" Margin="5,20,0,0" VerticalAlignment="Top" Height="14" Width="39" Checked="radioNo_Checked"/>
         </StackPanel></GroupBox>
 
