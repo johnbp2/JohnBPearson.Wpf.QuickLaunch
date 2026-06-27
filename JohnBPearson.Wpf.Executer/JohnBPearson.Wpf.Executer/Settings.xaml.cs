@@ -22,10 +22,6 @@ namespace JohnBPearson.Wpf.Executer
 
         private string _folder = string.Empty;
       
-        public Settings()
-        {
-            InitializeComponent();
-        }
 
         private void button_Click(object sender, RoutedEventArgs e)
         {
@@ -42,7 +38,7 @@ namespace JohnBPearson.Wpf.Executer
             if(result == true)
             {
                 // Get the selected folder
-                this.folder.Text = dialog.FolderName;
+                folder.Text = dialog.FolderName;
                 //Properties.Settings.Default.folder = folder.Text;
                 //Properties.Settings.Default.Save(); 
                 this._folder = dialog.SafeFolderName;
@@ -65,8 +61,6 @@ namespace JohnBPearson.Wpf.Executer
             }
             Properties.Settings.Default.alwaysOnTop = ontop;
             Properties.Settings.Default.folder = folder.Text;
-
-            Properties.Settings.Default.horizontalOrientation = this.horizontalLayout.Yes ?? false;
             Properties.Settings.Default.Save();
             this.Close();
                 
@@ -81,14 +75,12 @@ namespace JohnBPearson.Wpf.Executer
         {
 
         }
-       
+        public Settings() {
+            InitializeComponent();
+        }
 
-
-
-        private const string propertNameLayout = "horizontalOrientation";
-            private void SettingsWindow_Loaded(object sender, RoutedEventArgs e)
+        private void SettingsWindow_Loaded(object sender, RoutedEventArgs e)
         {
-            this.horizontalLayout.Init(propertNameLayout, "Horizontal Layout", Properties.Settings.Default.horizontalOrientation);
             folder.Text = Properties.Settings.Default.folder;
             if (Properties.Settings.Default.alwaysOnTop)
             {
@@ -98,8 +90,6 @@ namespace JohnBPearson.Wpf.Executer
             {
                 this.onTopNo.IsChecked = true;
             }
-
-           
         }
     }
 }
