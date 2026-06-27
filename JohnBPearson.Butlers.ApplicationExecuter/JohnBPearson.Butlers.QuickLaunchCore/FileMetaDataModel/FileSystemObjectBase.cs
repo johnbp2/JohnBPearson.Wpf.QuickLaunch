@@ -101,14 +101,17 @@ namespace JohnBPearson.Butlers.QuickLaunchCore.FileMetaDataModel
                     //MyEnum myEnum = (MyEnum)myInt;
 
                     //MyEnum myEnum = (MyEnum)Enum.Parse(typeof(MyEnum), myString);
-                    settheType((Extension)Enum.Parse(typeof(Extension), Extension.CleanseFileExtension()));    
+                    object objOut;
+                    if(Enum.TryParse(typeof(Extension), Extension.CleanseFileExtension(),out objOut)){
+                        var extension = (Extension)objOut;
+                        this.settheType(extension);
+                        break;
+                    }
+                   
                 }
             }
-            
-            void settheType(Extension type)
-            {
-                _type = type;
-            }
+  
+     
             if(this.Type != FileMetaDataModel.Extension.dir)
             {
                 this._icon = System.Drawing.Icon.ExtractAssociatedIcon(fullPath);
@@ -116,7 +119,10 @@ namespace JohnBPearson.Butlers.QuickLaunchCore.FileMetaDataModel
 
       
         }
-
+        void settheType(Extension type)
+        {
+            _type = type;
+        }
 
         public abstract void Run();
 
