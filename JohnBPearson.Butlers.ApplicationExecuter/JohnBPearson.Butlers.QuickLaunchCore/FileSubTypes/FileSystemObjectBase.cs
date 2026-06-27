@@ -1,4 +1,4 @@
-﻿2using Microsoft.SqlServer.Server;
+﻿using Microsoft.SqlServer.Server;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -104,15 +104,14 @@ namespace JohnBPearson.Butlers.QuickLaunchCore.FileMetaDataModel
                     object objOut;
                     if(Enum.TryParse(typeof(Extension), Extension.CleanseFileExtension(),out objOut)){
                         var extension = (Extension)objOut;
+                        this.settheType(extension);
+                        break;
                     }
                    
                 }
             }
-            
-            void settheType(Extension type)
-            {
-                _type = type;
-            }
+  
+     
             if(this.Type != FileMetaDataModel.Extension.dir)
             {
                 this._icon = System.Drawing.Icon.ExtractAssociatedIcon(fullPath);
@@ -120,7 +119,10 @@ namespace JohnBPearson.Butlers.QuickLaunchCore.FileMetaDataModel
 
       
         }
-
+        void settheType(Extension type)
+        {
+            _type = type;
+        }
 
         public abstract void Run();
 
