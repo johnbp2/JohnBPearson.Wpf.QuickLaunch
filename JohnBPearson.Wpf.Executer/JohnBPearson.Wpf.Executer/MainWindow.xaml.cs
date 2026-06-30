@@ -12,8 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using JohnBPearson.Butlers.QuickLaunchCore;
-using JohnBPearson.Butlers.QuickLaunchCore.FileMetaDataModel;
+using JohnBPearson.Wpf.QuickLaunchCore;
+using JohnBPearson.Wpf.QuickLaunchCore.FileMetaDataModel;
 using System.Runtime.InteropServices;
 using System.Windows.Media.Animation;
 using Windows.Devices.Scanners;
@@ -89,7 +89,7 @@ namespace JohnBPearson.Wpf.Executer
             {
 
                 //stack1.Children.Clear();
-                //Facade facade = new Butlers.QuickLaunchCore.Facade(Properties.Settings.Default.folder);
+                //Facade facade = new Wpf.QuickLaunchCore.Facade(Properties.Settings.Default.folder);
                 //var i = 1;
                 //var margin = 0;
                 //var width = 0;
@@ -177,7 +177,7 @@ namespace JohnBPearson.Wpf.Executer
             //
 
             // Create a images.
-            Facade facade = new Butlers.QuickLaunchCore.Facade(Properties.Settings.Default.folder);
+            Facade facade = new Wpf.QuickLaunchCore.Facade(Properties.Settings.Default.folder);
             var i = 100;
             var margin = 0;
             var width = 0;

@@ -1,6 +1,6 @@
-﻿using JohnBPearson.Butlers.QuickLaunchCore.FileMetaDataModel;
+﻿using JohnBPearson.Wpf.QuickLaunchCore.FileMetaDataModel;
 
-namespace JohnBPearson.Butlers.QuickLaunchCore
+namespace JohnBPearson.Wpf.QuickLaunchCore
 {
     public interface IExecutable: IFileSystemObjectBase 
     {

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.IO;
-using JohnBPearson.Butlers.QuickLaunchCore;
-using JohnBPearson.Butlers.QuickLaunchCore.FileMetaDataModel;
+using JohnBPearson.Wpf.QuickLaunchCore;
+using JohnBPearson.Wpf.QuickLaunchCore.FileMetaDataModel;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace UnitTests
@@ -14,10 +14,10 @@ namespace UnitTests
         {
            // var info = new FileInfo(testDir);
             var exec = new MockExecutable();
-            // var link = new JohnBPearson.Butlers.QuickLaunchCore.BinaryLinkFormat(exec);
+            // var link = new JohnBPearson.Wpf.QuickLaunchCore.BinaryLinkFormat(exec);
             Assert.IsNotNull(exec);
             Assert.IsTrue(exec.Name.Length > 0);
-            Assert.IsTrue(exec.Type == JohnBPearson.Butlers.QuickLaunchCore.FileMetaDataModel.Extension.dir);
+            Assert.IsTrue(exec.Type == JohnBPearson.Wpf.QuickLaunchCore.FileMetaDataModel.Extension.dir);
          //   Assert.IsTrue(fso.Extension.Length > 0);
          //   Assert.IsTrue(fso.Icon != null);
         }

@@ -6,9 +6,9 @@ using System.Runtime.CompilerServices;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
-using JohnBPearson.Butlers.QuickLaunchCore.FileMetaDataModel;
+using JohnBPearson.Wpf.QuickLaunchCore.FileMetaDataModel;
 
-namespace JohnBPearson.Butlers.QuickLaunchCore
+namespace JohnBPearson.Wpf.QuickLaunchCore
 {
 
     /// <summary>
@@ -52,19 +52,19 @@ namespace JohnBPearson.Butlers.QuickLaunchCore
             switch(extension)
             {
                 case Constants.dir:
-                    return new JohnBPearson.Butlers.QuickLaunchCore.FileMetaDataModel.Directory(path, unknkownFileSystemObject);
+                    return new JohnBPearson.Wpf.QuickLaunchCore.FileMetaDataModel.Directory(path, unknkownFileSystemObject);
                     
                 
                 case Constants.lnk:
-                    return new JohnBPearson.Butlers.QuickLaunchCore.FileMetaDataModel.BinaryLinkFormat(path, unknkownFileSystemObject);
+                    return new JohnBPearson.Wpf.QuickLaunchCore.FileMetaDataModel.BinaryLinkFormat(path, unknkownFileSystemObject);
 
                    
                 case Constants.exe:
-                    return new JohnBPearson.Butlers.QuickLaunchCore.FileMetaDataModel.BinaryLinkFormat(path, unknkownFileSystemObject);
+                    return new JohnBPearson.Wpf.QuickLaunchCore.FileMetaDataModel.BinaryLinkFormat(path, unknkownFileSystemObject);
                 case Constants.ini:
-                    return new JohnBPearson.Butlers.QuickLaunchCore.FileMetaDataModel.InitialIzation(path, unknkownFileSystemObject);
+                    return new JohnBPearson.Wpf.QuickLaunchCore.FileMetaDataModel.InitialIzation(path, unknkownFileSystemObject);
                 case Constants.url:
-                    return new JohnBPearson.Butlers.QuickLaunchCore.FileMetaDataModel.Url(path, unknkownFileSystemObject);
+                    return new JohnBPearson.Wpf.QuickLaunchCore.FileMetaDataModel.Url(path, unknkownFileSystemObject);
                 default:
                     return null;
                    
