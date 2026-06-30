@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace JohnBPearson.Wpf.QuickLaunchCore.FileMetaDataModel
 {
-    public class InitialIzation : FileSystemObjectBase, IFileSystemObjectBase
+    internal class InitialIzation : FileSystemObjectBase, IFileSystemObjectBase, IInitialization
     {
 
 
@@ -18,9 +18,9 @@ namespace JohnBPearson.Wpf.QuickLaunchCore.FileMetaDataModel
 
         public override void Run()
         {
-          
-                throw new Exception("cannot call run on an .ini ");
-           
+
+            throw new Exception("cannot call run on an .ini ");
+
         }
     }
 }

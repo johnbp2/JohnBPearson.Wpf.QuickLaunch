@@ -97,7 +97,7 @@ namespace JohnBPearson.Wpf.Executer
                 //foreach (var fileSystemObject in facade.FileSystemObjects)
                 //{
 
-                //    if (fileSystemObject.Type != Extension.ini)
+                //    if (fileSystemObject.Type != FileExtensionEnum.ini)
                 //    {
                 //        var image2 = new Image();
 
@@ -185,7 +185,7 @@ namespace JohnBPearson.Wpf.Executer
             foreach (var fileSystemObject in facade.FileSystemObjects)
             {
 
-                if (fileSystemObject.Type != Extension.ini)
+                if (fileSystemObject.Type != FileExtensionEnum.ini)
                 {
                     Image image2 = transpileIcon(i, ref width, fileSystemObject);
 

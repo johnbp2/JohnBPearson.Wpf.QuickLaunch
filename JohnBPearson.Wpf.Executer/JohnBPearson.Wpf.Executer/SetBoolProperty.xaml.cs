@@ -61,8 +61,7 @@ namespace JohnBPearson.Wpf.Executer
         public SetBoolProperty()
         {
             InitializeComponent();
-
-            //if(propertyHost == null) {
+            this.propertyGroupBox.Header = this.Header;    //if(propertyHost == null) {
             //    throw new NullReferenceException();
 
             //}

@@ -46,7 +46,7 @@ namespace JohnBPearson.Wpf.QuickLaunchCore
         
             // the strange way to check what this is.
             // if directory: Extentsion= String.Empty evaluates true
-            // for a file Extension==String.Empty evaluates false
+            // for a file FileExtensionEnum==String.Empty evaluates false
             //  
            
             switch(extension)
