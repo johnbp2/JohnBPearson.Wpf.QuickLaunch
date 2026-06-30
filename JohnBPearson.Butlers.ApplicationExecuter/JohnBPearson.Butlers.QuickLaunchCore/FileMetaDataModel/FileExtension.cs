@@ -5,7 +5,7 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace JohnBPearson.Butlers.QuickLaunchCore.FileMetaDataModel
+namespace JohnBPearson.Wpf.QuickLaunchCore.FileMetaDataModel
 {
 
   

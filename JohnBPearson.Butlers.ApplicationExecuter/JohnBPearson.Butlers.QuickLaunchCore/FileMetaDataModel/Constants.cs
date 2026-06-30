@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.Design;
 using System.Reflection.Metadata;
 
-namespace JohnBPearson.Butlers.QuickLaunchCore.FileMetaDataModel
+namespace JohnBPearson.Wpf.QuickLaunchCore.FileMetaDataModel
 {
 
 public enum Extension

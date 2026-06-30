@@ -1,4 +1,4 @@
-﻿using JohnBPearson.Butlers.QuickLaunchCore.FileMetaDataModel;
+﻿using JohnBPearson.Wpf.QuickLaunchCore.FileMetaDataModel;
 using System.Windows.Controls;
 using System.Windows.Media;
 
