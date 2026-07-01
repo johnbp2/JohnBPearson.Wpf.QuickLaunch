@@ -6,19 +6,22 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <UseWPF>true</UseWPF>
-    <ApplicationIcon>icons8-butler-48.ico</ApplicationIcon>
+    <ApplicationIcon>Quicklaunch.ico</ApplicationIcon>
     <Copyright>John B Pearson 2024</Copyright>
     <StartupObject>JohnBPearson.Wpf.Executer.App</StartupObject>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
     <DebugType>none</DebugType>
+    <GenerateAssemblyInfo>False</GenerateAssemblyInfo>
   </PropertyGroup>
 
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <GenerateAssemblyInfo>False</GenerateAssemblyInfo>
+  </PropertyGroup>
 
   <ItemGroup>
-    <Content Include="icons8-butler-48.ico" />
+    <Content Include="Quicklaunch.ico" />
   </ItemGroup>
 
   <ItemGroup>

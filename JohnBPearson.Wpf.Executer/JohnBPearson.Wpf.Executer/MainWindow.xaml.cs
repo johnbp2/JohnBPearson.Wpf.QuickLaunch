@@ -84,52 +84,6 @@ namespace JohnBPearson.Wpf.Executer
                 SetWindowPos(hWnd, (IntPtr)(-2), 0, 0, 0, 0, SWP_NOSIZE);
             }
 
-            [Obsolete]
-            void displayLinks()
-            {
-
-                //stack1.Children.Clear();
-                //Facade facade = new Wpf.QuickLaunchCore.Facade(Properties.Settings.Default.folder);
-                //var i = 1;
-                //var margin = 0;
-                //var width = 0;
-
-                //foreach (var fileSystemObject in facade.FileSystemObjects)
-                //{
-
-                //    if (fileSystemObject.Type != FileExtensionEnum.ini)
-                //    {
-                //        var image2 = new Image();
-
-
-                //        image2.Width = iamageWidth;
-                //        width = width + iamageWidth + 10;
-
-                //        var bmi = imageService.IconToBitmapImage(fileSystemObject.Icon);
-                //        // bitmapSource2.Freeze();
-                //        image2.BeginInit();
-                //        image2.Source = bmi;
-                //        image2.EndInit();
-                //        image2.Name = $"image{i}";
-                //        image2.MouseDown += new MouseButtonEventHandler(Mouse_Down);
-                //        image2.Margin = new Thickness(0, 0, 10, 0);
-                //        cache.Add(new ViewModels.AnimatedFileSystemObject(fileSystemObject, new ScaleTransform(), image2));
-                //        //image.BeginInit();
-                //        // image.Source = bmi;
-                //        // image.EndInit();
-                //        image2.ToolTip = fileSystemObject.Name;
-                //        this.stack1.Children.Add(image2);
-                //        //  }
-                //        i++;
-                //        //   margin = margin + 300;
-                //    }
-                //    // stack1.MaxWidth = width;
-                //    //   Main.Width = width;
-
-                //    //  this.Width = width;
-                //}
-
-            }
         }
             void Mouse_Down(object sender, MouseEventArgs e)
             {
@@ -195,7 +149,7 @@ namespace JohnBPearson.Wpf.Executer
 
                     // image2.ToolTip = fileSystemObject.Name;
 
-
+                    //image2.RenderTransform = new ScaleTransform(1,1)
                     this.RegisterName(image2.Name, image2);
 
 
