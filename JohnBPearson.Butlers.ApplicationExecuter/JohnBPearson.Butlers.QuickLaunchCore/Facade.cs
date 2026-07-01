@@ -102,7 +102,7 @@ namespace JohnBPearson.Wpf.QuickLaunchCore
 namespace CustomExtensions
 {
 
-    //Extension methods must be defined in a static class
+    //FileExtensionEnum methods must be defined in a static class
     public static class StringExtension
     {
         // This is the extension method.

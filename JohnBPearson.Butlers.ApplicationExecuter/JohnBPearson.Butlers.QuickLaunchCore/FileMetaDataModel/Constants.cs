@@ -6,7 +6,7 @@ using System.Reflection.Metadata;
 namespace JohnBPearson.Wpf.QuickLaunchCore.FileMetaDataModel
 {
 
-public enum Extension
+public enum FileExtensionEnum
 {
     dir = 0, ini = 1, exe = 2, lnk = 3, url = 4
 }

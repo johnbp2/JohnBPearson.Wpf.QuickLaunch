@@ -74,9 +74,9 @@ namespace JohnBPearson.Wpf.QuickLaunchCore.FileMetaDataModel
             }
         }
 
-        private Extension _type;
+        private FileExtensionEnum _type;
 
-        public Extension Type
+        public FileExtensionEnum Type
         {
             get
             {
@@ -94,7 +94,7 @@ namespace JohnBPearson.Wpf.QuickLaunchCore.FileMetaDataModel
             FullPath = fullPath;
             Extension = info.Extension;
             _name = info.Name;
-            foreach(var ext in FileExtension.Extensions)
+            foreach(var ext in FileExtensionHelper.Extensions)
             {
                 if(ext.Item1 == Extension)
                 {
@@ -102,8 +102,8 @@ namespace JohnBPearson.Wpf.QuickLaunchCore.FileMetaDataModel
 
                     //MyEnum myEnum = (MyEnum)Enum.Parse(typeof(MyEnum), myString);
                     object objOut;
-                    if(Enum.TryParse(typeof(Extension), Extension.CleanseFileExtension(),out objOut)){
-                        var extension = (Extension)objOut;
+                    if(Enum.TryParse(typeof(FileExtensionEnum), Extension.CleanseFileExtension(),out objOut)){
+                        var extension = (FileExtensionEnum)objOut;
                         this.settheType(extension);
                         break;
                     }
@@ -112,14 +112,14 @@ namespace JohnBPearson.Wpf.QuickLaunchCore.FileMetaDataModel
             }
   
      
-            if(this.Type != FileMetaDataModel.Extension.dir)
+            if(this.Type != FileMetaDataModel.FileExtensionEnum.dir)
             {
                 this._icon = System.Drawing.Icon.ExtractAssociatedIcon(fullPath);
             }
 
       
         }
-        void settheType(Extension type)
+        void settheType(FileExtensionEnum type)
         {
             _type = type;
         }

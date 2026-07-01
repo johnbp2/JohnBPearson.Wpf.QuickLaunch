@@ -17,7 +17,7 @@ namespace UnitTests
             // var link = new JohnBPearson.Wpf.QuickLaunchCore.BinaryLinkFormat(exec);
             Assert.IsNotNull(exec);
             Assert.IsTrue(exec.Name.Length > 0);
-            Assert.IsTrue(exec.Type == JohnBPearson.Wpf.QuickLaunchCore.FileMetaDataModel.Extension.dir);
+            Assert.IsTrue(exec.Type == JohnBPearson.Wpf.QuickLaunchCore.FileMetaDataModel.FileExtensionEnum.dir);
          //   Assert.IsTrue(fso.Extension.Length > 0);
          //   Assert.IsTrue(fso.Icon != null);
         }
@@ -30,7 +30,7 @@ namespace UnitTests
             foreach(var fso in fac.FileSystemObjects)
             {
                 Assert.IsTrue(fso.Icon != null);
-                if(fso.Type == Extension.lnk)
+                if(fso.Type == FileExtensionEnum.lnk)
                 {
 
                     Assert.IsTrue(((BinaryLinkFormat)fso).TargetPath != "");

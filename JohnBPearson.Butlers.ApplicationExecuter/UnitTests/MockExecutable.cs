@@ -66,9 +66,9 @@ namespace UnitTests
             }
         }
 
-        private Extension _type;
+        private FileExtensionEnum _type;
 
-        public Extension Type
+        public FileExtensionEnum Type
         {
             get
             {

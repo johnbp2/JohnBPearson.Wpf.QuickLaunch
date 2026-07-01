@@ -9,7 +9,7 @@ namespace JohnBPearson.Wpf.QuickLaunchCore.FileMetaDataModel
 {
 
   
-    internal static class FileExtension
+    internal static class FileExtensionHelper
     {
 
         private static List<Tuple<string, int>> _extensions;
@@ -22,7 +22,7 @@ namespace JohnBPearson.Wpf.QuickLaunchCore.FileMetaDataModel
 
 
         }
-        static FileExtension()
+        static FileExtensionHelper()
         {
             _extensions = new List<Tuple<string, int>>();
             int i = 0;
@@ -33,7 +33,7 @@ namespace JohnBPearson.Wpf.QuickLaunchCore.FileMetaDataModel
                 i++;
             }
         
-            //foreach (var item in Enum.GetNames(typeof(Extension)))
+            //foreach (var item in Enum.GetNames(typeof(FileExtensionEnum)))
             //{
             //    _extensions.Add(string.Concat(".",item.ToString()));
             //}

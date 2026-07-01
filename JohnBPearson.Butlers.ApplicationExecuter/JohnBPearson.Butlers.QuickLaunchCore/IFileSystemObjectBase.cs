@@ -21,7 +21,7 @@ namespace JohnBPearson.Wpf.QuickLaunchCore.FileMetaDataModel
         {
             get;
         }
-        Extension Type
+        FileExtensionEnum Type
         {
             get;
         }
