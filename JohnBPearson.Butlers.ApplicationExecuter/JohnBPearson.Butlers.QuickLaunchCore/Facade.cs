@@ -1,12 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.Drawing.Text;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using CustomExtensions;
 using JohnBPearson.Wpf.QuickLaunchCore.FileMetaDataModel;
+using Securify.ShellLink;
 
 namespace JohnBPearson.Wpf.QuickLaunchCore
 {
@@ -58,17 +61,23 @@ namespace JohnBPearson.Wpf.QuickLaunchCore
                 var files = dir.EnumerateFiles();
                 foreach(var file in files)
                 {
-                    var fileObject = FileSystemObjectFactory.Build(file.FullName, file);
-                    if(fileObject != null)
+
+                    if(file.Extension.CleanseFileExtension() != "url")
                     {
-                        this.FileSystemObjects.Add(fileObject);
+
+                        var sc = Shortcut.ReadFromFile(file.FullName);
+                        if(sc.LinkFlags.HasFlag(Securify.ShellLink.Flags.LinkFlags.HasLinkInfo))
+                        {
+                            AddFileToObjects(file);
+                        }
+
+
                     }
-                    //var exec = new Executable(file.FullName);
-                    //FileSystemObjectBase.Build(file.FullName)
+                    else
+                    {
 
-                    //  _executables.Add(exec);
-
-
+                        AddFileToObjects(file);
+                    }
                 }
 
                 // dir.GetFiles()
@@ -76,6 +85,16 @@ namespace JohnBPearson.Wpf.QuickLaunchCore
 
 
         }
+
+        private void AddFileToObjects(System.IO.FileInfo file)
+        {
+            var fileObject = FileSystemObjectFactory.Build(file.FullName, file);
+            if(fileObject != null)
+            {
+                this.FileSystemObjects.Add(fileObject);
+            }
+        }
+
         private bool isStringValidDir(string dirPath)
         {
             if(string.IsNullOrWhiteSpace(dirPath))
