@@ -21,6 +21,7 @@ using System.Runtime.CompilerServices;
 [assembly: Guid("a60d261e-1887-48be-8787-f73c3581d1f1")]
 [assembly: AssemblyTitle("Quicklaunch")]
 [assembly: AssemblyProduct("Quicklaunch")]
+[assembly: AssemblyCompany("John Pearson")]
 [assembly: AssemblyCopyright("Copyright � John Pearson  2026")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

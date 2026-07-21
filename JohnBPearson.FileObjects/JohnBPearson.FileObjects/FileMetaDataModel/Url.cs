@@ -6,9 +6,9 @@ using System.IO;
 using System.Linq;
     using System.Text;
     using System.Threading.Tasks;
-    using global::JohnBPearson.Wpf.QuickLaunchCore.FileMetaDataModel;
+    using global::JohnBPearson.FileObjects.FileMetaDataModel;
 
-    namespace JohnBPearson.Wpf.QuickLaunchCore.FileMetaDataModel
+    namespace JohnBPearson.FileObjects.FileMetaDataModel
     {
 
         public class Url : FileSystemObjectBase, IFileSystemObjectBase

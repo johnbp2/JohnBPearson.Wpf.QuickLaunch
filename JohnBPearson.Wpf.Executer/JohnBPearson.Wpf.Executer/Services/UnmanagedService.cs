@@ -4,12 +4,12 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
-using JohnBPearson.Wpf.QuickLaunchCore;
-using JohnBPearson.Wpf.QuickLaunchCore.FileMetaDataModel;
+using JohnBPearson.FileObjects;
+using JohnBPearson.FileObjects.FileMetaDataModel;
 
-namespace JohnBPearson.Wpf.Executer
+namespace Quicklaunch.Services
 {
-    internal static class Unmanaged
+    internal static class UnmanagedService
     {
         static readonly IntPtr HWND_TOPMOST = new IntPtr(-1);
         static readonly IntPtr HWND_NOTOPMOST = new IntPtr(2);

@@ -7,8 +7,8 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <UseWPF>true</UseWPF>
     <ApplicationIcon>Quicklaunch.ico</ApplicationIcon>
-    <Copyright>John B Pearson 2024</Copyright>
-    <StartupObject>JohnBPearson.Wpf.Executer.App</StartupObject>
+    <Copyright>John B Pearson 2026</Copyright>
+    <StartupObject>Quicklaunch.App</StartupObject>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
@@ -29,7 +29,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\JohnBPearson.Butlers.ApplicationExecuter\JohnBPearson.Butlers.QuickLaunchCore\JohnBPearson.Butlers.QuickLaunchCore.csproj" />
+    <ProjectReference Include="..\..\JohnBPearson.FileObjects\JohnBPearson.FileObjects\JohnBPearson.FileObjects.csproj" />
   </ItemGroup>
 
   <ItemGroup>

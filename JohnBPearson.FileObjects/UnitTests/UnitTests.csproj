@@ -14,7 +14,7 @@
     <PackageReference Include="MSTest.TestFramework" Version="2.2.10" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\JohnBPearson.Butlers.QuickLaunchCore\JohnBPearson.Butlers.QuickLaunchCore.csproj" />
+    <ProjectReference Include="..\JohnBPearson.FileObjects\JohnBPearson.FileObjects.csproj" />
   </ItemGroup>
   <ItemGroup>
     <None Update="butler.ico">

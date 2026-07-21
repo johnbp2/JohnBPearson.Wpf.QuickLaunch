@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.Design;
 using System.Reflection.Metadata;
 
-namespace JohnBPearson.Wpf.QuickLaunchCore.FileMetaDataModel
+namespace JohnBPearson.FileObjects.FileMetaDataModel
 {
 
 public enum FileExtensionEnum
