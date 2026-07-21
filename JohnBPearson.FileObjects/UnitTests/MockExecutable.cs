@@ -5,11 +5,11 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using JohnBPearson.Wpf.QuickLaunchCore.FileMetaDataModel;
+using JohnBPearson.FileObjects.FileMetaDataModel;
 
 namespace UnitTests
 {
-    internal class MockExecutable : JohnBPearson.Wpf.QuickLaunchCore.IExecutable
+    internal class MockExecutable : JohnBPearson.FileObjects.IExecutable
     {
         private string _fullPath = @"S:\source\repos\QuickLaunch\JohnBPearson.Wpf.QuickLaunch\JohnBPearson.Wpf.ApplicationExecuter\UnitTests\butler.ico";
         public string FullPath

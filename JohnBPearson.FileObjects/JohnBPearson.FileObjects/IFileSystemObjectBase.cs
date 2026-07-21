@@ -1,7 +1,7 @@
 ﻿using System.Drawing;
-using JohnBPearson.Wpf.QuickLaunchCore.FileMetaDataModel;
+using JohnBPearson.FileObjects.FileMetaDataModel;
 
-namespace JohnBPearson.Wpf.QuickLaunchCore.FileMetaDataModel
+namespace JohnBPearson.FileObjects.FileMetaDataModel
 {
     public interface IFileSystemObjectBase
     {

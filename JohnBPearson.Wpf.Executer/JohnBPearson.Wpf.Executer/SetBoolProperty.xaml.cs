@@ -15,7 +15,7 @@ using System.Windows.Shapes;
 using Windows.UI.Composition;
 using Windows.UI.Notifications;
 
-namespace JohnBPearson.Wpf.Executer
+namespace Quicklaunch
 {
     /// <summary>
     /// Interaction logic for SetBoolProperty.xaml

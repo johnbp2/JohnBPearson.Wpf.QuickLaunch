@@ -6,9 +6,9 @@ using System.Runtime.CompilerServices;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
-using JohnBPearson.Wpf.QuickLaunchCore.FileMetaDataModel;
+using JohnBPearson.FileObjects.FileMetaDataModel;
 
-namespace JohnBPearson.Wpf.QuickLaunchCore
+namespace JohnBPearson.FileObjects
 {
 
     /// <summary>
@@ -52,19 +52,19 @@ namespace JohnBPearson.Wpf.QuickLaunchCore
             switch(extension)
             {
                 case Constants.dir:
-                    return new JohnBPearson.Wpf.QuickLaunchCore.FileMetaDataModel.Directory(path, unknkownFileSystemObject);
+                    return new JohnBPearson.FileObjects.FileMetaDataModel.Directory(path, unknkownFileSystemObject);
                     
                 
                 case Constants.lnk:
-                    return new JohnBPearson.Wpf.QuickLaunchCore.FileMetaDataModel.BinaryLinkFormat(path, unknkownFileSystemObject);
+                    return new JohnBPearson.FileObjects.FileMetaDataModel.BinaryLinkFormat(path, unknkownFileSystemObject);
 
                    
                 case Constants.exe:
-                    return new JohnBPearson.Wpf.QuickLaunchCore.FileMetaDataModel.BinaryLinkFormat(path, unknkownFileSystemObject);
+                    return new JohnBPearson.FileObjects.FileMetaDataModel.BinaryLinkFormat(path, unknkownFileSystemObject);
                 case Constants.ini:
-                    return new JohnBPearson.Wpf.QuickLaunchCore.FileMetaDataModel.InitialIzation(path, unknkownFileSystemObject);
+                    return new JohnBPearson.FileObjects.FileMetaDataModel.InitialIzation(path, unknkownFileSystemObject);
                 case Constants.url:
-                    return new JohnBPearson.Wpf.QuickLaunchCore.FileMetaDataModel.Url(path, unknkownFileSystemObject);
+                    return new JohnBPearson.FileObjects.FileMetaDataModel.Url(path, unknkownFileSystemObject);
                 default:
                     return null;
                    

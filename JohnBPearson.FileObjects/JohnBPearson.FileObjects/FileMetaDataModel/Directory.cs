@@ -4,9 +4,9 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using JohnBPearson.Wpf.QuickLaunchCore;
+using JohnBPearson.FileObjects;
 
-namespace JohnBPearson.Wpf.QuickLaunchCore.FileMetaDataModel
+namespace JohnBPearson.FileObjects.FileMetaDataModel
 {
     internal class Directory : FileSystemObjectBase, IFileSystemObjectBase
     {

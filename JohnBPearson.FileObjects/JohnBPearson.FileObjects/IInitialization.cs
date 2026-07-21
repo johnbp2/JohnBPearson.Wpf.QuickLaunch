@@ -1,4 +1,4 @@
-﻿namespace JohnBPearson.Wpf.QuickLaunchCore.FileMetaDataModel
+﻿namespace JohnBPearson.FileObjects.FileMetaDataModel
 {
     public interface IInitialization
     {

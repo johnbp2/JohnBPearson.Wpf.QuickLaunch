@@ -1,22 +1,23 @@
-﻿using JohnBPearson.Wpf.QuickLaunchCore.FileMetaDataModel;
+﻿using Quicklaunch.Controls;
+using JohnBPearson.FileObjects.FileMetaDataModel;
 using System.Windows.Controls;
 using System.Windows.Media;
 
-namespace JohnBPearson.Wpf.Executer.ViewModels
+namespace Quicklaunch.ViewModels
 {
-    internal class AnimatedFileSystemObject
-    {
-        public IFileSystemObjectBase FileSystemObjectBase { get; set; }
+    //internal class AnimatedFileSystemObject
+    //{
+    //    public IFileSystemObjectBase FileSystemObjectBase { get; set; }
 
-        public ScaleTransform scaleTransform { get; set; }
+    //   // public ScaleTransform scaleTransform { get; set; }
 
-        public Image Image { get; set; }
+    //    public Controls.ImageControl Image { get; set; }
 
-        internal AnimatedFileSystemObject(IFileSystemObjectBase filesystemObject, ScaleTransform scaleTransform, Image image)
-        {
-            this.FileSystemObjectBase = filesystemObject;
-            this.scaleTransform = scaleTransform;
-            this.Image = image;
-        }
-    }
+    //    internal AnimatedFileSystemObject(IFileSystemObjectBase filesystemObject, ImageControl image)
+    //    {
+    //        this.FileSystemObjectBase = filesystemObject;
+    //       // this.scaleTransform = scaleTransform;
+    //        this.Image = image;
+    //    }
+    //}
 }

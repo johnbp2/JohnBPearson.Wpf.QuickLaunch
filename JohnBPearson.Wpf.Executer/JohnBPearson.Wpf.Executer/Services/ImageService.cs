@@ -10,12 +10,12 @@ using System.Windows;
 using System.Windows.Interop;
 using System.Windows.Media.Imaging;
 
-namespace JohnBPearson.Wpf.Executer
+namespace Quicklaunch.Services
 {
     internal class ImageService
     {
 
-
+        [Obsolete]
         internal System.Windows.Media.Imaging.BitmapSource ImageSourceFromIcon(System.Drawing.Icon icon)
         {
             
@@ -23,7 +23,7 @@ namespace JohnBPearson.Wpf.Executer
             }
        
 
-        internal BitmapImage IconToBitmapImage(System.Drawing.Icon icon)
+        internal static BitmapImage IconToBitmapImage(System.Drawing.Icon icon)
         {
 
 

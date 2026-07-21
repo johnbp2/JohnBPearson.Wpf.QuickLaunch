@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace JohnBPearson.Wpf.QuickLaunchCore.FileMetaDataModel
+namespace JohnBPearson.FileObjects.FileMetaDataModel
 {
     public sealed class BinaryLinkFormat : FileSystemObjectBase
     {

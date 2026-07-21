@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using JohnBPearson.Wpf.QuickLaunchCore.FileMetaDataModel;
+using JohnBPearson.FileObjects.FileMetaDataModel;
 
-namespace JohnBPearson.Wpf.QuickLaunchCore
+namespace JohnBPearson.FileObjects
 {
     internal interface IBinaryLinkFormat:IFileSystemObjectBase
     {

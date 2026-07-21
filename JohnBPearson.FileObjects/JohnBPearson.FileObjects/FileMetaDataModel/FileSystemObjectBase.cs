@@ -9,10 +9,10 @@ using System.Reflection.Metadata;
 using System.Security.Permissions;
 using System.Text;
 using System.Threading.Tasks;
-using JohnBPearson.Wpf.QuickLaunchCore;
+using JohnBPearson.FileObjects;
 using CustomExtensions;
 
-namespace JohnBPearson.Wpf.QuickLaunchCore.FileMetaDataModel
+namespace JohnBPearson.FileObjects.FileMetaDataModel
 {
 
     public abstract class FileSystemObjectBase : IFileSystemObjectBase

@@ -2,7 +2,7 @@
 using System.Data;
 using System.Windows;
 
-namespace JohnBPearson.Wpf.Executer
+namespace Quicklaunch
 {
     /// <summary>
     /// Interaction logic for App.xaml

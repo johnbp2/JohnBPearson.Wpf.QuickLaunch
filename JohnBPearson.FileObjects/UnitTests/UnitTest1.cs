@@ -1,7 +1,7 @@
 ﻿using System;
 using System.IO;
-using JohnBPearson.Wpf.QuickLaunchCore;
-using JohnBPearson.Wpf.QuickLaunchCore.FileMetaDataModel;
+using JohnBPearson.FileObjects;
+using JohnBPearson.FileObjects.FileMetaDataModel;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace UnitTests
@@ -14,10 +14,10 @@ namespace UnitTests
         {
            // var info = new FileInfo(testDir);
             var exec = new MockExecutable();
-            // var link = new JohnBPearson.Wpf.QuickLaunchCore.BinaryLinkFormat(exec);
+            // var link = new JohnBPearson.FileObjects.BinaryLinkFormat(exec);
             Assert.IsNotNull(exec);
             Assert.IsTrue(exec.Name.Length > 0);
-            Assert.IsTrue(exec.Type == JohnBPearson.Wpf.QuickLaunchCore.FileMetaDataModel.FileExtensionEnum.dir);
+            Assert.IsTrue(exec.Type == JohnBPearson.FileObjects.FileMetaDataModel.FileExtensionEnum.dir);
          //   Assert.IsTrue(fso.Extension.Length > 0);
          //   Assert.IsTrue(fso.Icon != null);
         }
@@ -25,9 +25,9 @@ namespace UnitTests
         [TestMethod]
         public void testFacade()
         {
-            var fac = new Facade(testDir);
-            Assert.IsTrue(fac.FileSystemObjects.Count > 0);
-            foreach(var fso in fac.FileSystemObjects)
+           // var fac = new Facade(testDir);
+            Assert.IsTrue(Facade.FileSystemObjects.Count > 0);
+            foreach(var fso in Facade.FileSystemObjects)
             {
                 Assert.IsTrue(fso.Icon != null);
                 if(fso.Type == FileExtensionEnum.lnk)

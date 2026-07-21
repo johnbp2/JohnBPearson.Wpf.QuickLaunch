@@ -8,19 +8,19 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using CustomExtensions;
-using JohnBPearson.Wpf.QuickLaunchCore.FileMetaDataModel;
+using JohnBPearson.FileObjects.FileMetaDataModel;
 using Securify.ShellLink;
 
-namespace JohnBPearson.Wpf.QuickLaunchCore
+namespace JohnBPearson.FileObjects
 {
     public class Facade
     {
 
 
-        private List<IFileSystemObjectBase> _executables;
+        private static List<IFileSystemObjectBase> _executables;
 
 
-        public List<IFileSystemObjectBase> FileSystemObjects
+        public static  List<IFileSystemObjectBase> FileSystemObjects
         {
             get
             {
@@ -31,6 +31,10 @@ namespace JohnBPearson.Wpf.QuickLaunchCore
                     {
                         InstantiateFileSystemObjects(_directoryPath);
                     }
+                    else
+                    {
+                        throw new Exception("Directory path is not set. Please set the directory path before accessing FileSystemObjects.");
+                    }
 
 
                 }
@@ -38,11 +42,17 @@ namespace JohnBPearson.Wpf.QuickLaunchCore
             }
         }
 
-        private string _directoryPath;
-        public Facade(string dirPath)
+        public static string DirectoryPath
+        {
+            get => _directoryPath;
+            set => _directoryPath = value;
+        }
+
+        private static string _directoryPath;
+        public  Facade(string dirPath)
         {
 
-            if(this.isStringValidDir(dirPath))
+            if(isStringValidDir(dirPath))
             {
 
                 _directoryPath = dirPath;
@@ -50,9 +60,9 @@ namespace JohnBPearson.Wpf.QuickLaunchCore
         }
         public void RefreshFileSystemObjects()
         {
-            this.InstantiateFileSystemObjects(_directoryPath);
+         InstantiateFileSystemObjects(_directoryPath);
         }
-        private void InstantiateFileSystemObjects(string directoryPath)
+        private static void InstantiateFileSystemObjects(string directoryPath)
         {
             var dir = new System.IO.DirectoryInfo(directoryPath);
             if(dir.Exists)
@@ -86,16 +96,16 @@ namespace JohnBPearson.Wpf.QuickLaunchCore
 
         }
 
-        private void AddFileToObjects(System.IO.FileInfo file)
+        private static void AddFileToObjects(System.IO.FileInfo file)
         {
             var fileObject = FileSystemObjectFactory.Build(file.FullName, file);
             if(fileObject != null)
             {
-                this.FileSystemObjects.Add(fileObject);
+                FileSystemObjects.Add(fileObject);
             }
         }
 
-        private bool isStringValidDir(string dirPath)
+        private static bool isStringValidDir(string dirPath)
         {
             if(string.IsNullOrWhiteSpace(dirPath))
             {

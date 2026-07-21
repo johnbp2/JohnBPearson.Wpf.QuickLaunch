@@ -3,11 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34701.34
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JohnBPearson.Wpf.Executer", "JohnBPearson.Wpf.Executer\JohnBPearson.Wpf.Executer.csproj", "{049C1328-0C0C-4470-81F2-0C198277794F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Quicklaunch", "JohnBPearson.Wpf.Executer\Quicklaunch.csproj", "{049C1328-0C0C-4470-81F2-0C198277794F}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JohnBPearson.Butlers.QuickLaunchCore", "..\JohnBPearson.Butlers.ApplicationExecuter\JohnBPearson.Butlers.QuickLaunchCore\JohnBPearson.Butlers.QuickLaunchCore.csproj", "{7FC3CA87-DC6A-4B35-BF90-951EAE9F10BB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JohnBPearson.FileObjects", "..\JohnBPearson.FileObjects\JohnBPearson.FileObjects\JohnBPearson.FileObjects.csproj", "{7FC3CA87-DC6A-4B35-BF90-951EAE9F10BB}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnitTests", "..\JohnBPearson.Butlers.ApplicationExecuter\UnitTests\UnitTests.csproj", "{D67990E8-4BCF-4770-8592-E2995299BA9B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnitTests", "..\JohnBPearson.FileObjects\UnitTests\UnitTests.csproj", "{D67990E8-4BCF-4770-8592-E2995299BA9B}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Setup", "..\Setup\Setup.vdproj", "{01ED8033-234B-4EB8-8771-ECEAA88F7823}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,8 @@ Global
 		{D67990E8-4BCF-4770-8592-E2995299BA9B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D67990E8-4BCF-4770-8592-E2995299BA9B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D67990E8-4BCF-4770-8592-E2995299BA9B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{01ED8033-234B-4EB8-8771-ECEAA88F7823}.Debug|Any CPU.ActiveCfg = Debug
+		{01ED8033-234B-4EB8-8771-ECEAA88F7823}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,14 +1,16 @@
-﻿// #define IMAGETEST
+﻿#define IMAGETEST
+using System.Diagnostics;
 using System.Runtime.InteropServices;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
-using JohnBPearson.Wpf.QuickLaunchCore;
-using JohnBPearson.Wpf.QuickLaunchCore.FileMetaDataModel;
+using Quicklaunch.Controls;
+using JohnBPearson.FileObjects;
+using JohnBPearson.FileObjects.FileMetaDataModel;
 
-namespace JohnBPearson.Wpf.Executer
+namespace Quicklaunch
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -16,11 +18,10 @@ namespace JohnBPearson.Wpf.Executer
     public partial class MainWindow : Window
     {
     
-      private  List<ViewModels.AnimatedFileSystemObject> cache = new List<ViewModels.AnimatedFileSystemObject>();
+      private  List<ImageControl> cache = new List<ImageControl>();
 
 
-      private  ImageService imageService = new ImageService();
-       private const int dynamicMarginAdditive = 30;
+
         const int imageWidth = 32;
         private const double scaleTransformFactor = 1.4;
 
@@ -29,7 +30,7 @@ namespace JohnBPearson.Wpf.Executer
        
         void Main_Loaded(object sender, RoutedEventArgs e)
         {
-            Unmanaged.SetOnTop(this);
+            Services.UnmanagedService.SetOnTop(this);
 
 
         }
@@ -52,7 +53,7 @@ namespace JohnBPearson.Wpf.Executer
             {
                 foreach (var item in this.cache)
                 {
-                    if (item.Image.Name == ((Image)sender).Name)
+                    if (item.Name == ((ImageControl)sender).Name)
                     {
                         //var test =System.IO.file.ReadAllText(item.Item2.FullPath);
                         //      Debug.WriteLine(test);
@@ -79,8 +80,7 @@ namespace JohnBPearson.Wpf.Executer
         {
             this.Close();
         }
-        private Storyboard? _mystoryboard = null;
-      //  ScaleTransform scaleTransform = null;// new ScaleTransform(1, 1);
+       
         void implementAnimatedImages()
         {
             stack1.Children.Clear();
@@ -100,22 +100,23 @@ namespace JohnBPearson.Wpf.Executer
             //
 
             // Create a images.
-            Facade facade = new Wpf.QuickLaunchCore.Facade(Properties.Settings.Default.folder);
+          //  Facade facade = new Facade(Properties.Settings.Default.folder);
+          Facade.DirectoryPath = Properties.Settings.Default.folder;
             var i = 100;
            
             double width = 0.00;
 
-            foreach (var fileSystemObject in facade.FileSystemObjects)
+            foreach (var fileSystemObject in Facade.FileSystemObjects)
             {
 
                 if (fileSystemObject.Type != FileExtensionEnum.ini)
                 {
-                    Controls.Image image = transpileIcon(i, ref width, fileSystemObject);
+                    Controls.ImageControl image = convertIconToBitmap(i, ref width, fileSystemObject);
 
                     image.MouseDown += new MouseButtonEventHandler(Mouse_Down);
                     this.defaultImageMargins(ref image);
-                    cache.Add(new ViewModels.AnimatedFileSystemObject(fileSystemObject, new ScaleTransform(), image));
-
+                    cache.Add(image);
+                    
                     
                     this.RegisterName(image.Name, image);
 
@@ -129,7 +130,16 @@ namespace JohnBPearson.Wpf.Executer
 
 
                     this.stack1.Children.Add(image);
+                    Storyboard.SetTargetName(image.scaleTransform, image.Name);
 
+                    Storyboard.SetTargetProperty(image.scaleTransform, new PropertyPath(ScaleTransform.ScaleXProperty));
+                    Storyboard.SetTargetProperty(image.scaleTransform, new PropertyPath(ScaleTransform.ScaleYProperty));
+
+#if IMAGETEST
+                    image.LayoutTransform = image.scaleTransform;
+#else
+                    image.RenderTransform = image.scaleTransform;
+#endif
                     i++;
 
                 }
@@ -140,21 +150,21 @@ namespace JohnBPearson.Wpf.Executer
             this.gridMain.ColumnDefinitions[0].Width = new GridLength(width);
             this.gridMain.Width = width;
         }
-        private void defaultImageMargins(ref Controls.Image image)
+        private void defaultImageMargins(ref Controls.ImageControl image)
         {
             image.Margin = new Thickness(10, 0, 10, 0);
         }
 
-        private Controls.Image transpileIcon(int i, ref double width, IFileSystemObjectBase? fileSystemObject)
+        private Controls.ImageControl convertIconToBitmap(int i, ref double width, IFileSystemObjectBase fileSystemObject)
         {
-            var image2 = new Controls.Image(new ScaleTransform(1, 1), fileSystemObject);
+            var image2 = new Controls.ImageControl(new ScaleTransform(1, 1), fileSystemObject);
             image2.Name = $"image{i}";
 
 
             image2.Width = imageWidth;
             width = width + imageWidth + 20;
 
-            var bmi = imageService.IconToBitmapImage(fileSystemObject.Icon);
+            var bmi = Services.ImageService.IconToBitmapImage(fileSystemObject.Icon);
 
             image2.BeginInit();
             image2.Source = bmi;
@@ -163,7 +173,7 @@ namespace JohnBPearson.Wpf.Executer
         }
         void Image2_MouseLeave(object sender, MouseEventArgs e)
         {
-            var image = (Image)sender;
+            var image = (ImageControl)sender;
             if (image != null)
             {
 
@@ -175,10 +185,14 @@ namespace JohnBPearson.Wpf.Executer
 #else
                  temp = image.RenderTransform as ScaleTransform;
 #endif
-                if (temp != null)
+                if(temp != null)
                 {
+
                     temp.ScaleX = 1;
                     temp.ScaleY = 1;
+                }
+                else {
+                    throw new Exception("ScaleTransform is null");
                 }
                 image.Margin = new Thickness(10,0,10,0);
                     
@@ -192,16 +206,10 @@ namespace JohnBPearson.Wpf.Executer
         void Image2_MouseEnter(object sender, MouseEventArgs e)
         {
 
-            var image = (Controls.Image)sender;
+            var image = (Controls.ImageControl)sender;
             if (image != null)
             {
-                //var cur = image.Margin;
-
-                //cur.Right = cur.Right + dynamicMarginAdditive;
-
-                //this.currentMargine = cur.Right;
-                //image.Margin = cur;
-
+             
                 if((image.RenderTransform is ScaleTransform))
                 {
 
@@ -217,18 +225,10 @@ namespace JohnBPearson.Wpf.Executer
                 }
                 else
                 {
-                  //  var scaleTransform = new ScaleTransform(1, 1);
+                
+                    throw new Exception(Name + " is not a ScaleTransform");
 
-                    Storyboard.SetTargetName(image.scaleTransform, image.Name);
 
-                    Storyboard.SetTargetProperty(image.scaleTransform, new PropertyPath(ScaleTransform.ScaleXProperty));
-                    Storyboard.SetTargetProperty(image.scaleTransform, new PropertyPath(ScaleTransform.ScaleYProperty));
-
-#if IMAGETEST
-                    image.LayoutTransform = image.scaleTransform;
-#else
-                    image.RenderTransform = image.scaleTransform;
-#endif
                     image.scaleTransform.ScaleX = scaleTransformFactor;
                     image.scaleTransform.ScaleX = scaleTransformFactor;
                 }
@@ -237,9 +237,10 @@ namespace JohnBPearson.Wpf.Executer
             }
         }
 
-     
-
-
-
+        private void Main_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if(e.LeftButton == MouseButtonState.Pressed)
+                Main.DragMove();
+        }
     }
 }
