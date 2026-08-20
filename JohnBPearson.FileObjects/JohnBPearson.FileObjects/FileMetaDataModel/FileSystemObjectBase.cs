@@ -102,7 +102,7 @@ namespace JohnBPearson.FileObjects.FileMetaDataModel
 
                     //MyEnum myEnum = (MyEnum)Enum.Parse(typeof(MyEnum), myString);
                     object objOut;
-                    if(Enum.TryParse(typeof(FileExtensionEnum), Extension.CleanseFileExtension(),out objOut)){
+                    if(Enum.TryParse(typeof(FileExtensionEnum), Extension.SanitizeFileExtension(),out objOut)){
                         var extension = (FileExtensionEnum)objOut;
                         this.settheType(extension);
                         break;

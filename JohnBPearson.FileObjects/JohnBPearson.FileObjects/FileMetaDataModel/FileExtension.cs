@@ -4,6 +4,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using CustomExtensions;
 
 namespace JohnBPearson.FileObjects.FileMetaDataModel
 {
@@ -21,6 +22,14 @@ namespace JohnBPearson.FileObjects.FileMetaDataModel
             }
 
 
+
+        }
+        public static IEnumerable<string> ExtensionStrings
+        {
+            get
+            {
+                return _extensions.Select(x => x.Item1);
+            }
         }
         static FileExtension()
         {
@@ -28,8 +37,8 @@ namespace JohnBPearson.FileObjects.FileMetaDataModel
             int i = 0;
             foreach (var item in Enum.GetValues(typeof(FileExtensionEnum)))
             {
-
-                _extensions.Add(new Tuple<string, int>($".{item.ToString()}",i));
+                
+                _extensions.Add(new Tuple<string, int>($"{item.ToString()}",i));
                 i++;
             }
         

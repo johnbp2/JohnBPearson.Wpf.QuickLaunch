@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
+using System.Diagnostics;
 using System.Drawing.Text;
 using System.Linq;
 using System.Runtime.InteropServices;
@@ -71,16 +72,24 @@ namespace JohnBPearson.FileObjects
                 var files = dir.EnumerateFiles();
                 foreach(var file in files)
                 {
-
-                    if(file.Extension.CleanseFileExtension() != "url")
+                    if(FileExtension.ExtensionStrings.Contains(file.Extension.SanitizeFileExtension()))
                     {
-
-                        var sc = Shortcut.ReadFromFile(file.FullName);
-                        if(sc.LinkFlags.HasFlag(Securify.ShellLink.Flags.LinkFlags.HasLinkInfo))
+                
+                        try
                         {
-                            AddFileToObjects(file);
-                        }
 
+                            var sc = Shortcut.ReadFromFile(file.FullName);
+                            if(sc.LinkFlags.HasFlag(Securify.ShellLink.Flags.LinkFlags.HasLinkInfo))
+                            {
+                                AddFileToObjects(file);
+                            }
+
+                        }
+                        catch(ArgumentException ex)
+                        {
+
+                            // swallow it for now
+                        }
 
                     }
                     else
@@ -137,7 +146,7 @@ namespace CustomExtensions
         // This is the extension method.
         // The first parameter takes the "this" modifier
         // and specifies the type for which the method is defined.
-        public static string CleanseFileExtension(this string str)
+        public static string SanitizeFileExtension(this string str)
         {
             if(str.Contains('.') && str.Length == 4 && str.StartsWith("."))
             {

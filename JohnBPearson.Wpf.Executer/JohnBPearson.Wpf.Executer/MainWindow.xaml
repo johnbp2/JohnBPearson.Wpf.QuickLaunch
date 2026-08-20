@@ -13,13 +13,11 @@
             </MenuItem>
             <MenuItem x:Name="Exit" Width="Auto"  BorderThickness="1" BorderBrush="Black" Height="22" Header="Exit"  Click="MenuItemExit_Click">
                </MenuItem>
+            <MenuItem x:Name="DockRight"  Width="Auto" Header="Dock Right" BorderThickness="1" BorderBrush="Black" Height="22" Click="MenuItemDockRight_Click"></MenuItem>     
+            <MenuItem x:Name="DockLeft"  Width="Auto" Header="Dock Left" BorderThickness="1" BorderBrush="Black" Height="22" Click="MenuItemDockLeft_Click"></MenuItem>
         </ContextMenu>
     </Window.ContextMenu>
-    <!--<Grid x:Name="gridMain">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="61*"/>
-            <ColumnDefinition Width="239*"/>
-        </Grid.ColumnDefinitions>-->
+
 
     <Grid Name="gridMain" Width="78">
         <Grid.ColumnDefinitions>
