@@ -61,8 +61,8 @@ namespace JohnBPearson.FileObjects
                    
                 case Constants.exe:
                     return new JohnBPearson.FileObjects.FileMetaDataModel.BinaryLinkFormat(path, unknkownFileSystemObject);
-                case Constants.ini:
-                    return new JohnBPearson.FileObjects.FileMetaDataModel.InitialIzation(path, unknkownFileSystemObject);
+                //case Constants.ini:
+                //    return new JohnBPearson.FileObjects.FileMetaDataModel.InitialIzation(path, unknkownFileSystemObject);
                 case Constants.url:
                     return new JohnBPearson.FileObjects.FileMetaDataModel.Url(path, unknkownFileSystemObject);
                 default:

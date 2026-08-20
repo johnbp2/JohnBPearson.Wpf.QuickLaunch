@@ -3,7 +3,7 @@
 "VSVersion" = "3:800"
 "ProjectType" = "8:{978C614F-708E-4E1A-B201-565925725DBA}"
 "IsWebType" = "8:FALSE"
-"ProjectName" = "8:Setup"
+"ProjectName" = "8:QuicklaunchApp"
 "LanguageId" = "3:1033"
 "CodePage" = "3:1252"
 "UILanguageId" = "3:1033"
@@ -37,13 +37,29 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.7.2"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.7.2 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.7.2"
+                    }
+                }
+            }
         }
         "Release"
         {
         "DisplayName" = "8:Release"
         "IsDebugOnly" = "11:FALSE"
         "IsReleaseOnly" = "11:TRUE"
-        "OutputFilename" = "8:Release\\Setup.msi"
+        "OutputFilename" = "8:Release\\Quicklaunch.msi"
         "PackageFilesAs" = "3:2"
         "PackageFileSize" = "3:-2147483648"
         "CabType" = "3:1"
@@ -124,7 +140,7 @@
             }
             "{3C67513D-01DD-4637-8A68-80971EB9504F}:_7F0E208447604FEF91F327290497A9A6"
             {
-            "DefaultLocation" = "8:[ProgramFilesFolder][Manufacturer]\\[ProductName]"
+            "DefaultLocation" = "8:[ProgramFilesFolder]\\[ProductName]"
             "Name" = "8:#1925"
             "AlwaysCreate" = "11:FALSE"
             "Condition" = "8:"
@@ -160,9 +176,9 @@
         "Product"
         {
         "Name" = "8:Microsoft Visual Studio"
-        "ProductName" = "8:Setup"
+        "ProductName" = "8:Quicklaunch"
         "ProductCode" = "8:{0883E5F2-A0A6-46FD-A321-6B1E2B384623}"
-        "PackageCode" = "8:{0BF3866E-FA8D-4991-B469-AF62A0B96BD6}"
+        "PackageCode" = "8:{FC857C0C-0510-46D7-BAE7-EFCD8DBFDBE8}"
         "UpgradeCode" = "8:{1D896A5E-0DA2-4EE8-8F70-1115163C83D9}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
@@ -170,10 +186,10 @@
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
         "ProductVersion" = "8:1.0.0"
-        "Manufacturer" = "8:john.johnpearson@gmail.com"
+        "Manufacturer" = "8:john pearson"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
-        "Title" = "8:Setup"
+        "Title" = "8:Quicklaunch"
         "Subject" = "8:"
         "ARPCONTACT" = "8:john.johnpearson@gmail.com"
         "Keywords" = "8:"
@@ -282,15 +298,15 @@
         }
         "Shortcut"
         {
-            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_E25A4643FEFA45508CB181CEA9B24DED"
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_032C0B365B3C411EA9B10E2B37A43028"
             {
-            "Name" = "8:Shortcut to %sPublish Items from Quicklaunch (Active)"
+            "Name" = "8:Shortcut to %sApplication Folder"
             "Arguments" = "8:"
             "Description" = "8:"
             "ShowCmd" = "3:1"
             "IconIndex" = "3:0"
             "Transitive" = "11:FALSE"
-            "Target" = "8:_4452D6FDBAD64347B456F701C3C7CF63"
+            "Target" = "8:_7F0E208447604FEF91F327290497A9A6"
             "Folder" = "8:_C8869F095FCF46D5AD505519A91482F0"
             "WorkingFolder" = "8:_7F0E208447604FEF91F327290497A9A6"
             "Icon" = "8:"

@@ -59,6 +59,12 @@ namespace Quicklaunch
             {
                 ontop = this.onTopYes.IsChecked.Value;
             }
+            bool horiz = false;
+            if(this.orientationHorizontal.IsChecked != null)
+            {
+              horiz  = this.orientationHorizontal.IsChecked.Value;
+            }
+            Properties.Settings.Default.horizontalOrientation = horiz;
             Properties.Settings.Default.alwaysOnTop = ontop;
             Properties.Settings.Default.folder = folder.Text;
             Properties.Settings.Default.Save();
@@ -89,6 +95,15 @@ namespace Quicklaunch
             else
             {
                 this.onTopNo.IsChecked = true;
+            }
+
+            if(Properties.Settings.Default.horizontalOrientation)
+            {
+                this.orientationHorizontal.IsChecked = true;
+            }
+            else
+            {
+                this.orientationVertical.IsChecked = true;
             }
         }
     }
