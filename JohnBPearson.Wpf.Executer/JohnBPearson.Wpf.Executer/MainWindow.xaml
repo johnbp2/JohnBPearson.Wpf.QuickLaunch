@@ -5,7 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Quicklaunch"
         mc:Ignorable="d"
-        Title="LaunchStuff"  WindowStyle="None"  Height="Auto" SizeToContent="WidthAndHeight" Opacity=".5" Loaded="Main_Loaded" Initialized="Main_Initialized" Background="#00000000" MouseDown="Main_MouseDown">
+        Title="Quicklaunch"  WindowStyle="None"  Height="Auto" SizeToContent="WidthAndHeight" Opacity=".5" Loaded="Main_Loaded" Initialized="Main_Initialized" AllowsTransparency="True" MouseDown="Main_MouseDown">
+    <!--<Window.Background>
+        <SolidColorBrush  Opacity="0.5" Color="White"/>
+    </Window.Background>-->
     <Window.ContextMenu>
         <ContextMenu x:Name="contextMenu"  Background="White" Width="Auto" Height="Auto" >
             <MenuItem x:Name="Settings" Width="Auto"  BorderThickness="1" BorderBrush="Black" Height="22" Header="Settings"  Click="MenuItemSettings_Click">

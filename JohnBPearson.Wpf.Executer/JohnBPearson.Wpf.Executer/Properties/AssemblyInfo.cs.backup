@@ -19,11 +19,12 @@ using System.Runtime.CompilerServices;
 // The following GUID is for the ID of the typelib if this project is exposed to COM.
 
 [assembly: Guid("a60d261e-1887-48be-8787-f73c3581d1f1")]
-[assembly: AssemblyTitle("GesturesApp")]
-[assembly: AssemblyProduct("GesturesApp")]
-[assembly: AssemblyCopyright("Copyright © John Pearson  2026")]
+[assembly: AssemblyTitle("Quicklaunch")]
+[assembly: AssemblyProduct("Quicklaunch")]
+[assembly: AssemblyCompany("John Pearson")]
+[assembly: AssemblyCopyright("Copyright ï¿½ John Pearson  2026")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
-[assembly: AssemblyDescription(" keyboard gesturers")]
-[assembly: AssemblyVersion("0.0.0.24")]
-[assembly: AssemblyFileVersion("0.0.0.24")]
+[assembly: AssemblyDescription(" ")]
+[assembly: AssemblyVersion("0.0.0.2")]
+[assembly: AssemblyFileVersion("0.0.0.2")]
