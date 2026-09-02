@@ -21,9 +21,9 @@ jobs:
       with:
         dotnet-version: 8.0.x
     - name: Restore dependencies
-      run: dotnet restore .\JohnBPearson.Wpf.Executer\JohnBPearson.Wpf.Executer\JohnBPearson.Wpf.Executer.csproj
+      run: dotnet restore .\JohnBPearson.Wpf.QuickLaunch\JohnBPearson.Wpf.Executer\QuickLaunch.csproj
     #  run: dotnet restore \JohnBPearson.Butlers.ApplicationExecuter\JohnBPearson.Butlers.QuickLaunchCore\JohnBPearson.Butlers.QuickLaunchCore.csproj
     - name: Build
-      run: dotnet build --no-restore .\JohnBPearson.Wpf.Executer\JohnBPearson.Wpf.Executer\JohnBPearson.Wpf.Executer.csproj
+      run: dotnet build --no-restore .\JohnBPearson.Wpf.QuickLaunch\JohnBPearson.Wpf.Executer\QuickLaunch.csproj
 #    - name: Test
  #     run: dotnet test --no-build --verbosity normal
