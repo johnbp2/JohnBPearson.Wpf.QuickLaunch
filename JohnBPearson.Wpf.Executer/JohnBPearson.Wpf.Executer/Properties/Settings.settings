@@ -3,7 +3,7 @@
   <Profiles />
   <Settings>
     <Setting Name="folder" Type="System.String" Scope="User">
-      <Value Profile="(Default)">.\Quick Launch</Value>
+      <Value Profile="(Default)" />
     </Setting>
     <Setting Name="alwaysOnTop" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
@@ -13,6 +13,15 @@
     </Setting>
     <Setting Name="animationOn" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="opacity" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">0.5</Value>
+    </Setting>
+    <Setting Name="bgColor" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">Blue</Value>
+    </Setting>
+    <Setting Name="dock" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
     </Setting>
   </Settings>
 </SettingsFile>

@@ -25,7 +25,7 @@ namespace Quicklaunch.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute(".\\Quick Launch")]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
         public string folder {
             get {
                 return ((string)(this["folder"]));
@@ -68,6 +68,42 @@ namespace Quicklaunch.Properties {
             }
             set {
                 this["animationOn"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0.5")]
+        public double opacity {
+            get {
+                return ((double)(this["opacity"]));
+            }
+            set {
+                this["opacity"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Blue")]
+        public global::System.Drawing.Color bgColor {
+            get {
+                return ((global::System.Drawing.Color)(this["bgColor"]));
+            }
+            set {
+                this["bgColor"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string dock {
+            get {
+                return ((string)(this["dock"]));
+            }
+            set {
+                this["dock"] = value;
             }
         }
     }

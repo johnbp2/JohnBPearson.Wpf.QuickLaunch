@@ -12,6 +12,7 @@ using JohnBPearson.FileObjects.FileMetaDataModel;
 
 namespace Quicklaunch
 {
+
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
@@ -32,7 +33,12 @@ namespace Quicklaunch
         void Main_Loaded(object sender, RoutedEventArgs e)
         {
             Services.UnmanagedService.SetOnTop(this);
-
+            var drawingColor = Properties.Settings.Default.bgColor;
+          
+          
+            this.Background = new SolidColorBrush(System.Windows.Media.Color.FromRgb(drawingColor.R, drawingColor.G, drawingColor.B));
+         
+            this.Background.Opacity = Properties.Settings.Default.opacity;
 
         }
 
@@ -154,41 +160,38 @@ namespace Quicklaunch
 
         private void MenuItemDockLeft_Click(object sender, RoutedEventArgs e)
         {
-            // Get the working area of the primary screen (excludes the Windows taskbar)
-            double screenWidth = SystemParameters.WorkArea.Width;
-            double screenHeight = SystemParameters.WorkArea.Height;
-            double screenTop = SystemParameters.WorkArea.Top;
-            double screenLeft = SystemParameters.WorkArea.Left;
-
-            // Ensure window is in normal state to allow manual positioning
-            this.WindowState = WindowState.Normal;
-
-            // Snap to the left side
-            this.Top = screenTop;
-            this.Left = screenLeft;
-        
-            this.Height = screenHeight;   // Takes up full screen height
+            this.DockWindow(Dock.Left);
         }
 
         private void MenuItemDockRight_Click(object sender, RoutedEventArgs e)
+        {
+            this.DockWindow(Dock.Right);
+        }
+        #endregion
+        private void DockWindow(Dock position)
         {
             double screenWidth = SystemParameters.WorkArea.Width;
             double screenHeight = SystemParameters.WorkArea.Height;
             double screenTop = SystemParameters.WorkArea.Top;
             double screenLeft = SystemParameters.WorkArea.Left;
-
-            
-
             this.WindowState = WindowState.Normal;
-
-            // Snap to the right side
             this.Top = screenTop;
-            this.Left = screenLeft + screenWidth - this.Width;
-            //this.Width = targetWidth;
+            if(position == Dock.Left)
+            {
+              
+                
+                this.Left = screenLeft;
+                
+            }
+            else if(position == Dock.Right)
+            {
+                
+                
+                this.Left = screenLeft + screenWidth - this.Width;
+                
+            }
             this.Height = screenHeight;
         }
-        #endregion
-
         void implementAnimatedImages()
         {
             stack1.Children.Clear();
