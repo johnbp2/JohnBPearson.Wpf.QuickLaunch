@@ -6,9 +6,9 @@ using System.IO;
 using System.Linq;
     using System.Text;
     using System.Threading.Tasks;
-    using global::JohnBPearson.FileObjects.FileMetaDataModel;
+    using global::JohnBPearson.FileObjects.FileModel;
 
-    namespace JohnBPearson.FileObjects.FileMetaDataModel
+    namespace JohnBPearson.FileObjects.FileModel
     {
 
         public class Url : FileSystemObjectBase, IFileSystemObjectBase

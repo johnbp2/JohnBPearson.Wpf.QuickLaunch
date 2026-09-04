@@ -1,7 +1,7 @@
 ﻿using System;
 using System.IO;
 using JohnBPearson.FileObjects;
-using JohnBPearson.FileObjects.FileMetaDataModel;
+using JohnBPearson.FileObjects.FileModel;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace UnitTests
@@ -17,7 +17,7 @@ namespace UnitTests
             // var link = new JohnBPearson.FileObjects.BinaryLinkFormat(exec);
             Assert.IsNotNull(exec);
             Assert.IsTrue(exec.Name.Length > 0);
-            Assert.IsTrue(exec.Type == JohnBPearson.FileObjects.FileMetaDataModel.FileExtensionEnum.dir);
+            Assert.IsTrue(exec.Type == JohnBPearson.FileObjects.FileModel.FileExtensionEnum.dir);
          //   Assert.IsTrue(fso.Extension.Length > 0);
          //   Assert.IsTrue(fso.Icon != null);
         }
