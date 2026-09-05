@@ -14,10 +14,11 @@
             <MenuItem x:Name="Settings" Width="Auto"  BorderThickness="1" BorderBrush="Black" Height="22" Header="Settings"  Click="MenuItemSettings_Click">
 
             </MenuItem>
-            <MenuItem x:Name="Exit" Width="Auto"  BorderThickness="1" BorderBrush="Black" Height="22" Header="Exit"  Click="MenuItemExit_Click">
-               </MenuItem>
+           
             <MenuItem x:Name="DockRight"  Width="Auto" Header="Dock Right" BorderThickness="1" BorderBrush="Black" Height="22" Click="MenuItemDockRight_Click"></MenuItem>     
             <MenuItem x:Name="DockLeft"  Width="Auto" Header="Dock Left" BorderThickness="1" BorderBrush="Black" Height="22" Click="MenuItemDockLeft_Click"></MenuItem>
+            <MenuItem x:Name="Exit" Width="Auto"  BorderThickness="1" BorderBrush="Black" Height="22" Header="Exit"  Click="MenuItemExit_Click">
+               </MenuItem>
         </ContextMenu>
     </Window.ContextMenu>
 

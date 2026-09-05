@@ -8,7 +8,7 @@ using System.Windows.Media;
 using System.Windows.Media.Animation;
 using Quicklaunch.Controls;
 using JohnBPearson.FileObjects;
-using JohnBPearson.FileObjects.FileMetaDataModel;
+using JohnBPearson.FileObjects.FileModel;
 
 namespace Quicklaunch
 {
@@ -73,6 +73,8 @@ namespace Quicklaunch
             settings.Owner = this;
             settings.ShowInTaskbar = true;
             settings.ShowDialog();
+            Facade.DirectoryPath = Properties.Settings.Default.folder;
+            Facade.RefreshFileSystemObjects();
             this.implementAnimatedImages();
 
 

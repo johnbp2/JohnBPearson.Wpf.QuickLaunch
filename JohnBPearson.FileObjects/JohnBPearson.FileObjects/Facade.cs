@@ -9,7 +9,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using CustomExtensions;
-using JohnBPearson.FileObjects.FileMetaDataModel;
+using JohnBPearson.FileObjects.FileModel;
 using Securify.ShellLink;
 
 namespace JohnBPearson.FileObjects
@@ -50,16 +50,16 @@ namespace JohnBPearson.FileObjects
         }
 
         private static string _directoryPath;
-        public  Facade(string dirPath)
-        {
+        //static Facade(string dirPath)
+        //{
 
-            if(isStringValidDir(dirPath))
-            {
+        //    if(isStringValidDir(dirPath))
+        //    {
 
-                _directoryPath = dirPath;
-            }
-        }
-        public void RefreshFileSystemObjects()
+        //        _directoryPath = dirPath;
+        //    }
+        //}
+        public static void RefreshFileSystemObjects()
         {
          InstantiateFileSystemObjects(_directoryPath);
         }
@@ -72,7 +72,8 @@ namespace JohnBPearson.FileObjects
                 var files = dir.EnumerateFiles();
                 foreach(var file in files)
                 {
-                    if(FileExtension.ExtensionStrings.Contains(file.Extension.SanitizeFileExtension()))
+                  //  if(FileExtension.ExtensionStrings.Contains(file.Extension.SanitizeFileExtension()))
+                  if(file.Extension.SanitizeFileExtension() == FileExtensionEnum.lnk.ToString())
                     {
                 
                         try
@@ -92,7 +93,7 @@ namespace JohnBPearson.FileObjects
                         }
 
                     }
-                    else
+                    else if(FileExtension.ExtensionStrings.Contains(file.Extension.SanitizeFileExtension()))
                     {
 
                         AddFileToObjects(file);

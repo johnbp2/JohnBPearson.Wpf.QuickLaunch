@@ -1,4 +1,4 @@
-﻿using JohnBPearson.FileObjects.FileMetaDataModel;
+﻿using JohnBPearson.FileObjects.FileModel;
 
 namespace JohnBPearson.FileObjects
 {

@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JohnBPearson.FileObjects", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnitTests", "..\JohnBPearson.FileObjects\UnitTests\UnitTests.csproj", "{D67990E8-4BCF-4770-8592-E2995299BA9B}"
 EndProject
-Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Setup", "..\Setup\Setup.vdproj", "{01ED8033-234B-4EB8-8771-ECEAA88F7823}"
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "QuicklaunchApp", "..\Setup\Setup.vdproj", "{01ED8033-234B-4EB8-8771-ECEAA88F7823}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -31,6 +31,7 @@ Global
 		{D67990E8-4BCF-4770-8592-E2995299BA9B}.Release|Any CPU.Build.0 = Release|Any CPU
 		{01ED8033-234B-4EB8-8771-ECEAA88F7823}.Debug|Any CPU.ActiveCfg = Debug
 		{01ED8033-234B-4EB8-8771-ECEAA88F7823}.Release|Any CPU.ActiveCfg = Release
+		{01ED8033-234B-4EB8-8771-ECEAA88F7823}.Release|Any CPU.Build.0 = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

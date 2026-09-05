@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using CustomExtensions;
 
-namespace JohnBPearson.FileObjects.FileMetaDataModel
+namespace JohnBPearson.FileObjects.FileModel
 {
 
   

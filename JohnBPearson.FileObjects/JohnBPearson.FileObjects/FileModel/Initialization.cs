@@ -5,8 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace JohnBPearson.FileObjects.FileMetaDataModel
+namespace JohnBPearson.FileObjects.FileModel
 {
+    [Obsolete("This class is obsolete and will be removed in future versions. Please use the new Initialization class instead.")]
     internal class InitialIzation : FileSystemObjectBase, IFileSystemObjectBase, IInitialization
     {
 

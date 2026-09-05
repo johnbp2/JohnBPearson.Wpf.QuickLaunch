@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 using JohnBPearson.FileObjects;
 using CustomExtensions;
 
-namespace JohnBPearson.FileObjects.FileMetaDataModel
+namespace JohnBPearson.FileObjects.FileModel
 {
 
     public abstract class FileSystemObjectBase : IFileSystemObjectBase
@@ -112,7 +112,7 @@ namespace JohnBPearson.FileObjects.FileMetaDataModel
             }
   
      
-            if(this.Type != FileMetaDataModel.FileExtensionEnum.dir)
+            if(this.Type != FileModel.FileExtensionEnum.dir)
             {
                 this._icon = System.Drawing.Icon.ExtractAssociatedIcon(fullPath);
             }
