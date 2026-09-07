@@ -7,7 +7,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+<<<<<<<< HEAD:JohnBPearson.FileObjects/JohnBPearson.FileObjects/Model/BinaryLinkFormat.cs
 namespace JohnBPearson.FileObjects.Model
+========
+namespace JohnBPearson.FileObjects.FileModel
+>>>>>>>> f7d82559a00f21c7dc12d9aeb98277b27b5e9ddd:JohnBPearson.FileObjects/JohnBPearson.FileObjects/FileModel/BinaryLinkFormat.cs
 {
     public sealed class BinaryLinkFormat : FileSystemObjectBase
     {

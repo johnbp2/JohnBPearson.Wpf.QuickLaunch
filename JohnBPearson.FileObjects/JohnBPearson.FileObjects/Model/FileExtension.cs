@@ -6,7 +6,11 @@ using System.Text;
 using System.Threading.Tasks;
 using CustomExtensions;
 
+<<<<<<<< HEAD:JohnBPearson.FileObjects/JohnBPearson.FileObjects/Model/FileExtension.cs
 namespace JohnBPearson.FileObjects.Model
+========
+namespace JohnBPearson.FileObjects.FileModel
+>>>>>>>> f7d82559a00f21c7dc12d9aeb98277b27b5e9ddd:JohnBPearson.FileObjects/JohnBPearson.FileObjects/FileModel/FileExtension.cs
 {
 
   
