@@ -8,7 +8,8 @@ using System.Windows.Media;
 using System.Windows.Media.Animation;
 using Quicklaunch.Controls;
 using JohnBPearson.FileObjects;
-using JohnBPearson.FileObjects.FileMetaDataModel;
+using JohnBPearson.FileObjects.Model;
+
 
 namespace Quicklaunch
 {
@@ -26,10 +27,10 @@ namespace Quicklaunch
         const int imageWidth = 32;
         private const double scaleTransformFactor = 1.4;
 
-        [Obsolete]
-        double currentMargine = 0;
+  
 
-        #region events
+
+
         void Main_Loaded(object sender, RoutedEventArgs e)
         {
             Services.UnmanagedService.SetOnTop(this);
@@ -38,7 +39,7 @@ namespace Quicklaunch
           
             this.Background = new SolidColorBrush(System.Windows.Media.Color.FromRgb(drawingColor.R, drawingColor.G, drawingColor.B));
          
-            this.Background.Opacity = Properties.Settings.Default.opacity;
+            this.Background.Opacity = Properties.Settings.Default.opacity/100;
 
         }
 
@@ -73,6 +74,10 @@ namespace Quicklaunch
             settings.Owner = this;
             settings.ShowInTaskbar = true;
             settings.ShowDialog();
+            this.Background.Opacity = Properties.Settings.Default.opacity/100;
+            stack1.Children.Clear();
+            Facade.DirectoryPath = Properties.Settings.Default.folder;
+            Facade.RefreshFileSystemObjects();
             this.implementAnimatedImages();
 
 
@@ -167,7 +172,17 @@ namespace Quicklaunch
         {
             this.DockWindow(Dock.Right);
         }
-        #endregion
+
+        private void MenuItemDockTop_Click(object sender, RoutedEventArgs e)
+        {
+          this.DockWindow(Dock.Top);
+        }
+
+        private void MenuItemDockBottom_Click(object sender, RoutedEventArgs e)
+        {
+            this.DockWindow(Dock.Bottom);
+        }
+
         private void DockWindow(Dock position)
         {
             double screenWidth = SystemParameters.WorkArea.Width;
@@ -175,23 +190,44 @@ namespace Quicklaunch
             double screenTop = SystemParameters.WorkArea.Top;
             double screenLeft = SystemParameters.WorkArea.Left;
             this.WindowState = WindowState.Normal;
-            this.Top = screenTop;
+         
             if(position == Dock.Left)
             {
-              
-                
+                this.Top = screenTop;
+
                 this.Left = screenLeft;
-                
+
             }
             else if(position == Dock.Right)
             {
-                
-                
+
+                this.Top = screenTop;
                 this.Left = screenLeft + screenWidth - this.Width;
-                
+
             }
-            this.Height = screenHeight;
+            else if(position == Dock.Top)
+            {
+              
+                this.Top = screenTop;
+
+                var temp = this.Width / 2;
+
+                //double screenWidth = SystemParameters.WorkArea.Width;
+                this.Left = (screenWidth / 2) - temp;
+            }
+            else if(position == Dock.Bottom)
+            {
+                this.Top = screenHeight - this.Height;
+                var temp = this.Width / 2;
+                this.Left = (screenWidth / 2) - temp;
+            }
+            if(position == Dock.Left || position == Dock.Right)
+            {
+                this.Height = screenHeight;
+            }
         }
+
+
         void implementAnimatedImages()
         {
             stack1.Children.Clear();

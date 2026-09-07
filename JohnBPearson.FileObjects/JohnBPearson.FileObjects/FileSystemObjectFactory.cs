@@ -6,7 +6,7 @@ using System.Runtime.CompilerServices;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
-using JohnBPearson.FileObjects.FileMetaDataModel;
+using JohnBPearson.FileObjects.Model;
 
 namespace JohnBPearson.FileObjects
 {
@@ -22,7 +22,7 @@ namespace JohnBPearson.FileObjects
         }
 
 
-        public static FileMetaDataModel.IFileSystemObjectBase Build(string path, FileInfo fileInfo)
+        public static Model.IFileSystemObjectBase Build(string path, FileInfo fileInfo)
         {
             var unknkownFileSystemObject = fileInfo;
 
@@ -52,19 +52,19 @@ namespace JohnBPearson.FileObjects
             switch(extension)
             {
                 case Constants.dir:
-                    return new JohnBPearson.FileObjects.FileMetaDataModel.Directory(path, unknkownFileSystemObject);
+                    return new JohnBPearson.FileObjects.Model.Directory(path, unknkownFileSystemObject);
                     
                 
                 case Constants.lnk:
-                    return new JohnBPearson.FileObjects.FileMetaDataModel.BinaryLinkFormat(path, unknkownFileSystemObject);
+                    return new JohnBPearson.FileObjects.Model.BinaryLinkFormat(path, unknkownFileSystemObject);
 
                    
                 case Constants.exe:
-                    return new JohnBPearson.FileObjects.FileMetaDataModel.BinaryLinkFormat(path, unknkownFileSystemObject);
+                    return new JohnBPearson.FileObjects.Model.BinaryLinkFormat(path, unknkownFileSystemObject);
                 //case Constants.ini:
-                //    return new JohnBPearson.FileObjects.FileMetaDataModel.InitialIzation(path, unknkownFileSystemObject);
+                //    return new JohnBPearson.FileObjects.Model.InitialIzation(path, unknkownFileSystemObject);
                 case Constants.url:
-                    return new JohnBPearson.FileObjects.FileMetaDataModel.Url(path, unknkownFileSystemObject);
+                    return new JohnBPearson.FileObjects.Model.Url(path, unknkownFileSystemObject);
                 default:
                     return null;
                    

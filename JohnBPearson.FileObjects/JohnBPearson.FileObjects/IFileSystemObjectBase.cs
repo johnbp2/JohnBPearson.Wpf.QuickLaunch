@@ -1,7 +1,7 @@
 ﻿using System.Drawing;
-using JohnBPearson.FileObjects.FileMetaDataModel;
+using JohnBPearson.FileObjects.Model;
 
-namespace JohnBPearson.FileObjects.FileMetaDataModel
+namespace JohnBPearson.FileObjects.Model
 {
     public interface IFileSystemObjectBase
     {
@@ -10,6 +10,10 @@ namespace JohnBPearson.FileObjects.FileMetaDataModel
             get;
         }
         string FullPath
+        {
+            get;
+        }
+        string ParentPath
         {
             get;
         }

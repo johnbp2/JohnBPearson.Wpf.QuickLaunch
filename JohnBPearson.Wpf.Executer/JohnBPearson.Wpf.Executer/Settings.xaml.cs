@@ -67,6 +67,7 @@ namespace Quicklaunch
             Properties.Settings.Default.horizontalOrientation = horiz;
             Properties.Settings.Default.alwaysOnTop = ontop;
             Properties.Settings.Default.folder = folder.Text;
+            Properties.Settings.Default.opacity = this.opacitySlider.Value ;
             Properties.Settings.Default.Save();
             this.Close();
                 
@@ -105,6 +106,7 @@ namespace Quicklaunch
             {
                 this.orientationVertical.IsChecked = true;
             }
+            this.opacitySlider.Value = Properties.Settings.Default.opacity;
         }
     }
 }

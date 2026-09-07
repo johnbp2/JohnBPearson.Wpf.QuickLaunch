@@ -5,7 +5,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
 using JohnBPearson.FileObjects;
-using JohnBPearson.FileObjects.FileMetaDataModel;
+using JohnBPearson.FileObjects.Model;
 
 namespace Quicklaunch.Services
 {

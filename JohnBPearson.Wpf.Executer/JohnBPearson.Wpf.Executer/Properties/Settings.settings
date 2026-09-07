@@ -15,7 +15,7 @@
       <Value Profile="(Default)">True</Value>
     </Setting>
     <Setting Name="opacity" Type="System.Double" Scope="User">
-      <Value Profile="(Default)">0.5</Value>
+      <Value Profile="(Default)">50</Value>
     </Setting>
     <Setting Name="bgColor" Type="System.Drawing.Color" Scope="User">
       <Value Profile="(Default)">Blue</Value>

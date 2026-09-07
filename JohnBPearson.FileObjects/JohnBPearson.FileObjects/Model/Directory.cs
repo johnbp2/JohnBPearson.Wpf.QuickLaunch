@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using JohnBPearson.FileObjects;
 
-namespace JohnBPearson.FileObjects.FileMetaDataModel
+namespace JohnBPearson.FileObjects.Model
 {
     internal class Directory : FileSystemObjectBase, IFileSystemObjectBase
     {

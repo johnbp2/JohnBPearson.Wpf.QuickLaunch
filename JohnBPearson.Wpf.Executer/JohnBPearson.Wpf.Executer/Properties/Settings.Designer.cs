@@ -73,7 +73,7 @@ namespace Quicklaunch.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0.5")]
+        [global::System.Configuration.DefaultSettingValueAttribute("50")]
         public double opacity {
             get {
                 return ((double)(this["opacity"]));

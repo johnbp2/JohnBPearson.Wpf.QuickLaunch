@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Quicklaunch"
         mc:Ignorable="d"
-        Title="Quicklaunch"  WindowStyle="None"  Height="Auto" SizeToContent="WidthAndHeight" Opacity=".5" Loaded="Main_Loaded" Initialized="Main_Initialized" AllowsTransparency="True" MouseDown="Main_MouseDown">
+        Title="Quicklaunch"  WindowStyle="None"  Height="Auto" SizeToContent="WidthAndHeight"  Loaded="Main_Loaded" Initialized="Main_Initialized" AllowsTransparency="True" MouseDown="Main_MouseDown">
     <!--<Window.Background>
         <SolidColorBrush  Opacity="0.5" Color="White"/>
     </Window.Background>-->
@@ -14,10 +14,13 @@
             <MenuItem x:Name="Settings" Width="Auto"  BorderThickness="1" BorderBrush="Black" Height="22" Header="Settings"  Click="MenuItemSettings_Click">
 
             </MenuItem>
-            <MenuItem x:Name="Exit" Width="Auto"  BorderThickness="1" BorderBrush="Black" Height="22" Header="Exit"  Click="MenuItemExit_Click">
-               </MenuItem>
-            <MenuItem x:Name="DockRight"  Width="Auto" Header="Dock Right" BorderThickness="1" BorderBrush="Black" Height="22" Click="MenuItemDockRight_Click"></MenuItem>     
+            <MenuItem x:Name="DockTop"  Width="Auto" Header="Dock Top" BorderThickness="1" BorderBrush="Black" Height="22" Click="MenuItemDockTop_Click"></MenuItem>
+            <MenuItem x:Name="DockRight"  Width="Auto" Header="Dock Right" BorderThickness="1" BorderBrush="Black" Height="22" Click="MenuItemDockRight_Click"></MenuItem>
+            <MenuItem x:Name="DockBottom"  Width="Auto" Header="Dock Bottom" BorderThickness="1" BorderBrush="Black" Height="22" Click="MenuItemDockBottom_Click"></MenuItem>
             <MenuItem x:Name="DockLeft"  Width="Auto" Header="Dock Left" BorderThickness="1" BorderBrush="Black" Height="22" Click="MenuItemDockLeft_Click"></MenuItem>
+
+            <MenuItem x:Name="Exit" Width="Auto"  BorderThickness="1" BorderBrush="Black" Height="22" Header="Exit"  Click="MenuItemExit_Click">
+            </MenuItem>
         </ContextMenu>
     </Window.ContextMenu>
 

@@ -5,15 +5,17 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Quicklaunch"
         mc:Ignorable="d"
-        Title="Settings"  Width="Auto" Height="Auto" SizeToContent="WidthAndHeight" Opacity=".5"  Background="White" Loaded="SettingsWindow_Loaded" d:DesignHeight="296.538">
+        Title="Settings"  Width="Auto" Height="Auto" SizeToContent="WidthAndHeight" Loaded="SettingsWindow_Loaded" d:DesignHeight="372.732">
     <Window.Foreground>
         <ImageBrush/>
     </Window.Foreground>
     <Grid x:Name="SettingsGrid">
 
         <Grid.RowDefinitions>
-            <RowDefinition MinHeight="80"/>
-            <RowDefinition MinHeight="80"/>
+            <RowDefinition MinHeight="80" Height="Auto"/>
+            <RowDefinition MinHeight="80" Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
@@ -22,16 +24,17 @@
         </Grid.ColumnDefinitions>
         <TextBox x:Name="folder" TextWrapping="WrapWithOverflow" Grid.Row="0" Grid.Column="0" Text="" BorderBrush="#FF737780" Margin="0,20,0,0" />
         <Label x:Name="label" Content="Selected Dir." Grid.Column="0" Grid.Row="0" Margin="0,0,0,0" FontSize="10" VerticalAlignment="Top" Height="18" Width="53" Padding="0,2,0,0" HorizontalContentAlignment="Right" HorizontalAlignment="Left"/>
-        <Button x:Name="ok" Grid.Column="1" Content="Ok" HorizontalAlignment="Left" Grid.Row="2" Width="34" VerticalAlignment="Bottom" Click="ok_Click" Height="20" Margin="10,0,0,0"/>
+        <Button x:Name="ok" Grid.Column="1" Content="Ok" HorizontalAlignment="Left" Grid.Row="4" Width="34" VerticalAlignment="Bottom" Click="ok_Click" Height="20" Margin="10,0,0,0"/>
         <GroupBox x:Name="OnTop" Header="Always on top" Grid.Row="1" BorderBrush="Red" Foreground="Black" HorizontalAlignment="Left"  >
             <StackPanel Orientation="Horizontal">
                 <RadioButton x:Name="onTopYes" GroupName="OnTop" Content="yes" HorizontalAlignment="Left" Margin="0,20,0,1" Grid.Row="1" VerticalAlignment="Top" Height="14" Width="36"/>
                 <RadioButton x:Name="onTopNo" GroupName="OnTop" Content="no" HorizontalAlignment="Left" Margin="5,20,0,0" Grid.Row="1" VerticalAlignment="Top" Height="14" Width="39" Checked="onTopNo_Checked"/>
 
-            </StackPanel></GroupBox>
-      
-        <Button x:Name="cancel" Grid.Column="1" Width="50px" Grid.Row="2" Content="Cancel"  Height="20" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,5,0"/>
-        <Button x:Name="browse" Content="Browse" HorizontalAlignment="Center" Grid.Column="1" VerticalAlignment="Top" Width="50" Click="button_Click" Height="20" Margin="0,8,0,0">
+            </StackPanel>
+        </GroupBox>
+
+        <Button x:Name="cancel" Grid.Column="1" Width="50px" Grid.Row="4" Content="Cancel"  Height="20" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,5,0"/>
+        <Button x:Name="browse" Content="Browse" HorizontalAlignment="Center" Grid.Column="1" VerticalAlignment="Center" Width="50" Click="button_Click" Height="20" Margin="0,8,0,0">
             <Button.Background>
                 <SolidColorBrush Color="#FFF0F0F0"/>
             </Button.Background>
@@ -40,6 +43,15 @@
             <StackPanel Orientation="Horizontal">
                 <RadioButton x:Name="orientationHorizontal" GroupName="Orientation" Content="Horizontal" HorizontalAlignment="Left" Margin="0,20,0,1" Grid.Row="1" VerticalAlignment="Top" Height="14" Width="80"/>
                 <RadioButton x:Name="orientationVertical" GroupName="Orientation" Content="Vertical" HorizontalAlignment="Left" Margin="5,20,0,0" Grid.Row="1" VerticalAlignment="Top" Height="14" Width="80"/>
+            </StackPanel>
+        </GroupBox>
+
+
+        <GroupBox x:Name="opacitry"  Grid.Column="0" Grid.Row="3" >
+            <StackPanel>
+            <Label x:Name="label1" Content="Opacity" HorizontalAlignment="Left" Margin="0,0,0,0"/>
+            <Slider x:Name="opacitySlider" Minimum="1" Maximum="100" IsSnapToTickEnabled="True" HorizontalAlignment="Left" Margin="0,0,0,0" Width="150" LargeChange="5" SmallChange="1"/>
+
             </StackPanel>
         </GroupBox>
     </Grid>

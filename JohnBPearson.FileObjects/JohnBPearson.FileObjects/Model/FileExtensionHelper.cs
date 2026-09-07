@@ -4,13 +4,12 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
-using CustomExtensions;
 
-namespace JohnBPearson.FileObjects.FileMetaDataModel
+namespace JohnBPearson.FileObjects.Model
 {
 
   
-    internal static class FileExtension
+    internal static class FileExtensionHelper
     {
 
         private static List<Tuple<string, int>> _extensions;
@@ -22,27 +21,19 @@ namespace JohnBPearson.FileObjects.FileMetaDataModel
             }
 
 
-
         }
-        public static IEnumerable<string> ExtensionStrings
-        {
-            get
-            {
-                return _extensions.Select(x => x.Item1);
-            }
-        }
-        static FileExtension()
+        static FileExtensionHelper()
         {
             _extensions = new List<Tuple<string, int>>();
             int i = 0;
             foreach (var item in Enum.GetValues(typeof(FileExtensionEnum)))
             {
-                
-                _extensions.Add(new Tuple<string, int>($"{item.ToString()}",i));
+
+                _extensions.Add(new Tuple<string, int>($".{item.ToString()}",i));
                 i++;
             }
         
-            //foreach (var item in Enum.GetNames(typeof(Extension)))
+            //foreach (var item in Enum.GetNames(typeof(FileExtensionEnum)))
             //{
             //    _extensions.Add(string.Concat(".",item.ToString()));
             //}

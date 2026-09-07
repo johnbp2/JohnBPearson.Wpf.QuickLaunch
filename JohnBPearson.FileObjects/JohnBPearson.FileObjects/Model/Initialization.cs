@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace JohnBPearson.FileObjects.FileMetaDataModel
+namespace JohnBPearson.FileObjects.Model
 {
     internal class InitialIzation : FileSystemObjectBase, IFileSystemObjectBase, IInitialization
     {

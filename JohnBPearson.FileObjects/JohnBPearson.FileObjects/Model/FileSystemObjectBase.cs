@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 using JohnBPearson.FileObjects;
 using CustomExtensions;
 
-namespace JohnBPearson.FileObjects.FileMetaDataModel
+namespace JohnBPearson.FileObjects.Model
 {
 
     public abstract class FileSystemObjectBase : IFileSystemObjectBase
@@ -29,6 +29,13 @@ namespace JohnBPearson.FileObjects.FileMetaDataModel
             private set
             {
                 _fullPath = value;
+            }
+        }
+        public string ParentPath
+        {
+            get
+            {
+                return Path.GetDirectoryName(FullPath);
             }
         }
         private string _name = string.Empty;
@@ -112,7 +119,7 @@ namespace JohnBPearson.FileObjects.FileMetaDataModel
             }
   
      
-            if(this.Type != FileMetaDataModel.FileExtensionEnum.dir)
+            if(this.Type != Model.FileExtensionEnum.dir)
             {
                 this._icon = System.Drawing.Icon.ExtractAssociatedIcon(fullPath);
             }

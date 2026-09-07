@@ -1,4 +1,4 @@
-﻿namespace JohnBPearson.FileObjects.FileMetaDataModel
+﻿namespace JohnBPearson.FileObjects.Model
 {
     public interface IInitialization
     {

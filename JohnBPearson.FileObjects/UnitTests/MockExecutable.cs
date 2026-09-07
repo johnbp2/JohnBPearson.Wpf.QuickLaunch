@@ -5,7 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using JohnBPearson.FileObjects.FileMetaDataModel;
+using JohnBPearson.FileObjects.Model;
 
 namespace UnitTests
 {
@@ -31,7 +31,13 @@ namespace UnitTests
                 return "test";
             }
         }
-
+        public string ParentPath
+        {
+            get
+            {
+                return Path.GetDirectoryName(FullPath);
+            }
+        }
         private string _extension = string.Empty;
         public string Extension
         {
