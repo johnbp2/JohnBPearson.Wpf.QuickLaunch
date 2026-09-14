@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Media;
 using JohnBPearson.FileObjects.Model;
+using JohnBPearson.FileObjects;
 
 namespace Quicklaunch.Controls
 {
