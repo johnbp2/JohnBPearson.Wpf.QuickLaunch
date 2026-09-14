@@ -1,7 +1,7 @@
 ﻿using System.Drawing;
 using JohnBPearson.FileObjects.Model;
 
-namespace JohnBPearson.FileObjects.Model
+namespace JohnBPearson.FileObjects
 {
     public interface IFileSystemObjectBase
     {

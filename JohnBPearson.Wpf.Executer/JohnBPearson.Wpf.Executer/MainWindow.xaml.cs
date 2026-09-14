@@ -26,20 +26,31 @@ namespace Quicklaunch
 
         const int imageWidth = 32;
         private const double scaleTransformFactor = 1.4;
+        private int totalWidth = 0;
+        public int TotalWidth
+        {
 
-  
+            get
+            {
+                return totalWidth;
+            }
+            private set { totalWidth = value; }
+        }
 
+
+
+        #region events
 
 
         void Main_Loaded(object sender, RoutedEventArgs e)
         {
             Services.UnmanagedService.SetOnTop(this);
             var drawingColor = Properties.Settings.Default.bgColor;
-          
-          
+
+
             this.Background = new SolidColorBrush(System.Windows.Media.Color.FromRgb(drawingColor.R, drawingColor.G, drawingColor.B));
-         
-            this.Background.Opacity = Properties.Settings.Default.opacity/100;
+
+            this.Background.Opacity = Properties.Settings.Default.opacity / 100;
 
         }
 
@@ -74,7 +85,7 @@ namespace Quicklaunch
             settings.Owner = this;
             settings.ShowInTaskbar = true;
             settings.ShowDialog();
-            this.Background.Opacity = Properties.Settings.Default.opacity/100;
+            this.Background.Opacity = Properties.Settings.Default.opacity / 100;
             stack1.Children.Clear();
             Facade.DirectoryPath = Properties.Settings.Default.folder;
             Facade.RefreshFileSystemObjects();
@@ -175,13 +186,14 @@ namespace Quicklaunch
 
         private void MenuItemDockTop_Click(object sender, RoutedEventArgs e)
         {
-          this.DockWindow(Dock.Top);
+            this.DockWindow(Dock.Top);
         }
 
         private void MenuItemDockBottom_Click(object sender, RoutedEventArgs e)
         {
             this.DockWindow(Dock.Bottom);
-        }
+        } 
+        #endregion
 
         private void DockWindow(Dock position)
         {

@@ -97,13 +97,25 @@ namespace Quicklaunch.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string dock {
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int dock {
             get {
-                return ((string)(this["dock"]));
+                return ((int)(this["dock"]));
             }
             set {
                 this["dock"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool autoShade {
+            get {
+                return ((bool)(this["autoShade"]));
+            }
+            set {
+                this["autoShade"] = value;
             }
         }
     }

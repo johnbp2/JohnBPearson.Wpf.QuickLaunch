@@ -22,7 +22,7 @@ namespace JohnBPearson.FileObjects
         }
 
 
-        public static Model.IFileSystemObjectBase Build(string path, FileInfo fileInfo)
+        public static IFileSystemObjectBase Build(string path, FileInfo fileInfo)
         {
             var unknkownFileSystemObject = fileInfo;
 
