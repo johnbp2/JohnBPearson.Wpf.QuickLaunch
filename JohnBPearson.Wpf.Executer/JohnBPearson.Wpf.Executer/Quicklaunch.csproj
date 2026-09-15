@@ -21,7 +21,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Include="Quicklaunch.ico" />
+    <Content Include="Quicklaunch.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
   <ItemGroup>

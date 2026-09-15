@@ -1,5 +1,4 @@
-﻿#define IMAGETEST
-using System.Diagnostics;
+﻿using System.Diagnostics;
 using System.Runtime.InteropServices;
 using System.Windows;
 using System.Windows.Controls;
@@ -26,15 +25,16 @@ namespace Quicklaunch
 
         const int imageWidth = 32;
         private const double scaleTransformFactor = 1.4;
-        private int totalWidth = 0;
-        public int TotalWidth
+        private double toolbarLength = 0;
+        public double ToolbarLength
         {
 
             get
             {
-                return totalWidth;
+                return toolbarLength;
             }
-            private set { totalWidth = value; }
+            private set {
+                toolbarLength = value; }
         }
 
 
@@ -58,7 +58,7 @@ namespace Quicklaunch
         void Main_Initialized(object sender, EventArgs e)
         {
 
-            this.implementAnimatedImages();
+            this.populateToolbar();
 
 
         }
@@ -89,7 +89,7 @@ namespace Quicklaunch
             stack1.Children.Clear();
             Facade.DirectoryPath = Properties.Settings.Default.folder;
             Facade.RefreshFileSystemObjects();
-            this.implementAnimatedImages();
+            this.populateToolbar();
 
 
 
@@ -108,11 +108,9 @@ namespace Quicklaunch
 
                 ScaleTransform? temp = null;
 
-#if IMAGETEST
+
                 temp = image.LayoutTransform as ScaleTransform;
-#else
-                 temp = image.RenderTransform as ScaleTransform;
-#endif
+
                 if(temp != null)
                 {
 
@@ -192,9 +190,23 @@ namespace Quicklaunch
         private void MenuItemDockBottom_Click(object sender, RoutedEventArgs e)
         {
             this.DockWindow(Dock.Bottom);
-        } 
+        }
+ 
+        public void buttonAutoShade_Click(object sender, RoutedEventArgs e)
+        {
+
+            for(int i = 0; i < stack1.Children.Count; i++)
+            {
+                if(i != 0)
+                {
+                stack1.Children[i].Visibility = stack1.Children[i].Visibility == Visibility.Visible ? Visibility.Collapsed : Visibility.Visible;
+                }
+            }
+        }
+
         #endregion
 
+        #region private methods
         private void DockWindow(Dock position)
         {
             double screenWidth = SystemParameters.WorkArea.Width;
@@ -240,13 +252,14 @@ namespace Quicklaunch
         }
 
 
-        void implementAnimatedImages()
+        void populateToolbar()
         {
             stack1.Children.Clear();
+            this.ToolbarLength = 0;
             NameScope.SetNameScope(this, new NameScope());
+          
 
-
-           // stack1.HorizontalAlignment = HorizontalAlignment.Left;
+            // stack1.HorizontalAlignment = HorizontalAlignment.Left;
             if(Properties.Settings.Default.horizontalOrientation)
             {
                 stack1.Orientation = Orientation.Horizontal;
@@ -256,18 +269,22 @@ namespace Quicklaunch
                 stack1.Orientation = Orientation.Vertical;
             }
 
-         
+
             Facade.DirectoryPath = Properties.Settings.Default.folder;
             var i = 100;
 
-            double width = 0.00;
+
+            //if(Properties.Settings.Default.autoShade)
+            //{
+            //    this.addAutoShadeButton();
+            //}
 
             foreach(var fileSystemObject in Facade.FileSystemObjects)
             {
 
                 if(fileSystemObject.Type != FileExtensionEnum.bat)
                 {
-                    Controls.ImageControl image = convertIconToBitmap(i, ref width, fileSystemObject);
+                    Controls.ImageControl image = createImageControl(i, fileSystemObject);
 
                     image.MouseDown += new MouseButtonEventHandler(Mouse_Down);
                     this.defaultImageMargins(ref image);
@@ -291,38 +308,70 @@ namespace Quicklaunch
                     Storyboard.SetTargetProperty(image.scaleTransform, new PropertyPath(ScaleTransform.ScaleXProperty));
                     Storyboard.SetTargetProperty(image.scaleTransform, new PropertyPath(ScaleTransform.ScaleYProperty));
 
-#if IMAGETEST
+
                     image.LayoutTransform = image.scaleTransform;
-#else
-                    image.RenderTransform = image.scaleTransform;
-#endif
+
+
+                    //if(Properties.Settings.Default.autoShade)
+                    //{
+                    //    image.Visibility = Visibility.Collapsed;
+                    //}
                     i++;
+
 
                 }
 
             }
+            this.setWidths(ToolbarLength);
+            this.setHeights(ToolbarLength);
+   
+        }
+        // TODO: [x]refactor separate method for height.
+        private void setWidths(double width)
+        {
+
+            // 60 horizontal height is always 60, vertical width is always 60.  The other dimension is variable based on the number of images and the image width.
             if(Properties.Settings.Default.horizontalOrientation)
             {
                 this.Width = width;
                 this.stack1.Width = width;
-                this.stack1.Height = 60;
-                this.gridMain.ColumnDefinitions[0].Width = new GridLength(width);
-                this.Height = 60;
-                this.gridMain.RowDefinitions[0].Height = new GridLength(60);
+                                this.gridMain.ColumnDefinitions[0].Width = new GridLength(width);
+           
                 this.gridMain.Width = width;
-                this.gridMain.Height = 60;
+             
             }
             else
             {
-                this.Height = width;
-                this.stack1.Height = width;
+                          
                 this.stack1.Width = 60;
-                this.gridMain.RowDefinitions[0].Height = new GridLength(width);
-                this.gridMain.Height = width;
+               
+              
                 this.gridMain.Width = 60;
                 this.Width = 60;
                 this.gridMain.ColumnDefinitions[0].Width = new GridLength(60);
             }
+        }
+        private void setHeights(double height)
+        {
+
+            if(Properties.Settings.Default.horizontalOrientation)
+            {
+                this.stack1.Height = 60;
+
+                this.Height = 60;
+                this.gridMain.RowDefinitions[0].Height = new GridLength(60);
+                this.gridMain.Height = 60;
+
+            }
+            else
+            {
+                this.Height = height;
+                this.gridMain.RowDefinitions[0].Height = new GridLength(height);
+                this.stack1.Height = height;
+                this.gridMain.Height = height;
+
+            }
+
         }
         private void defaultImageMargins(ref Controls.ImageControl image)
         {
@@ -336,14 +385,14 @@ namespace Quicklaunch
             }
         }
 
-        private Controls.ImageControl convertIconToBitmap(int i, ref double width, IFileSystemObjectBase fileSystemObject)
+        private Controls.ImageControl createImageControl(int i, IFileSystemObjectBase fileSystemObject)
         {
             var image2 = new Controls.ImageControl(new ScaleTransform(1, 1), fileSystemObject);
             image2.Name = $"image{i}";
 
 
             image2.Width = imageWidth;
-            width = width + imageWidth + 20;
+            ToolbarLength = ToolbarLength + imageWidth + 20;
 
             var bmi = Services.ImageService.IconToBitmapImage(fileSystemObject.Icon);
 
@@ -353,6 +402,21 @@ namespace Quicklaunch
             return image2;
         }
 
+        private void addAutoShadeButton()
+        {
+            var button = new Button();
+            button.Name = "buttonAutoShade";
+            var icon = new System.Drawing.Icon(System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Quicklaunch.ico"));
+            var bmi = Services.ImageService.IconToBitmapImage(icon);
+            var image = new Image();
+            image.BeginInit();
+            image.Source = bmi;
+            image.EndInit();
+            button.Content = image;
+             button.Click += new RoutedEventHandler(buttonAutoShade_Click);
+            this.stack1.Children.Add(button);
+        }
 
+        #endregion
     }
 }
