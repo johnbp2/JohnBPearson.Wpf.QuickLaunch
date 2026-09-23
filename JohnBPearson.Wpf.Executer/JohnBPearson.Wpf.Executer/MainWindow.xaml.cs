@@ -212,7 +212,7 @@ namespace Quicklaunch
         {
             // open folder with shell
             var folder = Properties.Settings.Default.folder;
-            if (!string.IsNullOrWhiteSpace(folder) && Directory.Exists(folder))
+            if (!string.IsNullOrWhiteSpace(folder) && System.IO.Directory.Exists(folder))
             {
                 var psi = new ProcessStartInfo
                 {
