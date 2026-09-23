@@ -11,14 +11,18 @@
     </Window.Background>-->
     <Window.ContextMenu>
         <ContextMenu x:Name="contextMenu"  Background="White" Width="Auto" Height="Auto" >
+            
             <MenuItem x:Name="Settings" Width="Auto"  BorderThickness="1" BorderBrush="Black" Height="22" Header="Settings"  Click="MenuItemSettings_Click">
 
             </MenuItem>
+            <MenuItem Header="Refresh"  Width="Auto"  BorderThickness="1" BorderBrush="Black" Height="22" Click="MenuItemRefresh_Click" x:Name="Refresh" ></MenuItem>
+            <MenuItem Header="Open Folder"  Width="Auto"  BorderThickness="1" BorderBrush="Black" Height="22" Click="MenuItemOpenFolder_Click"></MenuItem>
+            <MenuItem Header="Docking"  Width="Auto"  BorderThickness="1" BorderBrush="Black" Height="22">
             <MenuItem x:Name="DockTop"  Width="Auto" Header="Dock Top" BorderThickness="1" BorderBrush="Black" Height="22" Click="MenuItemDockTop_Click"></MenuItem>
             <MenuItem x:Name="DockRight"  Width="Auto" Header="Dock Right" BorderThickness="1" BorderBrush="Black" Height="22" Click="MenuItemDockRight_Click"></MenuItem>
             <MenuItem x:Name="DockBottom"  Width="Auto" Header="Dock Bottom" BorderThickness="1" BorderBrush="Black" Height="22" Click="MenuItemDockBottom_Click"></MenuItem>
             <MenuItem x:Name="DockLeft"  Width="Auto" Header="Dock Left" BorderThickness="1" BorderBrush="Black" Height="22" Click="MenuItemDockLeft_Click"></MenuItem>
-
+            </MenuItem>
             <MenuItem x:Name="Exit" Width="Auto"  BorderThickness="1" BorderBrush="Black" Height="22" Header="Exit"  Click="MenuItemExit_Click">
             </MenuItem>
         </ContextMenu>

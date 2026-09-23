@@ -30,7 +30,7 @@ namespace Quicklaunch
 
             dialog.Multiselect = false;
             dialog.Title = "Select a folder";
-
+      
             // Show open foa    q   q   lder dialog box
             bool? result = dialog.ShowDialog();
 
@@ -107,6 +107,22 @@ namespace Quicklaunch
                 this.orientationVertical.IsChecked = true;
             }
             this.opacitySlider.Value = Properties.Settings.Default.opacity;
+            setOpacityLabel(Properties.Settings.Default.opacity);
+        }
+
+        private void opacitySlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            setOpacityLabel(e.NewValue);
+        }
+
+        private void setOpacityLabel(double value)
+        {
+            if(labelOpacity != null)
+            {
+
+
+                labelOpacity.Content = $"Opacity: {value.ToString("0.00")}%";
+            }
         }
     }
 }
