@@ -25,18 +25,27 @@ namespace Quicklaunch
 
         const int imageWidth = 32;
         private const double scaleTransformFactor = 1.4;
-        private double toolbarLength = 0;
-        public double ToolbarLength
+        private double toolbarX = 0;
+        public double ToolbarX
         {
 
             get
             {
-                return toolbarLength;
+                return toolbarX;
             }
             private set {
-                toolbarLength = value; }
+                toolbarX = value; }
         }
-
+        private double toolbarY = 0;
+        public double ToolbarY
+        {
+            get
+            {
+                return toolbarY;
+            }
+            private set {
+                toolbarY = value; }
+        }
 
 
         #region events
@@ -97,7 +106,9 @@ namespace Quicklaunch
 
         void MenuItemExit_Click(object sender, RoutedEventArgs e)
         {
-            this.Close();
+
+            Application.Current.Shutdown();
+           // this.Close();
         }
         void Image2_MouseLeave(object sender, MouseEventArgs e)
         {
@@ -190,8 +201,28 @@ namespace Quicklaunch
         private void MenuItemDockBottom_Click(object sender, RoutedEventArgs e)
         {
             this.DockWindow(Dock.Bottom);
+
         }
- 
+        private void MenuItemRefresh_Click(object sender, RoutedEventArgs e)
+        {
+            Facade.RefreshFileSystemObjects();
+            this.populateToolbar();
+        }
+        private void MenuItemOpenFolder_Click(object sender, RoutedEventArgs e)
+        {
+            // open folder with shell
+            var folder = Properties.Settings.Default.folder;
+            if (!string.IsNullOrWhiteSpace(folder) && Directory.Exists(folder))
+            {
+                var psi = new ProcessStartInfo
+                {
+                    FileName = folder,
+                    UseShellExecute = true
+                };
+                System.Diagnostics.Process.Start(psi);
+            }
+        }
+
         public void buttonAutoShade_Click(object sender, RoutedEventArgs e)
         {
 
@@ -255,7 +286,7 @@ namespace Quicklaunch
         void populateToolbar()
         {
             stack1.Children.Clear();
-            this.ToolbarLength = 0;
+            this.ToolbarX = 0;
             NameScope.SetNameScope(this, new NameScope());
           
 
@@ -322,8 +353,8 @@ namespace Quicklaunch
                 }
 
             }
-            this.setWidths(ToolbarLength);
-            this.setHeights(ToolbarLength);
+            this.setWidths(ToolbarX);
+            this.setHeights(ToolbarX);
    
         }
         // TODO: [x]refactor separate method for height.
@@ -392,7 +423,7 @@ namespace Quicklaunch
 
 
             image2.Width = imageWidth;
-            ToolbarLength = ToolbarLength + imageWidth + 20;
+            ToolbarX = ToolbarX + imageWidth + 20;
 
             var bmi = Services.ImageService.IconToBitmapImage(fileSystemObject.Icon);
 

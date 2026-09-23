@@ -20,18 +20,20 @@ namespace JohnBPearson.FileObjects
 
 
         private static List<IFileSystemObjectBase> _executables;
-
+        private static bool _pathChanged = false;
 
         public static  List<IFileSystemObjectBase> FileSystemObjects
         {
             get
             {
-                if(_executables == null)
+                if(_executables == null || _pathChanged)
                 {
-                    _executables = new List<IFileSystemObjectBase>();
-                    if(!string.IsNullOrWhiteSpace(_directoryPath))
+                 
+                    if(isStringValidDir(_directoryPath))
                     {
+                        _executables = new List<IFileSystemObjectBase>();
                         InstantiateFileSystemObjects(_directoryPath);
+                        _pathChanged = false;
                     }
                     else
                     {
@@ -47,7 +49,13 @@ namespace JohnBPearson.FileObjects
         public static string DirectoryPath
         {
             get => _directoryPath;
-            set => _directoryPath = value;
+            set {
+                if(value != _directoryPath)
+                {
+                    _pathChanged = true;
+                }
+                _directoryPath = value; 
+            }
         }
 
         private static string _directoryPath;
@@ -81,6 +89,7 @@ namespace JohnBPearson.FileObjects
                         {
 
                             var sc = Shortcut.ReadFromFile(file.FullName);
+                      
                             if(sc.LinkFlags.HasFlag(Securify.ShellLink.Flags.LinkFlags.HasLinkInfo))
                             {
                                 AddFileToObjects(file);
@@ -114,7 +123,7 @@ namespace JohnBPearson.FileObjects
             var fileObject = FileSystemObjectFactory.Build(file.FullName, file);
             if(fileObject != null)
             {
-                FileSystemObjects.Add(fileObject);
+                _executables.Add(fileObject);
             }
         }
 
@@ -125,8 +134,8 @@ namespace JohnBPearson.FileObjects
 
                 return false;
             }
-            var test = new System.IO.DirectoryInfo(dirPath);
-            if(test.Exists)
+            var exists =  System.IO.Directory.Exists(dirPath);
+            if(exists)
             {
 
                 return true;

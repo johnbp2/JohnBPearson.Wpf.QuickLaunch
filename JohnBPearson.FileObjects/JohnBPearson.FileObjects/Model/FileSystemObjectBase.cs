@@ -1,6 +1,6 @@
-﻿using Microsoft.SqlServer.Server;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Drawing;
 using System.Drawing.Text;
 using System.IO;
@@ -8,9 +8,11 @@ using System.Linq;
 using System.Reflection.Metadata;
 using System.Security.Permissions;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
-using JohnBPearson.FileObjects;
 using CustomExtensions;
+using JohnBPearson.FileObjects;
+using Microsoft.SqlServer.Server;
 
 
 namespace JohnBPearson.FileObjects.Model
@@ -91,8 +93,28 @@ namespace JohnBPearson.FileObjects.Model
                 return _type;
             }
         }
-
-
+        private int _order = 0;
+        public int Order
+        {
+            get
+            {
+                return _order;
+            }
+           private set
+            {
+                if (value != _order)
+                {
+                    _order = value;
+                }
+            }
+        }
+        public bool IsOrdered
+        {
+            get
+            {
+                return _order > 0;
+            }
+        }
         //  todo add validation patterns
 
 
@@ -125,8 +147,17 @@ namespace JohnBPearson.FileObjects.Model
             {
                 this._icon = System.Drawing.Icon.ExtractAssociatedIcon(fullPath);
             }
+            var rx = new Regex(@"/^\d+[.]/g");
+            var match = rx.Match(info.Name);
+            if(match.Success)
+            {
+                var temp = info.Name.Substring(0, info.Name.IndexOf('.'));
+                if(int.TryParse(temp, out int order))
+                {
+                    this.Order = order;
+                }
+            }
 
-      
         }
         void settheType(FileExtensionEnum type)
         {
