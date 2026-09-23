@@ -21,7 +21,7 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_D361C5E6B360450581623CA3C8654A74"
+        "MsmKey" = "8:_856D774D55074ECF8C58C0BDBC5F938E"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -127,10 +127,10 @@
         }
         "File"
         {
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_D361C5E6B360450581623CA3C8654A74"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_856D774D55074ECF8C58C0BDBC5F938E"
             {
-            "SourcePath" = "8:..\\JohnBPearson.Wpf.Executer\\JohnBPearson.Wpf.Executer\\Quicklaunch.ico"
-            "TargetName" = "8:Quicklaunch.ico"
+            "SourcePath" = "8:..\\Quicklaunch_v2_trans.ico"
+            "TargetName" = "8:Quicklaunch_v2_trans.ico"
             "Tag" = "8:"
             "Folder" = "8:_7F0E208447604FEF91F327290497A9A6"
             "Condition" = "8:"
@@ -203,15 +203,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Quicklaunch"
-        "ProductCode" = "8:{6C0CBD71-A0A1-48D3-88C7-14F52DFE85F2}"
-        "PackageCode" = "8:{7B3B9C7A-D63F-46DF-9A46-283D76266CF5}"
+        "ProductCode" = "8:{3698551E-7895-4DFF-80C4-5B0FBBA6BC1B}"
+        "PackageCode" = "8:{113F7EC1-7167-4364-A423-79E2B19F12F5}"
         "UpgradeCode" = "8:{1D896A5E-0DA2-4EE8-8F70-1115163C83D9}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:0.0.5"
+        "ProductVersion" = "8:0.0.6"
         "Manufacturer" = "8:john pearson"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
@@ -221,7 +221,7 @@
         "Keywords" = "8:"
         "ARPCOMMENTS" = "8:"
         "ARPURLINFOABOUT" = "8:https://www.johnbpearson.com"
-        "ARPPRODUCTICON" = "8:_D361C5E6B360450581623CA3C8654A74"
+        "ARPPRODUCTICON" = "8:_856D774D55074ECF8C58C0BDBC5F938E"
         "ARPIconIndex" = "3:0"
         "SearchPath" = "8:"
         "UseSystemSearchPath" = "11:TRUE"

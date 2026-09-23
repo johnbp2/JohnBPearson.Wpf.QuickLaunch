@@ -6,7 +6,7 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <UseWPF>true</UseWPF>
-    <ApplicationIcon>Quicklaunch.ico</ApplicationIcon>
+    <ApplicationIcon>Quicklaunch_v2_trans.ico</ApplicationIcon>
     <Copyright>John B Pearson 2026</Copyright>
     <StartupObject>Quicklaunch.App</StartupObject>
   </PropertyGroup>
@@ -21,7 +21,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Include="Quicklaunch.ico">
+    <Content Include="Quicklaunch_v2_trans.ico">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
