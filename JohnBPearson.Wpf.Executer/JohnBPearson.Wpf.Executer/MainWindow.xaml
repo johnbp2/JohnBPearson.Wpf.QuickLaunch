@@ -29,20 +29,8 @@
     </Window.ContextMenu>
 
 
-    <Grid Name="gridMain" Width="78">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition />
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <!--<RowDefinition Height="Auto" MinHeight="22"></RowDefinition>-->
-            <RowDefinition MinHeight="60px"/>
-        </Grid.RowDefinitions>
-        <!--<Menu x:Name="menu"  Height="22" Width="Auto" Grid.Column="0" Grid.Row="0" Background="White" Margin="0,0,0,0" VerticalAlignment="Top">
-
-            <MenuItem x:Name="Settings" Width="Auto"  BorderThickness="2" BorderBrush="Black" Height="22" Header="Settings"  Click="MenuItem_Click"></MenuItem>
-
-        </Menu>-->
+  
         <StackPanel x:Name="stack1" Orientation="Horizontal" Grid.Row="0" Grid.Column="0"   Height="Auto" VerticalAlignment ="Center" Margin="0,0,0,0" ScrollViewer.VerticalScrollBarVisibility="Disabled" />
-    </Grid>
+ 
 
 </Window>

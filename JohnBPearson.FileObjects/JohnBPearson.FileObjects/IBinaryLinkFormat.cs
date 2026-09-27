@@ -7,8 +7,12 @@ using JohnBPearson.FileObjects.Model;
 
 namespace JohnBPearson.FileObjects
 {
-    internal interface IBinaryLinkFormat:IFileSystemObjectBase
+    public interface IBinaryLinkFormat:IFileSystemObjectBase
     {
         void run();
+        string TargetPath
+        {
+            get;
+        }
     }
 }

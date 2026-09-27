@@ -33,7 +33,7 @@ namespace UnitTests
                 if(fso.Type == FileExtensionEnum.lnk)
                 {
 
-                    Assert.IsTrue(((BinaryLinkFormat)fso).TargetPath != "");
+                    Assert.IsTrue(((IBinaryLinkFormat)fso).TargetPath != "");
                         
 
                   } 

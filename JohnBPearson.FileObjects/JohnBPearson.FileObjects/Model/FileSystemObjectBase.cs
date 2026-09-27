@@ -18,7 +18,7 @@ using Microsoft.SqlServer.Server;
 namespace JohnBPearson.FileObjects.Model
 {
 
-    public abstract class FileSystemObjectBase : IFileSystemObjectBase
+    internal abstract class FileSystemObjectBase : IFileSystemObjectBase
     {
       
 
