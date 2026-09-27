@@ -72,45 +72,31 @@ namespace Quicklaunch
 
         }
 
-
-        void Mouse_Down(object sender, MouseEventArgs e)
+        private void Main_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            foreach(var item in this.cache)
+            if(e.LeftButton == MouseButtonState.Pressed)
+                Main.DragMove();
+        }
+
+        void ImageControlMouse_Down(object sender, MouseEventArgs e)
+        {
+            if(e.LeftButton == MouseButtonState.Pressed)
             {
-                if(item.Name == ((ImageControl)sender).Name)
+
+                foreach(var item in this.cache)
                 {
-                    //var test =System.IO.file.ReadAllText(item.Item2.FullPath);
-                    //      Debug.WriteLine(test);
-                    //Process.Start(item.Item2.FullPath);
-                    item.FileSystemObjectBase.Run();
-                    break;
+                    if(item.Name == ((ImageControl)sender).Name)
+                    {
+                        //var test =System.IO.file.ReadAllText(item.Item2.FullPath);
+                        //      Debug.WriteLine(test);
+                        //Process.Start(item.Item2.FullPath);
+                        item.FileSystemObjectBase.Run();
+                        break;
+                    }
                 }
             }
         }
-
-        void MenuItemSettings_Click(object sender, RoutedEventArgs e)
-        {
-            var settings = new Settings();
-            settings.Owner = this;
-            settings.ShowInTaskbar = true;
-            settings.ShowDialog();
-            this.Background.Opacity = Properties.Settings.Default.opacity / 100;
-            stack1.Children.Clear();
-            Facade.DirectoryPath = Properties.Settings.Default.folder;
-            Facade.RefreshFileSystemObjects();
-            this.populateToolbar();
-
-
-
-        }
-
-        void MenuItemExit_Click(object sender, RoutedEventArgs e)
-        {
-
-            Application.Current.Shutdown();
-           // this.Close();
-        }
-        void Image2_MouseLeave(object sender, MouseEventArgs e)
+        void ImageControl_MouseLeave(object sender, MouseEventArgs e)
         {
             var image = (ImageControl)sender;
             if(image != null)
@@ -142,7 +128,7 @@ namespace Quicklaunch
         }
 
 
-        void Image2_MouseEnter(object sender, MouseEventArgs e)
+        void ImageControl_MouseEnter(object sender, MouseEventArgs e)
         {
 
             var image = (Controls.ImageControl)sender;
@@ -176,12 +162,29 @@ namespace Quicklaunch
             }
         }
 
-        private void Main_MouseDown(object sender, MouseButtonEventArgs e)
+        void MenuItemSettings_Click(object sender, RoutedEventArgs e)
         {
-            if(e.LeftButton == MouseButtonState.Pressed)
-                Main.DragMove();
+            var settings = new Settings();
+            settings.Owner = this;
+            settings.ShowInTaskbar = true;
+            settings.ShowDialog();
+            this.Background.Opacity = Properties.Settings.Default.opacity / 100;
+            stack1.Children.Clear();
+            Facade.DirectoryPath = Properties.Settings.Default.folder;
+            Facade.RefreshFileSystemObjects();
+            this.populateToolbar();
+
+
+
         }
 
+        void MenuItemExit_Click(object sender, RoutedEventArgs e)
+        {
+
+            Application.Current.Shutdown();
+           // this.Close();
+        }
+            
 
         private void MenuItemDockLeft_Click(object sender, RoutedEventArgs e)
         {
@@ -317,7 +320,7 @@ namespace Quicklaunch
                 {
                     Controls.ImageControl image = createImageControl(i, fileSystemObject);
 
-                    image.MouseDown += new MouseButtonEventHandler(Mouse_Down);
+                    image.MouseDown += new MouseButtonEventHandler(ImageControlMouse_Down);
                     this.defaultImageMargins(ref image);
                     cache.Add(image);
 
@@ -326,9 +329,9 @@ namespace Quicklaunch
 
 
 
-                    image.MouseEnter += new MouseEventHandler(Image2_MouseEnter);
+                    image.MouseEnter += new MouseEventHandler(ImageControl_MouseEnter);
 
-                    image.MouseLeave += new MouseEventHandler(Image2_MouseLeave);
+                    image.MouseLeave += new MouseEventHandler(ImageControl_MouseLeave);
 
 
 
@@ -366,9 +369,9 @@ namespace Quicklaunch
             {
                 this.Width = width;
                 this.stack1.Width = width;
-                                this.gridMain.ColumnDefinitions[0].Width = new GridLength(width);
+                // this.gridMain.ColumnDefinitions[0].Width = new GridLength(width);
            
-                this.gridMain.Width = width;
+                // this.gridMain.Width = width;
              
             }
             else
@@ -377,9 +380,9 @@ namespace Quicklaunch
                 this.stack1.Width = 60;
                
               
-                this.gridMain.Width = 60;
+                // this.gridMain.Width = 60;
                 this.Width = 60;
-                this.gridMain.ColumnDefinitions[0].Width = new GridLength(60);
+                // this.gridMain.ColumnDefinitions[0].Width = new GridLength(60);
             }
         }
         private void setHeights(double height)
@@ -390,16 +393,16 @@ namespace Quicklaunch
                 this.stack1.Height = 60;
 
                 this.Height = 60;
-                this.gridMain.RowDefinitions[0].Height = new GridLength(60);
-                this.gridMain.Height = 60;
+                // this.gridMain.RowDefinitions[0].Height = new GridLength(60);
+                // this.gridMain.Height = 60;
 
             }
             else
             {
                 this.Height = height;
-                this.gridMain.RowDefinitions[0].Height = new GridLength(height);
+                // this.gridMain.RowDefinitions[0].Height = new GridLength(height);
                 this.stack1.Height = height;
-                this.gridMain.Height = height;
+                // this.gridMain.Height = height;
 
             }
 
