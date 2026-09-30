@@ -118,7 +118,7 @@ namespace JohnBPearson.FileObjects.Model
         //  todo add validation patterns
 
 
-        protected FileSystemObjectBase(string fullPath, FileInfo info)
+        protected FileSystemObjectBase(string fullPath, FileSystemInfo info)
         {
             // var unknkownFileSystemObject = new System.IO.FileInfo(fullPath);
             FullPath = fullPath;

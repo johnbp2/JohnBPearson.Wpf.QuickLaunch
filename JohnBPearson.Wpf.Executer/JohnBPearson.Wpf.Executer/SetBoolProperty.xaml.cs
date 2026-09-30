@@ -54,9 +54,15 @@ namespace Quicklaunch
         public string Header
         {
             get { return header; }
-            set { header = value; }
+            set { header = value; 
+            this.propertyGroupBox.Header = header;
+            }
         }
-
+        public bool SettingValue
+        {
+            get;
+            set;
+        }
 
         public SetBoolProperty()
         {
@@ -77,7 +83,14 @@ namespace Quicklaunch
 
         private void radioNo_Checked(object sender, RoutedEventArgs e)
         {
+        
+            SettingValue = false;
+        }
 
+        private void radioYes_Checked(object sender, RoutedEventArgs e)
+        {
+
+            SettingValue = true;
         }
     }
 }

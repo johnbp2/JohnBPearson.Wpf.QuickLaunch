@@ -7,6 +7,16 @@ using JohnBPearson.FileObjects.Model;
 
 namespace JohnBPearson.FileObjects
 {
+
+    public interface IDirectory : IFileSystemObjectBase
+    {
+        IEnumerable<IFileSystemObjectBase> Contents
+        {
+            get;
+        }
+
+        void Run();
+    }
     public interface IBinaryLinkFormat:IFileSystemObjectBase
     {
         void run();

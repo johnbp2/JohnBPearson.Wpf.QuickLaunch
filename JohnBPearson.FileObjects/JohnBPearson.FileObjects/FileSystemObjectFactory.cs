@@ -22,7 +22,7 @@ namespace JohnBPearson.FileObjects
         }
 
 
-        public static IFileSystemObjectBase Build(string path, FileInfo fileInfo)
+        public static IFileSystemObjectBase Build(string path, FileSystemInfo fileInfo)
         {
             var unknkownFileSystemObject = fileInfo;
 
@@ -52,19 +52,20 @@ namespace JohnBPearson.FileObjects
             switch(extension)
             {
                 case Constants.dir:
-                    return new JohnBPearson.FileObjects.Model.Directory(path, unknkownFileSystemObject);
+
+                    return new JohnBPearson.FileObjects.Model.Directory(path, unknkownFileSystemObject as DirectoryInfo);
                     
                 
                 case Constants.lnk:
-                    return new JohnBPearson.FileObjects.Model.BinaryLinkFormat(path, unknkownFileSystemObject);
+                    return new JohnBPearson.FileObjects.Model.BinaryLinkFormat(path, unknkownFileSystemObject as FileInfo);
 
                    
                 case Constants.exe:
-                    return new JohnBPearson.FileObjects.Model.BinaryLinkFormat(path, unknkownFileSystemObject);
+                    return new JohnBPearson.FileObjects.Model.BinaryLinkFormat(path, unknkownFileSystemObject as FileInfo);
                 //case Constants.ini:
                 //    return new JohnBPearson.FileObjects.Model.InitialIzation(path, unknkownFileSystemObject);
                 case Constants.url:
-                    return new JohnBPearson.FileObjects.Model.Url(path, unknkownFileSystemObject);
+                    return new JohnBPearson.FileObjects.Model.Url(path, unknkownFileSystemObject as FileInfo);
                 default:
                     return null;
                    
