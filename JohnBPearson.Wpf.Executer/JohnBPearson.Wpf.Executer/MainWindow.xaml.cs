@@ -8,8 +8,7 @@ using System.Windows.Media.Animation;
 using Quicklaunch.Controls;
 using JohnBPearson.FileObjects;
 using JohnBPearson.FileObjects.Model;
-
-
+using Quicklaunch.Services;
 namespace Quicklaunch
 {
 
@@ -47,7 +46,7 @@ namespace Quicklaunch
                 toolbarY = value; }
         }
 
-
+        private FileHelperService service;
         #region events
 
 
@@ -305,6 +304,7 @@ namespace Quicklaunch
 
 
             Facade.DirectoryPath = Properties.Settings.Default.folder;
+
             var i = 100;
 
 

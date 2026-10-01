@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Linq;
 using JohnBPearson.FileObjects;
 using JohnBPearson.FileObjects.Model;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -26,7 +27,8 @@ namespace UnitTests
         public void testFacade()
         {
            // var fac = new Facade(testDir);
-            Assert.IsTrue(Facade.FileSystemObjects.Count > 0);
+           
+            Assert.IsTrue(Facade.FileSystemObjects.ToList().Count > 0);
             foreach(var fso in Facade.FileSystemObjects)
             {
                 Assert.IsTrue(fso.Icon != null);

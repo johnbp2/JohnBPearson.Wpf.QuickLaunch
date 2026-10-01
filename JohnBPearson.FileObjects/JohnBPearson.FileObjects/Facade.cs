@@ -4,6 +4,7 @@ using System.Collections.Specialized;
 using System.Diagnostics;
 using System.Drawing.Text;
 using System.Linq;
+using System.Net.Http.Headers;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -19,10 +20,10 @@ namespace JohnBPearson.FileObjects
     {
 
 
-        private static List<IFileSystemObjectBase> _executables;
+        private static IEnumerable<IFileSystemObjectBase> _executables;
         private static bool _pathChanged = false;
 
-        public static  List<IFileSystemObjectBase> FileSystemObjects
+        public static IEnumerable<IFileSystemObjectBase> FileSystemObjects
         {
             get
             {
@@ -70,62 +71,60 @@ namespace JohnBPearson.FileObjects
         }
         public static void RefreshFileSystemObjects()
         {
-            _executables.Clear();
+           
          InstantiateFileSystemObjects(_directoryPath);
         }
         private static void InstantiateFileSystemObjects(string directoryPath)
         {
-            var dir = new System.IO.DirectoryInfo(directoryPath);
+          var dir = new System.IO.DirectoryInfo(directoryPath);
             if(dir.Exists)
             {
-                var fact = new FileSystemObjectFactory();
-                var files = dir.EnumerateFiles();
-                foreach(var file in files)
-                {
-                    if(file.Extension == Constants.lnk)
-                    {
+                var toolbarDir = new Directory(directoryPath, dir);
+
+                _executables = toolbarDir.Contents;
+
+
+
+            //    var fact = new FileSystemObjectFactory();
+            //    var files = dir.EnumerateFiles();
+            //    foreach(var file in files)
+            //    {
+            //        if(file.Extension == Constants.lnk)
+            //        {
                 
-                        try
-                        {
+            //            try
+            //            {
 
-                            var sc = Shortcut.ReadFromFile(file.FullName);
+            //                var sc = Shortcut.ReadFromFile(file.FullName);
                       
-                            if(sc.LinkFlags.HasFlag(Securify.ShellLink.Flags.LinkFlags.HasLinkInfo))
-                            {
-                                AddFileToObjects(file);
-                            }
+            //                if(sc.LinkFlags.HasFlag(Securify.ShellLink.Flags.LinkFlags.HasLinkInfo))
+            //                {
+            //                    AddFileToObjects(file);
+            //                }
 
-                        }
-                        catch(ArgumentException ex)
-                        {
+            //            }
+            //            catch(ArgumentException ex)
+            //            {
 
-                            // swallow it for now
-                        }
+            //                // swallow it for now
+            //            }
 
-                    }
-                    else if(FileExtension.ExtensionStrings.Contains(file.Extension.SanitizeFileExtension()))
+            //        }
+            //        else if(FileExtension.ExtensionStrings.Contains(file.Extension.SanitizeFileExtension()))
 
 
-                    {
+            //        {
 
-                        AddFileToObjects(file);
-                    }
-                }
+            //            AddFileToObjects(file);
+            //        }
+            //    }
 
-                // dir.GetFiles()
             }
 
 
         }
 
-        private static void AddFileToObjects(System.IO.FileInfo file)
-        {
-            var fileObject = FileSystemObjectFactory.Build(file.FullName, file);
-            if(fileObject != null)
-            {
-                _executables.Add(fileObject);
-            }
-        }
+ 
 
         private static bool isStringValidDir(string dirPath)
         {
