@@ -48,19 +48,21 @@ namespace JohnBPearson.FileObjects.Model
                  _contents=  this.InstantiateFileSystemObjects(_directoryInfo.FullName);
                 } 
             return      _contents;
-            } private set { }
+            } private set {
+                _contents = value;
+            }
         }
 
 
 
         private  IEnumerable<IFileSystemObjectBase> InstantiateFileSystemObjects(string directoryPath)
         {
-            var items = new List<IFileSystemObjectBase>(); 
-            var dir = new System.IO.DirectoryInfo(directoryPath);
-            if(dir.Exists)
+            var items = new List<IFileSystemObjectBase>();
+            //var dir = new System.IO.DirectoryInfo(directoryPath);
+            if(this._directoryInfo != null && this._directoryInfo.Exists)
             {
                 var fact = new FileSystemObjectFactory();
-                var files = dir.EnumerateFiles();
+                var files = this._directoryInfo.EnumerateFiles();
                 foreach(var file in files)
                 {
                     if(file.Extension == Constants.lnk)

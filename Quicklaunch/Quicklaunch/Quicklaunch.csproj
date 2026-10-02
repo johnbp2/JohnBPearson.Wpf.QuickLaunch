@@ -21,6 +21,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Services\**" />
+    <EmbeddedResource Remove="Services\**" />
+    <None Remove="Services\**" />
+    <Page Remove="Services\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Content Include="Quicklaunch.ico">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -33,6 +40,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\JohnBPearson.FileObjects\JohnBPearson.FileObjects\JohnBPearson.FileObjects.csproj" />
+    <ProjectReference Include="..\..\Quicklaunch.Services\Quicklaunch.Services.csproj" />
   </ItemGroup>
 
   <ItemGroup>

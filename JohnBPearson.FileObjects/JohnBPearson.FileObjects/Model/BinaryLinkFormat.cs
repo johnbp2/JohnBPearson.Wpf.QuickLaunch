@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace JohnBPearson.FileObjects.Model
 {
-    internal sealed class BinaryLinkFormat : FileSystemObjectBase
+    internal sealed class BinaryLinkFormat : FileSystemObjectBase, IBinaryLinkFormat
     {
         internal BinaryLinkFormat(string fullPath, FileInfo info) : base(fullPath, info)
         {
