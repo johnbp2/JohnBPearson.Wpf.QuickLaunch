@@ -1,4 +1,4 @@
-﻿`using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Configuration.Internal;
 using System.Drawing;
@@ -12,18 +12,13 @@ using System.Windows.Media.Imaging;
 
 namespace Quicklaunch.Services
 {
-    internal class ImageService
+    public class ImageService
     {
 
-        [Obsolete]
-        internal System.Windows.Media.Imaging.BitmapSource ImageSourceFromIcon(System.Drawing.Icon icon)
-        {
-            
-              return Imaging.CreateBitmapSourceFromHIcon(icon.Handle, Int32Rect.Empty, BitmapSizeOptions.FromEmptyOptions());
-            }
-       
 
-        internal static BitmapImage IconToBitmapImage(System.Drawing.Icon icon)
+
+
+        public static BitmapImage IconToBitmapImage(System.Drawing.Icon icon)
         {
 
 

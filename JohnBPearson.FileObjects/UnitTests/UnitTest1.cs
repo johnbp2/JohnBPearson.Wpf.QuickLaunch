@@ -27,7 +27,7 @@ namespace UnitTests
         public void testFacade()
         {
            // var fac = new Facade(testDir);
-           
+           Facade.DirectoryPath = testDir;
             Assert.IsTrue(Facade.FileSystemObjects.ToList().Count > 0);
             foreach(var fso in Facade.FileSystemObjects)
             {

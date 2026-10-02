@@ -1,0 +1,128 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="JohnBPearson.FileObjects.Model.BinaryLinkFormat" Collapsed="true">
+    <Position X="14" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAABAAAM=</HashCode>
+      <FileName>Model\BinaryLinkFormat.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="JohnBPearson.FileObjects.Model.Constants" Collapsed="true">
+    <Position X="23.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACAEAACAAAAAAAAAQAAAAAAAIAAAAAAAAAAAAAgA=</HashCode>
+      <FileName>Model\Constants.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JohnBPearson.FileObjects.Model.Directory" Collapsed="true">
+    <Position X="18.5" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAEAQAAABAAAAAAAAAAAAAAAAAAAAAABAAgI=</HashCode>
+      <FileName>Model\Directory.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="JohnBPearson.FileObjects.Model.FileExtension" Collapsed="true">
+    <Position X="26.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAIAAABAAAAAAAAAgAAAAAAAA=</HashCode>
+      <FileName>Model\FileExtension.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JohnBPearson.FileObjects.Model.FileExtensionHelper" Collapsed="true">
+    <Position X="23.25" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAgAAAAAAAA=</HashCode>
+      <FileName>Model\FileExtensionHelper.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JohnBPearson.FileObjects.Model.FileSystemObjectBase" Collapsed="true">
+    <Position X="17.5" Y="5.25" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>CAEAIAACAAAAAARAAAAAAAQAAAAAAQCAAYEAAAMAAII=</HashCode>
+      <FileName>Model\FileSystemObjectBase.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="JohnBPearson.FileObjects.Model.InitialIzation" Collapsed="true">
+    <Position X="16.25" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAI=</HashCode>
+      <FileName>Model\Initialization.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="JohnBPearson.FileObjects.Model.Url" Collapsed="true">
+    <Position X="20.75" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAI=</HashCode>
+      <FileName>Model\Url.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="JohnBPearson.FileObjects.Facade" Collapsed="true">
+    <Position X="25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAEAEBAAFAAAAAAAAAAACAAAAAAAAAAEAAQA=</HashCode>
+      <FileName>Facade.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JohnBPearson.FileObjects.FileSystemObjectFactory" Collapsed="true">
+    <Position X="24.75" Y="6.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAA=</HashCode>
+      <FileName>FileSystemObjectFactory.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CustomExtensions.StringExtension" Collapsed="true">
+    <Position X="27.25" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAABgAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Facade.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="JohnBPearson.FileObjects.Model.IInitialization" Collapsed="true">
+    <Position X="23.25" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAI=</HashCode>
+      <FileName>IInitialization.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="JohnBPearson.FileObjects.IBinaryLinkFormat" Collapsed="true">
+    <Position X="16.25" Y="9.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAA=</HashCode>
+      <FileName>IBinaryLinkFormat.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="JohnBPearson.FileObjects.IExecutable" Collapsed="true">
+    <Position X="18.5" Y="9.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAI=</HashCode>
+      <FileName>IExecutable.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="JohnBPearson.FileObjects.IFileSystemObjectBase" Collapsed="true">
+    <Position X="16.25" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAAAAAAAAAAAAAAAAAQAAAAAAQAAAQAAAAMAAAI=</HashCode>
+      <FileName>IFileSystemObjectBase.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="JohnBPearson.FileObjects.IDirectory" Collapsed="true">
+    <Position X="14" Y="9.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAA=</HashCode>
+      <FileName>IDirectory.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="JohnBPearson.FileObjects.Model.FileExtensionEnum" Collapsed="true">
+    <Position X="23.25" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACAEAACAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAgA=</HashCode>
+      <FileName>Model\Constants.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

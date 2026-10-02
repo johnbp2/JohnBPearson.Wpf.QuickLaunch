@@ -52,7 +52,7 @@ namespace Quicklaunch
 
         void Main_Loaded(object sender, RoutedEventArgs e)
         {
-            Services.UnmanagedService.SetOnTop(this);
+            Services.UnmanagedService.SetWindowZIndex(this, Properties.Settings.Default.alwaysOnTop);
             var drawingColor = Properties.Settings.Default.bgColor;
 
 
