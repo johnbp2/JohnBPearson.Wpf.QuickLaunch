@@ -1,4 +1,5 @@
-﻿using System.Configuration;
+﻿using Quicklaunch.Services;
+using System.Configuration;
 using System.Data;
 using System.Windows;
 
@@ -18,9 +19,7 @@ namespace Quicklaunch
             {
                // Environment.GetFolderPath(Environment.SpecialFolder.)
                 var folder = $"c:\\users\\{Environment.UserName}\\toolbar";
-                if(!System.IO.Directory.Exists(folder))
-                System.IO.Directory.CreateDirectory(folder);
-
+              FileHelperService.EnsureDirectoryExists(folder);
                 Quicklaunch.Properties.Settings.Default.folder = folder;
                 Quicklaunch.Properties.Settings.Default.Save();
 

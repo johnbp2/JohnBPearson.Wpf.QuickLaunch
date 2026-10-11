@@ -25,6 +25,8 @@ namespace Quicklaunch
         const int imageWidth = 32;
         private const double scaleTransformFactor = 1.4;
         private double toolbarX = 0;
+        private FileHelperService _fileService = new FileHelperService();
+
         public double ToolbarX
         {
 
@@ -67,7 +69,15 @@ namespace Quicklaunch
         {
 
             this.populateToolbar();
-
+            _fileService.WatchDirectory(Properties.Settings.Default.folder);
+            _fileService.RefreshNeeded += (s, e) =>
+            {
+                this.Dispatcher.Invoke(() =>
+                {
+                    Facade.RefreshFileSystemObjects();
+                    this.populateToolbar();
+                });
+            };
 
         }
 
