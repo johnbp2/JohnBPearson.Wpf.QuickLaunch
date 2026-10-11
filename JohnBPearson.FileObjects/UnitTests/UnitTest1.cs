@@ -1,8 +1,10 @@
 ﻿using System;
 using System.IO;
 using System.Linq;
+using System.Security.AccessControl;
 using JohnBPearson.FileObjects;
 using JohnBPearson.FileObjects.Model;
+using Quicklaunch.Services;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace UnitTests
@@ -11,21 +13,13 @@ namespace UnitTests
     public class UnitTest1
     {
         const string testDir = "c:\\Users\\johnj\\AppData\\Roaming\\Microsoft\\Internet Explorer\\Quick Launch\\";
-        public void TestMethod1()
-        {
-           // var info = new FileInfo(testDir);
-            var exec = new MockExecutable();
-            // var link = new JohnBPearson.FileObjects.BinaryLinkFormat(exec);
-            Assert.IsNotNull(exec);
-            Assert.IsTrue(exec.Name.Length > 0);
-            Assert.IsTrue(exec.Type == JohnBPearson.FileObjects.Model.FileExtensionEnum.dir);
-         //   Assert.IsTrue(fso.Extension.Length > 0);
-         //   Assert.IsTrue(fso.Icon != null);
-        }
+
 
         [TestMethod]
         public void testFacade()
         {
+
+            this.buildTestDirectory();
            // var fac = new Facade(testDir);
            Facade.DirectoryPath = testDir;
             Assert.IsTrue(Facade.FileSystemObjects.ToList().Count > 0);
@@ -42,6 +36,19 @@ namespace UnitTests
             
             }
 
+        }
+
+
+        private void buildTestDirectory()
+        {
+            if (!Directory.Exists(testDir))
+            {
+                Directory.CreateDirectory(testDir);
+                FileHelperService.CreateShortcut(@"c:\windows\system32\notepad.exe","",Path.Combine(testDir,"notepad.lnk"));
+            }
+
+           
+          
         }
     }
 }

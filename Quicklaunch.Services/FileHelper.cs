@@ -1,10 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
+using Securify.ShellLink;
 
 namespace Quicklaunch.Services
 {
@@ -22,10 +19,10 @@ namespace Quicklaunch.Services
             }
             _watcher = new System.IO.FileSystemWatcher(directoryPath);
             _watcher.NotifyFilter = System.IO.NotifyFilters.FileName | System.IO.NotifyFilters.DirectoryName | System.IO.NotifyFilters.LastWrite;
-            _watcher.Changed += OnChanged;
+           // _watcher.Changed += OnChanged;
             _watcher.Created += OnChanged;
             _watcher.Deleted += OnChanged;
-            _watcher.Renamed += OnChanged;
+        // _watcher.Renamed += OnChanged;
             _watcher.IncludeSubdirectories = true;
             _watcher.Filter = "*.*"; // Watch all files
             _watcher.EnableRaisingEvents = true;
@@ -37,6 +34,26 @@ namespace Quicklaunch.Services
         //    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
         //}
 
+        public static void EnsureDirectoryExists(string directoryPath)
+        {
+            if (!Directory.Exists(directoryPath))
+            {
+                Directory.CreateDirectory(directoryPath);
+            }
+        }
+
+        public static Shortcut CreateShortcut(string shortcutPath, string args, string linkFilePath)
+        {
+            var shortcut = Shortcut.CreateShortcut(shortcutPath, args);
+            shortcut.WriteToFile(linkFilePath);
+            return shortcut;
+            //var shellLink = new ShellLink();
+            //shellLink.TargetPath = targetPath;
+            //shellLink.Description = description;
+            //shellLink.Save(shortcutPath);
+            // Shortcut.CreateShortcut(@"%SystemRoot%\System32\calc.exe").WriteToFile(@"calc.lnk");
+
+        }
         private  void OnChanged(object sender, FileSystemEventArgs e)
         {
           RefreshNeeded?.Invoke(this, _directoryPath);
