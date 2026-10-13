@@ -323,14 +323,19 @@ namespace Quicklaunch
             //    this.addAutoShadeButton();
             //}
 
+
+            // TODO: [] add tooltips
+
             foreach(var fileSystemObject in Facade.FileSystemObjects)
             {
 
                 if(fileSystemObject.Type != FileExtensionEnum.bat)
                 {
+                    
                     Controls.ImageControl image = createImageControl(i, fileSystemObject);
 
                     image.MouseDown += new MouseButtonEventHandler(ImageControlMouse_Down);
+
                     this.defaultImageMargins(ref image);
                     cache.Add(image);
 
@@ -431,7 +436,7 @@ namespace Quicklaunch
 
         private Controls.ImageControl createImageControl(int i, IFileSystemObjectBase fileSystemObject)
         {
-            var image2 = new Controls.ImageControl(new ScaleTransform(1, 1), fileSystemObject);
+            var image2 = new Controls.ImageControl(new ScaleTransform(1, 1), fileSystemObject, fileSystemObject.Name);
             image2.Name = $"image{i}";
 
 
