@@ -28,7 +28,7 @@ namespace JohnBPearson.FileObjects
             get
             {
                 if(_executables == null || _pathChanged)
-                {
+                {                                     
                  
                     if(isStringValidDir(_directoryPath))
                     {

@@ -15,13 +15,13 @@
     {
         "Entry"
         {
-        "MsmKey" = "8:_4452D6FDBAD64347B456F701C3C7CF63"
+        "MsmKey" = "8:_828923C11A604B90B02244DD1B236F72"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_D361C5E6B360450581623CA3C8654A74"
+        "MsmKey" = "8:_BB7CD269823540E1B780A618C369B456"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -52,10 +52,15 @@
             "ComponentsUrl" = "8:"
                 "Items"
                 {
-                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.7.2"
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:Microsoft.NetCore.CoreRuntime.8.0.x86"
                     {
-                    "Name" = "8:Microsoft .NET Framework 4.7.2 (x86 and x64)"
-                    "ProductCode" = "8:.NETFramework,Version=v4.7.2"
+                    "Name" = "8:.NET Runtime 8.0.31 (x86)"
+                    "ProductCode" = "8:Microsoft.NetCore.CoreRuntime.8.0.x86"
+                    }
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:Microsoft.NetCore.DesktopRuntime.8.0.x86"
+                    {
+                    "Name" = "8:.NET Desktop Runtime 8.0.31 (x86)"
+                    "ProductCode" = "8:Microsoft.NetCore.DesktopRuntime.8.0.x86"
                     }
                 }
             }
@@ -127,9 +132,9 @@
         }
         "File"
         {
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_D361C5E6B360450581623CA3C8654A74"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_BB7CD269823540E1B780A618C369B456"
             {
-            "SourcePath" = "8:..\\JohnBPearson.Wpf.Executer\\JohnBPearson.Wpf.Executer\\Quicklaunch.ico"
+            "SourcePath" = "8:..\\Quicklaunch\\Quicklaunch\\Quicklaunch.ico"
             "TargetName" = "8:Quicklaunch.ico"
             "Tag" = "8:"
             "Folder" = "8:_7F0E208447604FEF91F327290497A9A6"
@@ -156,7 +161,7 @@
             "{1525181F-901A-416C-8A58-119130FE478E}:_3082AF48335B4BE8A70FF02B2880064D"
             {
             "Name" = "8:#1916"
-            "AlwaysCreate" = "11:FALSE"
+            "AlwaysCreate" = "11:TRUE"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Property" = "8:DesktopFolder"
@@ -179,7 +184,7 @@
             "{1525181F-901A-416C-8A58-119130FE478E}:_C8869F095FCF46D5AD505519A91482F0"
             {
             "Name" = "8:#1919"
-            "AlwaysCreate" = "11:FALSE"
+            "AlwaysCreate" = "11:TRUE"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Property" = "8:ProgramMenuFolder"
@@ -203,15 +208,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Quicklaunch"
-        "ProductCode" = "8:{6C0CBD71-A0A1-48D3-88C7-14F52DFE85F2}"
-        "PackageCode" = "8:{7B3B9C7A-D63F-46DF-9A46-283D76266CF5}"
+        "ProductCode" = "8:{D393CDC1-5EC7-4A8B-9AE1-5AD565453065}"
+        "PackageCode" = "8:{FA0FEA68-7F6B-4836-80DB-6E6E199F91BF}"
         "UpgradeCode" = "8:{1D896A5E-0DA2-4EE8-8F70-1115163C83D9}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:0.0.5"
+        "ProductVersion" = "8:0.0.62"
         "Manufacturer" = "8:john pearson"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
@@ -221,7 +226,7 @@
         "Keywords" = "8:"
         "ARPCOMMENTS" = "8:"
         "ARPURLINFOABOUT" = "8:https://www.johnbpearson.com"
-        "ARPPRODUCTICON" = "8:_D361C5E6B360450581623CA3C8654A74"
+        "ARPPRODUCTICON" = "8:_BB7CD269823540E1B780A618C369B456"
         "ARPIconIndex" = "3:0"
         "SearchPath" = "8:"
         "UseSystemSearchPath" = "11:TRUE"
@@ -324,34 +329,6 @@
         }
         "Shortcut"
         {
-            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_6A51EB8DB1C14AC0BEF95382F6A346F2"
-            {
-            "Name" = "8:Shortcut to %sPublish Items from Quicklaunch (Active)"
-            "Arguments" = "8:"
-            "Description" = "8:"
-            "ShowCmd" = "3:1"
-            "IconIndex" = "3:0"
-            "Transitive" = "11:FALSE"
-            "Target" = "8:_4452D6FDBAD64347B456F701C3C7CF63"
-            "Folder" = "8:_3082AF48335B4BE8A70FF02B2880064D"
-            "WorkingFolder" = "8:_7F0E208447604FEF91F327290497A9A6"
-            "Icon" = "8:"
-            "Feature" = "8:"
-            }
-            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_D984014365444EAFB124E9875BD559CA"
-            {
-            "Name" = "8:Shortcut to %sPublish Items from Quicklaunch (Active)"
-            "Arguments" = "8:"
-            "Description" = "8:"
-            "ShowCmd" = "3:1"
-            "IconIndex" = "3:0"
-            "Transitive" = "11:FALSE"
-            "Target" = "8:_4452D6FDBAD64347B456F701C3C7CF63"
-            "Folder" = "8:_7F0E208447604FEF91F327290497A9A6"
-            "WorkingFolder" = "8:_7F0E208447604FEF91F327290497A9A6"
-            "Icon" = "8:"
-            "Feature" = "8:"
-            }
         }
         "UserInterface"
         {
@@ -751,9 +728,9 @@
         }
         "ProjectOutput"
         {
-            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_4452D6FDBAD64347B456F701C3C7CF63"
+            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_828923C11A604B90B02244DD1B236F72"
             {
-            "SourcePath" = "8:..\\JohnBPearson.Wpf.Executer\\JohnBPearson.Wpf.Executer\\obj\\Debug\\net8.0-windows10.0.22621.0\\apphost.exe"
+            "SourcePath" = "8:..\\Quicklaunch\\Quicklaunch\\obj\\Debug\\net8.0-windows10.0.22621.0\\apphost.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_7F0E208447604FEF91F327290497A9A6"
@@ -775,7 +752,6 @@
             "OutputGroupCanonicalName" = "8:PublishItems"
             "OutputProjectGuid" = "8:{049C1328-0C0C-4470-81F2-0C198277794F}"
             "ShowKeyOutput" = "11:TRUE"
-            "PublishProfilePath" = "8:Properties\\PublishProfiles\\FolderProfile.pubxml"
                 "ExcludeFilters"
                 {
                 }

@@ -3,9 +3,9 @@
     <TargetFramework>net8.0</TargetFramework>
     <OutputType>Library</OutputType>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
-    <AssemblyTitle>JohnBPearson.Butlers.QuickLaunchCore</AssemblyTitle>
-    <Product>JohnBPearson.Butlers.QuickLaunchCore</Product>
-    <Copyright>Copyright ©  2024</Copyright>
+    <AssemblyTitle>QuickLaunchModel</AssemblyTitle>
+    <Product>QuickLaunchModel</Product>
+    <Copyright>Copyright ©  2026</Copyright>
     <AssemblyVersion>1.0.0.0</AssemblyVersion>
     <FileVersion>1.0.0.0</FileVersion>
   </PropertyGroup>
