@@ -163,8 +163,8 @@ namespace Quicklaunch
                     throw new Exception(Name + " is not a ScaleTransform");
 
 
-                    image.scaleTransform.ScaleX = scaleTransformFactor;
-                    image.scaleTransform.ScaleX = scaleTransformFactor;
+                    //image.scaleTransform.ScaleX = scaleTransformFactor;
+                    //image.scaleTransform.ScaleX = scaleTransformFactor;
                 }
                 this.defaultImageMargins(ref image);
 
@@ -256,7 +256,7 @@ namespace Quicklaunch
             double screenHeight = SystemParameters.WorkArea.Height;
             double screenTop = SystemParameters.WorkArea.Top;
             double screenLeft = SystemParameters.WorkArea.Left;
-            this.WindowState = WindowState.Normal;
+           this.WindowState = WindowState.Normal;
          
             if(position == Dock.Left)
             {
