@@ -84,7 +84,7 @@ namespace JohnBPearson.FileObjects.Model
 
                             // swallow it for now
                         }
-
+             
                     }
                     else if(FileExtension.ExtensionStrings.Contains(file.Extension.SanitizeFileExtension()))
 

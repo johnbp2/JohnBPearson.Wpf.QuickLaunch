@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -45,7 +46,15 @@ namespace JohnBPearson.FileObjects.Model
             if(File.Exists(TargetPath))
             {
 
-                System.Diagnostics.Process.Start(TargetPath);
+                //System.Diagnostics.Process.Start(TargetPath);
+
+                var psi = new ProcessStartInfo
+                {
+                    FileName = this.TargetPath,
+                    UseShellExecute = true
+                }
+;
+                System.Diagnostics.Process.Start(psi);
             }
             else
             {

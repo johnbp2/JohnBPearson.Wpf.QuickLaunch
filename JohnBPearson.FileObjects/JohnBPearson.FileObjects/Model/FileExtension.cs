@@ -38,8 +38,15 @@ namespace JohnBPearson.FileObjects.Model
             int i = 0;
             foreach (var item in Enum.GetValues(typeof(FileExtensionEnum)))
             {
-                
-                _extensions.Add(new Tuple<string, int>($"{item.ToString()}",i));
+                if(item.ToString() == "dir")
+                {
+                    _extensions.Add(new Tuple<string, int>(string.Empty, i));
+                }
+                else
+                {
+                    _extensions.Add(new Tuple<string, int>($".{item.ToString()}", i));
+                }
+               // _extensions.Add(new Tuple<string, int>($"{item.ToString()}",i));
                 i++;
             }
         

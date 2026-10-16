@@ -124,13 +124,11 @@ namespace JohnBPearson.FileObjects.Model
             FullPath = fullPath;
             Extension = info.Extension;
             _name = info.Name;
-            foreach(var ext in FileExtensionHelper.Extensions)
+            foreach(var ext in FileExtension.Extensions)
             {
                 if(ext.Item1 == Extension)
                 {
-                    //MyEnum myEnum = (MyEnum)myInt;
-
-                    //MyEnum myEnum = (MyEnum)Enum.Parse(typeof(MyEnum), myString);
+                    
                     object objOut;
                     if(Enum.TryParse(typeof(FileExtensionEnum), Extension.SanitizeFileExtension(),out objOut)){
                         var extension = (FileExtensionEnum)objOut;
@@ -140,13 +138,15 @@ namespace JohnBPearson.FileObjects.Model
                    
                 }
             }
-  
 
-            if(this.Type != Model.FileExtensionEnum.dir)
+
+            if (this._type != Model.FileExtensionEnum.dir)
 
             {
                 this._icon = System.Drawing.Icon.ExtractAssociatedIcon(fullPath);
             }
+
+            // this checks if the file name contains a number followed by a period at the beginning of the name, and if so, it extracts that number and sets it as the order.
             var rx = new Regex(@"/^\d+[.]/g");
             var match = rx.Match(info.Name);
             if(match.Success)
