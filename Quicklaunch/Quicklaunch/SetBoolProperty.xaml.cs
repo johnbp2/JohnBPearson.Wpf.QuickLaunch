@@ -20,7 +20,7 @@ namespace Quicklaunch
     /// <summary>
     /// Interaction logic for SetBoolProperty.xaml
     /// </summary>
-    public partial class SetBoolProperty : UserControl
+    public partial class SetBoolProperty : System.Windows.Controls.UserControl
     {
 
         private bool _propertyValue;

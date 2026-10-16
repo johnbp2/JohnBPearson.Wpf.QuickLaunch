@@ -22,8 +22,8 @@
 
         <GroupBox x:Name="gbOnTop" Header="Always on top" Foreground="Black"  BorderBrush="Black" >
             <StackPanel Orientation="Horizontal">
-                <RadioButton x:Name="onTopYes" GroupName="OnTop" Content="yes" HorizontalAlignment="Left" Margin="0,20,0,1" Grid.Row="1" VerticalAlignment="Top" Height="14" Width="36"/>
-                <RadioButton x:Name="onTopNo" GroupName="OnTop" Content="no" HorizontalAlignment="Left" Margin="5,20,0,0" Grid.Row="1" VerticalAlignment="Top" Height="14" Width="39" Checked="onTopNo_Checked"/>
+                <RadioButton x:Name="onTopYes" GroupName="OnTop" Content="yes" HorizontalAlignment="Left" Margin="0,20,0,1"  VerticalAlignment="Top" Height="14" Width="36"/>
+                <RadioButton x:Name="onTopNo" GroupName="OnTop" Content="no" HorizontalAlignment="Left" Margin="5,20,0,0"  VerticalAlignment="Top" Height="14" Width="39" Checked="onTopNo_Checked"/>
 
             </StackPanel>
         </GroupBox>
@@ -33,11 +33,16 @@
 
         <GroupBox x:Name="orientation" Header="Orientation"  Foreground="Black"  BorderBrush="Black">
             <StackPanel Orientation="Horizontal">
-                <RadioButton x:Name="orientationHorizontal" GroupName="Orientation" Content="Horizontal" HorizontalAlignment="Left" Margin="0,20,0,1" Grid.Row="1" VerticalAlignment="Top" Height="14" Width="80"/>
-                <RadioButton x:Name="orientationVertical" GroupName="Orientation" Content="Vertical" HorizontalAlignment="Left" Margin="5,20,0,0" Grid.Row="1" VerticalAlignment="Top" Height="14" Width="80"/>
+                <RadioButton x:Name="orientationHorizontal" GroupName="Orientation" Content="Horizontal" HorizontalAlignment="Left" Margin="0,20,0,1"  VerticalAlignment="Top" Height="14" Width="80"/>
+                <RadioButton x:Name="orientationVertical" GroupName="Orientation" Content="Vertical" HorizontalAlignment="Left" Margin="5,20,0,0"  VerticalAlignment="Top" Height="14" Width="80"/>
             </StackPanel>
         </GroupBox>
-
+        <GroupBox x:Name="display" Header="Display"  Foreground="Black"  BorderBrush="Black">
+            <StackPanel Orientation="Horizontal">
+                <RadioButton x:Name="secondaryDisplay" GroupName="display" Content="Secondary" HorizontalAlignment="Left" Margin="0,20,0,1"  VerticalAlignment="Top" Height="14" Width="80"/>
+                <RadioButton x:Name="primaryDisplay" GroupName="display" Content="Primary" HorizontalAlignment="Left" Margin="5,20,0,0"  VerticalAlignment="Top" Height="14" Width="80"/>
+            </StackPanel>
+        </GroupBox>
 
         <GroupBox x:Name="opacitry" Header="Opacity" Foreground="Black"  BorderBrush="Black">
             <StackPanel Orientation="Horizontal">

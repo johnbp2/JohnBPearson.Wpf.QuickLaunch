@@ -5,10 +5,12 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
+using System.Windows.Forms;
 using Quicklaunch.Controls;
 using JohnBPearson.FileObjects;
 using JohnBPearson.FileObjects.Model;
 using Quicklaunch.Services;
+using Input=System.Windows.Input;
 namespace Quicklaunch
 {
 
@@ -34,8 +36,10 @@ namespace Quicklaunch
             {
                 return toolbarX;
             }
-            private set {
-                toolbarX = value; }
+            private set
+            {
+                toolbarX = value;
+            }
         }
         private double toolbarY = 0;
         public double ToolbarY
@@ -44,11 +48,31 @@ namespace Quicklaunch
             {
                 return toolbarY;
             }
-            private set {
-                toolbarY = value; }
+            private set
+            {
+                toolbarY = value;
+            }
         }
 
-        private FileHelperService service;
+        public MainWindow()
+        {
+            if (Properties.Settings.Default.displayOnSecondary)
+            {
+                var screens = System.Windows.Forms.Screen.AllScreens;
+                var firstSecondary = screens.FirstOrDefault(s => s.Primary == false);
+                if (firstSecondary != null)
+                {
+                    WindowStartupLocation = WindowStartupLocation.Manual;
+                    // Ensure Window is minimized on creation
+                  //  WindowState = WindowState.Minimized;
+                    // Define Position on Secondary screen, for "Normal" window-mode
+                    // ( Here Top/Left-Position )
+                    Left = firstSecondary.Bounds.Left;
+                    Top = firstSecondary.Bounds.Top;
+                }
+            }
+
+        }
         #region events
 
 
@@ -61,6 +85,8 @@ namespace Quicklaunch
             this.Background = new SolidColorBrush(System.Windows.Media.Color.FromRgb(drawingColor.R, drawingColor.G, drawingColor.B));
 
             this.Background.Opacity = Properties.Settings.Default.opacity / 100;
+
+
 
         }
 
@@ -81,20 +107,20 @@ namespace Quicklaunch
 
         }
 
-        private void Main_MouseDown(object sender, MouseButtonEventArgs e)
+        private void Main_MouseDown(object sender, Input.MouseButtonEventArgs e)
         {
-            if(e.LeftButton == MouseButtonState.Pressed)
+            if (e.LeftButton == MouseButtonState.Pressed)
                 Main.DragMove();
         }
 
-        void ImageControlMouse_Down(object sender, MouseEventArgs e)
+        void ImageControlMouse_Down(object sender, Input.MouseEventArgs e)
         {
-            if(e.LeftButton == MouseButtonState.Pressed)
+            if (e.LeftButton == MouseButtonState.Pressed)
             {
 
-                foreach(var item in this.cache)
+                foreach (var item in this.cache)
                 {
-                    if(item.Name == ((ImageControl)sender).Name)
+                    if (item.Name == ((ImageControl)sender).Name)
                     {
                         //var test =System.IO.file.ReadAllText(item.Item2.FullPath);
                         //      Debug.WriteLine(test);
@@ -105,10 +131,10 @@ namespace Quicklaunch
                 }
             }
         }
-        void ImageControl_MouseLeave(object sender, MouseEventArgs e)
+        void ImageControl_MouseLeave(object sender, Input.MouseEventArgs e)
         {
             var image = (ImageControl)sender;
-            if(image != null)
+            if (image != null)
             {
 
 
@@ -117,7 +143,7 @@ namespace Quicklaunch
 
                 temp = image.LayoutTransform as ScaleTransform;
 
-                if(temp != null)
+                if (temp != null)
                 {
 
                     temp.ScaleX = 1;
@@ -137,21 +163,21 @@ namespace Quicklaunch
         }
 
 
-        void ImageControl_MouseEnter(object sender, MouseEventArgs e)
+        void ImageControl_MouseEnter(object sender, Input.MouseEventArgs e)
         {
 
             var image = (Controls.ImageControl)sender;
-            if(image != null)
+            if (image != null)
             {
 
-                if((image.RenderTransform is ScaleTransform))
+                if ((image.RenderTransform is ScaleTransform))
                 {
 
                     var scaleTransform = (ScaleTransform)image.RenderTransform;
                     scaleTransform.ScaleX = scaleTransformFactor;
                     scaleTransform.ScaleY = scaleTransformFactor;
                 }
-                else if(image.LayoutTransform is ScaleTransform)
+                else if (image.LayoutTransform is ScaleTransform)
                 {
                     var scaleTransform = (ScaleTransform)image.LayoutTransform;
                     scaleTransform.ScaleX = scaleTransformFactor;
@@ -190,14 +216,14 @@ namespace Quicklaunch
         void MenuItemExit_Click(object sender, RoutedEventArgs e)
         {
 
-            Application.Current.Shutdown();
-           // this.Close();
+            System.Windows.Application.Current.Shutdown();
+            // this.Close();
         }
-            
+
 
         private void MenuItemDockLeft_Click(object sender, RoutedEventArgs e)
         {
-            this.DockWindow(Dock.Left);
+            this.DockWindow(System.Windows.Controls.Dock.Left);
         }
 
         private void MenuItemDockRight_Click(object sender, RoutedEventArgs e)
@@ -207,12 +233,12 @@ namespace Quicklaunch
 
         private void MenuItemDockTop_Click(object sender, RoutedEventArgs e)
         {
-            this.DockWindow(Dock.Top);
+            this.DockWindow(System.Windows.Controls.Dock.Top);
         }
 
         private void MenuItemDockBottom_Click(object sender, RoutedEventArgs e)
         {
-            this.DockWindow(Dock.Bottom);
+            this.DockWindow(System.Windows.Controls.Dock.Bottom);
 
         }
         private void MenuItemRefresh_Click(object sender, RoutedEventArgs e)
@@ -238,11 +264,11 @@ namespace Quicklaunch
         public void buttonAutoShade_Click(object sender, RoutedEventArgs e)
         {
 
-            for(int i = 0; i < stack1.Children.Count; i++)
+            for (int i = 0; i < stack1.Children.Count; i++)
             {
-                if(i != 0)
+                if (i != 0)
                 {
-                stack1.Children[i].Visibility = stack1.Children[i].Visibility == Visibility.Visible ? Visibility.Collapsed : Visibility.Visible;
+                    stack1.Children[i].Visibility = stack1.Children[i].Visibility == Visibility.Visible ? Visibility.Collapsed : Visibility.Visible;
                 }
             }
         }
@@ -252,29 +278,30 @@ namespace Quicklaunch
         #region private methods
         private void DockWindow(Dock position)
         {
+            
             double screenWidth = SystemParameters.WorkArea.Width;
             double screenHeight = SystemParameters.WorkArea.Height;
             double screenTop = SystemParameters.WorkArea.Top;
             double screenLeft = SystemParameters.WorkArea.Left;
-           this.WindowState = WindowState.Normal;
-         
-            if(position == Dock.Left)
+            this.WindowState = WindowState.Normal;
+
+            if (position == Dock.Left)
             {
                 this.Top = screenTop;
 
                 this.Left = screenLeft;
 
             }
-            else if(position == Dock.Right)
+            else if (position == Dock.Right)
             {
 
                 this.Top = screenTop;
                 this.Left = screenLeft + screenWidth - this.Width;
 
             }
-            else if(position == Dock.Top)
+            else if (position == Dock.Top)
             {
-              
+
                 this.Top = screenTop;
 
                 var temp = this.Width / 2;
@@ -282,13 +309,13 @@ namespace Quicklaunch
                 //double screenWidth = SystemParameters.WorkArea.Width;
                 this.Left = (screenWidth / 2) - temp;
             }
-            else if(position == Dock.Bottom)
+            else if (position == Dock.Bottom)
             {
                 this.Top = screenHeight - this.Height;
                 var temp = this.Width / 2;
                 this.Left = (screenWidth / 2) - temp;
             }
-            if(position == Dock.Left || position == Dock.Right)
+            if (position == Dock.Left || position == Dock.Right)
             {
                 this.Height = screenHeight;
             }
@@ -300,16 +327,16 @@ namespace Quicklaunch
             stack1.Children.Clear();
             this.ToolbarX = 0;
             NameScope.SetNameScope(this, new NameScope());
-          
+
 
             // stack1.HorizontalAlignment = HorizontalAlignment.Left;
-            if(Properties.Settings.Default.horizontalOrientation)
+            if (Properties.Settings.Default.horizontalOrientation)
             {
-                stack1.Orientation = Orientation.Horizontal;
+                stack1.Orientation = System.Windows.Controls.Orientation.Horizontal;
             }
             else
             {
-                stack1.Orientation = Orientation.Vertical;
+                stack1.Orientation = System.Windows.Controls.Orientation.Vertical;
             }
 
 
@@ -326,12 +353,12 @@ namespace Quicklaunch
 
             // TODO: [] add tooltips
 
-            foreach(var fileSystemObject in Facade.FileSystemObjects)
+            foreach (var fileSystemObject in Facade.FileSystemObjects)
             {
 
-                if(fileSystemObject.Type != FileExtensionEnum.bat)
+                if (fileSystemObject.Type != FileExtensionEnum.bat)
                 {
-                    
+
                     Controls.ImageControl image = createImageControl(i, fileSystemObject);
 
                     image.MouseDown += new MouseButtonEventHandler(ImageControlMouse_Down);
@@ -344,9 +371,9 @@ namespace Quicklaunch
 
 
 
-                    image.MouseEnter += new MouseEventHandler(ImageControl_MouseEnter);
+                    image.MouseEnter += new Input.MouseEventHandler(ImageControl_MouseEnter);
 
-                    image.MouseLeave += new MouseEventHandler(ImageControl_MouseLeave);
+                    image.MouseLeave += new Input.MouseEventHandler(ImageControl_MouseLeave);
 
 
 
@@ -373,28 +400,28 @@ namespace Quicklaunch
             }
             this.setWidths(ToolbarX);
             this.setHeights(ToolbarX);
-   
+
         }
         // TODO: [x]refactor separate method for height.
         private void setWidths(double width)
         {
 
             // 60 horizontal height is always 60, vertical width is always 60.  The other dimension is variable based on the number of images and the image width.
-            if(Properties.Settings.Default.horizontalOrientation)
+            if (Properties.Settings.Default.horizontalOrientation)
             {
                 this.Width = width;
                 this.stack1.Width = width;
                 // this.gridMain.ColumnDefinitions[0].Width = new GridLength(width);
-           
+
                 // this.gridMain.Width = width;
-             
+
             }
             else
             {
-                          
+
                 this.stack1.Width = 60;
-               
-              
+
+
                 // this.gridMain.Width = 60;
                 this.Width = 60;
                 // this.gridMain.ColumnDefinitions[0].Width = new GridLength(60);
@@ -403,7 +430,7 @@ namespace Quicklaunch
         private void setHeights(double height)
         {
 
-            if(Properties.Settings.Default.horizontalOrientation)
+            if (Properties.Settings.Default.horizontalOrientation)
             {
                 this.stack1.Height = 60;
 
@@ -424,7 +451,7 @@ namespace Quicklaunch
         }
         private void defaultImageMargins(ref Controls.ImageControl image)
         {
-            if(stack1.Orientation == Orientation.Horizontal)
+            if (stack1.Orientation == System.Windows.Controls.Orientation.Horizontal)
             {
                 image.Margin = new Thickness(10, 0, 10, 0);
             }
@@ -453,16 +480,16 @@ namespace Quicklaunch
 
         private void addAutoShadeButton()
         {
-            var button = new Button();
+            var button = new System.Windows.Controls.Button();
             button.Name = "buttonAutoShade";
             var icon = new System.Drawing.Icon(System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Quicklaunch.ico"));
             var bmi = Services.ImageService.IconToBitmapImage(icon);
-            var image = new Image();
+            var image = new System.Windows.Controls.Image();
             image.BeginInit();
             image.Source = bmi;
             image.EndInit();
             button.Content = image;
-             button.Click += new RoutedEventHandler(buttonAutoShade_Click);
+            button.Click += new RoutedEventHandler(buttonAutoShade_Click);
             this.stack1.Children.Add(button);
         }
 

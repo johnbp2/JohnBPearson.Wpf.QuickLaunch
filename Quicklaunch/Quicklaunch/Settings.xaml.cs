@@ -68,6 +68,8 @@ namespace Quicklaunch
             Properties.Settings.Default.alwaysOnTop = ontop;
             Properties.Settings.Default.folder = folder.Text;
             Properties.Settings.Default.opacity = this.opacitySlider.Value ;
+           Properties.Settings.Default.displayOnSecondary = this.secondaryDisplay.IsChecked ?? false;
+
             Properties.Settings.Default.Save();
             this.Close();
                 
@@ -105,6 +107,14 @@ namespace Quicklaunch
             else
             {
                 this.orientationVertical.IsChecked = true;
+            }
+            if(Properties.Settings.Default.displayOnSecondary)
+            {
+                this.secondaryDisplay.IsChecked = true;
+            }
+            else
+            {
+                this.primaryDisplay.IsChecked = true;
             }
             this.opacitySlider.Value = Properties.Settings.Default.opacity;
             setOpacityLabel(Properties.Settings.Default.opacity);

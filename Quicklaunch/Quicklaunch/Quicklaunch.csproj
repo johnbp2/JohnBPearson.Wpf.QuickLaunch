@@ -9,6 +9,7 @@
     <ApplicationIcon>Quicklaunch.ico</ApplicationIcon>
     <Copyright>John B Pearson 2026</Copyright>
     <StartupObject>Quicklaunch.App</StartupObject>
+    <UseWindowsForms>True</UseWindowsForms>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">

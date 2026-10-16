@@ -8,7 +8,7 @@ namespace Quicklaunch
     /// <summary>
     /// Interaction logic for App.xaml
     /// </summary>
-    public partial class App : Application
+    public partial class App : System.Windows.Application
     {
 
        
@@ -25,7 +25,7 @@ namespace Quicklaunch
 
             }
         
-                var mainWindow = new MainWindow();
+                //var mainWindow = new MainWindow();
                   }
         }
     }
