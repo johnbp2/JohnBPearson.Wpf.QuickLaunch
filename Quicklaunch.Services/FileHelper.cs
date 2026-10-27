@@ -8,9 +8,9 @@ namespace Quicklaunch.Services
     public class FileHelperService :IDisposable
     {
         public event EventHandler<string> RefreshNeeded;
-        private string _directoryPath;
+        private string _directoryPath = string.Empty;
 
-        private FileSystemWatcher _watcher;
+        private FileSystemWatcher? _watcher;
         public void WatchDirectory(string directoryPath)
         {
             if (!System.IO.Directory.Exists(directoryPath))
@@ -31,7 +31,7 @@ namespace Quicklaunch.Services
 
         //protected void OnPropertyChanged([CallerMemberName] string name = null)
         //{
-        //    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
+        //    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));                                                               
         //}
 
         public static void EnsureDirectoryExists(string directoryPath)

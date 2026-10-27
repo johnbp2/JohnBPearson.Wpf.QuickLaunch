@@ -351,7 +351,7 @@ namespace Quicklaunch
             //}
 
 
-            // TODO: [] add tooltips
+            // TODO: [x] add tooltips
 
             foreach (var fileSystemObject in Facade.FileSystemObjects)
             {

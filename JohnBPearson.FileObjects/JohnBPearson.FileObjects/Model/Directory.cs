@@ -14,7 +14,7 @@ namespace JohnBPearson.FileObjects.Model
 {
  
 
-    internal class Directory : FileSystemObjectBase, IFileSystemObjectBase, IDirectory
+    internal class Directory : FileSystemObjectBase,  IDirectory
     {
 
         private DirectoryInfo _directoryInfo;
