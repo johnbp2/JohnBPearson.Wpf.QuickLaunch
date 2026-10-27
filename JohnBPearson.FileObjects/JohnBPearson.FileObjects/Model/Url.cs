@@ -11,7 +11,7 @@ using System.Linq;
     namespace JohnBPearson.FileObjects.Model
     {
 
-        internal class Url : FileSystemObjectBase, IFileSystemObjectBase
+        internal class Url : FileSystemObjectBase, IUrl
         {
 
 

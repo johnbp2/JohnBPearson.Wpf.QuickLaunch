@@ -13,6 +13,7 @@ using System.Threading.Tasks;
 using CustomExtensions;
 using JohnBPearson.FileObjects;
 using Microsoft.SqlServer.Server;
+using Securify.ShellLink.Structures;
 
 
 namespace JohnBPearson.FileObjects.Model
@@ -20,7 +21,7 @@ namespace JohnBPearson.FileObjects.Model
 
     internal abstract class FileSystemObjectBase : IFileSystemObjectBase
     {
-      
+
 
         private string _fullPath = "";
         public string FullPath
@@ -100,7 +101,7 @@ namespace JohnBPearson.FileObjects.Model
             {
                 return _order;
             }
-           private set
+            private set
             {
                 if (value != _order)
                 {
@@ -124,18 +125,19 @@ namespace JohnBPearson.FileObjects.Model
             FullPath = fullPath;
             Extension = info.Extension;
             _name = info.Name;
-            foreach(var ext in FileExtension.Extensions)
+            foreach (var ext in FileExtension.Extensions)
             {
-                if(ext.Item1 == Extension)
+                if (ext.Item1 == Extension)
                 {
-                    
+
                     object objOut;
-                    if(Enum.TryParse(typeof(FileExtensionEnum), Extension.SanitizeFileExtension(),out objOut)){
+                    if (Enum.TryParse(typeof(FileExtensionEnum), Extension.SanitizeFileExtension(), out objOut))
+                    {
                         var extension = (FileExtensionEnum)objOut;
                         this.settheType(extension);
                         break;
                     }
-                   
+
                 }
             }
 
@@ -145,14 +147,19 @@ namespace JohnBPearson.FileObjects.Model
             {
                 this._icon = System.Drawing.Icon.ExtractAssociatedIcon(fullPath);
             }
+            else
+            {
+                this._icon = new Icon("folder128x128.ico", 32, 32);
+
+            }
 
             // this checks if the file name contains a number followed by a period at the beginning of the name, and if so, it extracts that number and sets it as the order.
             var rx = new Regex(@"/^\d+[.]/g");
             var match = rx.Match(info.Name);
-            if(match.Success)
+            if (match.Success)
             {
                 var temp = info.Name.Substring(0, info.Name.IndexOf('.'));
-                if(int.TryParse(temp, out int order))
+                if (int.TryParse(temp, out int order))
                 {
                     this.Order = order;
                 }

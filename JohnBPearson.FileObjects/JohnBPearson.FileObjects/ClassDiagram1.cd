@@ -30,13 +30,6 @@
       <FileName>Model\FileExtension.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="JohnBPearson.FileObjects.Model.FileExtensionHelper" Collapsed="true">
-    <Position X="23.25" Y="6.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAgAAAAAAAA=</HashCode>
-      <FileName>Model\FileExtensionHelper.cs</FileName>
-    </TypeIdentifier>
-  </Class>
   <Class Name="JohnBPearson.FileObjects.Model.FileSystemObjectBase" Collapsed="true">
     <Position X="17.5" Y="5.25" Width="2.5" />
     <TypeIdentifier>
@@ -62,7 +55,7 @@
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="JohnBPearson.FileObjects.Facade" Collapsed="true">
-    <Position X="25" Y="5.5" Width="1.5" />
+    <Position X="15.5" Y="2.5" Width="12.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAEAEBAAFAAAAAAAAAAACAAAAAAAAAAEAAQA=</HashCode>
       <FileName>Facade.cs</FileName>
@@ -82,6 +75,12 @@
       <FileName>Facade.cs</FileName>
     </TypeIdentifier>
   </Class>
+  <Class Name="JohnBPearson.FileObjects.Properties.Resources" Collapsed="true">
+    <Position X="29.75" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAAAAAAAAAAAAAABEAAAAQAAAAAAAAAAAAAAAIA=</HashCode>
+    </TypeIdentifier>
+  </Class>
   <Interface Name="JohnBPearson.FileObjects.Model.IInitialization" Collapsed="true">
     <Position X="23.25" Y="7.75" Width="1.5" />
     <TypeIdentifier>
@@ -96,13 +95,6 @@
       <FileName>IBinaryLinkFormat.cs</FileName>
     </TypeIdentifier>
   </Interface>
-  <Interface Name="JohnBPearson.FileObjects.IExecutable" Collapsed="true">
-    <Position X="18.5" Y="9.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAI=</HashCode>
-      <FileName>IExecutable.cs</FileName>
-    </TypeIdentifier>
-  </Interface>
   <Interface Name="JohnBPearson.FileObjects.IFileSystemObjectBase" Collapsed="true">
     <Position X="16.25" Y="8.5" Width="1.5" />
     <TypeIdentifier>
@@ -115,6 +107,13 @@
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAA=</HashCode>
       <FileName>IDirectory.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="JohnBPearson.FileObjects.IUrl" Collapsed="true">
+    <Position X="18.5" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>IUrl.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Enum Name="JohnBPearson.FileObjects.Model.FileExtensionEnum" Collapsed="true">

@@ -208,15 +208,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Quicklaunch"
-        "ProductCode" = "8:{B7C9BEB6-C097-450B-AD19-3E7E245BF3A4}"
-        "PackageCode" = "8:{4089B4C5-1604-4A20-BECB-1E23C118FA56}"
+        "ProductCode" = "8:{94285617-53D1-4D71-A1F9-63099CAA7E9E}"
+        "PackageCode" = "8:{380243C9-DD8D-4C55-87B0-0F594C2DA2D9}"
         "UpgradeCode" = "8:{1D896A5E-0DA2-4EE8-8F70-1115163C83D9}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:0.7.0287"
+        "ProductVersion" = "8:0.10.0292"
         "Manufacturer" = "8:john pearson"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
@@ -730,7 +730,7 @@
         {
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_828923C11A604B90B02244DD1B236F72"
             {
-            "SourcePath" = "8:..\\Quicklaunch\\Quicklaunch\\obj\\Release\\net8.0-windows10.0.22621.0\\apphost.exe"
+            "SourcePath" = "8:..\\Quicklaunch\\Quicklaunch\\obj\\x64\\Release\\net8.0-windows10.0.22621.0\\apphost.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_7F0E208447604FEF91F327290497A9A6"

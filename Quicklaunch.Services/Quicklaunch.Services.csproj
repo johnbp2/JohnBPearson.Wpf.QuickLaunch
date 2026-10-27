@@ -5,6 +5,9 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
 	 <UseWPF>true</UseWPF>
+	 <Platforms>AnyCPU;x64;x86</Platforms>
+	 <AssemblyVersion>1.0.10.292</AssemblyVersion>
+	 <FileVersion>1.0.10.292</FileVersion>
   </PropertyGroup>
 
   <ItemGroup>
