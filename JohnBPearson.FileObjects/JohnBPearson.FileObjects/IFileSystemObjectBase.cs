@@ -29,6 +29,8 @@ namespace JohnBPearson.FileObjects
         {
             get;
         }
+        bool IsOrdered { get; }
+        int Order { get; }
 
         void Run();
     }

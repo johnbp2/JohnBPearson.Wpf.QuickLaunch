@@ -16,9 +16,10 @@ namespace Quicklaunch.Controls
     {
 
 
-        public IFileSystemObjectBase FileSystemObjectBase
+        public IFileSystemObjectBase FileSystemObject
+
         {
-            get; set;
+            get; private set;
         }
 
         public ScaleTransform scaleTransform
@@ -29,14 +30,14 @@ namespace Quicklaunch.Controls
 
         public ImageControl(ScaleTransform scaleTransform, IFileSystemObjectBase fileSystemObjectBase) : base()
         {
-            this.FileSystemObjectBase = fileSystemObjectBase;
+            this.FileSystemObject = fileSystemObjectBase;
             this.scaleTransform = scaleTransform;
 
         }
 
         public ImageControl(ScaleTransform scaleTransform, IFileSystemObjectBase fileSystemObjectBase, string tooltipConents) : base()
         {
-            this.FileSystemObjectBase = fileSystemObjectBase;
+            this.FileSystemObject = fileSystemObjectBase;
             this.scaleTransform = scaleTransform;
             this.setTooltip(tooltipConents);
         }

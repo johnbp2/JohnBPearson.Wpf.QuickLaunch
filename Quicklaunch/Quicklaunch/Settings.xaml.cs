@@ -21,21 +21,34 @@ namespace Quicklaunch
     {
 
         private string _folder = string.Empty;
-      
+        internal MainWindow main;
+        private void pick_Color(object sender, RoutedEventArgs e)
+        {
+            System.Windows.Forms.ColorDialog dialog = new();
 
+            var result = dialog.ShowDialog();
+            if (result == System.Windows.Forms.DialogResult.OK)
+            {
+                var color = dialog.Color;
+                Properties.Settings.Default.bgColor = color;
+            }
+            displayColor();
+            
+        }
+        
         private void button_Click(object sender, RoutedEventArgs e)
         {
-           
+
             Microsoft.Win32.OpenFolderDialog dialog = new();
 
             dialog.Multiselect = false;
             dialog.Title = "Select a folder";
-      
+
             // Show open foa    q   q   lder dialog box
             bool? result = dialog.ShowDialog();
 
             // Process open folder dialog box results
-            if(result == true)
+            if (result == true)
             {
                 // Get the selected folder
                 folder.Text = dialog.FolderName;
@@ -43,37 +56,39 @@ namespace Quicklaunch
                 //Properties.Settings.Default.Save(); 
                 this._folder = dialog.SafeFolderName;
             }
-           
+
         }
 
         private void Window_Initialized(object sender, EventArgs e)
         {
-          
-           
+
+
         }
 
         private void ok_Click(object sender, RoutedEventArgs e)
         {
             bool ontop = false;
-            if(this.onTopYes.IsChecked != null)
+            if (this.onTopYes.IsChecked != null)
             {
                 ontop = this.onTopYes.IsChecked.Value;
             }
             bool horiz = false;
-            if(this.orientationHorizontal.IsChecked != null)
+            if (this.orientationHorizontal.IsChecked != null)
             {
-              horiz  = this.orientationHorizontal.IsChecked.Value;
+                horiz = this.orientationHorizontal.IsChecked.Value;
             }
             Properties.Settings.Default.horizontalOrientation = horiz;
             Properties.Settings.Default.alwaysOnTop = ontop;
             Properties.Settings.Default.folder = folder.Text;
-            Properties.Settings.Default.opacity = this.opacitySlider.Value ;
-           Properties.Settings.Default.displayOnSecondary = this.secondaryDisplay.IsChecked ?? false;
+            Properties.Settings.Default.opacity = this.opacitySlider.Value;
+            Properties.Settings.Default.displayOnSecondary = this.secondaryDisplay.IsChecked ?? false;
 
             Properties.Settings.Default.Save();
+
+            main.SetBGColor(Properties.Settings.Default.bgColor);
             this.Close();
-                
-                }
+
+        }
 
         private void cancel_Click(object sender, RoutedEventArgs e)
         {
@@ -84,7 +99,8 @@ namespace Quicklaunch
         {
 
         }
-        public Settings() {
+        public Settings()
+        {
             InitializeComponent();
         }
 
@@ -100,7 +116,7 @@ namespace Quicklaunch
                 this.onTopNo.IsChecked = true;
             }
 
-            if(Properties.Settings.Default.horizontalOrientation)
+            if (Properties.Settings.Default.horizontalOrientation)
             {
                 this.orientationHorizontal.IsChecked = true;
             }
@@ -108,7 +124,7 @@ namespace Quicklaunch
             {
                 this.orientationVertical.IsChecked = true;
             }
-            if(Properties.Settings.Default.displayOnSecondary)
+            if (Properties.Settings.Default.displayOnSecondary)
             {
                 this.secondaryDisplay.IsChecked = true;
             }
@@ -118,6 +134,13 @@ namespace Quicklaunch
             }
             this.opacitySlider.Value = Properties.Settings.Default.opacity;
             setOpacityLabel(Properties.Settings.Default.opacity);
+            displayColor();
+        }
+
+        private void displayColor()
+        {
+            var mediaColor = System.Windows.Media.Color.FromRgb(Properties.Settings.Default.bgColor.R, Properties.Settings.Default.bgColor.G, Properties.Settings.Default.bgColor.B);
+            colorRectangle.Fill = new SolidColorBrush(mediaColor);
         }
 
         private void opacitySlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
@@ -127,7 +150,7 @@ namespace Quicklaunch
 
         private void setOpacityLabel(double value)
         {
-            if(labelOpacity != null)
+            if (labelOpacity != null)
             {
 
 

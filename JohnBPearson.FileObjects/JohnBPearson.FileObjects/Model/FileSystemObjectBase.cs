@@ -164,6 +164,9 @@ namespace JohnBPearson.FileObjects.Model
                     this.Order = order;
                 }
             }
+            else { 
+                this.Order = 0;
+            }
 
         }
         void settheType(FileExtensionEnum type)
