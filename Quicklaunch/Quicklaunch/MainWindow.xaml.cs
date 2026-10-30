@@ -81,8 +81,7 @@ namespace Quicklaunch
             Services.UnmanagedService.SetWindowZIndex(this, Properties.Settings.Default.alwaysOnTop);
             var drawingColor = Properties.Settings.Default.bgColor;
 
-
-            this.Background = new SolidColorBrush(System.Windows.Media.Color.FromRgb(drawingColor.R, drawingColor.G, drawingColor.B));
+            SetBGColor(drawingColor);
 
             this.Background.Opacity = Properties.Settings.Default.opacity / 100;
 
@@ -90,6 +89,10 @@ namespace Quicklaunch
 
         }
 
+        internal void SetBGColor(System.Drawing.Color drawingColor)
+        {
+            this.Background = new SolidColorBrush(System.Windows.Media.Color.FromRgb(drawingColor.R, drawingColor.G, drawingColor.B));
+        }
 
         void Main_Initialized(object sender, EventArgs e)
         {
@@ -124,8 +127,8 @@ namespace Quicklaunch
                     {
                         //var test =System.IO.file.ReadAllText(item.Item2.FullPath);
                         //      Debug.WriteLine(test);
-                        //Process.Start(item.Item2.FullPath);
-                        item.FileSystemObjectBase.Run();
+                        //Process.Start(item.Item2.FullPath);2
+                        item.FileSystemObject.Run();
                         break;
                     }
                 }
@@ -202,6 +205,7 @@ namespace Quicklaunch
             var settings = new Settings();
             settings.Owner = this;
             settings.ShowInTaskbar = true;
+            settings.main = this;
             settings.ShowDialog();
             this.Background.Opacity = Properties.Settings.Default.opacity / 100;
             stack1.Children.Clear();

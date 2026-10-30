@@ -12,13 +12,21 @@
 
     <StackPanel Orientation="Vertical">
 
-    <GroupBox x:Name="gbFolder" Header="Toolbar folder"  Foreground="Black" BorderBrush="Black" >
+        <GroupBox x:Name="gbFolder" Header="Toolbar folder"  Foreground="Black" BorderBrush="Black" >
             <StackPanel Orientation="Horizontal">
                 <TextBox x:Name="folder" TextWrapping="WrapWithOverflow"  Text="" BorderBrush="#FF737780" Width="180" />
                 <!--<Label x:Name="label" Content="Selected Dir." Grid.Column="0" Grid.Row="0" Margin="0,0,0,0" FontSize="10" VerticalAlignment="Top" Height="18" Width="53" Padding="0,2,0,0" HorizontalContentAlignment="Right" HorizontalAlignment="Left"/>-->
                 <Button x:Name="browse" Content="Browse" Width="50" Click="button_Click" Height="20" Margin="5,8,0,0"/>
             </StackPanel>
-            </GroupBox>
+        </GroupBox>
+
+
+        <GroupBox x:Name="gbColor" Header="Background Color"  Foreground="Black" BorderBrush="Black" >
+            <StackPanel Orientation="Horizontal">
+                <Rectangle x:Name="colorRectangle" Width="180" Height="20" Fill="White" Stroke="Black" Margin="0,0,0,0"/>
+                <Button x:Name="selectColor" Content="Select" Width="50" Click="pick_Color" Height="20" Margin="5,5,5,5"/>
+            </StackPanel>
+        </GroupBox>
 
         <GroupBox x:Name="gbOnTop" Header="Always on top" Foreground="Black"  BorderBrush="Black" >
             <StackPanel Orientation="Horizontal">
@@ -47,7 +55,7 @@
         <GroupBox x:Name="opacitry" Header="Opacity" Foreground="Black"  BorderBrush="Black">
             <StackPanel Orientation="Horizontal">
 
-            <Slider x:Name="opacitySlider" Minimum="1" Maximum="100" IsSnapToTickEnabled="True" HorizontalAlignment="Left" Margin="0,0,0,0" Width="150" LargeChange="5" SmallChange="1" ValueChanged="opacitySlider_ValueChanged"/>
+                <Slider x:Name="opacitySlider" Minimum="1" Maximum="100" IsSnapToTickEnabled="True" HorizontalAlignment="Left" Margin="0,0,0,0" Width="150" LargeChange="5" SmallChange="1" ValueChanged="opacitySlider_ValueChanged"/>
                 <Label x:Name="labelOpacity" Grid.Column="1" Content="0" HorizontalAlignment="Left" Margin="25,0,0,0" Grid.Row="3" VerticalAlignment="Center"/>
             </StackPanel>
         </GroupBox>
@@ -56,6 +64,6 @@
             <Button x:Name="ok" Content="Ok" Width="34" Click="ok_Click" HorizontalAlignment="Right" Height="20" Margin="0,5,5,5"/>
 
         </StackPanel>
-        
+
     </StackPanel>
 </Window>

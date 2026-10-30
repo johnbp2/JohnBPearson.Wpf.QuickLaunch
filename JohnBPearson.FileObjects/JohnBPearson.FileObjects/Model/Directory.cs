@@ -86,7 +86,7 @@ namespace JohnBPearson.FileObjects.Model
                         }
              
                     }
-                    else if(FileExtension.ExtensionStrings.Contains(file.Extension.SanitizeFileExtension()))
+                    else if(FileExtension.ExtensionStrings.Contains(file.Extension))
 
 
                     {
@@ -96,6 +96,10 @@ namespace JohnBPearson.FileObjects.Model
                 }
 
                 // dir.GetFiles()
+            }
+            if(items.Count > 0 && items.FirstOrDefault().IsOrdered)
+            {
+                items = items.OrderBy(x => x.Order).ToList();
             }
             return items;
 
