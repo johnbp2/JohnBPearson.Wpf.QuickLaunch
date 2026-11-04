@@ -42,6 +42,33 @@ namespace Quicklaunch.Controls
             this.setTooltip(tooltipConents);
         }
 
+
+
+        public void Bounce()
+        {
+
+
+
+
+            System.Windows.Media.Animation.DoubleAnimation bounceAnimation = new System.Windows.Media.Animation.DoubleAnimation
+            {
+                From = 32,
+                To = 200,
+                Duration = TimeSpan.FromSeconds(3),
+                EasingFunction = new System.Windows.Media.Animation.BounceEase
+                {
+                    Bounces = 6,
+                    Bounciness = 1,
+                    EasingMode = System.Windows.Media.Animation.EasingMode.EaseOut
+                },
+
+            };
+
+            this.BeginAnimation(ImageControl.HeightProperty, bounceAnimation);
+
+        }
+
+
         private void setTooltip(string content) 
         {
 

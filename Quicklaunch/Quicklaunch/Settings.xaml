@@ -62,7 +62,7 @@
        
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" >
             <Button x:Name="cancel"  Width="50px" Grid.Row="4" Content="Cancel" HorizontalAlignment="Right" Height="20" Click="cancel_Click"  Margin="5,5,5,5"/>
-            <Button x:Name="ok" Content="Ok" Width="34" Click="ok_Click" HorizontalAlignment="Right" Height="20" Margin="0,5,5,5"/>
+            <Button x:Name="ok" Content="Save" Width="34" Click="ok_Click" HorizontalAlignment="Right" Height="20" Margin="0,5,5,5"/>
 
         </StackPanel>
 

@@ -47,6 +47,17 @@ namespace Quicklaunch
         //    }
         //}
 
+        private System.Windows.Controls.GroupBox gb;
+        [System.ComponentModel.Category("Custom Properties")]
+     
+        [System.ComponentModel.Description("The header text for the property group box.")]
+        [System.ComponentModel.Browsable(true)]
+        public System.Windows.Controls.GroupBox groupBox
+        {
+            get { return this.propertyGroupBox; }
+           set { gb = value; }
+        }
+
         public SetBoolProperty()
         {
             //if(propertyHost == null) {

@@ -1,4 +1,5 @@
-﻿using System.Diagnostics;
+﻿#define TESTANIMATION
+using System.Diagnostics;
 using System.Runtime.InteropServices;
 using System.Windows;
 using System.Windows.Controls;
@@ -170,6 +171,13 @@ namespace Quicklaunch
         {
 
             var image = (Controls.ImageControl)sender;
+#if TESTANIMATION
+            image.Bounce();
+
+#else
+
+
+
             if (image != null)
             {
 
@@ -198,6 +206,7 @@ namespace Quicklaunch
                 this.defaultImageMargins(ref image);
 
             }
+#endif
         }
 
         void MenuItemSettings_Click(object sender, RoutedEventArgs e)
