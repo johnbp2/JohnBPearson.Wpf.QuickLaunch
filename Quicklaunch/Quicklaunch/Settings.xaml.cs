@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Quicklaunch.Views;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -59,29 +60,26 @@ namespace Quicklaunch
 
         }
 
-        private void Window_Initialized(object sender, EventArgs e)
-        {
 
-
-        }
 
         private void ok_Click(object sender, RoutedEventArgs e)
         {
-            bool ontop = false;
-            if (this.onTopYes.IsChecked != null)
-            {
-                ontop = this.onTopYes.IsChecked.Value;
-            }
-            bool horiz = false;
-            if (this.orientationHorizontal.IsChecked != null)
-            {
-                horiz = this.orientationHorizontal.IsChecked.Value;
-            }
-            Properties.Settings.Default.horizontalOrientation = horiz;
-            Properties.Settings.Default.alwaysOnTop = ontop;
+            // this should already be set from data binding
+            //bool ontop = false;
+            //if (this.onTopYes.IsChecked != null)
+            //{
+            //    ontop = this.onTopYes.IsChecked.Value;
+            ////}
+            //bool horiz = false;
+            //if (this.orientationHorizontal.IsChecked != null)
+            //{
+            //    horiz = this.orientationHorizontal.IsChecked.Value;
+            //}
+            //Properties.Settings.Default.horizontalOrientation = horiz;
+          //  Properties.Settings.Default.alwaysOnTop = ontop;
             Properties.Settings.Default.folder = folder.Text;
             Properties.Settings.Default.opacity = this.opacitySlider.Value;
-            Properties.Settings.Default.displayOnSecondary = this.secondaryDisplay.IsChecked ?? false;
+            //Properties.Settings.Default.displayOnSecondary = this.secondaryDisplay.IsChecked ?? false;
 
             Properties.Settings.Default.Save();
 
@@ -92,13 +90,14 @@ namespace Quicklaunch
 
         private void cancel_Click(object sender, RoutedEventArgs e)
         {
+            Properties.Settings.Default.Reload();
             this.Close();
         }
 
-        private void onTopNo_Checked(object sender, RoutedEventArgs e)
-        {
+        //private void onTopNo_Checked(object sender, RoutedEventArgs e)
+        //{
 
-        }
+        //}
         public Settings()
         {
             InitializeComponent();
@@ -107,34 +106,40 @@ namespace Quicklaunch
         private void SettingsWindow_Loaded(object sender, RoutedEventArgs e)
         {
             folder.Text = Properties.Settings.Default.folder;
-            if (Properties.Settings.Default.alwaysOnTop)
-            {
-                this.onTopYes.IsChecked = true;
-            }
-            else
-            {
-                this.onTopNo.IsChecked = true;
-            }
+            //if (Properties.Settings.Default.alwaysOnTop)
+            //{
+            //    this.onTopYes.IsChecked = true;
+            //}
+            //else
+            //{
+            //    this.onTopNo.IsChecked = true;
+            //}
 
-            if (Properties.Settings.Default.horizontalOrientation)
-            {
-                this.orientationHorizontal.IsChecked = true;
-            }
-            else
-            {
-                this.orientationVertical.IsChecked = true;
-            }
-            if (Properties.Settings.Default.displayOnSecondary)
-            {
-                this.secondaryDisplay.IsChecked = true;
-            }
-            else
-            {
-                this.primaryDisplay.IsChecked = true;
-            }
+            //if (Properties.Settings.Default.horizontalOrientation)
+            //{
+            //    this.orientationHorizontal.IsChecked = true;
+            //}
+            //else
+            //{
+            //    this.orientationVertical.IsChecked = true;
+            //}
+            //if (Properties.Settings.Default.displayOnSecondary)
+            //{
+            //    this.secondaryDisplay.IsChecked = true;
+            //}
+            //else
+            //{
+            //    this.primaryDisplay.IsChecked = true;
+            //}
             this.opacitySlider.Value = Properties.Settings.Default.opacity;
             setOpacityLabel(Properties.Settings.Default.opacity);
             displayColor();
+         //   this.test.GroupBox.Header = "Always on Top";
+            this.cntrlAlwaysOnTop.bind(nameof(SettingsPresenter.AlwaysOnTop), "Always on Top");
+            this.cntrlOrientationHorizontal.bind(nameof(SettingsPresenter.OrientationHorizontal), "Horizontal Layout");
+            this.cntrlSecondaryDisplay.bind(nameof(SettingsPresenter.PropertyNames), "Show on secondary display");
+            // var orientation = new SetBoolProperty(SettingsPresenter.PropertyNames.OrientationHorizontal, "Horizontal Orientation");
+            //            mainStackPanel.Children.Add(orientation);
         }
 
         private void displayColor()

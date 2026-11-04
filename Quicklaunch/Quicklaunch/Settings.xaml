@@ -6,11 +6,9 @@
         xmlns:local="clr-namespace:Quicklaunch"
         mc:Ignorable="d"
         Title="Settings"  Width="Auto" Height="Auto" SizeToContent="WidthAndHeight" Loaded="SettingsWindow_Loaded" >
-    <Window.Foreground>
-        <ImageBrush/>
-    </Window.Foreground>
 
-    <StackPanel Orientation="Vertical">
+
+    <StackPanel x:Name="mainStackPanel" Orientation="Vertical">
 
         <GroupBox x:Name="gbFolder" Header="Toolbar folder"  Foreground="Black" BorderBrush="Black" >
             <StackPanel Orientation="Horizontal">
@@ -27,30 +25,32 @@
                 <Button x:Name="selectColor" Content="Select" Width="50" Click="pick_Color" Height="20" Margin="5,5,5,5"/>
             </StackPanel>
         </GroupBox>
-
-        <GroupBox x:Name="gbOnTop" Header="Always on top" Foreground="Black"  BorderBrush="Black" >
+        <local:SetBoolProperty x:Name="cntrlAlwaysOnTop"  />
+        <!--<GroupBox x:Name="gbOnTop" Header="Always on top" Foreground="Black"  BorderBrush="Black" >
             <StackPanel Orientation="Horizontal">
                 <RadioButton x:Name="onTopYes" GroupName="OnTop" Content="yes" HorizontalAlignment="Left" Margin="0,20,0,1"  VerticalAlignment="Top" Height="14" Width="36"/>
                 <RadioButton x:Name="onTopNo" GroupName="OnTop" Content="no" HorizontalAlignment="Left" Margin="5,20,0,0"  VerticalAlignment="Top" Height="14" Width="39" Checked="onTopNo_Checked"/>
 
             </StackPanel>
-        </GroupBox>
+        </GroupBox>-->
 
 
 
-
-        <GroupBox x:Name="orientation" Header="Orientation"  Foreground="Black"  BorderBrush="Black">
+        <local:SetBoolProperty x:Name="cntrlOrientationHorizontal"  />
+        <!--<GroupBox x:Name="orientation" Header="Orientation"  Foreground="Black"  BorderBrush="Black">
             <StackPanel Orientation="Horizontal">
                 <RadioButton x:Name="orientationHorizontal" GroupName="Orientation" Content="Horizontal" HorizontalAlignment="Left" Margin="0,20,0,1"  VerticalAlignment="Top" Height="14" Width="80"/>
                 <RadioButton x:Name="orientationVertical" GroupName="Orientation" Content="Vertical" HorizontalAlignment="Left" Margin="5,20,0,0"  VerticalAlignment="Top" Height="14" Width="80"/>
             </StackPanel>
-        </GroupBox>
-        <GroupBox x:Name="display" Header="Display"  Foreground="Black"  BorderBrush="Black">
+        </GroupBox>-->
+
+        <local:SetBoolProperty x:Name="cntrlSecondaryDisplay"  />
+        <!--<GroupBox x:Name="display" Header="Display"  Foreground="Black"  BorderBrush="Black">
             <StackPanel Orientation="Horizontal">
                 <RadioButton x:Name="secondaryDisplay" GroupName="display" Content="Secondary" HorizontalAlignment="Left" Margin="0,20,0,1"  VerticalAlignment="Top" Height="14" Width="80"/>
                 <RadioButton x:Name="primaryDisplay" GroupName="display" Content="Primary" HorizontalAlignment="Left" Margin="5,20,0,0"  VerticalAlignment="Top" Height="14" Width="80"/>
             </StackPanel>
-        </GroupBox>
+        </GroupBox>-->
 
         <GroupBox x:Name="opacitry" Header="Opacity" Foreground="Black"  BorderBrush="Black">
             <StackPanel Orientation="Horizontal">
@@ -59,6 +59,7 @@
                 <Label x:Name="labelOpacity" Grid.Column="1" Content="0" HorizontalAlignment="Left" Margin="25,0,0,0" Grid.Row="3" VerticalAlignment="Center"/>
             </StackPanel>
         </GroupBox>
+       
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" >
             <Button x:Name="cancel"  Width="50px" Grid.Row="4" Content="Cancel" HorizontalAlignment="Right" Height="20" Click="cancel_Click"  Margin="5,5,5,5"/>
             <Button x:Name="ok" Content="Ok" Width="34" Click="ok_Click" HorizontalAlignment="Right" Height="20" Margin="0,5,5,5"/>
