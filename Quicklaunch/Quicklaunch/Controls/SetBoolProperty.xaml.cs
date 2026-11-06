@@ -9,7 +9,7 @@ using System.Windows.Controls;
 using DataBind = System.Windows.Data;
 
 using Quicklaunch.Views;
-namespace Quicklaunch
+namespace Quicklaunch.Controls
 {
     /// <summary>
     /// Interaction logic for SetBoolProperty.xaml
@@ -46,6 +46,17 @@ namespace Quicklaunch
         //        //   this.propertyGroupBox.Header = header;
         //    }
         //}
+
+        private System.Windows.Controls.GroupBox gb;
+        [System.ComponentModel.Category("Custom Properties")]
+     
+        [System.ComponentModel.Description("The header text for the property group box.")]
+        [System.ComponentModel.Browsable(true)]
+        public System.Windows.Controls.GroupBox groupBox
+        {
+            get { return this.propertyGroupBox; }
+           set { gb = value; }
+        }
 
         public SetBoolProperty()
         {

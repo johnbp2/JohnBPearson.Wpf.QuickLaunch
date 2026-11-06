@@ -42,6 +42,82 @@ namespace Quicklaunch.Controls
             this.setTooltip(tooltipConents);
         }
 
+
+
+        public void Bounce()
+        {
+
+
+
+
+            System.Windows.Media.Animation.DoubleAnimation bounceAnimation = new System.Windows.Media.Animation.DoubleAnimation
+            {
+                From = 32,
+                To = 200,
+                Duration = TimeSpan.FromSeconds(3),
+                EasingFunction = new System.Windows.Media.Animation.BounceEase
+                {
+                    Bounces = 6,
+                    Bounciness = 1,
+                    EasingMode = System.Windows.Media.Animation.EasingMode.EaseOut
+                },
+
+            };
+
+            this.BeginAnimation(ImageControl.HeightProperty, bounceAnimation);
+
+        }
+        private const double scaleTransformFactor = 1.4;
+
+        public void scaleUp()
+        {
+1
+          
+
+                if ((this.RenderTransform is ScaleTransform))
+                {
+
+                    var scaleTransform = (ScaleTransform)this.RenderTransform;
+                    scaleTransform.ScaleX = scaleTransformFactor;
+                    scaleTransform.ScaleY = scaleTransformFactor;
+                }
+                else if (this.LayoutTransform is ScaleTransform)
+                {
+                    var scaleTransform = (ScaleTransform)this.LayoutTransform;
+                    scaleTransform.ScaleX = scaleTransformFactor;
+                    scaleTransform.ScaleY = scaleTransformFactor;
+                }
+                else
+                {
+
+                    throw new Exception(Name + " is not a ScaleTransform");
+
+
+                    //image.scaleTransform.ScaleX = scaleTransformFactor;
+                    //image.scaleTransform.ScaleX = scaleTransformFactor;
+                }
+            }
+
+        private void scaleDown()
+        {
+
+            ScaleTransform? temp = null;
+
+
+            temp = this.LayoutTransform as ScaleTransform;
+
+            if (temp != null)
+            {
+
+                temp.ScaleX = 1;
+                temp.ScaleY = 1;
+            }
+            else
+            {
+                throw new Exception("ScaleTransform is null");
+            }
+        }
+
         private void setTooltip(string content) 
         {
 
