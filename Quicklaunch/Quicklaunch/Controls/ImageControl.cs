@@ -67,7 +67,56 @@ namespace Quicklaunch.Controls
             this.BeginAnimation(ImageControl.HeightProperty, bounceAnimation);
 
         }
+        private const double scaleTransformFactor = 1.4;
 
+        public void scaleUp()
+        {
+1
+          
+
+                if ((this.RenderTransform is ScaleTransform))
+                {
+
+                    var scaleTransform = (ScaleTransform)this.RenderTransform;
+                    scaleTransform.ScaleX = scaleTransformFactor;
+                    scaleTransform.ScaleY = scaleTransformFactor;
+                }
+                else if (this.LayoutTransform is ScaleTransform)
+                {
+                    var scaleTransform = (ScaleTransform)this.LayoutTransform;
+                    scaleTransform.ScaleX = scaleTransformFactor;
+                    scaleTransform.ScaleY = scaleTransformFactor;
+                }
+                else
+                {
+
+                    throw new Exception(Name + " is not a ScaleTransform");
+
+
+                    //image.scaleTransform.ScaleX = scaleTransformFactor;
+                    //image.scaleTransform.ScaleX = scaleTransformFactor;
+                }
+            }
+
+        private void scaleDown()
+        {
+
+            ScaleTransform? temp = null;
+
+
+            temp = this.LayoutTransform as ScaleTransform;
+
+            if (temp != null)
+            {
+
+                temp.ScaleX = 1;
+                temp.ScaleY = 1;
+            }
+            else
+            {
+                throw new Exception("ScaleTransform is null");
+            }
+        }
 
         private void setTooltip(string content) 
         {

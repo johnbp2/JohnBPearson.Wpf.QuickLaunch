@@ -1,4 +1,4 @@
-﻿#define TESTANIMATION
+﻿// #define TESTANIMATION
 using System.Diagnostics;
 using System.Runtime.InteropServices;
 using System.Windows;
@@ -12,6 +12,8 @@ using JohnBPearson.FileObjects;
 using JohnBPearson.FileObjects.Model;
 using Quicklaunch.Services;
 using Input=System.Windows.Input;
+using System.Diagnostics.Contracts;
+using System.Runtime.CompilerServices;
 namespace Quicklaunch
 {
 
@@ -29,6 +31,11 @@ namespace Quicklaunch
         private const double scaleTransformFactor = 1.4;
         private double toolbarX = 0;
         private FileHelperService _fileService = new FileHelperService();
+        System.Windows.Forms.NotifyIcon? notifyIcon1;
+        // System.ComponentModel.Container components;
+        System.Windows.Forms.ContextMenuStrip? contextMenuIcon;
+        System.Windows.Forms.ToolStripMenuItem? menuItemHide;
+        System.Windows.Forms.ToolStripMenuItem? menuItemShow;
 
         public double ToolbarX
         {
@@ -86,8 +93,58 @@ namespace Quicklaunch
 
             this.Background.Opacity = Properties.Settings.Default.opacity / 100;
 
+            setupMenu();
+        }
+
+        private void setupMenu()
+        {
+            if (System.OperatingSystem.IsWindows())
+            {
+                // this.components = new System.ComponentModel.Container();
+                this.contextMenuIcon = new System.Windows.Forms.ContextMenuStrip();
+
+                this.menuItemHide = new System.Windows.Forms.ToolStripMenuItem();
+                menuItemHide.Text = "Hide";
+                menuItemHide.Click += new System.EventHandler(menuItemHide_Click);
+                // Initialize contextMenu1
+                this.contextMenuIcon.Items.Add(menuItemHide);
 
 
+                this.menuItemShow = new System.Windows.Forms.ToolStripMenuItem();
+                menuItemShow.Text = "Show";
+                menuItemShow.Click += new System.EventHandler(menuItemShow_Click);
+
+                this.contextMenuIcon.Items.Add(menuItemShow);
+
+
+
+
+
+
+                // The ContextMenu property sets the menu that will
+                // appear when the systray icon is right clicked.
+
+
+                // The Text property sets the text that will be displayed,
+                // in a tooltip, when the mouse hovers over the systray icon  
+
+                this.notifyIcon1 = new System.Windows.Forms.NotifyIcon();
+                this.notifyIcon1.Icon = new Icon(@"Quicklaunch.ico");
+                this.notifyIcon1.Text = "New message";
+                this.notifyIcon1.Visible = true;
+                this.notifyIcon1.ShowBalloonTip(2000, "Information", "A new message received!", ToolTipIcon.Info);
+
+                this.notifyIcon1.ContextMenuStrip = this.contextMenuIcon; 
+            }
+        }
+
+        public void menuItemHide_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+        }
+        public void menuItemShow_Click(object sender, EventArgs e)
+        {
+            this.Show();
         }
 
         internal void SetBGColor(System.Drawing.Color drawingColor)
@@ -138,6 +195,8 @@ namespace Quicklaunch
         void ImageControl_MouseLeave(object sender, Input.MouseEventArgs e)
         {
             var image = (ImageControl)sender;
+#if TESTANIMATION
+#else
             if (image != null)
             {
 
@@ -164,6 +223,7 @@ namespace Quicklaunch
 
                 //   Debug.WriteLine(string.Concat([this.ToString()," ", image.Margin.Right.ToString(), curr.Right.ToString()," - - - ", (currentMargine - dynamicMarginAdditive).ToString()]));
             }
+#endif
         }
 
 

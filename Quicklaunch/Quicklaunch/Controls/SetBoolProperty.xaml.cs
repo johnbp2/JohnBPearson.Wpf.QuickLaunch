@@ -9,7 +9,7 @@ using System.Windows.Controls;
 using DataBind = System.Windows.Data;
 
 using Quicklaunch.Views;
-namespace Quicklaunch
+namespace Quicklaunch.Controls
 {
     /// <summary>
     /// Interaction logic for SetBoolProperty.xaml

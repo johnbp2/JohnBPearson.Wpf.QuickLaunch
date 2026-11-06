@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Quicklaunch"
+        xmlns:local="clr-namespace:Quicklaunch.Controls"
         mc:Ignorable="d"
         Title="Settings"  Width="Auto" Height="Auto" SizeToContent="WidthAndHeight" Loaded="SettingsWindow_Loaded" >
 
@@ -65,6 +65,7 @@
             <Button x:Name="ok" Content="Save" Width="34" Click="ok_Click" HorizontalAlignment="Right" Height="20" Margin="0,5,5,5"/>
 
         </StackPanel>
+    
 
     </StackPanel>
 </Window>
