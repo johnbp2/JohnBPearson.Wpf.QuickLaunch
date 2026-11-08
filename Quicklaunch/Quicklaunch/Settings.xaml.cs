@@ -1,4 +1,5 @@
-﻿using Quicklaunch.Views;
+﻿using Quicklaunch.Controls;
+using Quicklaunch.Views;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -120,15 +121,7 @@ namespace Quicklaunch
             InitializeComponent();
         }
 
-        private class AnimationTypeItem
-        {
-            public string Name { get; set; }
-            public int Value { get; set; }
-            public override string ToString()
-            {
-                return Name;
-            }
-        }
+
         private void SettingsWindow_Loaded(object sender, RoutedEventArgs e)
         {
             folder.Text = Properties.Settings.Default.folder;
@@ -136,17 +129,20 @@ namespace Quicklaunch
             this.opacitySlider.Value = Properties.Settings.Default.opacity;
             setOpacityLabel(Properties.Settings.Default.opacity);
             displayColor();
-         //   this.test.GroupBox.Header = "Always on Top";
-            this.cntrlAlwaysOnTop.Bind(nameof(SettingsPresenter.AlwaysOnTop), "Always on Top");
-            this.cntrlOrientationHorizontal.Bind(nameof(SettingsPresenter.OrientationHorizontal), "Horizontal Layout");
-            this.cntrlSecondaryDisplay.Bind(nameof(SettingsPresenter.PropertyNames), "Show on secondary display");
+            //   this.test.GroupBox.Header = "Always on Top";
+            //this.cntrlAlwaysOnTop.Bind(nameof(SettingsPresenter.AlwaysOnTop), "Always on Top");
+            //this.cntrlOrientationHorizontal.Bind(nameof(SettingsPresenter.OrientationHorizontal), "Horizontal Layout");
+            //this.cntrlSecondaryDisplay.Bind(nameof(SettingsPresenter.PropertyNames.SecondaryDisplay), "Show on secondary display");
+            this.cntrlAlwaysOnTop.Bind(nameof(SettingsPresenter.AlwaysOnTop));
+            this.cntrlOrientationHorizontal.Bind(nameof(SettingsPresenter.OrientationHorizontal));
+            this.cntrlSecondaryDisplay.Bind(nameof(SettingsPresenter.PropertyNames.SecondaryDisplay));
 
             List<object> source  = new List<object>();
             var names = Enum.GetNames(typeof(Controls.AnimationType));
-            var values = Enum.GetValues(typeof(Controls.AnimationType));
+            var values = Enum.GetValues< Controls.AnimationType>();
             for(int i = 0; i < names.Length; i++)
             {
-                var item = new AnimationTypeItem
+                var item = new Controls.AnimationTypeItem
                 {
                     Name = names[i],
                     Value = (int)values.GetValue(i)
@@ -156,7 +152,8 @@ namespace Quicklaunch
             this.listBox.ItemsSource = source;
             foreach(var item in source)
             {
-                if(Properties.Settings.Default.animationType == (item as AnimationTypeItem).Value)
+                
+                if(item is AnimationTypeItem && Properties.Settings.Default.animationType == (item as Controls.AnimationTypeItem).Value)
                 {
                     this.listBox.SelectedItem = item;
                     break;

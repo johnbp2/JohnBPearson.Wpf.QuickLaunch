@@ -1,0 +1,16 @@
+﻿<UserControl x:Class="Quicklaunch.Controls.FolderDialog"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Quicklaunch.Controls"
+             mc:Ignorable="d" Height="Auto" Loaded="UserControl_Loaded" >
+    <GroupBox x:Name="gbFolder" Header="folder"  Opacity="1" Foreground="Black" BorderBrush="Black" Width="Auto">
+        <StackPanel Orientation="Horizontal">
+            <TextBox x:Name="tbFolder" TextWrapping="WrapWithOverflow" Height="50" Text="" BorderBrush="#FF737780" Width="150" />
+            <!--<Label x:Name="label" Content="Selected Dir." Grid.Column="0" Grid.Row="0" Margin="0,0,0,0" FontSize="10" VerticalAlignment="Top" Height="18" Width="53" Padding="0,2,0,0" HorizontalContentAlignment="Right" HorizontalAlignment="Left"/>-->
+            <Button x:Name="browse" Content="Browse" Width="50" Click="browse_Click" Height="20" Margin="5,8,0,0"/>
+        </StackPanel>
+    </GroupBox>
+
+</UserControl>
