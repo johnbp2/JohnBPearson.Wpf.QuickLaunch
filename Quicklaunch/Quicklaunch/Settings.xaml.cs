@@ -129,10 +129,13 @@ namespace Quicklaunch
             this.opacitySlider.Value = Properties.Settings.Default.opacity;
             setOpacityLabel(Properties.Settings.Default.opacity);
             displayColor();
-         //   this.test.GroupBox.Header = "Always on Top";
-            this.cntrlAlwaysOnTop.Bind(nameof(SettingsPresenter.AlwaysOnTop), "Always on Top");
-            this.cntrlOrientationHorizontal.Bind(nameof(SettingsPresenter.OrientationHorizontal), "Horizontal Layout");
-            this.cntrlSecondaryDisplay.Bind(nameof(SettingsPresenter.PropertyNames.SecondaryDisplay), "Show on secondary display");
+            //   this.test.GroupBox.Header = "Always on Top";
+            //this.cntrlAlwaysOnTop.Bind(nameof(SettingsPresenter.AlwaysOnTop), "Always on Top");
+            //this.cntrlOrientationHorizontal.Bind(nameof(SettingsPresenter.OrientationHorizontal), "Horizontal Layout");
+            //this.cntrlSecondaryDisplay.Bind(nameof(SettingsPresenter.PropertyNames.SecondaryDisplay), "Show on secondary display");
+            this.cntrlAlwaysOnTop.Bind(nameof(SettingsPresenter.AlwaysOnTop));
+            this.cntrlOrientationHorizontal.Bind(nameof(SettingsPresenter.OrientationHorizontal));
+            this.cntrlSecondaryDisplay.Bind(nameof(SettingsPresenter.PropertyNames.SecondaryDisplay));
 
             List<object> source  = new List<object>();
             var names = Enum.GetNames(typeof(Controls.AnimationType));

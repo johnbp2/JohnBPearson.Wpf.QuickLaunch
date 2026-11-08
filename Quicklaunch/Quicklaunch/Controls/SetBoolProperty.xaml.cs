@@ -31,7 +31,24 @@ namespace Quicklaunch.Controls
         //}
 
         private string _path = string.Empty;
-        private object _header = "";
+       // private object _header = "";
+        private string _headerText;
+
+        public string HeaderText
+        {
+            get
+            {
+                return _headerText;
+            }
+            set
+            {
+                _headerText = value;
+                if(propertyGroupBox != null)
+                {
+                    propertyGroupBox.Header = _headerText;
+                }
+            }
+        }
 
         //[System.ComponentModel.Category("Custom Properties")]
         //[System.ComponentModel.Description("The header text for the property group box.")]
@@ -47,19 +64,19 @@ namespace Quicklaunch.Controls
         //    }
         //}
 
-        [System.ComponentModel.Category("Custom Properties")]
-        [System.ComponentModel.Description("The header text for the property group box.")]
-        [System.ComponentModel.Browsable(true)]
         public System.Windows.Controls.GroupBox groupBox
         {
-            get { return this.propertyGroupBox; }
-    
+            get
+            {
+                return this.propertyGroupBox;
+            }
+
         }
 
         public SetBoolProperty()
         {
             //if(propertyHost == null) {
-           // _settingsPresenter = new SettingsPresenter();
+            // _settingsPresenter = new SettingsPresenter();
             InitializeComponent();
 
 
@@ -68,24 +85,27 @@ namespace Quicklaunch.Controls
         public SetBoolProperty(string path, object header)
         {
             //_settingsPresenter = new SettingsPresenter();
-            this._path = path;
-            this._header = header;
+  
             InitializeComponent();
+            this._path = path;
+            this._headerText = header.ToString();
         }
 
         private void SetBoolProp_Initialized(object sender, EventArgs e)
         {
-           if(!string.IsNullOrWhiteSpace(_path)) {
-                Bind(_path , _header);
+            if(!string.IsNullOrWhiteSpace(_path))
+            {
+                Bind(_path);
             }
         }
 
 
-        public void Bind(string path, object header) {
-           this.propertyGroupBox.Header = header;
+        public void Bind(string path)
+        {
+          
             this.DataContext = _settingsPresenter;
             DataBind.Binding data = new DataBind.Binding();            //    throw new NullReferenceException();
-            if (!string.IsNullOrEmpty(path))
+            if(!string.IsNullOrEmpty(path))
             {
 
                 data.Source = _settingsPresenter;
@@ -100,5 +120,12 @@ namespace Quicklaunch.Controls
             }
         }
 
+        private void SetBoolProp_Loaded(object sender, RoutedEventArgs e)
+        {
+            if(!string.IsNullOrWhiteSpace(this.HeaderText))
+            {
+                this.propertyGroupBox.Header = this.HeaderText;
+            }
+        }
     }
 }

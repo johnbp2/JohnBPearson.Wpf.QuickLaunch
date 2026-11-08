@@ -1,11 +1,11 @@
-﻿<UserControl x:Name="SetBoolProp" x:Class="Quicklaunch.Controls.SetBoolProperty"
+﻿<UserControl x:Class="Quicklaunch.Controls.SetBoolProperty"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Quicklaunch.Controls"
              mc:Ignorable="d" 
-             d:DesignHeight="80" d:DesignWidth="90" Initialized="SetBoolProp_Initialized">
+             d:DesignHeight="80" d:DesignWidth="90" Initialized="SetBoolProp_Initialized" Loaded="SetBoolProp_Loaded">
 
     <GroupBox x:Name="propertyGroupBox" Header="GroupBox" Foreground="Black">
         <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
