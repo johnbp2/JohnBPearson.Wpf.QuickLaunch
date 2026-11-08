@@ -109,7 +109,7 @@ namespace Quicklaunch.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
         public bool autoShade {
             get {
                 return ((bool)(this["autoShade"]));
@@ -128,6 +128,18 @@ namespace Quicklaunch.Properties {
             }
             set {
                 this["displayOnSecondary"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int animationType {
+            get {
+                return ((int)(this["animationType"]));
+            }
+            set {
+                this["animationType"] = value;
             }
         }
     }

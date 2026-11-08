@@ -45,7 +45,7 @@ namespace JohnBPearson.FileObjects.Model
             get {
                 if(_contents == null)
                 {
-                 _contents=  this.InstantiateFileSystemObjects(_directoryInfo.FullName);
+                 _contents=  this.InstantiateFileSystemObjects();
                 } 
             return      _contents;
             } private set {
@@ -55,14 +55,15 @@ namespace JohnBPearson.FileObjects.Model
 
 
 
-        private  IEnumerable<IFileSystemObjectBase> InstantiateFileSystemObjects(string directoryPath)
+        private  IEnumerable<IFileSystemObjectBase> InstantiateFileSystemObjects()
         {
             var items = new List<IFileSystemObjectBase>();
             //var dir = new System.IO.DirectoryInfo(directoryPath);
             if(this._directoryInfo != null && this._directoryInfo.Exists)
             {
                 var fact = new FileSystemObjectFactory();
-                var files = this._directoryInfo.EnumerateFiles();
+                var files = this._directoryInfo.EnumerateFileSystemInfos();
+
                 foreach(var file in files)
                 {
                     if(file.Extension == Constants.lnk)
@@ -75,7 +76,7 @@ namespace JohnBPearson.FileObjects.Model
 
                             if(sc.LinkFlags.HasFlag(Securify.ShellLink.Flags.LinkFlags.HasLinkInfo))
                             {
-                                AddFileToObjects(file, ref items);
+                                AddFileToObjects(file as FileInfo, ref items);
                             }
 
                         }
@@ -84,18 +85,17 @@ namespace JohnBPearson.FileObjects.Model
 
                             // swallow it for now
                         }
-             
+
                     }
                     else if(FileExtension.ExtensionStrings.Contains(file.Extension))
-
-
                     {
 
                         AddFileToObjects(file, ref items);
-                    }
-                }
 
-                // dir.GetFiles()
+                    }
+
+                    // dir.GetFiles()
+                }
             }
             if(items.Count > 0 && items.FirstOrDefault().IsOrdered)
             {
@@ -105,7 +105,7 @@ namespace JohnBPearson.FileObjects.Model
 
         }
 
-        private  void AddFileToObjects(System.IO.FileInfo file, ref List<IFileSystemObjectBase> items)
+        private  void AddFileToObjects(System.IO.FileSystemInfo file, ref List<IFileSystemObjectBase> items)
         {
             var fileObject = FileSystemObjectFactory.Build(file.FullName, file);
             if(fileObject != null)

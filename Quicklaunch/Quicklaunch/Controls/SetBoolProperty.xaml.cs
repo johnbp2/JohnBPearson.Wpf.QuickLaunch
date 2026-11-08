@@ -16,7 +16,7 @@ namespace Quicklaunch.Controls
     /// </summary>
     public partial class SetBoolProperty : System.Windows.Controls.UserControl
     {
-        private Views.SettingsPresenter _settingsPresenter;
+        private Views.SettingsPresenter _settingsPresenter = new SettingsPresenter();
 
 
 
@@ -30,8 +30,8 @@ namespace Quicklaunch.Controls
         //    set { propertyHost = value; }
         //}
 
-        private string path = string.Empty;
-        private string header = "";
+        private string _path = string.Empty;
+        private object _header = "";
 
         //[System.ComponentModel.Category("Custom Properties")]
         //[System.ComponentModel.Description("The header text for the property group box.")]
@@ -47,43 +47,41 @@ namespace Quicklaunch.Controls
         //    }
         //}
 
-        private System.Windows.Controls.GroupBox gb;
         [System.ComponentModel.Category("Custom Properties")]
-     
         [System.ComponentModel.Description("The header text for the property group box.")]
         [System.ComponentModel.Browsable(true)]
         public System.Windows.Controls.GroupBox groupBox
         {
             get { return this.propertyGroupBox; }
-           set { gb = value; }
+    
         }
 
         public SetBoolProperty()
         {
             //if(propertyHost == null) {
-            _settingsPresenter = new SettingsPresenter();
+           // _settingsPresenter = new SettingsPresenter();
             InitializeComponent();
 
 
             //}
         }
-        public SetBoolProperty(string path, string header)
+        public SetBoolProperty(string path, object header)
         {
-            _settingsPresenter = new SettingsPresenter();
-            this.path = path;
-            this.header = header;
+            //_settingsPresenter = new SettingsPresenter();
+            this._path = path;
+            this._header = header;
             InitializeComponent();
         }
 
         private void SetBoolProp_Initialized(object sender, EventArgs e)
         {
-           if(!string.IsNullOrWhiteSpace(path)) {
-                bind(path , header);
+           if(!string.IsNullOrWhiteSpace(_path)) {
+                Bind(_path , _header);
             }
         }
 
 
-        public void bind(string path, string header) {
+        public void Bind(string path, object header) {
            this.propertyGroupBox.Header = header;
             this.DataContext = _settingsPresenter;
             DataBind.Binding data = new DataBind.Binding();            //    throw new NullReferenceException();

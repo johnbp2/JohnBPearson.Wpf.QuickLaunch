@@ -30,7 +30,7 @@
 
 
   
-        <StackPanel x:Name="stack1" Orientation="Horizontal" Grid.Row="0" Grid.Column="0"   Height="Auto" VerticalAlignment ="Center" Margin="0,0,0,0" ScrollViewer.VerticalScrollBarVisibility="Disabled" />
+        <StackPanel x:Name="stack1"  Orientation="Horizontal"   Height="Auto" VerticalAlignment ="Bottom" Margin="0,0,0,0" ScrollViewer.VerticalScrollBarVisibility="Disabled" />
  
 
 </Window>
