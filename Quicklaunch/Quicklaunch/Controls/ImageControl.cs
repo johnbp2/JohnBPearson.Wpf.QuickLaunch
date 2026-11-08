@@ -21,6 +21,43 @@ namespace Quicklaunch.Controls
      
        
     }
+    public class AnimationTypeItem
+    {
+        private string name = "";
+        public string Name
+        {
+            get
+            {
+                return name;
+            }
+            set
+            {
+                name = value;
+            }
+        }
+        private int value = -1;
+        public int Value
+        {
+            get
+            {
+                return value;
+            }
+            set
+            {
+                this.value = value;
+            }
+        }
+        
+        public override string ToString()
+        {
+            return Name;
+        }
+
+        public AnimationTypeItem()
+        {
+        
+        }
+    }
     public class ImageControl : System.Windows.Controls.Image
     {
 
@@ -61,6 +98,7 @@ namespace Quicklaunch.Controls
      //   private TranslateTransform? translateTransform;
         //private DoubleAnimation? bounceAnimation;
         //private BounceEase? bounceEase;
+        private TranslateTransform translateTransform =new TranslateTransform();
         public void AnimateBounce()
         {
             //// 1. Create the transform and apply it to the element
@@ -103,13 +141,13 @@ namespace Quicklaunch.Controls
             //// 5. Start the animation on the Y property of the TranslateTransform
             //translateTransform.BeginAnimation(TranslateTransform.YProperty, bounceAnimation);
 
-            TranslateTransform translateTransform = new TranslateTransform();
-            this.RenderTransform = translateTransform;
+             this.translateTransform = new TranslateTransform();
+            this.RenderTransform = this.translateTransform;
 
             // 2. Create the animation
             DoubleAnimation bounceAnimation = new DoubleAnimation
             {
-                From = -100,           // Start 150 pixels above its original position
+                From = -32,           // Start 150 pixels above its original position
                 To = 0,                // End at its original position
                 Duration = new Duration(TimeSpan.FromSeconds(2)) // 2-second animation
             };
@@ -132,10 +170,10 @@ namespace Quicklaunch.Controls
         }
         public void StopBounceAnimation()
         {
-            //if(translateTransform != null)
-            //{
-            //    translateTransform.BeginAnimation(TranslateTransform.YProperty, null); // Stops the animation
-            //}
+        //    if(translateTransform != null)
+        //    {
+        //        translateTransform.BeginAnimation(TranslateTransform.YProperty, null); // Stops the animation
+        //    }
         }
 
         
