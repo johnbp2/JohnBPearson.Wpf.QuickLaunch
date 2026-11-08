@@ -91,26 +91,12 @@ namespace Quicklaunch.Controls
         {
             var image = (ImageControl)sender;
 #if TESTANIMATION
+            image.StopBounceAnimation();
 #else
             if (image != null)
             {
 
-
-                ScaleTransform? temp = null;
-
-
-                temp = image.LayoutTransform as ScaleTransform;
-
-                if (temp != null)
-                {
-
-                    temp.ScaleX = 1;
-                    temp.ScaleY = 1;
-                }
-                else
-                {
-                    throw new Exception("ScaleTransform is null");
-                }
+                image.scaleDown();
                 // image.Margin = new Thickness(10, 0, 10, 0);
                 this.defaultImageMargins(ref image);
 
@@ -127,7 +113,7 @@ namespace Quicklaunch.Controls
 
             var image = (Controls.ImageControl)sender;
 #if TESTANIMATION
-            image.Bounce();
+            image.AnimateBounce();
 
 #else
 
@@ -136,28 +122,7 @@ namespace Quicklaunch.Controls
             if (image != null)
             {
 
-                if ((image.RenderTransform is ScaleTransform))
-                {
-
-                    var scaleTransform = (ScaleTransform)image.RenderTransform;
-                    scaleTransform.ScaleX = scaleTransformFactor;
-                    scaleTransform.ScaleY = scaleTransformFactor;
-                }
-                else if (image.LayoutTransform is ScaleTransform)
-                {
-                    var scaleTransform = (ScaleTransform)image.LayoutTransform;
-                    scaleTransform.ScaleX = scaleTransformFactor;
-                    scaleTransform.ScaleY = scaleTransformFactor;
-                }
-                else
-                {
-
-                    throw new Exception(Name + " is not a ScaleTransform");
-
-
-                    //image.scaleTransform.ScaleX = scaleTransformFactor;
-                    //image.scaleTransform.ScaleX = scaleTransformFactor;
-                }
+              image.scaleUp();
                 this.defaultImageMargins(ref image);
 
             }

@@ -11,7 +11,7 @@
         <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
             <!--<RadioButton x:Name="radioYes" Visibility="Hidden" GroupName="MainGroup" Content="yes" HorizontalAlignment="Left" Margin="0,20,0,1"  VerticalAlignment="Top" Height="14" Width="36" Checked="radioYes_Checked" />
             <RadioButton x:Name="radioNo" Visibility="Hidden" GroupName="MainGroup" Content="no" HorizontalAlignment="Left" Margin="5,20,0,0" VerticalAlignment="Top" Height="14" Width="39" Checked="radioNo_Checked"/>-->
-            <CheckBox Content="Yes" x:Name="checkBox1"/>
+            <CheckBox Content="Yes" x:Name="checkBox1" />
         </StackPanel>
     </GroupBox>
 

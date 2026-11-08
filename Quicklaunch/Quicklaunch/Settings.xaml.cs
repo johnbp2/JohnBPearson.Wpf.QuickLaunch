@@ -36,7 +36,14 @@ namespace Quicklaunch
             displayColor();
             
         }
-        
+        private void colorMouse_Down(object sender, RoutedEventArgs e)
+        {
+            pick_Color(sender, e);
+
+
+        }
+
+
         private void button_Click(object sender, RoutedEventArgs e)
         {
 
@@ -80,10 +87,19 @@ namespace Quicklaunch
             Properties.Settings.Default.folder = folder.Text;
             Properties.Settings.Default.opacity = this.opacitySlider.Value;
             //Properties.Settings.Default.displayOnSecondary = this.secondaryDisplay.IsChecked ?? false;
-
+            if(this.listBox.SelectedItem != null)
+            {
+                Properties.Settings.Default.animationType = (this.listBox.SelectedItem as AnimationTypeItem).Value;
+            }
+            else
+            {
+                Properties.Settings.Default.animationType = ((int)Controls.AnimationType.Scale);
+            }
+           // Properties.Settings.Default.animationType = listBox.SelectedItem ?? Controls.AnimationType.Scale;
             Properties.Settings.Default.Save();
 
             main.SetBGColor(Properties.Settings.Default.bgColor);
+            this.DialogResult = true;
             this.Close();
 
         }
@@ -91,6 +107,7 @@ namespace Quicklaunch
         private void cancel_Click(object sender, RoutedEventArgs e)
         {
             Properties.Settings.Default.Reload();
+            this.DialogResult = false;
             this.Close();
         }
 
@@ -103,41 +120,49 @@ namespace Quicklaunch
             InitializeComponent();
         }
 
+        private class AnimationTypeItem
+        {
+            public string Name { get; set; }
+            public int Value { get; set; }
+            public override string ToString()
+            {
+                return Name;
+            }
+        }
         private void SettingsWindow_Loaded(object sender, RoutedEventArgs e)
         {
             folder.Text = Properties.Settings.Default.folder;
-            //if (Properties.Settings.Default.alwaysOnTop)
-            //{
-            //    this.onTopYes.IsChecked = true;
-            //}
-            //else
-            //{
-            //    this.onTopNo.IsChecked = true;
-            //}
-
-            //if (Properties.Settings.Default.horizontalOrientation)
-            //{
-            //    this.orientationHorizontal.IsChecked = true;
-            //}
-            //else
-            //{
-            //    this.orientationVertical.IsChecked = true;
-            //}
-            //if (Properties.Settings.Default.displayOnSecondary)
-            //{
-            //    this.secondaryDisplay.IsChecked = true;
-            //}
-            //else
-            //{
-            //    this.primaryDisplay.IsChecked = true;
-            //}
+ 
             this.opacitySlider.Value = Properties.Settings.Default.opacity;
             setOpacityLabel(Properties.Settings.Default.opacity);
             displayColor();
          //   this.test.GroupBox.Header = "Always on Top";
-            this.cntrlAlwaysOnTop.bind(nameof(SettingsPresenter.AlwaysOnTop), "Always on Top");
-            this.cntrlOrientationHorizontal.bind(nameof(SettingsPresenter.OrientationHorizontal), "Horizontal Layout");
-            this.cntrlSecondaryDisplay.bind(nameof(SettingsPresenter.PropertyNames), "Show on secondary display");
+            this.cntrlAlwaysOnTop.Bind(nameof(SettingsPresenter.AlwaysOnTop), "Always on Top");
+            this.cntrlOrientationHorizontal.Bind(nameof(SettingsPresenter.OrientationHorizontal), "Horizontal Layout");
+            this.cntrlSecondaryDisplay.Bind(nameof(SettingsPresenter.PropertyNames), "Show on secondary display");
+
+            List<object> source  = new List<object>();
+            var names = Enum.GetNames(typeof(Controls.AnimationType));
+            var values = Enum.GetValues(typeof(Controls.AnimationType));
+            for(int i = 0; i < names.Length; i++)
+            {
+                var item = new AnimationTypeItem
+                {
+                    Name = names[i],
+                    Value = (int)values.GetValue(i)
+                };
+                source.Add(item);
+            }
+            this.listBox.ItemsSource = source;
+            foreach(var item in source)
+            {
+                if(Properties.Settings.Default.animationType == (item as AnimationTypeItem).Value)
+                {
+                    this.listBox.SelectedItem = item;
+                    break;
+                }
+            }
+            //this.listBox.SelectedItem = Enum.ToObject(typeof(Controls.AnimationType), Properties.Settings.Default.animationType);
             // var orientation = new SetBoolProperty(SettingsPresenter.PropertyNames.OrientationHorizontal, "Horizontal Orientation");
             //            mainStackPanel.Children.Add(orientation);
         }

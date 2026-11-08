@@ -1,6 +1,4 @@
-﻿using JohnBPearson.FileObjects;
-using JohnBPearson.FileObjects.Model;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,10 +6,21 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
+using JohnBPearson.FileObjects;
+using JohnBPearson.FileObjects.Model;
 using ToolTip = System.Windows.Controls.ToolTip;
 
 namespace Quicklaunch.Controls
 {
+
+    public enum AnimationType
+    { 
+        Scale = 0,
+        Bounce =1,
+     
+       
+    }
     public class ImageControl : System.Windows.Controls.Image
     {
 
@@ -41,74 +50,143 @@ namespace Quicklaunch.Controls
             this.scaleTransform = scaleTransform;
             this.setTooltip(tooltipConents);
         }
-
-
-
-        public void Bounce()
+        private bool _transforming;
+        public bool Transforming
         {
-
-
-
-
-            System.Windows.Media.Animation.DoubleAnimation bounceAnimation = new System.Windows.Media.Animation.DoubleAnimation
+            get
             {
-                From = 32,
-                To = 200,
-                Duration = TimeSpan.FromSeconds(3),
-                EasingFunction = new System.Windows.Media.Animation.BounceEase
-                {
-                    Bounces = 6,
-                    Bounciness = 1,
-                    EasingMode = System.Windows.Media.Animation.EasingMode.EaseOut
-                },
+                return _transforming;
+            }
+        }
+     //   private TranslateTransform? translateTransform;
+        //private DoubleAnimation? bounceAnimation;
+        //private BounceEase? bounceEase;
+        public void AnimateBounce()
+        {
+            //// 1. Create the transform and apply it to the element
+            //if(this.translateTransform == null)
+            //{
+            //    translateTransform = new TranslateTransform();
+            //}
 
+            //this.RenderTransform = translateTransform;
+
+            //// 2. Create the animation
+            //if(this.bounceAnimation == null)
+            //{
+            //    this.bounceAnimation = new DoubleAnimation
+            //    {
+            //        From = -1050,           // Start 150 pixels above its original position
+            //        To = 0,                // End at its original position
+            //       Duration = new Duration(TimeSpan.FromSeconds(2))//, // 2-second animation
+            //        //RepeatBehavior = new RepeatBehavior()
+            //    };
+            //}
+
+
+
+            //// 3. Create and configure the BounceEase function
+            //if(this.bounceEase == null)
+            //{
+            //    BounceEase bounceEase = new BounceEase
+            //    {
+            //        Bounces = 3,           // Number of bounces
+            //        Bounciness = 2.0,      // Elasticity (higher = less bouncy/faster decay)
+            //        EasingMode = EasingMode.EaseOut // Bounce at the end of the animation
+            //    };
+
+            //    // 4. Apply the easing function to the animation
+
+            //}
+
+            //bounceAnimation.EasingFunction = bounceEase;
+            //// 5. Start the animation on the Y property of the TranslateTransform
+            //translateTransform.BeginAnimation(TranslateTransform.YProperty, bounceAnimation);
+
+            TranslateTransform translateTransform = new TranslateTransform();
+            this.RenderTransform = translateTransform;
+
+            // 2. Create the animation
+            DoubleAnimation bounceAnimation = new DoubleAnimation
+            {
+                From = -100,           // Start 150 pixels above its original position
+                To = 0,                // End at its original position
+                Duration = new Duration(TimeSpan.FromSeconds(2)) // 2-second animation
             };
 
-            this.BeginAnimation(ImageControl.HeightProperty, bounceAnimation);
+            // 3. Create and configure the BounceEase function
+            BounceEase bounceEase = new BounceEase
+            {
+                Bounces = 3,           // Number of bounces
+                Bounciness = 2.0,      // Elasticity (higher = less bouncy/faster decay)
+                EasingMode = EasingMode.EaseOut // Bounce at the end of the animation
+            };
 
+            // 4. Apply the easing function to the animation
+            bounceAnimation.EasingFunction = bounceEase;
+            this._transforming = true;
+            bounceAnimation.Completed += (s, c) => this._transforming = false;
+
+            // 5. Start the animation on the Y property of the TranslateTransform
+            translateTransform.BeginAnimation(TranslateTransform.YProperty, bounceAnimation);
         }
+        public void StopBounceAnimation()
+        {
+            //if(translateTransform != null)
+            //{
+            //    translateTransform.BeginAnimation(TranslateTransform.YProperty, null); // Stops the animation
+            //}
+        }
+
+        
         private const double scaleTransformFactor = 1.4;
 
         public void scaleUp()
         {
-1
-          
-
-                if ((this.RenderTransform is ScaleTransform))
-                {
-
-                    var scaleTransform = (ScaleTransform)this.RenderTransform;
-                    scaleTransform.ScaleX = scaleTransformFactor;
-                    scaleTransform.ScaleY = scaleTransformFactor;
-                }
-                else if (this.LayoutTransform is ScaleTransform)
-                {
-                    var scaleTransform = (ScaleTransform)this.LayoutTransform;
-                    scaleTransform.ScaleX = scaleTransformFactor;
-                    scaleTransform.ScaleY = scaleTransformFactor;
-                }
-                else
-                {
-
-                    throw new Exception(Name + " is not a ScaleTransform");
 
 
-                    //image.scaleTransform.ScaleX = scaleTransformFactor;
-                    //image.scaleTransform.ScaleX = scaleTransformFactor;
-                }
+
+            if((this.RenderTransform is ScaleTransform))
+            {
+
+                var scaleTransform = (ScaleTransform)this.RenderTransform;
+                scaleTransform.ScaleX = scaleTransformFactor;
+                scaleTransform.ScaleY = scaleTransformFactor;
             }
+            else if(this.LayoutTransform is ScaleTransform)
+            {
+                var scaleTransform = (ScaleTransform)this.LayoutTransform;
+                scaleTransform.ScaleX = scaleTransformFactor;
+                scaleTransform.ScaleY = scaleTransformFactor;
+            }
+            else
+            {
 
-        private void scaleDown()
+                throw new Exception(Name + " is not a ScaleTransform");
+
+
+                //image.scaleTransform.ScaleX = scaleTransformFactor;
+                //image.scaleTransform.ScaleX = scaleTransformFactor;
+            }
+        }
+
+        public void scaleDown()
         {
 
             ScaleTransform? temp = null;
 
 
-            temp = this.LayoutTransform as ScaleTransform;
+            //  temp = this.LayoutTransform as ScaleTransform;
 
-            if (temp != null)
+            if(this.LayoutTransform is ScaleTransform)
             {
-
+                temp = this.LayoutTransform as ScaleTransform;
+                temp.ScaleX = 1;
+                temp.ScaleY = 1;
+            }
+            else if(this.RenderTransform is ScaleTransform)
+            {
+                temp = this.RenderTransform as ScaleTransform;
                 temp.ScaleX = 1;
                 temp.ScaleY = 1;
             }
@@ -118,7 +196,7 @@ namespace Quicklaunch.Controls
             }
         }
 
-        private void setTooltip(string content) 
+        private void setTooltip(string content)
         {
 
 

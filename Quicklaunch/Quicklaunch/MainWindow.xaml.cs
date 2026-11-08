@@ -1,4 +1,4 @@
-﻿// #define TESTANIMATION
+﻿#define TESTANIMATION
 using System.Diagnostics;
 using System.Runtime.InteropServices;
 using System.Windows;
@@ -28,7 +28,7 @@ namespace Quicklaunch
 
 
         const int imageWidth = 32;
-        private const double scaleTransformFactor = 1.4;
+    
         private double toolbarX = 0;
         private FileHelperService _fileService = new FileHelperService();
         System.Windows.Forms.NotifyIcon? notifyIcon1;
@@ -81,8 +81,8 @@ namespace Quicklaunch
             }
 
         }
-        #region events
 
+        #region events
 
         void Main_Loaded(object sender, RoutedEventArgs e)
         {
@@ -95,48 +95,12 @@ namespace Quicklaunch
 
             setupMenu();
         }
-
-        private void setupMenu()
-        {
-            if (System.OperatingSystem.IsWindows())
-            {
-                // this.components = new System.ComponentModel.Container();
-                this.contextMenuIcon = new System.Windows.Forms.ContextMenuStrip();
-
-                this.menuItemHide = new System.Windows.Forms.ToolStripMenuItem();
-                menuItemHide.Text = "Hide";
-                menuItemHide.Click += new System.EventHandler(menuItemHide_Click);
-                // Initialize contextMenu1
-                this.contextMenuIcon.Items.Add(menuItemHide);
-
-
-                this.menuItemShow = new System.Windows.Forms.ToolStripMenuItem();
-                menuItemShow.Text = "Show";
-                menuItemShow.Click += new System.EventHandler(menuItemShow_Click);
-
-                this.contextMenuIcon.Items.Add(menuItemShow);
+        
 
 
 
 
-
-
-                // The ContextMenu property sets the menu that will
-                // appear when the systray icon is right clicked.
-
-
-                // The Text property sets the text that will be displayed,
-                // in a tooltip, when the mouse hovers over the systray icon  
-
-                this.notifyIcon1 = new System.Windows.Forms.NotifyIcon();
-                this.notifyIcon1.Icon = new Icon(@"Quicklaunch.ico");
-                this.notifyIcon1.Text = "New message";
-                this.notifyIcon1.Visible = true;
-                this.notifyIcon1.ShowBalloonTip(2000, "Information", "A new message received!", ToolTipIcon.Info);
-
-                this.notifyIcon1.ContextMenuStrip = this.contextMenuIcon; 
-            }
-        }
+     
 
         public void menuItemHide_Click(object sender, EventArgs e)
         {
@@ -147,10 +111,7 @@ namespace Quicklaunch
             this.Show();
         }
 
-        internal void SetBGColor(System.Drawing.Color drawingColor)
-        {
-            this.Background = new SolidColorBrush(System.Windows.Media.Color.FromRgb(drawingColor.R, drawingColor.G, drawingColor.B));
-        }
+ 
 
         void Main_Initialized(object sender, EventArgs e)
         {
@@ -161,6 +122,7 @@ namespace Quicklaunch
             {
                 this.Dispatcher.Invoke(() =>
                 {
+                    this.notifyIcon1.ShowBalloonTip(2000, "Information", "Folder contents changed. Refrfeshing.", ToolTipIcon.Info);
                     Facade.RefreshFileSystemObjects();
                     this.populateToolbar();
                 });
@@ -195,35 +157,25 @@ namespace Quicklaunch
         void ImageControl_MouseLeave(object sender, Input.MouseEventArgs e)
         {
             var image = (ImageControl)sender;
-#if TESTANIMATION
-#else
-            if (image != null)
+            if(Properties.Settings.Default.animationType == 1)
+            {
+                image.StopBounceAnimation();
+            }
+            else if(Properties.Settings.Default.animationType == 0)
             {
 
-
-                ScaleTransform? temp = null;
-
-
-                temp = image.LayoutTransform as ScaleTransform;
-
-                if (temp != null)
+                if(image != null)
                 {
 
-                    temp.ScaleX = 1;
-                    temp.ScaleY = 1;
+                    image.scaleDown();
+                    // image.Margin = new Thickness(10, 0, 10, 0);
+                    this.defaultImageMargins(ref image);
+
+
+
+                    //   Debug.WriteLine(string.Concat([this.ToString()," ", image.Margin.Right.ToString(), curr.Right.ToString()," - - - ", (currentMargine - dynamicMarginAdditive).ToString()]));
                 }
-                else
-                {
-                    throw new Exception("ScaleTransform is null");
-                }
-                // image.Margin = new Thickness(10, 0, 10, 0);
-                this.defaultImageMargins(ref image);
-
-
-
-                //   Debug.WriteLine(string.Concat([this.ToString()," ", image.Margin.Right.ToString(), curr.Right.ToString()," - - - ", (currentMargine - dynamicMarginAdditive).ToString()]));
             }
-#endif
         }
 
 
@@ -231,42 +183,29 @@ namespace Quicklaunch
         {
 
             var image = (Controls.ImageControl)sender;
-#if TESTANIMATION
-            image.Bounce();
-
-#else
-
-
-
-            if (image != null)
+            if(Properties.Settings.Default.animationType == 1)
             {
-
-                if ((image.RenderTransform is ScaleTransform))
+                if(!image.Transforming)
                 {
-
-                    var scaleTransform = (ScaleTransform)image.RenderTransform;
-                    scaleTransform.ScaleX = scaleTransformFactor;
-                    scaleTransform.ScaleY = scaleTransformFactor;
+                    image.AnimateBounce();
                 }
-                else if (image.LayoutTransform is ScaleTransform)
-                {
-                    var scaleTransform = (ScaleTransform)image.LayoutTransform;
-                    scaleTransform.ScaleX = scaleTransformFactor;
-                    scaleTransform.ScaleY = scaleTransformFactor;
-                }
-                else
-                {
 
-                    throw new Exception(Name + " is not a ScaleTransform");
-
-
-                    //image.scaleTransform.ScaleX = scaleTransformFactor;
-                    //image.scaleTransform.ScaleX = scaleTransformFactor;
-                }
-                this.defaultImageMargins(ref image);
 
             }
-#endif
+            else if(Properties.Settings.Default.animationType == 0)
+
+            {
+
+
+                if(image != null)
+                {
+
+                    image.scaleUp();
+                    this.defaultImageMargins(ref image);
+
+                }
+
+            }
         }
 
         void MenuItemSettings_Click(object sender, RoutedEventArgs e)
@@ -282,7 +221,7 @@ namespace Quicklaunch
             Facade.RefreshFileSystemObjects();
             this.populateToolbar();
 
-
+            // this.stack1.Background.
 
         }
 
@@ -349,6 +288,53 @@ namespace Quicklaunch
         #endregion
 
         #region private methods
+
+        internal void SetBGColor(System.Drawing.Color drawingColor)
+        {
+            this.Background = new SolidColorBrush(System.Windows.Media.Color.FromRgb(drawingColor.R, drawingColor.G, drawingColor.B));
+
+        }
+        private void setupMenu()
+        {
+            if(System.OperatingSystem.IsWindows())
+            {
+                // this.components = new System.ComponentModel.Container();
+                this.contextMenuIcon = new System.Windows.Forms.ContextMenuStrip();
+
+                this.menuItemHide = new System.Windows.Forms.ToolStripMenuItem();
+                menuItemHide.Text = "Hide";
+                menuItemHide.Click += new System.EventHandler(menuItemHide_Click);
+                // Initialize contextMenu1
+                this.contextMenuIcon.Items.Add(menuItemHide);
+
+
+                this.menuItemShow = new System.Windows.Forms.ToolStripMenuItem();
+                menuItemShow.Text = "Show";
+                menuItemShow.Click += new System.EventHandler(menuItemShow_Click);
+
+                this.contextMenuIcon.Items.Add(menuItemShow);
+
+
+
+
+
+
+                // The ContextMenu property sets the menu that will
+                // appear when the systray icon is right clicked.
+
+
+                // The Text property sets the text that will be displayed,
+                // in a tooltip, when the mouse hovers over the systray icon  
+
+                this.notifyIcon1 = new System.Windows.Forms.NotifyIcon();
+                this.notifyIcon1.Icon = new Icon(@"Quicklaunch.ico");
+                this.notifyIcon1.Text = "New message";
+                this.notifyIcon1.Visible = true;
+                this.notifyIcon1.ShowBalloonTip(2000, "Information", "App startup complete!", ToolTipIcon.Info);
+
+                this.notifyIcon1.ContextMenuStrip = this.contextMenuIcon;
+            }
+        }
         private void DockWindow(Dock position)
         {
             

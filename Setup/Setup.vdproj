@@ -15,6 +15,12 @@
     {
         "Entry"
         {
+        "MsmKey" = "8:_0C790274FD624221A7A61B1A90AEA57D"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_828923C11A604B90B02244DD1B236F72"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -208,15 +214,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Quicklaunch"
-        "ProductCode" = "8:{94285617-53D1-4D71-A1F9-63099CAA7E9E}"
-        "PackageCode" = "8:{380243C9-DD8D-4C55-87B0-0F594C2DA2D9}"
+        "ProductCode" = "8:{F2716C51-5363-4663-A996-7ED6B483DD80}"
+        "PackageCode" = "8:{E6CC8817-8F5F-41C8-83AB-5A282E3B85DD}"
         "UpgradeCode" = "8:{1D896A5E-0DA2-4EE8-8F70-1115163C83D9}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:0.10.0292"
+        "ProductVersion" = "8:0.10.0311"
         "Manufacturer" = "8:john pearson"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
@@ -728,9 +734,37 @@
         }
         "ProjectOutput"
         {
+            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_0C790274FD624221A7A61B1A90AEA57D"
+            {
+            "SourcePath" = "8:..\\Quicklaunch\\Quicklaunch\\obj\\Release\\net8.0-windows10.0.22621.0\\Quicklaunch.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_7F0E208447604FEF91F327290497A9A6"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            "ProjectOutputGroupRegister" = "3:1"
+            "OutputConfiguration" = "8:"
+            "OutputGroupCanonicalName" = "8:Built"
+            "OutputProjectGuid" = "8:{049C1328-0C0C-4470-81F2-0C198277794F}"
+            "ShowKeyOutput" = "11:TRUE"
+                "ExcludeFilters"
+                {
+                }
+            }
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_828923C11A604B90B02244DD1B236F72"
             {
-            "SourcePath" = "8:..\\Quicklaunch\\Quicklaunch\\obj\\x64\\Release\\net8.0-windows10.0.22621.0\\apphost.exe"
+            "SourcePath" = "8:..\\Quicklaunch\\Quicklaunch\\obj\\Release\\net8.0-windows10.0.22621.0\\apphost.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_7F0E208447604FEF91F327290497A9A6"
