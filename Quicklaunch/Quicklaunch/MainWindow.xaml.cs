@@ -214,12 +214,16 @@ namespace Quicklaunch
             settings.Owner = this;
             settings.ShowInTaskbar = true;
             settings.main = this;
-            settings.ShowDialog();
-            this.Background.Opacity = Properties.Settings.Default.opacity / 100;
-            stack1.Children.Clear();
-            Facade.DirectoryPath = Properties.Settings.Default.folder;
-            Facade.RefreshFileSystemObjects();
-            this.populateToolbar();
+          bool? result = settings.ShowDialog();
+            if(result is not null && result == true)
+            {
+                this.Background.Opacity = Properties.Settings.Default.opacity / 100;
+                stack1.Children.Clear();
+                Facade.DirectoryPath = Properties.Settings.Default.folder;
+                Facade.RefreshFileSystemObjects();
+                this.populateToolbar();
+            }
+         
 
             // this.stack1.Background.
 
