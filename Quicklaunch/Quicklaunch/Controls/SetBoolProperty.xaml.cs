@@ -9,14 +9,15 @@ using System.Windows.Controls;
 using DataBind = System.Windows.Data;
 
 using Quicklaunch.Views;
+using System.Reflection;
 namespace Quicklaunch.Controls
 {
     /// <summary>
     /// Interaction logic for SetBoolProperty.xaml
     /// </summary>
-    public partial class SetBoolProperty : System.Windows.Controls.UserControl
+    public partial class SetBoolProperty : Quicklaunch.Controls.QuicklaunchUserControlBase
     {
-        private Views.SettingsPresenter _settingsPresenter = new SettingsPresenter();
+     
 
 
 
@@ -73,6 +74,7 @@ namespace Quicklaunch.Controls
 
         }
 
+  
         public SetBoolProperty()
         {
             //if(propertyHost == null) {
@@ -103,12 +105,15 @@ namespace Quicklaunch.Controls
         public void Bind(string path)
         {
           
-            this.DataContext = _settingsPresenter;
-            DataBind.Binding data = new DataBind.Binding();            //    throw new NullReferenceException();
-            if(!string.IsNullOrEmpty(path))
+            this.DataContext = QuicklaunchUserControlBase.Settings;
+            
+                     //    throw new NullReferenceException();
+            if(!string.IsNullOrEmpty(path) && validatePath(path))
             {
 
-                data.Source = _settingsPresenter;
+                DataBind.Binding data = new DataBind.Binding();
+                //Assembly.GetExecutingAssembly().
+                data.Source = QuicklaunchUserControlBase.Settings;
 
                 data.Path = new PropertyPath(path);
                 data.Mode = DataBind.BindingMode.TwoWay;
@@ -118,6 +123,29 @@ namespace Quicklaunch.Controls
             {
                 throw new Exception("path myst be set to a valid property name of the SettingsPresenter class.");
             }
+        }
+
+        private bool validatePath(string path)
+        {
+            bool result = false;
+            PropertyInfo[]? myPropertyInfo;
+            // Get the properties of 'Type' class object.
+            myPropertyInfo = Type.GetType("Quicklaunch.Views.SettingsPresenter")?.GetProperties();
+            Console.WriteLine("Properties of System.Type are:");
+            if(myPropertyInfo is not null)
+            {
+
+                for(int i = 0; i < myPropertyInfo.Length; i++)
+                {
+                    if(myPropertyInfo[i].Name == path)
+                    {
+                        result = true;
+                        break;
+                    }
+                    Console.WriteLine(myPropertyInfo[i].Name);
+                }
+            }
+            return result;
         }
 
         private void SetBoolProp_Loaded(object sender, RoutedEventArgs e)

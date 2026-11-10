@@ -9,14 +9,14 @@
 
 
     <StackPanel x:Name="mainStackPanel" Orientation="Vertical">
-        <local:FolderDialog x:Name="test" HeaderText="Test"></local:FolderDialog>
-        <GroupBox x:Name="gbFolder" Header="Toolbar folder"  Foreground="Black" BorderBrush="Black" >
+        <local:FolderDialog x:Name="test" HeaderText="Toolbar Folder" FileSystemType="Folder"></local:FolderDialog>
+        <!--<GroupBox x:Name="gbFolder" Header="Toolbar folder"  Foreground="Black" BorderBrush="Black" >
             <StackPanel Orientation="Horizontal">
                 <TextBox x:Name="folder" TextWrapping="WrapWithOverflow"  Text="" BorderBrush="#FF737780" Width="180" />
-                <!--<Label x:Name="label" Content="Selected Dir." Grid.Column="0" Grid.Row="0" Margin="0,0,0,0" FontSize="10" VerticalAlignment="Top" Height="18" Width="53" Padding="0,2,0,0" HorizontalContentAlignment="Right" HorizontalAlignment="Left"/>-->
+                --><!--<Label x:Name="label" Content="Selected Dir." Grid.Column="0" Grid.Row="0" Margin="0,0,0,0" FontSize="10" VerticalAlignment="Top" Height="18" Width="53" Padding="0,2,0,0" HorizontalContentAlignment="Right" HorizontalAlignment="Left"/>--><!--
                 <Button x:Name="browse" Content="Browse" Width="50" Click="button_Click" Height="20" Margin="5,8,0,0"/>
             </StackPanel>
-        </GroupBox>
+        </GroupBox>-->
 
 
         <GroupBox x:Name="gbColor" Header="Background Color"  Foreground="Black" BorderBrush="Black" >

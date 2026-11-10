@@ -21,6 +21,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_51E6E75FD1414C0CB5FE64D4AEDD5D4B"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_828923C11A604B90B02244DD1B236F72"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -138,6 +144,26 @@
         }
         "File"
         {
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_51E6E75FD1414C0CB5FE64D4AEDD5D4B"
+            {
+            "SourcePath" = "8:..\\Quicklaunch\\Quicklaunch\\bin\\Release\\net8.0-windows10.0.22621.0\\Quicklaunch.exe"
+            "TargetName" = "8:Quicklaunch.exe"
+            "Tag" = "8:"
+            "Folder" = "8:_7F0E208447604FEF91F327290497A9A6"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_BB7CD269823540E1B780A618C369B456"
             {
             "SourcePath" = "8:..\\Quicklaunch\\Quicklaunch\\Quicklaunch.ico"
@@ -215,7 +241,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Quicklaunch"
         "ProductCode" = "8:{F2716C51-5363-4663-A996-7ED6B483DD80}"
-        "PackageCode" = "8:{E6CC8817-8F5F-41C8-83AB-5A282E3B85DD}"
+        "PackageCode" = "8:{973ED8F2-E22F-4D68-8EF4-20EB9716915A}"
         "UpgradeCode" = "8:{1D896A5E-0DA2-4EE8-8F70-1115163C83D9}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
@@ -335,6 +361,20 @@
         }
         "Shortcut"
         {
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_D862E1CF708449A190E460D9279EC31B"
+            {
+            "Name" = "8:Quicklaunch.exe"
+            "Arguments" = "8:"
+            "Description" = "8:"
+            "ShowCmd" = "3:1"
+            "IconIndex" = "3:0"
+            "Transitive" = "11:FALSE"
+            "Target" = "8:_51E6E75FD1414C0CB5FE64D4AEDD5D4B"
+            "Folder" = "8:_C8869F095FCF46D5AD505519A91482F0"
+            "WorkingFolder" = "8:_7F0E208447604FEF91F327290497A9A6"
+            "Icon" = "8:_BB7CD269823540E1B780A618C369B456"
+            "Feature" = "8:"
+            }
         }
         "UserInterface"
         {
@@ -736,7 +776,7 @@
         {
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_0C790274FD624221A7A61B1A90AEA57D"
             {
-            "SourcePath" = "8:..\\Quicklaunch\\Quicklaunch\\obj\\Release\\net8.0-windows10.0.22621.0\\Quicklaunch.dll"
+            "SourcePath" = "8:..\\Quicklaunch\\Quicklaunch\\obj\\Debug\\net8.0-windows10.0.22621.0\\Quicklaunch.dll"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_7F0E208447604FEF91F327290497A9A6"
@@ -764,7 +804,7 @@
             }
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_828923C11A604B90B02244DD1B236F72"
             {
-            "SourcePath" = "8:..\\Quicklaunch\\Quicklaunch\\obj\\Release\\net8.0-windows10.0.22621.0\\apphost.exe"
+            "SourcePath" = "8:..\\Quicklaunch\\Quicklaunch\\obj\\Debug\\net8.0-windows10.0.22621.0\\apphost.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_7F0E208447604FEF91F327290497A9A6"

@@ -26,7 +26,7 @@ namespace Quicklaunch
 #endif
 
             // Environment.GetFolderPath(Environment.SpecialFolder.)
-            Environment.GetFolderPath(Environment.SpecialFolder.)
+     
             if(!System.IO.Directory.Exists(Quicklaunch.Properties.Settings.Default.folder))
             {
                 var folder = $"c:\\users\\{Environment.UserName}\\toolbar";

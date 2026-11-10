@@ -12,9 +12,19 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Microsoft.Win32;
+using Windows.Networking.NetworkOperators;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Window;
 
 namespace Quicklaunch.Controls
 {
+
+
+    public enum FileSystemType
+    {
+        File,
+        Folder
+    }
     /// <summary>
     /// Interaction logic for FolderDialog.xaml
     /// </summary>
@@ -22,6 +32,7 @@ namespace Quicklaunch.Controls
     {
         public FolderDialog()
         {
+            HeaderText = "Select a folder";
             InitializeComponent();
         }
         public string HeaderText
@@ -29,19 +40,24 @@ namespace Quicklaunch.Controls
             get;
             set;
         }
-        private string _selectedFolder = "";
-        public string SelectedFolder
+        private string _selectedPath = "";
+        public string SelectedPath
         {
             get
             {
-            return _selectedFolder;
+                return _selectedPath;
             }
             set
             {
-            _selectedFolder = value;
-                tbFolder.Text = _selectedFolder;
+                _selectedPath = value;
+                tbFolder.Text = _selectedPath;
             }
         }
+        public FileSystemType FileSystemType
+        {
+            get;
+            set;
+        } = FileSystemType.Folder;
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
             this.Background = new SolidColorBrush();
@@ -55,22 +71,67 @@ namespace Quicklaunch.Controls
 
         private void browse_Click(object sender, RoutedEventArgs e)
         {
-            Microsoft.Win32.OpenFolderDialog dialog = new();
 
-            dialog.Multiselect = false;
-            dialog.Title = "Select a folder";
+            bool? result = false;
+            CommonItemDialog? dialog = null;
 
-            // Show open foa    q   q   lder dialog box
-            bool? result = dialog.ShowDialog();
+            if(FileSystemType == FileSystemType.File)
+            {
+                var fileDialog = new Microsoft.Win32.OpenFileDialog
+                {
+                    Multiselect = false,
+                    Title = "Select a folder",
+                    InitialDirectory = System.IO.Path.GetDirectoryName(SelectedPath)
+                };
+                // Show open folder dialog box
+                result = fileDialog.ShowDialog();
+                dialog = fileDialog;
+
+            }
+            else
+            {
+                var folderDialog = new Microsoft.Win32.OpenFolderDialog
+                {
+                    Multiselect = false,
+                    Title = "Select a folder",
+                    InitialDirectory = SelectedPath
+                };
+                result = folderDialog.ShowDialog();
+                dialog = folderDialog;
+
+            }
+
+            if(result is not null && dialog is not null && result == true)
+            {
+                this.checkResult(dialog);
+            }
 
             // Process open folder dialog box results
-            if(result == true)
+            //if (result == true && dialog is not null)
+            //{
+            //    if (FileSystemType == FileSystemType.File)
+            //    {
+            //        // Get the selected file
+            //        this.SelectedPath = (dialog as Microsoft.Win32.OpenFileDialog).;
+            //    }
+            //    else
+            //    {
+            //        // Get the selected folder
+            //        this.SelectedPath = (dialog as Microsoft.Win32.OpenFolderDialog).SafeFolderName;
+            //}
+        }
+
+        private void checkResult(Microsoft.Win32.CommonDialog dialog)
+        {
+            if(dialog is Microsoft.Win32.OpenFileDialog fileDialog)
+            {
+                // Get the selected file
+                this.SelectedPath = fileDialog.FileName;
+            }
+            else if(dialog is Microsoft.Win32.OpenFolderDialog folderDialog)
             {
                 // Get the selected folder
-                //tbFolder.Text = dialog.FolderName;
-                //Properties.Settings.Default.folder = folder.Text;
-                //Properties.Settings.Default.Save(); 
-                this.SelectedFolder = dialog.SafeFolderName;
+                this.SelectedPath = folderDialog.FolderName;
             }
         }
     }

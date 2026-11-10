@@ -2,6 +2,7 @@
 using Quicklaunch.Views;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -45,47 +46,40 @@ namespace Quicklaunch
         }
 
 
-        private void button_Click(object sender, RoutedEventArgs e)
-        {
+        //private void button_Click(object sender, RoutedEventArgs e)
+        //{
 
-            Microsoft.Win32.OpenFolderDialog dialog = new();
+        //    Microsoft.Win32.OpenFolderDialog dialog = new();
 
-            dialog.Multiselect = false;
-            dialog.Title = "Select a folder";
+        //    dialog.Multiselect = false;
+        //    dialog.Title = "Select a folder";
 
-            // Show open foa    q   q   lder dialog box
-            bool? result = dialog.ShowDialog();
+        //    // Show open foa    q   q   lder dialog box
+        //    bool? result = dialog.ShowDialog();
 
-            // Process open folder dialog box results
-            if (result == true)
-            {
-                // Get the selected folder
-                folder.Text = dialog.FolderName;
-                //Properties.Settings.Default.folder = folder.Text;
-                //Properties.Settings.Default.Save(); 
-                this._folder = dialog.SafeFolderName;
-            }
+        //    // Process open folder dialog box results
+        //    if (result == true)
+        //    {
+        //        // Get the selected folder
+        //        folder.Text = dialog.FolderName;
+        //        //Properties.Settings.Default.folder = folder.Text;
+        //        //Properties.Settings.Default.Save(); 
+        //        this._folder = dialog.FolderName;
+        //    }
 
-        }
+        //}
 
 
 
         private void ok_Click(object sender, RoutedEventArgs e)
         {
-            // this should already be set from data binding
-            //bool ontop = false;
-            //if (this.onTopYes.IsChecked != null)
-            //{
-            //    ontop = this.onTopYes.IsChecked.Value;
-            ////}
-            //bool horiz = false;
-            //if (this.orientationHorizontal.IsChecked != null)
-            //{
-            //    horiz = this.orientationHorizontal.IsChecked.Value;
-            //}
-            //Properties.Settings.Default.horizontalOrientation = horiz;
-          //  Properties.Settings.Default.alwaysOnTop = ontop;
-            Properties.Settings.Default.folder = folder.Text;
+
+          if(Directory.Exists( this.test.SelectedPath))
+            {
+                Properties.Settings.Default.folder = this.test.SelectedPath;
+            }
+            
+            
             Properties.Settings.Default.opacity = this.opacitySlider.Value;
             //Properties.Settings.Default.displayOnSecondary = this.secondaryDisplay.IsChecked ?? false;
             if(this.listBox.SelectedItem != null)
@@ -124,18 +118,19 @@ namespace Quicklaunch
 
         private void SettingsWindow_Loaded(object sender, RoutedEventArgs e)
         {
-            folder.Text = Properties.Settings.Default.folder;
+            this.test.SelectedPath = Properties.Settings.Default.folder;
  
             this.opacitySlider.Value = Properties.Settings.Default.opacity;
             setOpacityLabel(Properties.Settings.Default.opacity);
             displayColor();
+            
             //   this.test.GroupBox.Header = "Always on Top";
             //this.cntrlAlwaysOnTop.Bind(nameof(SettingsPresenter.AlwaysOnTop), "Always on Top");
             //this.cntrlOrientationHorizontal.Bind(nameof(SettingsPresenter.OrientationHorizontal), "Horizontal Layout");
             //this.cntrlSecondaryDisplay.Bind(nameof(SettingsPresenter.PropertyNames.SecondaryDisplay), "Show on secondary display");
-            this.cntrlAlwaysOnTop.Bind(nameof(SettingsPresenter.AlwaysOnTop));
-            this.cntrlOrientationHorizontal.Bind(nameof(SettingsPresenter.OrientationHorizontal));
-            this.cntrlSecondaryDisplay.Bind(nameof(SettingsPresenter.PropertyNames.SecondaryDisplay));
+            this.cntrlAlwaysOnTop.Bind(SettingsPresenter.PropertyNames.AlwaysOnTop);
+            this.cntrlOrientationHorizontal.Bind(SettingsPresenter.PropertyNames.OrientationHorizontal);
+            this.cntrlSecondaryDisplay.Bind(SettingsPresenter.PropertyNames.SecondaryDisplay);
 
             List<object> source  = new List<object>();
             var names = Enum.GetNames(typeof(Controls.AnimationType));
