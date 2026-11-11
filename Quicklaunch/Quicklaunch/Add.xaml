@@ -1,4 +1,4 @@
-﻿<Window x:Class="Quicklaunch.Add"
+﻿<Window xmlns:Controls="clr-namespace:Quicklaunch.Controls"  x:Class="Quicklaunch.Add"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="Add" Height="450" Width="800">
     <StackPanel Orientation="Vertical" HorizontalAlignment="Left">
-        
+        <Controls:FolderDialog FileSystemType="File" HeaderText="" />
         
     </StackPanel>
 </Window>

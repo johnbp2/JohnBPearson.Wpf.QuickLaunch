@@ -95,18 +95,32 @@ namespace Quicklaunch
 
             setupMenu();
         }
-        
 
 
 
+        private void Main_Drop(object sender, System.Windows.DragEventArgs e)
+        {
+        if (e.Data.GetDataPresent(System.Windows.DataFormats.FileDrop))
+        {
+            string[] files = (string[])e.Data.GetData(System.Windows.DataFormats.FileDrop);
+            foreach (var file in files)
+            {
+                    // Handle each dropped file
+                    string fileName = System.IO.Path.GetFileName(file);
+                    fileName = fileName.Remove(fileName.LastIndexOf("."));
+                    fileName = fileName + ".lnk";
+                    FileHelperService.CreateShortcut(file, "", System.IO.Path.Combine(Properties.Settings.Default.folder, fileName));
+            }
+        }
+        }
 
      
 
-        public void menuItemHide_Click(object sender, EventArgs e)
+        public void notifyIconMenuHide_Click(object sender, EventArgs e)
         {
             this.Hide();
         }
-        public void menuItemShow_Click(object sender, EventArgs e)
+        public void notifyIconMenuShow_Click(object sender, EventArgs e)
         {
             this.Show();
         }
@@ -118,16 +132,26 @@ namespace Quicklaunch
 
             this.populateToolbar();
             _fileService.WatchDirectory(Properties.Settings.Default.folder);
-            _fileService.RefreshNeeded += (s, e) =>
+            _fileService.RefreshNeeded +=   new System.EventHandler<string>(NewMethod);
+
+        }
+
+        private void NewMethod(object sender, string e)
+        {
+            
             {
                 this.Dispatcher.Invoke(() =>
                 {
                     this.notifyIcon1.ShowBalloonTip(2000, "Information", "Folder contents changed. Refrfeshing.", ToolTipIcon.Info);
-                    Facade.RefreshFileSystemObjects();
+                    //if(Facade.DirectoryPath != e)
+                    //{
+                    //    Facade.DirectoryPath = e;
+                    //}
+                  //  Facade.DirectoryPath = Properties.Settings.Default.folder;
+               //   Facade.RefreshFileSystemObjects();
                     this.populateToolbar();
                 });
             };
-
         }
 
         private void Main_MouseDown(object sender, Input.MouseButtonEventArgs e)
@@ -219,8 +243,7 @@ namespace Quicklaunch
             {
                 this.Background.Opacity = Properties.Settings.Default.opacity / 100;
                 stack1.Children.Clear();
-                Facade.DirectoryPath = Properties.Settings.Default.folder;
-                Facade.RefreshFileSystemObjects();
+              
                 this.populateToolbar();
             }
          
@@ -259,7 +282,7 @@ namespace Quicklaunch
         }
         private void MenuItemRefresh_Click(object sender, RoutedEventArgs e)
         {
-            Facade.RefreshFileSystemObjects();
+           // Facade.RefreshFileSystemObjects();
             this.populateToolbar();
         }
         private void MenuItemOpenFolder_Click(object sender, RoutedEventArgs e)
@@ -307,14 +330,14 @@ namespace Quicklaunch
 
                 this.menuItemHide = new System.Windows.Forms.ToolStripMenuItem();
                 menuItemHide.Text = "Hide";
-                menuItemHide.Click += new System.EventHandler(menuItemHide_Click);
+                menuItemHide.Click += new System.EventHandler(notifyIconMenuHide_Click);
                 // Initialize contextMenu1
                 this.contextMenuIcon.Items.Add(menuItemHide);
 
 
                 this.menuItemShow = new System.Windows.Forms.ToolStripMenuItem();
                 menuItemShow.Text = "Show";
-                menuItemShow.Click += new System.EventHandler(menuItemShow_Click);
+                menuItemShow.Click += new System.EventHandler(notifyIconMenuShow_Click);
 
                 this.contextMenuIcon.Items.Add(menuItemShow);
 
@@ -403,7 +426,7 @@ namespace Quicklaunch
             }
 
 
-            Facade.DirectoryPath = Properties.Settings.Default.folder;
+           // Facade.DirectoryPath = Properties.Settings.Default.folder;
 
             var i = 100;
 
@@ -416,7 +439,7 @@ namespace Quicklaunch
 
             // TODO: [x] add tooltips
 
-            foreach (var fileSystemObject in Facade.FileSystemObjects)
+            foreach (var fileSystemObject in Facade.GetFileSystemObjects(Properties.Settings.Default.folder))
             {
 
                 if (fileSystemObject.Type != FileExtensionEnum.bat)

@@ -21,9 +21,9 @@ namespace UnitTests
 
             this.buildTestDirectory();
            // var fac = new Facade(testDir);
-           Facade.DirectoryPath = testDir;
-            Assert.IsTrue(Facade.FileSystemObjects.ToList().Count > 0);
-            foreach(var fso in Facade.FileSystemObjects)
+          // Facade.DirectoryPath = testDir;
+            Assert.IsTrue(Facade.GetFileSystemObjects(testDir).ToList().Count > 0);
+            foreach(var fso in Facade.GetFileSystemObjects(testDir))
             {
                 Assert.IsTrue(fso.Icon != null);
                 if(fso.Type == FileExtensionEnum.lnk)

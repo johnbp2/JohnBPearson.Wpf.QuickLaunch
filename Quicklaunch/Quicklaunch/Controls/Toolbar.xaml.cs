@@ -63,7 +63,7 @@ namespace Quicklaunch.Controls
             {
                 this.Dispatcher.Invoke(() =>
                 {
-                    Facade.RefreshFileSystemObjects();
+                  //  Facade.RefreshFileSystemObjects();
                     this.populateToolbar();
                 });
             };
@@ -147,20 +147,14 @@ namespace Quicklaunch.Controls
             }
 
 
-            Facade.DirectoryPath = Properties.Settings.Default.folder;
+            //Facade.DirectoryPath = Properties.Settings.Default.folder;
 
             var i = 100;
 
 
-            //if(Properties.Settings.Default.autoShade)
-            //{
-            //    this.addAutoShadeButton();
-            //}
-
-
             // TODO: [x] add tooltips
 
-            foreach (var fileSystemObject in Facade.FileSystemObjects)
+            foreach (var fileSystemObject in Facade.GetFileSystemObjects(Properties.Settings.Default.folder))
             {
 
                 if (fileSystemObject.Type != FileExtensionEnum.bat)

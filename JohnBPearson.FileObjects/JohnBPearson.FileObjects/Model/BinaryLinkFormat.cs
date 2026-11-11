@@ -43,14 +43,14 @@ namespace JohnBPearson.FileObjects.Model
 
         public override void Run()
         {
-            if(File.Exists(TargetPath))
+            if(File.Exists(this.FullPath))
             {
 
                 //System.Diagnostics.Process.Start(TargetPath);
 
                 var psi = new ProcessStartInfo
                 {
-                    FileName = this.TargetPath,
+                    FileName = this.FullPath,
                     UseShellExecute = true
                 }
 ;

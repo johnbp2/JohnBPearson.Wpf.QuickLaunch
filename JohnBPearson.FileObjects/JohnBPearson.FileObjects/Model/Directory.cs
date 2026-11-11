@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using CustomExtensions;
 using JohnBPearson.FileObjects;
-using Securify.ShellLink;
+//using Securify.ShellLink;
 
 
 namespace JohnBPearson.FileObjects.Model
@@ -72,12 +72,12 @@ namespace JohnBPearson.FileObjects.Model
                         try
                         {
 
-                            var sc = Shortcut.ReadFromFile(file.FullName);
+                          //  var sc = Shortcut.ReadFromFile(file.FullName);
 
-                            if(sc.LinkFlags.HasFlag(Securify.ShellLink.Flags.LinkFlags.HasLinkInfo))
-                            {
+                            //if(sc.LinkFlags.HasFlag(Securify.ShellLink.Flags.LinkFlags.HasLinkInfo))
+                            //{
                                 AddFileToObjects(file as FileInfo, ref items);
-                            }
+                           // }
 
                         }
                         catch(ArgumentException ex)
