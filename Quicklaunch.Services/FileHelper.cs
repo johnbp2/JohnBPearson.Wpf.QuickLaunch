@@ -17,6 +17,7 @@ namespace Quicklaunch.Services
             {
                 throw new ArgumentException($"The directory '{directoryPath}' does not exist.");
             }
+            this._directoryPath = directoryPath;
             _watcher = new System.IO.FileSystemWatcher(directoryPath);
             _watcher.NotifyFilter = System.IO.NotifyFilters.FileName | System.IO.NotifyFilters.DirectoryName | System.IO.NotifyFilters.LastWrite;
            // _watcher.Changed += OnChanged;
@@ -56,6 +57,7 @@ namespace Quicklaunch.Services
         }
         private  void OnChanged(object sender, FileSystemEventArgs e)
         {
+            
           RefreshNeeded?.Invoke(this, _directoryPath);
         }
 

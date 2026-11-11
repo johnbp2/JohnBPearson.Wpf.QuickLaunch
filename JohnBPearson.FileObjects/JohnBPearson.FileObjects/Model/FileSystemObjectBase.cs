@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 using CustomExtensions;
 using JohnBPearson.FileObjects;
 using Microsoft.SqlServer.Server;
-using Securify.ShellLink.Structures;
+// using Securify.ShellLink.Structures;
 
 
 namespace JohnBPearson.FileObjects.Model

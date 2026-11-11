@@ -12,7 +12,7 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using CustomExtensions;
 using JohnBPearson.FileObjects.Model;
-using Securify.ShellLink;
+//using Securify.ShellLink;
 
 namespace JohnBPearson.FileObjects
 {
@@ -23,102 +23,106 @@ namespace JohnBPearson.FileObjects
         private static IEnumerable<IFileSystemObjectBase> _executables;
         private static bool _pathChanged = false;
 
-        public static IEnumerable<IFileSystemObjectBase> FileSystemObjects
-        {
-            get
-            {
-                if(_executables == null || _pathChanged)
-                {                                     
+        //public static IEnumerable<IFileSystemObjectBase> FileSystemObjects
+        //{
+        //    get
+        //    {
+        //        if(_executables == null || _pathChanged)
+        //        {                                     
                  
-                    if(isStringValidDir(_directoryPath))
-                    {
-                        _executables = new List<IFileSystemObjectBase>();
-                        InstantiateFileSystemObjects(_directoryPath);
-                        _pathChanged = false;
-                    }
-                    else
-                    {
-                        throw new Exception("Directory path is not set. Please set the directory path before accessing FileSystemObjects.");
-                    }
+        //            if(isStringValidDir(_directoryPath))
+        //            {
+        //                _executables = new List<IFileSystemObjectBase>();
+        //                InstantiateFileSystemObjects(_directoryPath);
+        //                _pathChanged = false;
+        //            }
+        //            else
+        //            {
+        //                throw new Exception("Directory path is not set. Please set the directory path before accessing FileSystemObjects.");
+        //            }
 
 
-                }
-                return _executables;
-            }
-        }
+        //        }
+        //        return _executables;
+        //    }
+        //}
 
-        public static string DirectoryPath
+        //public static string DirectoryPath
+        //{
+        //    get => _directoryPath;
+        //    set {
+        //        if(value != _directoryPath)
+        //        {
+        //            _pathChanged = true;
+        //        }
+        //        _directoryPath = value; 
+        //    }
+        //}
+
+        //private static string _directoryPath;
+        public  Facade()//string dirPath)
         {
-            get => _directoryPath;
-            set {
-                if(value != _directoryPath)
-                {
-                    _pathChanged = true;
-                }
-                _directoryPath = value; 
-            }
+
+            //if(isStringValidDir(dirPath))
+            //{
+
+            //    _directoryPath = dirPath;
+            //}
         }
-
-        private static string _directoryPath;
-        public  Facade(string dirPath)
-        {
-
-            if(isStringValidDir(dirPath))
-            {
-
-                _directoryPath = dirPath;
-            }
-        }
-        public static void RefreshFileSystemObjects()
-        {
+        //public static void RefreshFileSystemObjects()
+        //{
            
-         InstantiateFileSystemObjects(_directoryPath);
-        }
-        private static void InstantiateFileSystemObjects(string directoryPath)
+        // InstantiateFileSystemObjects(_directoryPath);
+        //}
+        public static IEnumerable<IFileSystemObjectBase> GetFileSystemObjects(string directoryPath)
         {
           var dir = new System.IO.DirectoryInfo(directoryPath);
             if(dir.Exists)
             {
                 var toolbarDir = new Directory(directoryPath, dir);
 
-                _executables = toolbarDir.Contents;
+                return toolbarDir.Contents;
 
 
 
-            //    var fact = new FileSystemObjectFactory();
-            //    var files = dir.EnumerateFiles();
-            //    foreach(var file in files)
-            //    {
-            //        if(file.Extension == Constants.lnk)
-            //        {
-                
-            //            try
-            //            {
+                //    var fact = new FileSystemObjectFactory();
+                //    var files = dir.EnumerateFiles();
+                //    foreach(var file in files)
+                //    {
+                //        if(file.Extension == Constants.lnk)
+                //        {
 
-            //                var sc = Shortcut.ReadFromFile(file.FullName);
-                      
-            //                if(sc.LinkFlags.HasFlag(Securify.ShellLink.Flags.LinkFlags.HasLinkInfo))
-            //                {
-            //                    AddFileToObjects(file);
-            //                }
+                //            try
+                //            {
 
-            //            }
-            //            catch(ArgumentException ex)
-            //            {
+                //                var sc = Shortcut.ReadFromFile(file.FullName);
 
-            //                // swallow it for now
-            //            }
+                //                if(sc.LinkFlags.HasFlag(Securify.ShellLink.Flags.LinkFlags.HasLinkInfo))
+                //                {
+                //                    AddFileToObjects(file);
+                //                }
 
-            //        }
-            //        else if(FileExtension.ExtensionStrings.Contains(file.Extension.SanitizeFileExtension()))
+                //            }
+                //            catch(ArgumentException ex)
+                //            {
+
+                //                // swallow it for now
+                //            }
+
+                //        }
+                //        else if(FileExtension.ExtensionStrings.Contains(file.Extension.SanitizeFileExtension()))
 
 
-            //        {
+                //        {
 
-            //            AddFileToObjects(file);
-            //        }
-            //    }
+                //            AddFileToObjects(file);
+                //        }
+                //    }
 
+            }
+            else
+            {
+            throw new Exception($"Directory path {directoryPath} is not valid. Please set the directory path before accessing FileSystemObjects.");
             }
 
 

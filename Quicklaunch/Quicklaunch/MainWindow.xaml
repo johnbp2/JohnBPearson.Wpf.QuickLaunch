@@ -5,7 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Quicklaunch"
         mc:Ignorable="d"
-        Title="Quicklaunch"  WindowStyle="None" WindowStartupLocation="Manual" Height="Auto" SizeToContent="WidthAndHeight"  Loaded="Main_Loaded" Initialized="Main_Initialized" AllowsTransparency="True" MouseDown="Main_MouseDown">
+        Title="Quicklaunch"  WindowStyle="None" WindowStartupLocation="Manual" Height="Auto" SizeToContent="WidthAndHeight" 
+        Loaded="Main_Loaded" Initialized="Main_Initialized" AllowsTransparency="True" MouseDown="Main_MouseDown"
+        AllowDrop="True" Drop="Main_Drop" >
     <!--<Window.Background>
         <SolidColorBrush  Opacity="0.5" Color="White"/>
     </Window.Background>-->
