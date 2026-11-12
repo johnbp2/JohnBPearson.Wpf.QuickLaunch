@@ -50,9 +50,13 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Remove="Services\**" />
+    <Compile Remove="ViewModels\**" />
     <EmbeddedResource Remove="Services\**" />
+    <EmbeddedResource Remove="ViewModels\**" />
     <None Remove="Services\**" />
+    <None Remove="ViewModels\**" />
     <Page Remove="Services\**" />
+    <Page Remove="ViewModels\**" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Quicklaunch.ico">
@@ -81,8 +85,5 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="ViewModels\" />
   </ItemGroup>
 </Project>

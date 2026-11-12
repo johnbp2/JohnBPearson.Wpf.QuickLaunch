@@ -11,7 +11,7 @@ using Quicklaunch.Controls;
 using JohnBPearson.FileObjects;
 using JohnBPearson.FileObjects.Model;
 using Quicklaunch.Services;
-using Input=System.Windows.Input;
+using Input = System.Windows.Input;
 using System.Diagnostics.Contracts;
 using System.Runtime.CompilerServices;
 namespace Quicklaunch
@@ -28,7 +28,7 @@ namespace Quicklaunch
 
 
         const int imageWidth = 32;
-    
+
         private double toolbarX = 0;
         private FileHelperService _fileService = new FileHelperService();
         System.Windows.Forms.NotifyIcon? notifyIcon1;
@@ -64,15 +64,15 @@ namespace Quicklaunch
 
         public MainWindow()
         {
-            if (Properties.Settings.Default.displayOnSecondary)
+            if(Properties.Settings.Default.displayOnSecondary)
             {
                 var screens = System.Windows.Forms.Screen.AllScreens;
                 var firstSecondary = screens.FirstOrDefault(s => s.Primary == false);
-                if (firstSecondary != null)
+                if(firstSecondary != null)
                 {
                     WindowStartupLocation = WindowStartupLocation.Manual;
                     // Ensure Window is minimized on creation
-                  //  WindowState = WindowState.Minimized;
+                    //  WindowState = WindowState.Minimized;
                     // Define Position on Secondary screen, for "Normal" window-mode
                     // ( Here Top/Left-Position )
                     Left = firstSecondary.Bounds.Left;
@@ -89,32 +89,39 @@ namespace Quicklaunch
             Services.UnmanagedService.SetWindowZIndex(this, Properties.Settings.Default.alwaysOnTop);
             var drawingColor = Properties.Settings.Default.bgColor;
 
-            SetBGColor(drawingColor);
+            SetBGColor(drawingColor, Properties.Settings.Default.opacity / 100);
 
-            this.Background.Opacity = Properties.Settings.Default.opacity / 100;
 
-            setupMenu();
+            createNotifcationIconMenu();
         }
 
 
 
         private void Main_Drop(object sender, System.Windows.DragEventArgs e)
         {
-        if (e.Data.GetDataPresent(System.Windows.DataFormats.FileDrop))
-        {
-            string[] files = (string[])e.Data.GetData(System.Windows.DataFormats.FileDrop);
-            foreach (var file in files)
+            if(e.Data.GetDataPresent(System.Windows.DataFormats.FileDrop))
             {
+                string[] files = (string[])e.Data.GetData(System.Windows.DataFormats.FileDrop);
+                foreach(var file in files)
+                {
                     // Handle each dropped file
                     string fileName = System.IO.Path.GetFileName(file);
                     fileName = fileName.Remove(fileName.LastIndexOf("."));
                     fileName = fileName + ".lnk";
                     FileHelperService.CreateShortcut(file, "", System.IO.Path.Combine(Properties.Settings.Default.folder, fileName));
+                }
             }
         }
+        private void Main_DragEnter(object sender, System.Windows.DragEventArgs e)
+        {
+            this.SetBGColor(System.Drawing.Color.Green, 1);
         }
 
-     
+        private void Main_DragLeave(object sender, System.Windows.DragEventArgs e)
+        {
+            this.SetBGColor(Properties.Settings.Default.bgColor, Properties.Settings.Default.opacity / 100);
+        }
+
 
         public void notifyIconMenuHide_Click(object sender, EventArgs e)
         {
@@ -125,20 +132,20 @@ namespace Quicklaunch
             this.Show();
         }
 
- 
+
 
         void Main_Initialized(object sender, EventArgs e)
         {
 
             this.populateToolbar();
             _fileService.WatchDirectory(Properties.Settings.Default.folder);
-            _fileService.RefreshNeeded +=   new System.EventHandler<string>(NewMethod);
+            _fileService.RefreshNeeded += new System.EventHandler<string>(FileSystem_Refresh);
 
         }
 
-        private void NewMethod(object sender, string e)
+        private void FileSystem_Refresh(object sender, string e)
         {
-            
+
             {
                 this.Dispatcher.Invoke(() =>
                 {
@@ -147,27 +154,28 @@ namespace Quicklaunch
                     //{
                     //    Facade.DirectoryPath = e;
                     //}
-                  //  Facade.DirectoryPath = Properties.Settings.Default.folder;
-               //   Facade.RefreshFileSystemObjects();
+                    //  Facade.DirectoryPath = Properties.Settings.Default.folder;
+                    //   Facade.RefreshFileSystemObjects();
                     this.populateToolbar();
                 });
-            };
+            }
+            ;
         }
 
         private void Main_MouseDown(object sender, Input.MouseButtonEventArgs e)
         {
-            if (e.LeftButton == MouseButtonState.Pressed)
+            if(e.LeftButton == MouseButtonState.Pressed)
                 Main.DragMove();
         }
 
         void ImageControlMouse_Down(object sender, Input.MouseEventArgs e)
         {
-            if (e.LeftButton == MouseButtonState.Pressed)
+            if(e.LeftButton == MouseButtonState.Pressed)
             {
 
-                foreach (var item in this.cache)
+                foreach(var item in this.cache)
                 {
-                    if (item.Name == ((ImageControl)sender).Name)
+                    if(item.Name == ((ImageControl)sender).Name)
                     {
                         //var test =System.IO.file.ReadAllText(item.Item2.FullPath);
                         //      Debug.WriteLine(test);
@@ -238,15 +246,15 @@ namespace Quicklaunch
             settings.Owner = this;
             settings.ShowInTaskbar = true;
             settings.main = this;
-          bool? result = settings.ShowDialog();
+            bool? result = settings.ShowDialog();
             if(result is not null && result == true)
             {
                 this.Background.Opacity = Properties.Settings.Default.opacity / 100;
                 stack1.Children.Clear();
-              
+
                 this.populateToolbar();
             }
-         
+
 
             // this.stack1.Background.
 
@@ -282,14 +290,14 @@ namespace Quicklaunch
         }
         private void MenuItemRefresh_Click(object sender, RoutedEventArgs e)
         {
-           // Facade.RefreshFileSystemObjects();
+            // Facade.RefreshFileSystemObjects();
             this.populateToolbar();
         }
         private void MenuItemOpenFolder_Click(object sender, RoutedEventArgs e)
         {
             // open folder with shell
             var folder = Properties.Settings.Default.folder;
-            if (!string.IsNullOrWhiteSpace(folder) && System.IO.Directory.Exists(folder))
+            if(!string.IsNullOrWhiteSpace(folder) && System.IO.Directory.Exists(folder))
             {
                 var psi = new ProcessStartInfo
                 {
@@ -303,9 +311,9 @@ namespace Quicklaunch
         public void buttonAutoShade_Click(object sender, RoutedEventArgs e)
         {
 
-            for (int i = 0; i < stack1.Children.Count; i++)
+            for(int i = 0; i < stack1.Children.Count; i++)
             {
-                if (i != 0)
+                if(i != 0)
                 {
                     stack1.Children[i].Visibility = stack1.Children[i].Visibility == Visibility.Visible ? Visibility.Collapsed : Visibility.Visible;
                 }
@@ -316,12 +324,14 @@ namespace Quicklaunch
 
         #region private methods
 
-        internal void SetBGColor(System.Drawing.Color drawingColor)
+        internal void SetBGColor(System.Drawing.Color drawingColor, double opacity)
         {
             this.Background = new SolidColorBrush(System.Windows.Media.Color.FromRgb(drawingColor.R, drawingColor.G, drawingColor.B));
+            this.Background.Opacity = opacity;
+            
 
         }
-        private void setupMenu()
+        private void createNotifcationIconMenu()
         {
             if(System.OperatingSystem.IsWindows())
             {
@@ -364,28 +374,28 @@ namespace Quicklaunch
         }
         private void DockWindow(Dock position)
         {
-            
+
             double screenWidth = SystemParameters.WorkArea.Width;
             double screenHeight = SystemParameters.WorkArea.Height;
             double screenTop = SystemParameters.WorkArea.Top;
             double screenLeft = SystemParameters.WorkArea.Left;
             this.WindowState = WindowState.Normal;
 
-            if (position == Dock.Left)
+            if(position == Dock.Left)
             {
                 this.Top = screenTop;
 
                 this.Left = screenLeft;
 
             }
-            else if (position == Dock.Right)
+            else if(position == Dock.Right)
             {
 
                 this.Top = screenTop;
                 this.Left = screenLeft + screenWidth - this.Width;
 
             }
-            else if (position == Dock.Top)
+            else if(position == Dock.Top)
             {
 
                 this.Top = screenTop;
@@ -395,13 +405,13 @@ namespace Quicklaunch
                 //double screenWidth = SystemParameters.WorkArea.Width;
                 this.Left = (screenWidth / 2) - temp;
             }
-            else if (position == Dock.Bottom)
+            else if(position == Dock.Bottom)
             {
                 this.Top = screenHeight - this.Height;
                 var temp = this.Width / 2;
                 this.Left = (screenWidth / 2) - temp;
             }
-            if (position == Dock.Left || position == Dock.Right)
+            if(position == Dock.Left || position == Dock.Right)
             {
                 this.Height = screenHeight;
             }
@@ -416,7 +426,7 @@ namespace Quicklaunch
 
 
             // stack1.HorizontalAlignment = HorizontalAlignment.Left;
-            if (Properties.Settings.Default.horizontalOrientation)
+            if(Properties.Settings.Default.horizontalOrientation)
             {
                 stack1.Orientation = System.Windows.Controls.Orientation.Horizontal;
             }
@@ -426,7 +436,7 @@ namespace Quicklaunch
             }
 
 
-           // Facade.DirectoryPath = Properties.Settings.Default.folder;
+            // Facade.DirectoryPath = Properties.Settings.Default.folder;
 
             var i = 100;
 
@@ -439,10 +449,10 @@ namespace Quicklaunch
 
             // TODO: [x] add tooltips
 
-            foreach (var fileSystemObject in Facade.GetFileSystemObjects(Properties.Settings.Default.folder))
+            foreach(var fileSystemObject in Facade.GetFileSystemObjects(Properties.Settings.Default.folder))
             {
 
-                if (fileSystemObject.Type != FileExtensionEnum.bat)
+                if(fileSystemObject.Type != FileExtensionEnum.bat)
                 {
 
                     Controls.ImageControl image = createImageControl(i, fileSystemObject);
@@ -493,7 +503,7 @@ namespace Quicklaunch
         {
 
             // 60 horizontal height is always 60, vertical width is always 60.  The other dimension is variable based on the number of images and the image width.
-            if (Properties.Settings.Default.horizontalOrientation)
+            if(Properties.Settings.Default.horizontalOrientation)
             {
                 this.Width = width;
                 this.stack1.Width = width;
@@ -516,7 +526,7 @@ namespace Quicklaunch
         private void setHeights(double height)
         {
 
-            if (Properties.Settings.Default.horizontalOrientation)
+            if(Properties.Settings.Default.horizontalOrientation)
             {
                 this.stack1.Height = 60;
 
@@ -537,7 +547,7 @@ namespace Quicklaunch
         }
         private void defaultImageMargins(ref Controls.ImageControl image)
         {
-            if (stack1.Orientation == System.Windows.Controls.Orientation.Horizontal)
+            if(stack1.Orientation == System.Windows.Controls.Orientation.Horizontal)
             {
                 image.Margin = new Thickness(10, 0, 10, 0);
             }
@@ -580,5 +590,7 @@ namespace Quicklaunch
         }
 
         #endregion
+
+
     }
 }
