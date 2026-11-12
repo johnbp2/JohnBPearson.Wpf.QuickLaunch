@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="Quicklaunch"  WindowStyle="None" WindowStartupLocation="Manual" Height="Auto" SizeToContent="WidthAndHeight" 
         Loaded="Main_Loaded" Initialized="Main_Initialized" AllowsTransparency="True" MouseDown="Main_MouseDown"
-        AllowDrop="True" Drop="Main_Drop" >
+        AllowDrop="True" Drop="Main_Drop" DragEnter="Main_DragEnter" DragLeave="Main_DragLeave">
     <!--<Window.Background>
         <SolidColorBrush  Opacity="0.5" Color="White"/>
     </Window.Background>-->

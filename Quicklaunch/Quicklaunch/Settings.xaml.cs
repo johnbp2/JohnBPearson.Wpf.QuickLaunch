@@ -93,7 +93,7 @@ namespace Quicklaunch
            // Properties.Settings.Default.animationType = listBox.SelectedItem ?? Controls.AnimationType.Scale;
             Properties.Settings.Default.Save();
 
-            main.SetBGColor(Properties.Settings.Default.bgColor);
+            main.SetBGColor(Properties.Settings.Default.bgColor,Properties.Settings.Default.opacity/100);
             this.DialogResult = true;
             this.Close();
 
