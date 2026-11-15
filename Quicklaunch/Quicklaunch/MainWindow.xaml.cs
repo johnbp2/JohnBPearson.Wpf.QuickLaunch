@@ -36,7 +36,7 @@ namespace Quicklaunch
         System.Windows.Forms.ContextMenuStrip? contextMenuIcon;
         System.Windows.Forms.ToolStripMenuItem? menuItemHide;
         System.Windows.Forms.ToolStripMenuItem? menuItemShow;
-
+        System.Windows.Forms.ToolStripMenuItem? menuItemDemo;
         public double ToolbarX
         {
 
@@ -93,6 +93,7 @@ namespace Quicklaunch
 
 
             createNotifcationIconMenu();
+            autSohade();
         }
 
 
@@ -296,28 +297,40 @@ namespace Quicklaunch
         private void MenuItemOpenFolder_Click(object sender, RoutedEventArgs e)
         {
             // open folder with shell
-            var folder = Properties.Settings.Default.folder;
-            if(!string.IsNullOrWhiteSpace(folder) && System.IO.Directory.Exists(folder))
-            {
-                var psi = new ProcessStartInfo
-                {
-                    FileName = folder,
-                    UseShellExecute = true
-                };
-                System.Diagnostics.Process.Start(psi);
-            }
+            // TODO: we should call run on the directory object we used to create the ttoolbaR 
+
+            Facade.Directory.Run();
+            //var folder = Properties.Settings.Default.folder;
+            //if(!string.IsNullOrWhiteSpace(folder) && System.IO.Directory.Exists(folder))
+            //{
+            //    var psi = new ProcessStartInfo
+            //    {
+            //        FileName = folder,
+            //        UseShellExecute = true
+            //    };
+            //    System.Diagnostics.Process.Start(psi);
+            //}
         }
 
         public void buttonAutoShade_Click(object sender, RoutedEventArgs e)
         {
 
-            for(int i = 0; i < stack1.Children.Count; i++)
+
+        }
+        private void Main_MouseLeave(object sender, Input.MouseEventArgs e)
+        {
+            autSohade();
+        }
+
+
+        private void NotifyIcon1_MouseMove(object? sender, System.Windows.Forms.MouseEventArgs e)
+        {
+#if NEEDS_TESTING
+            if(Properties.Settings.Default.autoShade)
             {
-                if(i != 0)
-                {
-                    stack1.Children[i].Visibility = stack1.Children[i].Visibility == Visibility.Visible ? Visibility.Collapsed : Visibility.Visible;
-                }
+                this.Show();
             }
+#endif  
         }
 
         #endregion
@@ -328,7 +341,7 @@ namespace Quicklaunch
         {
             this.Background = new SolidColorBrush(System.Windows.Media.Color.FromRgb(drawingColor.R, drawingColor.G, drawingColor.B));
             this.Background.Opacity = opacity;
-            
+
 
         }
         private void createNotifcationIconMenu()
@@ -352,10 +365,15 @@ namespace Quicklaunch
                 this.contextMenuIcon.Items.Add(menuItemShow);
 
 
+                this.menuItemDemo = new System.Windows.Forms.ToolStripMenuItem();
 
-
-
-
+                menuItemDemo.Text = "Timer";
+                menuItemDemo.Click += (s, e) =>
+                {
+                    var timer = new Demo();
+                    timer.Show();
+                };
+                this.contextMenuIcon.Items.Add(menuItemDemo);
                 // The ContextMenu property sets the menu that will
                 // appear when the systray icon is right clicked.
 
@@ -368,10 +386,12 @@ namespace Quicklaunch
                 this.notifyIcon1.Text = "New message";
                 this.notifyIcon1.Visible = true;
                 this.notifyIcon1.ShowBalloonTip(2000, "Information", "App startup complete!", ToolTipIcon.Info);
-
+                this.notifyIcon1.MouseMove += this.NotifyIcon1_MouseMove;
                 this.notifyIcon1.ContextMenuStrip = this.contextMenuIcon;
             }
         }
+
+
         private void DockWindow(Dock position)
         {
 
@@ -425,7 +445,7 @@ namespace Quicklaunch
             NameScope.SetNameScope(this, new NameScope());
 
 
-            // stack1.HorizontalAlignment = HorizontalAlignment.Left;
+
             if(Properties.Settings.Default.horizontalOrientation)
             {
                 stack1.Orientation = System.Windows.Controls.Orientation.Horizontal;
@@ -436,15 +456,9 @@ namespace Quicklaunch
             }
 
 
-            // Facade.DirectoryPath = Properties.Settings.Default.folder;
 
             var i = 100;
 
-
-            //if(Properties.Settings.Default.autoShade)
-            //{
-            //    this.addAutoShadeButton();
-            //}
 
 
             // TODO: [x] add tooltips
@@ -587,7 +601,19 @@ namespace Quicklaunch
             button.Content = image;
             button.Click += new RoutedEventHandler(buttonAutoShade_Click);
             this.stack1.Children.Add(button);
+
+
         }
+        private void autSohade()
+        {
+#if NEEDS_TESTING
+            if(Properties.Settings.Default.autoShade)
+            {
+                this.Hide();
+            }
+#endif  
+        }
+
 
         #endregion
 

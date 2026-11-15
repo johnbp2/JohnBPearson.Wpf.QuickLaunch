@@ -7,14 +7,14 @@
         mc:Ignorable="d"
         Title="Quicklaunch"  WindowStyle="None" WindowStartupLocation="Manual" Height="Auto" SizeToContent="WidthAndHeight" 
         Loaded="Main_Loaded" Initialized="Main_Initialized" AllowsTransparency="True" MouseDown="Main_MouseDown"
-        AllowDrop="True" Drop="Main_Drop" DragEnter="Main_DragEnter" DragLeave="Main_DragLeave">
+        AllowDrop="True" Drop="Main_Drop" DragEnter="Main_DragEnter" DragLeave="Main_DragLeave" MouseLeave="Main_MouseLeave">
     <!--<Window.Background>
         <SolidColorBrush  Opacity="0.5" Color="White"/>
     </Window.Background>-->
     <Window.ContextMenu>
         <ContextMenu x:Name="contextMenu"  Background="White" Width="Auto" Height="Auto" >
             
-            <MenuItem x:Name="Settings" Width="Auto"  BorderThickness="1" BorderBrush="Black" Height="22" Header="Settings"  Click="MenuItemSettings_Click">
+            <MenuItem x:Name="SettingsWindow" Width="Auto"  BorderThickness="1" BorderBrush="Black" Height="22" Header="Settings"  Click="MenuItemSettings_Click">
 
             </MenuItem>
             <MenuItem Header="Refresh"  Width="Auto"  BorderThickness="1" BorderBrush="Black" Height="22" Click="MenuItemRefresh_Click" x:Name="Refresh" ></MenuItem>

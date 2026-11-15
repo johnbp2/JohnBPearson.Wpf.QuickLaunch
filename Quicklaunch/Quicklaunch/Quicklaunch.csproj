@@ -11,6 +11,8 @@
     <UseWindowsForms>True</UseWindowsForms>
     <Platforms>AnyCPU;x64;x86</Platforms>
     <Version>1.0.0.1</Version>
+    <ProduceReferenceAssembly>False</ProduceReferenceAssembly>
+    <SignAssembly>False</SignAssembly>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
     <DebugType>none</DebugType>
@@ -86,4 +88,7 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
   </ItemGroup>
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command="call c:\bat\increment_quicklaunch.cmd" />
+  </Target>
 </Project>
