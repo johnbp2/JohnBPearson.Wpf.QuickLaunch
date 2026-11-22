@@ -111,6 +111,7 @@ namespace Quicklaunch
                     fileName = fileName + ".lnk";
                     FileHelperService.CreateShortcut(file, "", System.IO.Path.Combine(Properties.Settings.Default.folder, fileName));
                 }
+
             }
         }
         private void Main_DragEnter(object sender, System.Windows.DragEventArgs e)
@@ -174,14 +175,14 @@ namespace Quicklaunch
             if(e.LeftButton == MouseButtonState.Pressed)
             {
 
-                foreach(var item in this.cache)
+                foreach(var imageControl in this.cache)
                 {
-                    if(item.Name == ((ImageControl)sender).Name)
+                    if(imageControl.Name == ((ImageControl)sender).Name)
                     {
-                        //var test =System.IO.file.ReadAllText(item.Item2.FullPath);
+                        //var test =System.IO.file.ReadAllText(imageControl.Item2.FullPath);
                         //      Debug.WriteLine(test);
-                        //Process.Start(item.Item2.FullPath);2
-                        item.FileSystemObject.Run();
+                        //Process.Start(imageControl.Item2.FullPath);2
+                        imageControl.FileSystemObject.Run();
                         break;
                     }
                 }
@@ -364,7 +365,7 @@ namespace Quicklaunch
 
                 this.contextMenuIcon.Items.Add(menuItemShow);
 
-
+#if DEBUG
                 this.menuItemDemo = new System.Windows.Forms.ToolStripMenuItem();
 
                 menuItemDemo.Text = "Timer";
@@ -374,6 +375,7 @@ namespace Quicklaunch
                     timer.Show();
                 };
                 this.contextMenuIcon.Items.Add(menuItemDemo);
+#endif
                 // The ContextMenu property sets the menu that will
                 // appear when the systray icon is right clicked.
 
