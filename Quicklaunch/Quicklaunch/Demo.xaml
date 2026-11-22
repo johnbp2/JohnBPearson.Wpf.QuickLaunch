@@ -1,0 +1,14 @@
+﻿<Window xmlns:Controls="clr-namespace:Quicklaunch.Controls"  x:Class="Quicklaunch.Demo"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Quicklaunch"
+        mc:Ignorable="d"
+        Title="Timer"  Loaded="Window_Loaded" SizeToContent="WidthAndHeight">
+    <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+        <Label x:Name="lblTime" Content="00:00:00" FontFamily="Cambria" FontSize="18" FontWeight="Black"/>
+        <!--<Controls:FolderDialog FileSystemType="File" HeaderText="" />-->
+        
+    </StackPanel>
+</Window>

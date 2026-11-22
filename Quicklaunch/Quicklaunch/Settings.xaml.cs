@@ -46,28 +46,7 @@ namespace Quicklaunch
         }
 
 
-        //private void button_Click(object sender, RoutedEventArgs e)
-        //{
 
-        //    Microsoft.Win32.OpenFolderDialog dialog = new();
-
-        //    dialog.Multiselect = false;
-        //    dialog.Title = "Select a folder";
-
-        //    // Show open foa    q   q   lder dialog box
-        //    bool? result = dialog.ShowDialog();
-
-        //    // Process open folder dialog box results
-        //    if (result == true)
-        //    {
-        //        // Get the selected folder
-        //        folder.Text = dialog.FolderName;
-        //        //Properties.Settings.Default.folder = folder.Text;
-        //        //Properties.Settings.Default.Save(); 
-        //        this._folder = dialog.FolderName;
-        //    }
-
-        //}
 
 
 
@@ -81,7 +60,7 @@ namespace Quicklaunch
             
             
             Properties.Settings.Default.opacity = this.opacitySlider.Value;
-            //Properties.Settings.Default.displayOnSecondary = this.secondaryDisplay.IsChecked ?? false;
+         
             if(this.listBox.SelectedItem != null)
             {
                 Properties.Settings.Default.animationType = (this.listBox.SelectedItem as AnimationTypeItem).Value;
@@ -90,7 +69,7 @@ namespace Quicklaunch
             {
                 Properties.Settings.Default.animationType = ((int)Controls.AnimationType.Scale);
             }
-           // Properties.Settings.Default.animationType = listBox.SelectedItem ?? Controls.AnimationType.Scale;
+  
             Properties.Settings.Default.Save();
 
             main.SetBGColor(Properties.Settings.Default.bgColor,Properties.Settings.Default.opacity/100);
@@ -124,10 +103,7 @@ namespace Quicklaunch
             setOpacityLabel(Properties.Settings.Default.opacity);
             displayColor();
             
-            //   this.test.GroupBox.Header = "Always on Top";
-            //this.cntrlAlwaysOnTop.Bind(nameof(SettingsPresenter.AlwaysOnTop), "Always on Top");
-            //this.cntrlOrientationHorizontal.Bind(nameof(SettingsPresenter.OrientationHorizontal), "Horizontal Layout");
-            //this.cntrlSecondaryDisplay.Bind(nameof(SettingsPresenter.PropertyNames.SecondaryDisplay), "Show on secondary display");
+         
             this.cntrlAlwaysOnTop.Bind(SettingsPresenter.PropertyNames.AlwaysOnTop);
             this.cntrlOrientationHorizontal.Bind(SettingsPresenter.PropertyNames.OrientationHorizontal);
             this.cntrlSecondaryDisplay.Bind(SettingsPresenter.PropertyNames.SecondaryDisplay);
@@ -154,9 +130,7 @@ namespace Quicklaunch
                     break;
                 }
             }
-            //this.listBox.SelectedItem = Enum.ToObject(typeof(Controls.AnimationType), Properties.Settings.Default.animationType);
-            // var orientation = new SetBoolProperty(SettingsPresenter.PropertyNames.OrientationHorizontal, "Horizontal Orientation");
-            //            mainStackPanel.Children.Add(orientation);
+ 
         }
 
         private void displayColor()
